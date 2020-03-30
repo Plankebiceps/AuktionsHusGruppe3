@@ -54,5 +54,10 @@ namespace WPF_Windows_Presentation_Foundation_Test1
 
         }
     }
+
+    class 
+    {
+
+    }
     
 }
