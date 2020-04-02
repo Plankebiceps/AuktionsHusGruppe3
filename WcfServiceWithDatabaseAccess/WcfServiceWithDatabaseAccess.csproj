@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModelLayer\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceAccessLayer\AuctionService.cs" />
     <Compile Include="ServiceAccessLayer\BidService.cs" />
@@ -60,7 +61,6 @@
   <ItemGroup>
     <Folder Include="ControlLayer\" />
     <Folder Include="DatabaseAccessLayer\" />
-    <Folder Include="ModelLayer\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
