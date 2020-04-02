@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfServiceWithDatabaseAccess.ModelLayer;
+
 
 namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
 {
@@ -12,6 +14,9 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
     public interface IProductService
     {
         [OperationContract]
-        void DoWork();
+        Product GetProductById(int productId);
+        
+
+        
     }
 }
