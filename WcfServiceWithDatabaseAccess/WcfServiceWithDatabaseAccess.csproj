@@ -4,14 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4E5BDB77-D4A7-4E0E-826D-693788181E9A}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{19B08245-6052-4EAA-B6C4-D6A6D7D6F904}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Auktionshus.Client</RootNamespace>
-    <AssemblyName>Auktionshus.Client</AssemblyName>
+    <RootNamespace>WcfServiceWithDatabaseAccess</RootNamespace>
+    <AssemblyName>WcfServiceWithDatabaseAccess</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,14 +31,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,20 +44,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserInterface\MainPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserInterface\MainPage.Designer.cs">
-      <DependentUpon>MainPage.cs</DependentUpon>
-    </Compile>
+    <Compile Include="ServiceAccessLayer\AuctionService.cs" />
+    <Compile Include="ServiceAccessLayer\BidService.cs" />
+    <Compile Include="ServiceAccessLayer\CustomerService.cs" />
+    <Compile Include="ServiceAccessLayer\IAuctionService.cs" />
+    <Compile Include="ServiceAccessLayer\IBidService.cs" />
+    <Compile Include="ServiceAccessLayer\IPersonService.cs" />
+    <Compile Include="ServiceAccessLayer\IProductService.cs" />
+    <Compile Include="ServiceAccessLayer\AdminService.cs" />
+    <Compile Include="ServiceAccessLayer\IRecieptService.cs" />
+    <Compile Include="ServiceAccessLayer\ProductService.cs" />
+    <Compile Include="ServiceAccessLayer\RecieptService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BuisnessLogicLayer\" />
-    <Folder Include="DataAccessLayer\" />
+    <Folder Include="ControlLayer\" />
+    <Folder Include="DatabaseAccessLayer\" />
     <Folder Include="ModelLayer\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

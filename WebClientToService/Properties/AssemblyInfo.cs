@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Auktionshus.Client")]
+[assembly: AssemblyTitle("WebClientToService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Auktionshus.Client")]
+[assembly: AssemblyProduct("WebClientToService")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4e5bdb77-d4a7-4e0e-826d-693788181e9a")]
+[assembly: Guid("b93cf96b-5280-4934-b366-aaee7adde524")]
 
 // Version information for an assembly consists of the following four values:
 //
