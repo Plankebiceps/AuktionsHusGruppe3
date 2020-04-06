@@ -60,7 +60,9 @@
     <Compile Include="ServiceAccessLayer\ProductService.cs" />
     <Compile Include="ServiceAccessLayer\RecieptService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>

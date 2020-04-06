@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using WcfServiceWithDatabaseAccess.ModelLayer;
+using WcfServiceWithDatabaseAccess.ControlLayer;
 
 namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
 {
@@ -15,7 +16,8 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
 
         public Product GetProductById(int productId)
         {
-            throw new NotImplementedException();
+            ControlProduct ctrlProduct = new ControlProduct();
+            return ctrlProduct.GetProductById(productId);
         }
     }
 }

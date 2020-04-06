@@ -3,10 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WcfServiceWithDatabaseAccess.ModelLayer;
+using WcfServiceWithDatabaseAccess.DatabaseAccessLayer;
 
 namespace WcfServiceWithDatabaseAccess.ControlLayer
 {
-    class ControlProduct
-    {
+    public class ControlProduct
+        {
+        public Product GetProductById(int findProductId)
+        {
+            Product foundProduct = null;
+
+            ProductAccess productDb = new ProductAccess();
+            foundProduct = productDb.GetProductById(findProductId);
+
+            return foundProduct;
+        }
     }
 }
