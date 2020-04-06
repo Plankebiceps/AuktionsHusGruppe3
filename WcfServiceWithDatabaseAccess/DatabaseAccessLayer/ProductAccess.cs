@@ -24,7 +24,27 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             using (SqlConnection con = new SqlConnection(connectionString))
             using (SqlCommand readCommand = new SqlCommand(queryString, con))
             {
-                
+                //Prepace SQL
+                SqlParameter idParam = new SqlParameter("@ProductId", findProductId);
+                readCommand.Parameters.Add(idParam);
+
+                con.Open();
+
+                //Execute read
+                SqlDataReader productReader = readCommand.ExecuteReader();
+
+                if(productReader.HasRows)
+                {
+                    int tempId;
+                    string tempName, tempDescription;
+                    while(productReader.Read())
+                    {
+                        tempId = productReader.GetInt32(productReader.GetOrdinal("productId"));
+                        tempName = productReader.GetString(productReader.GetOrdinal("name"));
+                        tempDescription = productReader.GetString(productReader.GetOrdinal("description"));
+                        foundProduct = new Product(tempId, tempName, tempDescription);
+                    }
+                }
             }
             return foundProduct;
         }
