@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WcfServiceWithDatabaseAccess.ModelLayer;
 using System.Data.SqlClient;
-
+using System.Transactions;
 
 namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 {
@@ -19,35 +19,61 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 
         public Product GetProductById(int findProductId)
         {
-            Product foundProduct = null;
-            string queryString = "select productId, name, description from Product where productId = @ProductId";
-            using (SqlConnection con = new SqlConnection(connectionString))
-            using (SqlCommand readCommand = new SqlCommand(queryString, con))
+            using (TransactionScope scope = new TransactionScope())
             {
-                //Prepace SQL
-                SqlParameter idParam = new SqlParameter("@ProductId", findProductId);
-                readCommand.Parameters.Add(idParam);
-
-                con.Open();
-
-                //Execute read
-                SqlDataReader productReader = readCommand.ExecuteReader();
-
-                if(productReader.HasRows)
+                Product foundProduct = null;
+                string queryString = "select productId, name, description from Product where productId = @ProductId";
+                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlCommand readCommand = new SqlCommand(queryString, con))
                 {
-                    int tempId;
-                    string tempName, tempDescription;
-                    while(productReader.Read())
+                    //Prepace SQL
+                    SqlParameter idParam = new SqlParameter("@ProductId", findProductId);
+                    readCommand.Parameters.Add(idParam);
+
+                    con.Open();
+
+                    //Execute read
+                    SqlDataReader productReader = readCommand.ExecuteReader();
+
+                    if (productReader.HasRows)
                     {
-                        tempId = productReader.GetInt32(productReader.GetOrdinal("productId"));
-                        tempName = productReader.GetString(productReader.GetOrdinal("name"));
-                        tempDescription = productReader.GetString(productReader.GetOrdinal("description"));
-                        foundProduct = new Product(tempId, tempName, tempDescription);
+                        int tempId;
+                        string tempName, tempDescription;
+                        while (productReader.Read())
+                        {
+                            tempId = productReader.GetInt32(productReader.GetOrdinal("productId"));
+                            tempName = productReader.GetString(productReader.GetOrdinal("name"));
+                            tempDescription = productReader.GetString(productReader.GetOrdinal("description"));
+                            foundProduct = new Product(tempId, tempName, tempDescription);
+                        }
                     }
                 }
+                return foundProduct; 
             }
-            return foundProduct;
         }
 
-     }
+        public Product CreateToDb(Product aProduct)
+        {
+            using (TransactionScope scope = new TransactionScope())
+            {
+                int insertedId = 0;
+                Product madeProduct = null;
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    using (SqlCommand cmdInsertProd = con.CreateCommand())
+                    {
+                        cmdInsertProd.CommandText = "insert into Product(name, description) output INSERTED.productId VALUES (@name, @description)";
+                        cmdInsertProd.Parameters.AddWithValue("name", aProduct.Name);
+                        cmdInsertProd.Parameters.AddWithValue("description", aProduct.Description);
+                        insertedId = (int)cmdInsertProd.ExecuteScalar();
+                    }
+                }
+                madeProduct = aProduct;
+                madeProduct.ProductId = insertedId;
+                return madeProduct;
+            }
+        }
+    }
 }

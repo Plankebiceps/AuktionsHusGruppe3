@@ -12,12 +12,26 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class ProductService : IProductService
     {
-        
+        public Product CreateProduct(Product productToCreate)
+        {
+            ControlProduct ctrlProduct = new ControlProduct();
+            return ctrlProduct.CreateProduct(productToCreate);
+        }
+
+        public Product DeleteProduct(int productId)
+        {
+            throw new NotImplementedException();
+        }
 
         public Product GetProductById(int productId)
         {
             ControlProduct ctrlProduct = new ControlProduct();
             return ctrlProduct.GetProductById(productId);
+        }
+
+        public Product ModifyProduct(string name, string description)
+        {
+            throw new NotImplementedException();
         }
     }
 }

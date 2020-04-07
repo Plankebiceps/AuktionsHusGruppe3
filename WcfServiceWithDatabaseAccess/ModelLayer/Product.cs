@@ -23,7 +23,5 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
             Name = name;
             Description = description;
         }
-    
     }
-
 }
