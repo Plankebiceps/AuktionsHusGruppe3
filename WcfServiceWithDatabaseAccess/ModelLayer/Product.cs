@@ -17,18 +17,13 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
         [DataMember]
         public string Description { get; set; }
 
-
-
         public Product(int productId, string name, string description)
         {
             ProductId = productId;
             Name = name;
             Description = description;
         }
-        
     
     }
-    
 
-    
 }
