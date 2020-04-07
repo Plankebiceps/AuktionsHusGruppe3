@@ -17,7 +17,7 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
         Product GetProductById(int productId);
 
         [OperationContract]
-        Product CreateProduct(Product productToCreate);
+        Product CreateProduct(Auction productToCreate);
 
         [OperationContract]
         Product DeleteProduct(int productId);
