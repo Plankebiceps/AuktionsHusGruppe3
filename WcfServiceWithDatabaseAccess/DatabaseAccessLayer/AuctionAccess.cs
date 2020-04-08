@@ -21,7 +21,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
         {
             //using (TransactionScope scope = new TransactionScope())
             //{
-            Auction madeAuction;
+            Auction madeAuction = null;
             int insertedId = 0;
             using (SqlConnection con = new SqlConnection(connectionString))
             {
