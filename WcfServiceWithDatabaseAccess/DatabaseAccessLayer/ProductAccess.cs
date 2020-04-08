@@ -44,7 +44,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                             tempId = productReader.GetInt32(productReader.GetOrdinal("productId"));
                             tempName = productReader.GetString(productReader.GetOrdinal("name"));
                             tempDescription = productReader.GetString(productReader.GetOrdinal("description"));
-                            foundProduct = new Product(tempId, tempName, tempDescription);
+                            foundProduct = new Product(tempName, tempDescription);
                         }
                     }
                 }

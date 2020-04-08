@@ -14,7 +14,7 @@ namespace DesktopClientToService.ControlLayer
 
         public Product CreateProduct(string name, string description)
         {
-            Product product = new Product
+            Product product = new Product(name, description)
             {
                 Name = name,
                 Description = description

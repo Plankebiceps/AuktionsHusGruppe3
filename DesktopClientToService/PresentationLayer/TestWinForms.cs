@@ -27,8 +27,10 @@ namespace DesktopClientToService.PresentationLayer
 
         private void btnAuction_Click(object sender, EventArgs e)
         {
-            string name = txtProduct__Name.Text;
-            string description = txtProduct__Description.Text;
+            DesktopClientToService.ServiceRefAuction.Product product = new DesktopClientToService.ServiceRefAuction.Product();
+            
+            product.Name = txtProduct__Name.Text;
+            product.Description= txtProduct__Description.Text;
             DateTime dateTime = dateTimePickerAuction.Value; 
             string result = txtAuction_Result.Text;
             bool payment = false;
@@ -41,7 +43,6 @@ namespace DesktopClientToService.PresentationLayer
                 payment = true;
             }
 
-            //DesktopClientToService.ServiceRefAuction.Product product = new DesktopClientToService.ServiceRefAuction.Product(name, description);            
             //ControlProduct ctrlProduct = new ControlProduct();
             //ctrlProduct.CreateProduct(name, description);
 
