@@ -52,7 +52,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             }
         }
 
-        public Product CreateToDb(Auction auction)
+        public Product CreateToDb(Product aProduct)
         {
             using (TransactionScope scope = new TransactionScope())
             {
@@ -64,14 +64,13 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                     con.Open();
                     using (SqlCommand cmdInsertProd = con.CreateCommand())
                     {
-                        cmdInsertProd.CommandText = "insert into Product(name, description, auctionId) output INSERTED.productId VALUES (@name, @description, @auctionId)";
-                        cmdInsertProd.Parameters.AddWithValue("name", auction.product.Name);
-                        cmdInsertProd.Parameters.AddWithValue("description", auction.product.Description);
-                        cmdInsertProd.Parameters.AddWithValue("auctionId", auction.AuctionId);
+                        cmdInsertProd.CommandText = "insert into Product(name, description) output INSERTED.productId VALUES (@name, @description)";
+                        cmdInsertProd.Parameters.AddWithValue("name", aProduct.Name);
+                        cmdInsertProd.Parameters.AddWithValue("description", aProduct.Description);
                         insertedId = (int)cmdInsertProd.ExecuteScalar();
                     }
                 }
-                madeProduct = auction.product;
+                madeProduct = aProduct;
                 madeProduct.ProductId = insertedId;
                 return madeProduct;
             }

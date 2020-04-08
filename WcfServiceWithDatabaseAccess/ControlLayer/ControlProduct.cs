@@ -20,9 +20,8 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
             return foundProduct;
         }
 
-        public Product CreateProduct(Auction productToCreate)
+        public Product CreateProduct(Product productToCreate)
         {
-
             Product createdProduct = null;
 
             ProductAccess productDb = new ProductAccess();

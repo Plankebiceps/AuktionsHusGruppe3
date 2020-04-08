@@ -10,9 +10,8 @@ using System.Transactions;
 namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 {
     public class AuctionAccess
-        {
+    {
         readonly string connectionString;
-        public Auction madeAuction = null;
         public AuctionAccess()
         {
             connectionString = "data Source=.; database=3SemDB; integrated security=true";
@@ -22,6 +21,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
         {
             //using (TransactionScope scope = new TransactionScope())
             //{
+            Auction madeAuction = null;
             int insertedId = 0;
             using (SqlConnection con = new SqlConnection(connectionString))
             {
