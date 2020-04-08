@@ -64,9 +64,10 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                     con.Open();
                     using (SqlCommand cmdInsertProd = con.CreateCommand())
                     {
-                        cmdInsertProd.CommandText = "insert into Product(name, description) output INSERTED.productId VALUES (@name, @description)";
+                        cmdInsertProd.CommandText = "insert into Product(name, description, auctionId) output INSERTED.productId VALUES (@name, @description, @auctionId)";
                         cmdInsertProd.Parameters.AddWithValue("name", aProduct.Name);
                         cmdInsertProd.Parameters.AddWithValue("description", aProduct.Description);
+                        cmdInsertProd.Parameters.AddWithValue("auctionId", aProduct.AuctionId);
                         insertedId = (int)cmdInsertProd.ExecuteScalar();
                     }
                 }

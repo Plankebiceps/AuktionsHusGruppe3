@@ -12,7 +12,7 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
     {
         public Auction CreateAuction(Auction auctionToCreate)
         {
-            Auction createdAuction = null;
+            Auction createdAuction;
 
             AuctionAccess auctionDb = new AuctionAccess();
             createdAuction = auctionDb.CreateToDb(auctionToCreate);

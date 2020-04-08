@@ -23,6 +23,9 @@ namespace DesktopClientToService.ServiceRefProduct {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AuctionIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -30,7 +33,13 @@ namespace DesktopClientToService.ServiceRefProduct {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ProductIdField;
-        
+
+        public Product(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
+
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -38,6 +47,19 @@ namespace DesktopClientToService.ServiceRefProduct {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AuctionId {
+            get {
+                return this.AuctionIdField;
+            }
+            set {
+                if ((this.AuctionIdField.Equals(value) != true)) {
+                    this.AuctionIdField = value;
+                    this.RaisePropertyChanged("AuctionId");
+                }
             }
         }
         
@@ -99,6 +121,24 @@ namespace DesktopClientToService.ServiceRefProduct {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductById", ReplyAction="http://tempuri.org/IProductService/GetProductByIdResponse")]
         System.Threading.Tasks.Task<DesktopClientToService.ServiceRefProduct.Product> GetProductByIdAsync(int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/CreateProduct", ReplyAction="http://tempuri.org/IProductService/CreateProductResponse")]
+        DesktopClientToService.ServiceRefProduct.Product CreateProduct(DesktopClientToService.ServiceRefProduct.Product productToCreate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/CreateProduct", ReplyAction="http://tempuri.org/IProductService/CreateProductResponse")]
+        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefProduct.Product> CreateProductAsync(DesktopClientToService.ServiceRefProduct.Product productToCreate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DeleteProduct", ReplyAction="http://tempuri.org/IProductService/DeleteProductResponse")]
+        DesktopClientToService.ServiceRefProduct.Product DeleteProduct(int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DeleteProduct", ReplyAction="http://tempuri.org/IProductService/DeleteProductResponse")]
+        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefProduct.Product> DeleteProductAsync(int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ModifyProduct", ReplyAction="http://tempuri.org/IProductService/ModifyProductResponse")]
+        DesktopClientToService.ServiceRefProduct.Product ModifyProduct(string name, string description);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ModifyProduct", ReplyAction="http://tempuri.org/IProductService/ModifyProductResponse")]
+        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefProduct.Product> ModifyProductAsync(string name, string description);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -134,6 +174,30 @@ namespace DesktopClientToService.ServiceRefProduct {
         
         public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefProduct.Product> GetProductByIdAsync(int productId) {
             return base.Channel.GetProductByIdAsync(productId);
+        }
+        
+        public DesktopClientToService.ServiceRefProduct.Product CreateProduct(DesktopClientToService.ServiceRefProduct.Product productToCreate) {
+            return base.Channel.CreateProduct(productToCreate);
+        }
+        
+        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefProduct.Product> CreateProductAsync(DesktopClientToService.ServiceRefProduct.Product productToCreate) {
+            return base.Channel.CreateProductAsync(productToCreate);
+        }
+        
+        public DesktopClientToService.ServiceRefProduct.Product DeleteProduct(int productId) {
+            return base.Channel.DeleteProduct(productId);
+        }
+        
+        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefProduct.Product> DeleteProductAsync(int productId) {
+            return base.Channel.DeleteProductAsync(productId);
+        }
+        
+        public DesktopClientToService.ServiceRefProduct.Product ModifyProduct(string name, string description) {
+            return base.Channel.ModifyProduct(name, description);
+        }
+        
+        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefProduct.Product> ModifyProductAsync(string name, string description) {
+            return base.Channel.ModifyProductAsync(name, description);
         }
     }
 }

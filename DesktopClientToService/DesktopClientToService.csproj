@@ -33,8 +33,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,13 +45,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ServiceRefAuction\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceRefProduct\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ControlLayer\ControlAuction.cs" />
     <Compile Include="ControlLayer\ControlProduct.cs" />
+    <Compile Include="ModelLayer\Auction.cs" />
+    <Compile Include="ModelLayer\Product.cs" />
+    <Compile Include="PresentationLayer\TestWinForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\TestWinForms.Designer.cs">
+      <DependentUpon>TestWinForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceLayer\AuctionService.cs" />
     <Compile Include="ServiceLayer\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +74,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Connected Services\ServiceRefAuction\DesktopClientToService.ServiceRefAuction.Auction.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceRefAuction\service.wsdl" />
+    <None Include="Connected Services\ServiceRefAuction\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceRefAuction\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceRefAuction\WcfServiceWithDatabaseAccess.ModelLayer.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceRefProduct\DesktopClientToService.ServiceRefProduct.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -72,10 +102,28 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceRefAuction\" />
     <WCFMetadataStorage Include="Connected Services\ServiceRefProduct\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceRefProduct\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PresentationLayer\TestWinForms.resx">
+      <DependentUpon>TestWinForms.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceRefAuction\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceRefAuction\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceRefAuction\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceRefProduct\configuration.svcinfo" />
@@ -85,10 +133,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ModelLayer\" />
-    <Folder Include="PresentationLayer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
