@@ -11,7 +11,7 @@ namespace DesktopClientToService.ControlLayer
     public class ControlAuction
     {
         //"as" kan ikke bruges istedet for auctionService
-        public Auction CreateAuction(decimal timeLeft, bool payment, string result, DateTime paymentDate, Product product)
+        public Auction CreateAuction(decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription)
         {
             Auction auction = new Auction
             {
@@ -19,7 +19,8 @@ namespace DesktopClientToService.ControlLayer
                 Payment = payment,
                 Result = result,
                 PaymentDate = paymentDate,
-                product = product
+                ProductName = productName,
+                ProductDescription = productDescription
                 
 
             };

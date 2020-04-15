@@ -10,9 +10,6 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
     [DataContract]
     public class Auction
     {
-        // Eventuel mangel på instanciering på produkt
-        [DataMember]
-        public Product product;
         [DataMember]
         public int AuctionId { get; set; }
         [DataMember]
@@ -23,15 +20,21 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
         public string Result { get; set; }
         [DataMember]
         public DateTime PaymentDate { get; set; }
+        [DataMember]
+        public string ProductName { get; set; }
+        [DataMember]
+        public string ProductDescription { get; set; }
 
-        public Auction(int auctionId, decimal timeLeft, bool payment, string result, DateTime paymentDate, Product product)
+
+        public Auction(int auctionId, decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription)
         {
             AuctionId = auctionId;
             TimeLeft = timeLeft;
             Payment = payment;
             Result = result;
             PaymentDate = paymentDate;
-            this.product = product;
+            ProductName = productName;
+            ProductDescription = productDescription;
         }
     }
 }

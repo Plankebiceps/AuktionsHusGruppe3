@@ -50,6 +50,8 @@
         <xs:element minOccurs="0" name="payment" type="xs:boolean" />
         <xs:element minOccurs="0" name="result" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="paymentDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="productName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="productDescription" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

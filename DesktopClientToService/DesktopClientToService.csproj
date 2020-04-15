@@ -53,15 +53,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\ServiceRefProduct\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="ControlLayer\ControlAuction.cs" />
-    <Compile Include="ControlLayer\ControlProduct.cs" />
     <Compile Include="ModelLayer\Auction.cs" />
-    <Compile Include="ModelLayer\Product.cs" />
     <Compile Include="PresentationLayer\TestWinForms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,7 +63,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLayer\AuctionService.cs" />
-    <Compile Include="ServiceLayer\ProductService.cs" />
     <Compile Include="StartProgram.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -91,31 +83,14 @@
     <None Include="Connected Services\ServiceRefAuction\WcfServiceWithDatabaseAccess.ModelLayer.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceRefProduct\DesktopClientToService.ServiceRefProduct.Product.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceRefProduct\service.wsdl" />
-    <None Include="Connected Services\ServiceRefProduct\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceRefProduct\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceRefProduct\WcfServiceWithDatabaseAccess.ModelLayer.xsd">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServiceRefAuction\" />
-    <WCFMetadataStorage Include="Connected Services\ServiceRefProduct\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceRefProduct\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="PresentationLayer\TestWinForms.resx">
       <DependentUpon>TestWinForms.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceRefAuction\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceRefAuction\configuration91.svcinfo" />
@@ -125,15 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceRefAuction\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceRefProduct\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceRefProduct\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -28,31 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnProduct = new System.Windows.Forms.Button();
             this.btnAuction = new System.Windows.Forms.Button();
             this.txtAuction_ID = new System.Windows.Forms.TextBox();
             this.txtAuction_TimeLeft = new System.Windows.Forms.TextBox();
             this.txtAuction_Result = new System.Windows.Forms.TextBox();
-            this.txtProduct__ID = new System.Windows.Forms.TextBox();
-            this.txtProduct__Name = new System.Windows.Forms.TextBox();
-            this.txtProduct__Description = new System.Windows.Forms.TextBox();
-            this.txtProduct__AuctionID = new System.Windows.Forms.TextBox();
             this.radioBtnAuction = new System.Windows.Forms.RadioButton();
             this.dateTimePickerAuction = new System.Windows.Forms.DateTimePicker();
+            this.txtProdName = new System.Windows.Forms.TextBox();
+            this.txtProdDescription = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // btnProduct
-            // 
-            this.btnProduct.Location = new System.Drawing.Point(607, 221);
-            this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(102, 30);
-            this.btnProduct.TabIndex = 0;
-            this.btnProduct.Text = "button1";
-            this.btnProduct.UseVisualStyleBackColor = true;
             // 
             // btnAuction
             // 
-            this.btnAuction.Location = new System.Drawing.Point(73, 221);
+            this.btnAuction.Location = new System.Drawing.Point(344, 310);
             this.btnAuction.Name = "btnAuction";
             this.btnAuction.Size = new System.Drawing.Size(102, 30);
             this.btnAuction.TabIndex = 1;
@@ -66,6 +54,7 @@
             this.txtAuction_ID.Name = "txtAuction_ID";
             this.txtAuction_ID.Size = new System.Drawing.Size(264, 20);
             this.txtAuction_ID.TabIndex = 2;
+            this.txtAuction_ID.TextChanged += new System.EventHandler(this.txtAuction_ID_TextChanged);
             // 
             // txtAuction_TimeLeft
             // 
@@ -80,34 +69,6 @@
             this.txtAuction_Result.Name = "txtAuction_Result";
             this.txtAuction_Result.Size = new System.Drawing.Size(264, 20);
             this.txtAuction_Result.TabIndex = 5;
-            // 
-            // txtProduct__ID
-            // 
-            this.txtProduct__ID.Location = new System.Drawing.Point(524, 12);
-            this.txtProduct__ID.Name = "txtProduct__ID";
-            this.txtProduct__ID.Size = new System.Drawing.Size(264, 20);
-            this.txtProduct__ID.TabIndex = 8;
-            // 
-            // txtProduct__Name
-            // 
-            this.txtProduct__Name.Location = new System.Drawing.Point(524, 38);
-            this.txtProduct__Name.Name = "txtProduct__Name";
-            this.txtProduct__Name.Size = new System.Drawing.Size(264, 20);
-            this.txtProduct__Name.TabIndex = 9;
-            // 
-            // txtProduct__Description
-            // 
-            this.txtProduct__Description.Location = new System.Drawing.Point(524, 64);
-            this.txtProduct__Description.Name = "txtProduct__Description";
-            this.txtProduct__Description.Size = new System.Drawing.Size(264, 20);
-            this.txtProduct__Description.TabIndex = 10;
-            // 
-            // txtProduct__AuctionID
-            // 
-            this.txtProduct__AuctionID.Location = new System.Drawing.Point(524, 90);
-            this.txtProduct__AuctionID.Name = "txtProduct__AuctionID";
-            this.txtProduct__AuctionID.Size = new System.Drawing.Size(264, 20);
-            this.txtProduct__AuctionID.TabIndex = 11;
             // 
             // radioBtnAuction
             // 
@@ -127,22 +88,33 @@
             this.dateTimePickerAuction.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerAuction.TabIndex = 13;
             // 
+            // txtProdName
+            // 
+            this.txtProdName.Location = new System.Drawing.Point(12, 156);
+            this.txtProdName.Name = "txtProdName";
+            this.txtProdName.Size = new System.Drawing.Size(264, 20);
+            this.txtProdName.TabIndex = 14;
+            // 
+            // txtProdDescription
+            // 
+            this.txtProdDescription.Location = new System.Drawing.Point(12, 193);
+            this.txtProdDescription.Name = "txtProdDescription";
+            this.txtProdDescription.Size = new System.Drawing.Size(264, 20);
+            this.txtProdDescription.TabIndex = 15;
+            // 
             // TestWinForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtProdDescription);
+            this.Controls.Add(this.txtProdName);
             this.Controls.Add(this.dateTimePickerAuction);
             this.Controls.Add(this.radioBtnAuction);
-            this.Controls.Add(this.txtProduct__AuctionID);
-            this.Controls.Add(this.txtProduct__Description);
-            this.Controls.Add(this.txtProduct__Name);
-            this.Controls.Add(this.txtProduct__ID);
             this.Controls.Add(this.txtAuction_Result);
             this.Controls.Add(this.txtAuction_TimeLeft);
             this.Controls.Add(this.txtAuction_ID);
             this.Controls.Add(this.btnAuction);
-            this.Controls.Add(this.btnProduct);
             this.Name = "TestWinForms";
             this.Text = "TestWinForms";
             this.Load += new System.EventHandler(this.TestWinForms_Load);
@@ -152,17 +124,13 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnProduct;
         private System.Windows.Forms.Button btnAuction;
         private System.Windows.Forms.TextBox txtAuction_ID;
         private System.Windows.Forms.TextBox txtAuction_TimeLeft;
         private System.Windows.Forms.TextBox txtAuction_Result;
-        private System.Windows.Forms.TextBox txtProduct__ID;
-        private System.Windows.Forms.TextBox txtProduct__Name;
-        private System.Windows.Forms.TextBox txtProduct__Description;
-        private System.Windows.Forms.TextBox txtProduct__AuctionID;
         private System.Windows.Forms.RadioButton radioBtnAuction;
         private System.Windows.Forms.DateTimePicker dateTimePickerAuction;
+        private System.Windows.Forms.TextBox txtProdName;
+        private System.Windows.Forms.TextBox txtProdDescription;
     }
 }

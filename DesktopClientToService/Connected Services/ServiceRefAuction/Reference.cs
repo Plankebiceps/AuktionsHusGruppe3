@@ -32,13 +32,16 @@ namespace DesktopClientToService.ServiceRefAuction {
         private System.DateTime PaymentDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ResultField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal TimeLeftField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DesktopClientToService.ServiceRefAuction.Product productField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -90,6 +93,32 @@ namespace DesktopClientToService.ServiceRefAuction {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductDescription {
+            get {
+                return this.ProductDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductDescriptionField, value) != true)) {
+                    this.ProductDescriptionField = value;
+                    this.RaisePropertyChanged("ProductDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductName {
+            get {
+                return this.ProductNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
+                    this.ProductNameField = value;
+                    this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Result {
             get {
                 return this.ResultField;
@@ -111,112 +140,6 @@ namespace DesktopClientToService.ServiceRefAuction {
                 if ((this.TimeLeftField.Equals(value) != true)) {
                     this.TimeLeftField = value;
                     this.RaisePropertyChanged("TimeLeft");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public DesktopClientToService.ServiceRefAuction.Product product {
-            get {
-                return this.productField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.productField, value) != true)) {
-                    this.productField = value;
-                    this.RaisePropertyChanged("product");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer")]
-    [System.SerializableAttribute()]
-    public partial class Product : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AuctionIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ProductIdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AuctionId {
-            get {
-                return this.AuctionIdField;
-            }
-            set {
-                if ((this.AuctionIdField.Equals(value) != true)) {
-                    this.AuctionIdField = value;
-                    this.RaisePropertyChanged("AuctionId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ProductId {
-            get {
-                return this.ProductIdField;
-            }
-            set {
-                if ((this.ProductIdField.Equals(value) != true)) {
-                    this.ProductIdField = value;
-                    this.RaisePropertyChanged("ProductId");
                 }
             }
         }
@@ -254,10 +177,10 @@ namespace DesktopClientToService.ServiceRefAuction {
         System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction> DeleteAuctionAsync(int auctionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/ModifyAuction", ReplyAction="http://tempuri.org/IAuctionService/ModifyAuctionResponse")]
-        DesktopClientToService.ServiceRefAuction.Auction ModifyAuction(decimal timeLeft, bool payment, string result, System.DateTime paymentDate);
+        DesktopClientToService.ServiceRefAuction.Auction ModifyAuction(decimal timeLeft, bool payment, string result, System.DateTime paymentDate, string productName, string productDescription);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/ModifyAuction", ReplyAction="http://tempuri.org/IAuctionService/ModifyAuctionResponse")]
-        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction> ModifyAuctionAsync(decimal timeLeft, bool payment, string result, System.DateTime paymentDate);
+        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction> ModifyAuctionAsync(decimal timeLeft, bool payment, string result, System.DateTime paymentDate, string productName, string productDescription);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -311,12 +234,12 @@ namespace DesktopClientToService.ServiceRefAuction {
             return base.Channel.DeleteAuctionAsync(auctionId);
         }
         
-        public DesktopClientToService.ServiceRefAuction.Auction ModifyAuction(decimal timeLeft, bool payment, string result, System.DateTime paymentDate) {
-            return base.Channel.ModifyAuction(timeLeft, payment, result, paymentDate);
+        public DesktopClientToService.ServiceRefAuction.Auction ModifyAuction(decimal timeLeft, bool payment, string result, System.DateTime paymentDate, string productName, string productDescription) {
+            return base.Channel.ModifyAuction(timeLeft, payment, result, paymentDate, productName, productDescription);
         }
         
-        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction> ModifyAuctionAsync(decimal timeLeft, bool payment, string result, System.DateTime paymentDate) {
-            return base.Channel.ModifyAuctionAsync(timeLeft, payment, result, paymentDate);
+        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction> ModifyAuctionAsync(decimal timeLeft, bool payment, string result, System.DateTime paymentDate, string productName, string productDescription) {
+            return base.Channel.ModifyAuctionAsync(timeLeft, payment, result, paymentDate, productName, productDescription);
         }
     }
 }

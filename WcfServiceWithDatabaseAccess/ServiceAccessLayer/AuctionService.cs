@@ -28,7 +28,7 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
             throw new NotImplementedException();
         }
 
-        public Auction ModifyAuction(decimal timeLeft, bool payment, string result, DateTime paymentDate)
+        public Auction ModifyAuction(decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription)
         {
             throw new NotImplementedException();
         }

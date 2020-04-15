@@ -23,23 +23,23 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
         {
             //using (TransactionScope scope = new TransactionScope())
             //{
-            Auction madeAuction = null;
-            int insertedId = 0;
+            Auction madeAuction;
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
                 using (SqlCommand cmdInsertAuc = con.CreateCommand())
                 {
-                    cmdInsertAuc.CommandText = "insert into Auction(timeLeft, payment, result, paymentDate) output INSERTED.auctionId VALUES (@timeLeft, @payment, @result, @paymentDate)";
+                    cmdInsertAuc.CommandText = "insert into Auction(timeLeft, payment, result, paymentDate, productName, productDescription) output INSERTED.auctionId VALUES (@timeLeft, @payment, @result, @paymentDate, @productName, @productDescription)";
                     cmdInsertAuc.Parameters.AddWithValue("timeLeft", aAuction.TimeLeft);
                     cmdInsertAuc.Parameters.AddWithValue("payment", aAuction.Payment);
                     cmdInsertAuc.Parameters.AddWithValue("result", aAuction.Result);
                     cmdInsertAuc.Parameters.AddWithValue("paymentDate", aAuction.PaymentDate);
-                    insertedId = (int)cmdInsertAuc.ExecuteScalar();
+                    cmdInsertAuc.Parameters.AddWithValue("productName", aAuction.ProductName);
+                    cmdInsertAuc.Parameters.AddWithValue("productDescription", aAuction.ProductDescription);
+                    cmdInsertAuc.ExecuteScalar();
                 }
             }
             madeAuction = aAuction;
-            madeAuction.AuctionId = insertedId;
             return madeAuction;
             //}
         }

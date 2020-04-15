@@ -5,19 +5,11 @@
       <xs:element minOccurs="0" name="AuctionId" type="xs:int" />
       <xs:element minOccurs="0" name="Payment" type="xs:boolean" />
       <xs:element minOccurs="0" name="PaymentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ProductDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Result" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TimeLeft" type="xs:decimal" />
-      <xs:element minOccurs="0" name="product" nillable="true" type="tns:Product" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Auction" nillable="true" type="tns:Auction" />
-  <xs:complexType name="Product">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AuctionId" type="xs:int" />
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ProductId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Product" nillable="true" type="tns:Product" />
 </xs:schema>

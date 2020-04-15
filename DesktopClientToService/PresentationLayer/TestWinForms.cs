@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DesktopClientToService.ControlLayer;
+using System;
 using System.Windows.Forms;
-using DesktopClientToService.ControlLayer;
-using DesktopClientToService.ModelLayer;
 
 namespace DesktopClientToService.PresentationLayer
 {
@@ -27,30 +19,35 @@ namespace DesktopClientToService.PresentationLayer
 
         private void btnAuction_Click(object sender, EventArgs e)
         {
-            DesktopClientToService.ServiceRefAuction.Product product = new DesktopClientToService.ServiceRefAuction.Product();
-            
-            product.Name = txtProduct__Name.Text;
-            product.Description= txtProduct__Description.Text;
+            //Lokal variabler
             DateTime dateTime = dateTimePickerAuction.Value; 
             string result = txtAuction_Result.Text;
+            string productName = txtProdName.Text;
+            string productDescription = txtProdDescription.Text;
             bool payment = false;
-            decimal timeLeft = -1;
+            decimal timeLeft;
             decimal.TryParse(txtAuction_TimeLeft.Text, out timeLeft);
-
 
             if(radioBtnAuction.Checked)
             {
                 payment = true;
             }
-
-            //ControlProduct ctrlProduct = new ControlProduct();
-            //ctrlProduct.CreateProduct(name, description);
+            //----------
 
 
+
+            //Funktion
             ControlAuction ctrlAuction = new ControlAuction();
-            ctrlAuction.CreateAuction(timeLeft, payment, result, dateTime, product);
+            ctrlAuction.CreateAuction(timeLeft, payment, result, dateTime, productName, productDescription);
+
+
+
 
         }
 
+        private void txtAuction_ID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
