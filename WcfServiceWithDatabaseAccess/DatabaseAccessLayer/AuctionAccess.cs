@@ -12,6 +12,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
     public class AuctionAccess
     {
         readonly string connectionString;
+
+
         public AuctionAccess()
         {
             connectionString = "data Source=.; database=3SemDB; integrated security=true";

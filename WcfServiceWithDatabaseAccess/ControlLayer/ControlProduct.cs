@@ -23,11 +23,31 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
         public Product CreateProduct(Product productToCreate)
         {
             Product createdProduct = null;
+            Auction tempAuction = null;
 
+
+
+            // Opret Product og send til DB
             ProductAccess productDb = new ProductAccess();
             createdProduct = productDb.CreateToDb(productToCreate);
 
+            // Opret Auction - og send til DB
+            ControlAuction controlAuction = new ControlAuction();
+            controlAuction.CreateAuction(tempAuction);
+
+            // Hent Auction ID
+            AuctionAccess auctionAccess = new AuctionAccess();
+            auctionAccess.CreateToDb(tempAuction);
+
+            int tempId = tempAuction.AuctionId;
+
+            // Opdatér Product med udhentet Auction ID
+            createdProduct.AuctionId = tempId;
+
+
+            // Returnér
             return createdProduct;
+
         }
     }
 }

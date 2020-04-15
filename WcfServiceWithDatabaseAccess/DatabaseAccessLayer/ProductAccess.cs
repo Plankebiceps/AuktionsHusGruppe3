@@ -67,7 +67,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                         cmdInsertProd.CommandText = "insert into Product(name, description, auctionId) output INSERTED.productId VALUES (@name, @description, @auctionId)";
                         cmdInsertProd.Parameters.AddWithValue("name", aProduct.Name);
                         cmdInsertProd.Parameters.AddWithValue("description", aProduct.Description);
-                        cmdInsertProd.Parameters.AddWithValue("auctionId", aProduct.AuctionId);
+                        //cmdInsertProd.Parameters.AddWithValue("auctionId", aProduct.AuctionId);
                         insertedId = (int)cmdInsertProd.ExecuteScalar();
                     }
                 }
