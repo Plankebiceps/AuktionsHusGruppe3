@@ -26,5 +26,9 @@ namespace DesktopClientToService.ModelLayer
             ProductName = productName;
             ProductDescription = productDescription;
         }
+
+        public Auction() {
+
+        }
     }
 }
