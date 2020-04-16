@@ -7,13 +7,10 @@ using System.Runtime.Serialization;
 
 namespace WcfServiceWithDatabaseAccess.ModelLayer
 {
-    [DataContract]
-    class Person
+    public interface Person
     {
-        public interface IPerson
-        {
             string FirstName { get; set; }
             string LastName { get; set; }
-        }
+            string Email { get; set; }   
     }
 }

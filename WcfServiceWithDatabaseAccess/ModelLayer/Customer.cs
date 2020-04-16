@@ -11,14 +11,20 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
     class Customer : Person
     {
         [DataMember]
-        public string Address { get; set; }
-        [DataMember]
-        public string CustomerEmail { get; set; }
+        public string FirstName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public Customer(string address, string customerEmail)
+        [DataMember]
+        public string LastName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        [DataMember]
+        public string Email { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        [DataMember]
+        public string Address { get; set; }
+        
+        public Customer(string address)
         {
             Address = address;
-            CustomerEmail = customerEmail;
         }
     }
 }

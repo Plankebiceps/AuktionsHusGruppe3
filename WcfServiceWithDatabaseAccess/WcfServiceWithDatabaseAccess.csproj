@@ -75,7 +75,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlLayer\ControlAuction.cs" />
+    <Compile Include="ControlLayer\ControlLoginAdmin.cs" />
     <Compile Include="DatabaseAccessLayer\AuctionAccess.cs" />
+    <Compile Include="DatabaseAccessLayer\LoginAdminAccess.cs" />
     <Compile Include="ModelLayer\Admin.cs" />
     <Compile Include="ModelLayer\Auction.cs" />
     <Compile Include="ModelLayer\Customer.cs" />
@@ -87,9 +89,11 @@
     <Compile Include="ServiceAccessLayer\CustomerService.cs" />
     <Compile Include="ServiceAccessLayer\IAuctionService.cs" />
     <Compile Include="ServiceAccessLayer\IBidService.cs" />
+    <Compile Include="ServiceAccessLayer\IAdminLoginService.cs" />
     <Compile Include="ServiceAccessLayer\IPersonService.cs" />
     <Compile Include="ServiceAccessLayer\AdminService.cs" />
     <Compile Include="ServiceAccessLayer\IRecieptService.cs" />
+    <Compile Include="ServiceAccessLayer\AdminLoginService.cs" />
     <Compile Include="ServiceAccessLayer\RecieptService.cs" />
   </ItemGroup>
   <ItemGroup>

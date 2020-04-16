@@ -8,14 +8,27 @@ using System.Runtime.Serialization;
 namespace WcfServiceWithDatabaseAccess.ModelLayer
 {
     [DataContract]
-    class UserAdmin : Person
+    public class Admin : Person
     {
         [DataMember]
-        public string UserAdminEmail { get; set; }
+        public string FirstName { get; set; }
+        
+        [DataMember]
+        public string LastName { get; set; }
+        
+        [DataMember]
+        public string Email { get; set; }
 
-        public UserAdmin(string userAdminEmail)
+        //[DataMember]
+        //public int AdminId { get; set; }
+
+        [DataMember]
+        public string Password { get; set; }
+
+        public Admin(/*int adminId,*/ string password)
         {
-            UserAdminEmail = userAdminEmail;
+            //AdminId = adminId;
+            Password = password;
         }
     }   
 }
