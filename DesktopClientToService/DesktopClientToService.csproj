@@ -55,6 +55,12 @@
     </Compile>
     <Compile Include="ControlLayer\ControlAuction.cs" />
     <Compile Include="ModelLayer\Auction.cs" />
+    <Compile Include="PresentationLayer\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="PresentationLayer\TestWinForms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="PresentationLayer\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PresentationLayer\TestWinForms.resx">
       <DependentUpon>TestWinForms.cs</DependentUpon>
     </EmbeddedResource>

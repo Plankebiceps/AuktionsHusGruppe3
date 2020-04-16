@@ -5,7 +5,7 @@ using System.Windows.Forms;
 namespace DesktopClientToService.PresentationLayer
 {
     public partial class TestWinForms : Form
-    {
+    { 
         ControlAuction auctionController = new ControlAuction();
         public TestWinForms()
         {

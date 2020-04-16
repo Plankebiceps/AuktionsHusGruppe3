@@ -8,17 +8,14 @@ using System.Runtime.Serialization;
 namespace WcfServiceWithDatabaseAccess.ModelLayer
 {
     [DataContract]
-    class Customer : Person
+    class Receipt
     {
         [DataMember]
-        public string Address { get; set; }
-        [DataMember]
-        public string CustomerEmail { get; set; }
+        public string ReceiptDescription { get; set; }
 
-        public Customer(string address, string customerEmail)
+        public Receipt(string receiptDescription)
         {
-            Address = address;
-            CustomerEmail = customerEmail;
+            ReceiptDescription = receiptDescription;
         }
     }
 }
