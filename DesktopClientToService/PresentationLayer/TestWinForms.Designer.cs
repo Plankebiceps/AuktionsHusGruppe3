@@ -36,15 +36,20 @@
             this.dateTimePickerAuction = new System.Windows.Forms.DateTimePicker();
             this.txtProdName = new System.Windows.Forms.TextBox();
             this.txtProdDescription = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.AuctionIdFinder = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.productName = new System.Windows.Forms.Label();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAuction
             // 
-            this.btnAuction.Location = new System.Drawing.Point(344, 310);
+            this.btnAuction.Location = new System.Drawing.Point(12, 249);
             this.btnAuction.Name = "btnAuction";
             this.btnAuction.Size = new System.Drawing.Size(102, 30);
             this.btnAuction.TabIndex = 1;
-            this.btnAuction.Text = "button2";
+            this.btnAuction.Text = "Create";
             this.btnAuction.UseVisualStyleBackColor = true;
             this.btnAuction.Click += new System.EventHandler(this.btnAuction_Click);
             // 
@@ -102,11 +107,61 @@
             this.txtProdDescription.Size = new System.Drawing.Size(264, 20);
             this.txtProdDescription.TabIndex = 15;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(686, 249);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(102, 30);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Find";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // AuctionIdFinder
+            // 
+            this.AuctionIdFinder.Location = new System.Drawing.Point(524, 38);
+            this.AuctionIdFinder.Name = "AuctionIdFinder";
+            this.AuctionIdFinder.Size = new System.Drawing.Size(264, 20);
+            this.AuctionIdFinder.TabIndex = 17;
+            this.AuctionIdFinder.TextChanged += new System.EventHandler(this.AuctionIdFinder_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 18;
+            // 
+            // productName
+            // 
+            this.productName.AutoSize = true;
+            this.productName.Location = new System.Drawing.Point(521, 68);
+            this.productName.Name = "productName";
+            this.productName.Size = new System.Drawing.Size(75, 13);
+            this.productName.TabIndex = 19;
+            this.productName.Text = "ProductName:";
+            this.productName.Click += new System.EventHandler(this.productName_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(149, 249);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(102, 30);
+            this.DeleteButton.TabIndex = 20;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
             // TestWinForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.productName);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.AuctionIdFinder);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtProdDescription);
             this.Controls.Add(this.txtProdName);
             this.Controls.Add(this.dateTimePickerAuction);
@@ -132,5 +187,10 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerAuction;
         private System.Windows.Forms.TextBox txtProdName;
         private System.Windows.Forms.TextBox txtProdDescription;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox AuctionIdFinder;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label productName;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }

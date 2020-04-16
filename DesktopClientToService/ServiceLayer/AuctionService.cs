@@ -16,5 +16,13 @@ namespace DesktopClientToService.ServiceLayer
 
             return aProxyAuction;
         }
+        public Auction GetAuctionById(int findAuctionId)
+        {
+           
+            AuctionServiceClient auctionProxy = new AuctionServiceClient();
+            Auction aProxyAuction = auctionProxy.GetAuctionById(findAuctionId);
+
+            return aProxyAuction;
+        }
     }
 }

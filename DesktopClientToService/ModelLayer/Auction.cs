@@ -16,7 +16,7 @@ namespace DesktopClientToService.ModelLayer
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
 
-        public Auction(int auctionId, decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription)
+        public Auction (int auctionId, decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription)
         {
             AuctionId = auctionId;
             TimeLeft = timeLeft;
