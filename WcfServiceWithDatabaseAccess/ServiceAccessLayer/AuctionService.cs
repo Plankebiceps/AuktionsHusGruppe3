@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using WcfServiceWithDatabaseAccess.ModelLayer;
 using WcfServiceWithDatabaseAccess.ControlLayer;
+using System.Security.AccessControl;
 
 namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
 {
@@ -20,12 +21,14 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
 
         public Auction DeleteAuction(int auctionId)
         {
-            throw new NotImplementedException();
+            ControlAuction ctrlAuction = new ControlAuction();
+            
         }
 
-        public Auction GetAuctionById(int auctionId)
+        public Auction GetAuctionById(int findAuctionId)
         {
-            throw new NotImplementedException();
+            ControlAuction ctrlAuction = new ControlAuction();
+            return ctrlAuction.GetAuctionById(findAuctionId);
         }
 
         public Auction ModifyAuction(decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription)

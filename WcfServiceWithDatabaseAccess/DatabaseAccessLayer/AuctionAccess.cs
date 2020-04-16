@@ -37,11 +37,53 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                     cmdInsertAuc.Parameters.AddWithValue("productName", aAuction.ProductName);
                     cmdInsertAuc.Parameters.AddWithValue("productDescription", aAuction.ProductDescription);
                     cmdInsertAuc.ExecuteScalar();
+
+                 
+                    
                 }
             }
             madeAuction = aAuction;
             return madeAuction;
             //}
+
         }
+        public Auction GetAuctionById(int findAuctionId)
+        {
+            Auction foundAuction = null;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                using (SqlCommand cmdFindAuction = con.CreateCommand())
+                {
+                    cmdFindAuction.CommandText = "select auctionId, timeLeft, payment, result, paymentDate, productName, productDescription FROM Auction WHERE AuctionId = @auctionId";
+                    SqlDataReader reader = cmdFindAuction.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        foundAuction.AuctionId = reader.GetInt32(reader.GetOrdinal("auctionId"));
+                        foundAuction.TimeLeft = reader.GetDecimal(reader.GetOrdinal("timeLeft"));
+                        foundAuction.Payment = reader.GetBoolean(reader.GetOrdinal("payment"));
+                        foundAuction.Result = reader.GetString(reader.GetOrdinal("result"));
+                        foundAuction.PaymentDate = reader.GetDateTime(reader.GetOrdinal("paymentDate"));
+                        foundAuction.ProductName = reader.GetString(reader.GetOrdinal("productName"));
+                        foundAuction.ProductDescription = reader.GetString(reader.GetOrdinal("productDescription"));
+                    }
+                }
+            }
+            return foundAuction;
+        }
+        public void DeleteAuction(int DeletedById)
+        {
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                using (SqlCommand cmdFindAuction = con.CreateCommand())
+                {
+
+                }
+        }
+
+
     }
 }
