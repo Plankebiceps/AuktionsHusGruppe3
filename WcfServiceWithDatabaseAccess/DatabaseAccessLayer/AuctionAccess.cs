@@ -7,28 +7,22 @@ using WcfServiceWithDatabaseAccess.ModelLayer;
 using System.Data.SqlClient;
 using System.Transactions;
 
-namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
-{
-    public class AuctionAccess
-    {
+namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
+    public class AuctionAccess {
         readonly string connectionString;
 
 
-        public AuctionAccess()
-        {
+        public AuctionAccess() {
             connectionString = "data Source=.; database=3SemDB; integrated security=true";
         }
 
-        public Auction CreateToDb(Auction aAuction)
-        {
+        public Auction CreateToDb(Auction aAuction) {
             //using (TransactionScope scope = new TransactionScope())
             //{
             Auction madeAuction;
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
+            using (SqlConnection con = new SqlConnection(connectionString)) {
                 con.Open();
-                using (SqlCommand cmdInsertAuc = con.CreateCommand())
-                {
+                using (SqlCommand cmdInsertAuc = con.CreateCommand()) {
                     cmdInsertAuc.CommandText = "insert into Auction(timeLeft, payment, result, paymentDate, productName, productDescription) output INSERTED.auctionId VALUES (@timeLeft, @payment, @result, @paymentDate, @productName, @productDescription)";
                     cmdInsertAuc.Parameters.AddWithValue("timeLeft", aAuction.TimeLeft);
                     cmdInsertAuc.Parameters.AddWithValue("payment", aAuction.Payment);
@@ -47,19 +41,15 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             //}
 
         }
-        public Auction GetAuctionById(int findAuctionId)
-        {
+        public Auction GetAuctionById(int findAuctionId) {
             Auction foundAuction = null;
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
+            using (SqlConnection con = new SqlConnection(connectionString)) {
                 con.Open();
-                using (SqlCommand cmdFindAuction = con.CreateCommand())
-                {
+                using (SqlCommand cmdFindAuction = con.CreateCommand()) {
                     cmdFindAuction.CommandText = "select auctionId, timeLeft, payment, result, paymentDate, productName, productDescription FROM Auction WHERE AuctionId = @auctionId";
                     SqlDataReader reader = cmdFindAuction.ExecuteReader();
-                    while (reader.Read())
-                    {
+                    while (reader.Read()) {
                         foundAuction.AuctionId = reader.GetInt32(reader.GetOrdinal("auctionId"));
                         foundAuction.TimeLeft = reader.GetDecimal(reader.GetOrdinal("timeLeft"));
                         foundAuction.Payment = reader.GetBoolean(reader.GetOrdinal("payment"));
@@ -72,14 +62,11 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             }
             return foundAuction;
         }
-        public void DeleteAuction(int DeletedById)
-        {
+        public void DeleteAuction(int DeletedById) {
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
+            using (SqlConnection con = new SqlConnection(connectionString)) {
                 con.Open();
-                using (SqlCommand cmdFindAuction = con.CreateCommand())
-                {
+                using (SqlCommand cmdFindAuction = con.CreateCommand()) {
 
                 }
             }

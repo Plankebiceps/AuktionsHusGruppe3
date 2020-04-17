@@ -19,15 +19,11 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
         [DataMember]
         public string Email { get; set; }
 
-        //[DataMember]
-        //public int AdminId { get; set; }
-
         [DataMember]
         public string Password { get; set; }
 
-        public Admin(/*int adminId,*/ string password)
+        public Admin(string password)
         {
-            //AdminId = adminId;
             Password = password;
         }
     }   

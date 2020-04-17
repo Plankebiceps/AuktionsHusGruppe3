@@ -51,10 +51,10 @@ namespace DesktopClientToService.PresentationLayer
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int findAuctionId;
-            int.TryParse(AuctionIdFinder.Text, out findAuctionId);
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    int findAuctionId;
+        //    int.TryParse(AuctionIdFinder.Text, out findAuctionId);
 
            Auction foundAuction = auctionController.GetAuctionById(findAuctionId);
             productName.Text = foundAuction.ProductName;
