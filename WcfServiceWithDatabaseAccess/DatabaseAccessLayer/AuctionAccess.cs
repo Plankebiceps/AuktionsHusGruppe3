@@ -38,8 +38,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                     cmdInsertAuc.Parameters.AddWithValue("productDescription", aAuction.ProductDescription);
                     cmdInsertAuc.ExecuteScalar();
 
-                 
-                    
+
+
                 }
             }
             madeAuction = aAuction;
@@ -82,8 +82,9 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                 {
 
                 }
+            }
+
+
         }
-
-
     }
 }
