@@ -36,5 +36,9 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
             ProductName = productName;
             ProductDescription = productDescription;
         }
+
+        public Auction() {
+
+        }
     }
 }

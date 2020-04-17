@@ -42,13 +42,20 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
 
         }
         public Auction GetAuctionById(int findAuctionId) {
-            Auction foundAuction = null;
+            Auction foundAuction = new Auction();
+
+            string queryString = "select auctionId, timeLeft, payment, result, paymentDate, productName, productDescription FROM Auction WHERE auctionId = @auctionId";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                using (SqlCommand cmdFindAuction = con.CreateCommand()) {
-                    cmdFindAuction.CommandText = "select auctionId, timeLeft, payment, result, paymentDate, productName, productDescription FROM Auction WHERE AuctionId = @auctionId";
-                    SqlDataReader reader = cmdFindAuction.ExecuteReader();
+            using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
+
+
+                    SqlParameter idParam = new SqlParameter("@AuctionId", findAuctionId);
+                    readCommand.Parameters.Add(idParam);
+
+                    con.Open();
+
+                    SqlDataReader reader = readCommand.ExecuteReader();
                     while (reader.Read()) {
                         foundAuction.AuctionId = reader.GetInt32(reader.GetOrdinal("auctionId"));
                         foundAuction.TimeLeft = reader.GetDecimal(reader.GetOrdinal("timeLeft"));
@@ -62,6 +69,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
             }
             return foundAuction;
         }
+
+
         public void DeleteAuction(int DeletedById) {
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
