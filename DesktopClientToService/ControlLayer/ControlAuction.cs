@@ -29,6 +29,8 @@ namespace DesktopClientToService.ControlLayer
             AuctionService auctionService = new AuctionService();
             return auctionService.CreateAuction(auction);
         }
+
+
         public Auction GetAuctionById(int findAuctionId)
         {
 

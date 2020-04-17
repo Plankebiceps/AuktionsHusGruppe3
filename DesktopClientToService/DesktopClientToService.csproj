@@ -64,12 +64,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ServiceRefAdmin\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceRefAuction\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ControlLayer\ControlAdmin.cs" />
     <Compile Include="ControlLayer\ControlAuction.cs" />
+    <Compile Include="ModelLayer\Admin.cs" />
     <Compile Include="ModelLayer\Auction.cs" />
     <Compile Include="PresentationLayer\Login.cs">
       <SubType>Form</SubType>
@@ -84,6 +91,7 @@
       <DependentUpon>TestWinForms.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceLayer\AdminService.cs" />
     <Compile Include="ServiceLayer\AuctionService.cs" />
     <Compile Include="StartProgram.cs" />
     <Compile Include="Utilities\IModelConvert.cs" />
@@ -94,6 +102,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Connected Services\ServiceRefAdmin\DesktopClientToService.ServiceRefAdmin.Admin.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceRefAdmin\service.wsdl" />
+    <None Include="Connected Services\ServiceRefAdmin\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceRefAdmin\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceRefAdmin\WcfServiceWithDatabaseAccess.ModelLayer.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceRefAuction\DesktopClientToService.ServiceRefAuction.Auction.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -129,6 +150,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceRefAdmin\" />
     <WCFMetadataStorage Include="Connected Services\ServiceRefAuction\" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +161,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceRefAuction\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceRefAdmin\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceRefAdmin\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceRefAdmin\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
