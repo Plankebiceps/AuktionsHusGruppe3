@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DesktopClientToService.ServiceRefAuction;
-
+using DesktopClientToService.Utilities;
 namespace DesktopClientToService.ServiceLayer
 {
-    public class AuctionService
+    public class AuctionService : CIAuctionService
     {
         public Auction CreateAuction(Auction auctionToCreate)
         {
@@ -16,13 +16,21 @@ namespace DesktopClientToService.ServiceLayer
 
             return aProxyAuction;
         }
-        public Auction GetAuctionById(int findAuctionId)
+        public ModelLayer.Auction GetAuctionById(int findAuctionId)
         {
-           
-            AuctionServiceClient auctionProxy = new AuctionServiceClient();
-            Auction aProxyAuction = auctionProxy.GetAuctionById(findAuctionId);
+            ModelLayer.Auction anAuction = null;
+            ServiceRefAuction.Auction aProxyAuction = null;
+            using (AuctionServiceClient auctionProxy = new AuctionServiceClient())
+            {
+                aProxyAuction = auctionProxy.GetAuctionById(findAuctionId);
+            }
+            if (aProxyAuction != null)
+            {
+                anAuction = new ConvertDataModel().ConvertFromServiceAuction(aProxyAuction);
+            }
 
-            return aProxyAuction;
+            return anAuction;
         }
+
     }
 }

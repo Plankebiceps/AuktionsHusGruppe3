@@ -56,9 +56,9 @@ namespace DesktopClientToService.PresentationLayer
         //    int findAuctionId;
         //    int.TryParse(AuctionIdFinder.Text, out findAuctionId);
 
-        //   Auction foundAuction = auctionController.GetAuctionById(findAuctionId);
-            
-        //}
+           Auction foundAuction = auctionController.GetAuctionById(findAuctionId);
+            productName.Text = foundAuction.ProductName;
+        }
 
         private void AuctionIdFinder_TextChanged(object sender, EventArgs e)
         {
