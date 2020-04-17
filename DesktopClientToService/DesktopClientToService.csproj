@@ -93,7 +93,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLayer\AdminService.cs" />
     <Compile Include="ServiceLayer\AuctionService.cs" />
-    <Compile Include="ServiceLayer\CIAuctionService.cs" />
     <Compile Include="StartProgram.cs" />
     <Compile Include="Utilities\IModelConvert.cs" />
     <Compile Include="Utilities\ConvertDataModel.cs" />

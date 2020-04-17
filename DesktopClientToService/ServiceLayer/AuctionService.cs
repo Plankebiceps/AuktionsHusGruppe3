@@ -7,7 +7,7 @@ using DesktopClientToService.ServiceRefAuction;
 using DesktopClientToService.Utilities;
 namespace DesktopClientToService.ServiceLayer
 {
-    public class AuctionService : CIAuctionService
+    public class AuctionService
     {
         public Auction CreateAuction(Auction auctionToCreate)
         {
