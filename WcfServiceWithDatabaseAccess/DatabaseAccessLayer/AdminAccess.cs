@@ -10,12 +10,12 @@ using System.Transactions;
 
 namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 {
-    public class LoginAdminAccess
+    public class AdminAccess
     {
         readonly string connectionString;
 
 
-        public LoginAdminAccess()
+        public AdminAccess()
         {
             connectionString = "data Source=.; database=3SemDB; integrated security=true";
         }

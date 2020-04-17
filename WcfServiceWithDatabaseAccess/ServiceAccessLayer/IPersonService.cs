@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfServiceWithDatabaseAccess.ModelLayer;
 
 namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
 {
@@ -12,6 +13,9 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
     public interface IPersonService
     {
         [OperationContract]
-        void DoWork();
+        Admin CreateAdmin(Admin adminToCreate);
+
+        [OperationContract]
+        Admin LoginAdmin(Admin loginAdmin);
     }
 }

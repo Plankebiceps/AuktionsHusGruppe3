@@ -8,14 +8,13 @@ using WcfServiceWithDatabaseAccess.DatabaseAccessLayer;
 
 namespace WcfServiceWithDatabaseAccess.ControlLayer
 {
-    public class ControlLoginAdmin
-    {
+    public class ControlAdmin {
         public Admin CreateAdmin(Admin adminToCreate)
         {
             Admin createdAdmin;
 
-            LoginAdminAccess loginAdminDb = new LoginAdminAccess();
-            createdAdmin = loginAdminDb.CreateToDb(adminToCreate);
+            AdminAccess adminDb = new AdminAccess();
+            createdAdmin = adminDb.CreateToDb(adminToCreate);
 
             return createdAdmin;
         }
