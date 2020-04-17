@@ -16,6 +16,6 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
         Admin CreateAdmin(Admin adminToCreate);
 
         [OperationContract]
-        Admin LoginAdmin(Admin loginAdmin);
+        Admin LoginAdmin(Admin adminToLogin);
     }
 }

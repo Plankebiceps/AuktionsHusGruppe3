@@ -10,7 +10,7 @@ using DesktopClientToService.ModelLayer;
 namespace DesktopClientToService.Utilities
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
-    public class ConvertDataModel : IModelConvert
+    public class ConvertDataAuction : IModelConvert
     {
 
 

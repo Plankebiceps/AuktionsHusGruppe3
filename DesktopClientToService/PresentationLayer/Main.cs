@@ -5,10 +5,10 @@ using System.Windows.Forms;
 
 namespace DesktopClientToService.PresentationLayer
 {
-    public partial class TestWinForms : Form
+    public partial class Main : Form
     { 
         ControlAuction auctionController = new ControlAuction();
-        public TestWinForms()
+        public Main()
         {
             InitializeComponent();
         }

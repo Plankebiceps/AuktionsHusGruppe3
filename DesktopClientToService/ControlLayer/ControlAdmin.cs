@@ -9,14 +9,6 @@ using DesktopClientToService.ServiceRefAdmin;
 namespace DesktopClientToService.ControlLayer {
     public class ControlAdmin {
 
-        //public Admin CreateAdmin() {
-
-        //    Admin admin = new Admin();
-
-        //    AdminService adminService = new AdminService();
-        //    return adminService.CreateAdmin(admin);
-        //}
-
         public Admin CreateAdmin(string firstName, string lastName, string email, string password) {
             Admin admin = new Admin {
                 FirstName = firstName,
@@ -27,6 +19,11 @@ namespace DesktopClientToService.ControlLayer {
 
             AdminService adminService = new AdminService();
             return adminService.CreateAdmin(admin);
+        }
+
+        public ModelLayer.Admin LoginAdmin(Admin adminToLogin) {
+            AdminService adminService = new AdminService();
+            return adminService.LoginAdmin(adminToLogin);
         }
 
     }

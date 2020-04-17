@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DesktopClientToService.ServiceRefAuction;
 using DesktopClientToService.Utilities;
+
+
 namespace DesktopClientToService.ServiceLayer
 {
     public class AuctionService
@@ -26,7 +28,7 @@ namespace DesktopClientToService.ServiceLayer
             }
             if (aProxyAuction != null)
             {
-                anAuction = new ConvertDataModel().ConvertFromServiceAuction(aProxyAuction);
+                anAuction = new ConvertDataAuction().ConvertFromServiceAuction(aProxyAuction);
             }
 
             return anAuction;

@@ -21,8 +21,9 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
         {
         }
 
-        public Admin LoginAdmin(Admin loginAdmin) {
-            throw new NotImplementedException();
+        public Admin LoginAdmin(Admin adminToLogin) {
+            ControlAdmin ctrlAdmin = new ControlAdmin();
+            return ctrlAdmin.LoginAdmin(adminToLogin);
         }
     }
 }

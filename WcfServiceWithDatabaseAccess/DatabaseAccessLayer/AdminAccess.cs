@@ -39,5 +39,29 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                 return madeAdmin;
             }
         }
+
+        public Admin LoginToDb(Admin aAdmin) {
+            Admin adminToLogin = new Admin();
+
+            string queryString = "SELECT email FROM Person WHERE email = @Email";
+
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+            using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
+
+                    SqlParameter emailParam = new SqlParameter("@Email", aAdmin.Email);
+                    readCommand.Parameters.Add(emailParam);
+
+                    con.Open();
+
+                    SqlDataReader reader = readCommand.ExecuteReader();
+                    while (reader.Read()) {
+                        adminToLogin.Email = reader.GetString(reader.GetOrdinal("email"));
+                        adminToLogin.Password = reader.GetString(reader.GetOrdinal("password"));
+                    }
+                }
+            }
+            return adminToLogin;
+
+        }
     }
 }

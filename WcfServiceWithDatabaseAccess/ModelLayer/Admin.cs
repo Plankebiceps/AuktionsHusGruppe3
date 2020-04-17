@@ -26,5 +26,9 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
         {
             Password = password;
         }
+
+        public Admin() {
+
+        }
     }   
 }

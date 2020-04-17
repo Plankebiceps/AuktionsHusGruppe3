@@ -18,7 +18,7 @@
   <xs:element name="LoginAdmin">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="loginAdmin" nillable="true" type="q3:Admin" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="adminToLogin" nillable="true" type="q3:Admin" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

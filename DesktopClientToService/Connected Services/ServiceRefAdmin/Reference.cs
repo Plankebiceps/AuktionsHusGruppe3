@@ -117,10 +117,10 @@ namespace DesktopClientToService.ServiceRefAdmin {
         System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> CreateAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin adminToCreate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/LoginAdmin", ReplyAction="http://tempuri.org/IAdminService/LoginAdminResponse")]
-        DesktopClientToService.ServiceRefAdmin.Admin LoginAdmin([System.ServiceModel.MessageParameterAttribute(Name="loginAdmin")] DesktopClientToService.ServiceRefAdmin.Admin loginAdmin1);
+        DesktopClientToService.ServiceRefAdmin.Admin LoginAdmin(DesktopClientToService.ServiceRefAdmin.Admin adminToLogin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/LoginAdmin", ReplyAction="http://tempuri.org/IAdminService/LoginAdminResponse")]
-        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> LoginAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin loginAdmin);
+        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> LoginAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin adminToLogin);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -158,12 +158,12 @@ namespace DesktopClientToService.ServiceRefAdmin {
             return base.Channel.CreateAdminAsync(adminToCreate);
         }
         
-        public DesktopClientToService.ServiceRefAdmin.Admin LoginAdmin(DesktopClientToService.ServiceRefAdmin.Admin loginAdmin1) {
-            return base.Channel.LoginAdmin(loginAdmin1);
+        public DesktopClientToService.ServiceRefAdmin.Admin LoginAdmin(DesktopClientToService.ServiceRefAdmin.Admin adminToLogin) {
+            return base.Channel.LoginAdmin(adminToLogin);
         }
         
-        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> LoginAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin loginAdmin) {
-            return base.Channel.LoginAdminAsync(loginAdmin);
+        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> LoginAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin adminToLogin) {
+            return base.Channel.LoginAdminAsync(adminToLogin);
         }
     }
 }

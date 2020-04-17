@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DesktopClientToService.ServiceRefAdmin;
+using DesktopClientToService.Utilities;
+
 
 
 namespace DesktopClientToService.ServiceLayer {
@@ -15,5 +17,21 @@ namespace DesktopClientToService.ServiceLayer {
 
             return aProxyAdmin;
         }
+
+        //public ModelLayer.Admin LoginAdmin(Admin adminToLogin) {
+
+        //    ModelLayer.Admin convertedAdmin = null;
+        //    ServiceRefAdmin.Admin aProxyAdmin = null;
+
+        //    using (AdminServiceClient adminProxy = new AdminServiceClient()) {
+        //        aProxyAdmin = adminProxy.LoginAdmin(adminToLogin);
+        //    }
+        //    if (aProxyAdmin != null) {
+        //        convertedAdmin = new ConvertDataAdmin().ConvertFromServiceAdmin(aProxyAdmin);
+        //    }
+        //    return convertedAdmin;
+        //}
+
     }
 }
+

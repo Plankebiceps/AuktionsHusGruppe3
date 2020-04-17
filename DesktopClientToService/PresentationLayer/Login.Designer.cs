@@ -33,7 +33,6 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnCreateAcc = new System.Windows.Forms.Button();
             this.rbutAdm = new System.Windows.Forms.RadioButton();
             this.rbutCust = new System.Windows.Forms.RadioButton();
@@ -43,18 +42,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(286, 71);
+            this.label1.Location = new System.Drawing.Point(35, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Email:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(286, 110);
+            this.label2.Location = new System.Drawing.Point(35, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 25);
             this.label2.TabIndex = 1;
@@ -63,48 +61,35 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(408, 71);
+            this.txtEmail.Location = new System.Drawing.Point(157, 76);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(290, 31);
             this.txtEmail.TabIndex = 2;
-            this.txtEmail.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(408, 110);
+            this.txtPassword.Location = new System.Drawing.Point(157, 115);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(290, 31);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.UseSystemPasswordChar = true;
-            this.txtPassword.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(408, 171);
+            this.button1.Location = new System.Drawing.Point(157, 201);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 42);
+            this.button1.Size = new System.Drawing.Size(102, 42);
             this.button1.TabIndex = 4;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(515, 171);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 42);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "E&xit";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // btnCreateAcc
             // 
             this.btnCreateAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateAcc.Location = new System.Drawing.Point(408, 243);
+            this.btnCreateAcc.Location = new System.Drawing.Point(265, 201);
             this.btnCreateAcc.Name = "btnCreateAcc";
             this.btnCreateAcc.Size = new System.Drawing.Size(182, 42);
             this.btnCreateAcc.TabIndex = 6;
@@ -115,7 +100,7 @@
             // rbutAdm
             // 
             this.rbutAdm.AutoSize = true;
-            this.rbutAdm.Location = new System.Drawing.Point(408, 220);
+            this.rbutAdm.Location = new System.Drawing.Point(157, 168);
             this.rbutAdm.Name = "rbutAdm";
             this.rbutAdm.Size = new System.Drawing.Size(54, 17);
             this.rbutAdm.TabIndex = 7;
@@ -126,7 +111,7 @@
             // rbutCust
             // 
             this.rbutCust.AutoSize = true;
-            this.rbutCust.Location = new System.Drawing.Point(468, 220);
+            this.rbutCust.Location = new System.Drawing.Point(217, 168);
             this.rbutCust.Name = "rbutCust";
             this.rbutCust.Size = new System.Drawing.Size(69, 17);
             this.rbutCust.TabIndex = 8;
@@ -138,11 +123,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(497, 310);
             this.Controls.Add(this.rbutCust);
             this.Controls.Add(this.rbutAdm);
             this.Controls.Add(this.btnCreateAcc);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtEmail);
@@ -162,7 +146,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCreateAcc;
         private System.Windows.Forms.RadioButton rbutAdm;
         private System.Windows.Forms.RadioButton rbutCust;
