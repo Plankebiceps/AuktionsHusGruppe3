@@ -21,7 +21,7 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
 
         public Auction DeleteAuction(int auctionId)
         {
-            ControlAuction ctrlAuction = new ControlAuction();
+            throw new NotImplementedException();
             
         }
 

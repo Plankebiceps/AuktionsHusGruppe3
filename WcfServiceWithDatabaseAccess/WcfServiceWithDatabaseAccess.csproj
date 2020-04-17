@@ -89,8 +89,9 @@
     <Compile Include="ServiceAccessLayer\CustomerService.cs" />
     <Compile Include="ServiceAccessLayer\IAuctionService.cs" />
     <Compile Include="ServiceAccessLayer\IBidService.cs" />
-    <Compile Include="ServiceAccessLayer\IPersonService.cs" />
+    <Compile Include="ServiceAccessLayer\IAdminService.cs" />
     <Compile Include="ServiceAccessLayer\AdminService.cs" />
+    <Compile Include="ServiceAccessLayer\ICustomerService.cs" />
     <Compile Include="ServiceAccessLayer\IRecieptService.cs" />
     <Compile Include="ServiceAccessLayer\RecieptService.cs" />
   </ItemGroup>
