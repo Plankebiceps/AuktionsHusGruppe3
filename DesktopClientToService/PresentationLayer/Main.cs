@@ -53,5 +53,11 @@ namespace DesktopClientToService.PresentationLayer
             productName.Text = foundAuction.ProductName;
         }
 
+
+        private void btnExit_Click(object sender, EventArgs e) {
+            this.Hide();
+            Login loginForm = new Login();
+            loginForm.Show();
+        }
     }
 }

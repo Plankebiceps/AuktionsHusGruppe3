@@ -45,6 +45,7 @@
             this.lblProduct = new System.Windows.Forms.Label();
             this.lblProdDesc = new System.Windows.Forms.Label();
             this.lblFindById = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAuction
@@ -190,11 +191,22 @@
             this.lblFindById.TabIndex = 27;
             this.lblFindById.Text = "Find by ID";
             // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(678, 408);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(110, 30);
+            this.btnExit.TabIndex = 28;
+            this.btnExit.Text = "Return to Login";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lblFindById);
             this.Controls.Add(this.lblProdDesc);
             this.Controls.Add(this.lblProduct);
@@ -238,5 +250,6 @@
         private System.Windows.Forms.Label lblProduct;
         private System.Windows.Forms.Label lblProdDesc;
         private System.Windows.Forms.Label lblFindById;
+        private System.Windows.Forms.Button btnExit;
     }
 }
