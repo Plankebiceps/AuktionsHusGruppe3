@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DesktopClientToService.ServiceLayer;
-using DesktopClientToService.ServiceRefAdmin;
+using proxyRef = DesktopClientToService.ServiceRefAdmin;
+using clientRef = DesktopClientToService.ModelLayer;
 
 namespace DesktopClientToService.ControlLayer {
     public class ControlAdmin {
 
-        public Admin CreateAdmin(string firstName, string lastName, string email, string password) {
-            Admin admin = new Admin {
+        public clientRef.Admin CreateAdmin(string firstName, string lastName, string email, string password) {
+            clientRef.Admin admin = new clientRef.Admin {
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,
@@ -21,10 +22,10 @@ namespace DesktopClientToService.ControlLayer {
             return adminService.CreateAdmin(admin);
         }
 
-        public ModelLayer.Admin LoginAdmin(Admin adminToLogin) {
-            AdminService adminService = new AdminService();
-            return adminService.LoginAdmin(adminToLogin);
-        }
+        //public ModelLayer.Admin LoginAdmin(Admin adminToLogin) {
+        //    AdminService adminService = new AdminService();
+        //    return adminService.LoginAdmin(adminToLogin);
+        //}
 
     }
 }

@@ -12,9 +12,9 @@ namespace DesktopClientToService.Utilities {
 
 
         public ModelLayer.Admin ConvertFromServiceAdmin(ServiceRefAdmin.Admin serviceAdmin) {
-            ModelLayer.Admin desktopAdmin = null;
+            ModelLayer.Admin clientAdmin = null;
             if (serviceAdmin != null) {
-                desktopAdmin = new ModelLayer.Admin {
+                clientAdmin = new ModelLayer.Admin {
                     FirstName = serviceAdmin.FirstName,
                     LastName = serviceAdmin.LastName,
                     Email = serviceAdmin.Email,
@@ -22,7 +22,7 @@ namespace DesktopClientToService.Utilities {
 
                 };
             }
-            return desktopAdmin;
+            return clientAdmin;
         }
 
 
@@ -31,10 +31,10 @@ namespace DesktopClientToService.Utilities {
             ServiceRefAdmin.Admin serviceAdmin = null;
             if (desktopAdmin != null) {
                 serviceAdmin = new ServiceRefAdmin.Admin {
-                    FirstName = serviceAdmin.FirstName,
-                    LastName = serviceAdmin.LastName,
-                    Email = serviceAdmin.Email,
-                    Password = serviceAdmin.Password,
+                    FirstName = desktopAdmin.FirstName,
+                    LastName = desktopAdmin.LastName,
+                    Email = desktopAdmin.Email,
+                    Password = desktopAdmin.Password,
                 };
             }
             return serviceAdmin;

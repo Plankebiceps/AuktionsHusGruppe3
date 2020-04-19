@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DesktopClientToService.ServiceRefAdmin;
+using proxyRef = DesktopClientToService.ServiceRefAdmin;
+using clientRef = DesktopClientToService.ModelLayer;
 using DesktopClientToService.Utilities;
 
 
@@ -11,11 +12,20 @@ using DesktopClientToService.Utilities;
 namespace DesktopClientToService.ServiceLayer {
     public class AdminService {
 
-        public Admin CreateAdmin(Admin adminToCreate) {
-            AdminServiceClient adminProxy = new AdminServiceClient();
-            Admin aProxyAdmin = adminProxy.CreateAdmin(adminToCreate);
+        public clientRef.Admin CreateAdmin(clientRef.Admin adminToCreate) {
 
-            return aProxyAdmin;
+            proxyRef.Admin adminInServiceFormat = new ConvertDataAdmin().ConvertToServiceAdmin(adminToCreate);
+
+            using (proxyRef.AdminServiceClient adminProxy = new proxyRef.AdminServiceClient()) {
+                adminProxy.CreateAdmin(adminInServiceFormat);
+            }
+            return adminToCreate;
+
+
+            //proxyRef.AdminServiceClient adminProxy = new proxyRef.AdminServiceClient();
+            //clientRef.Admin aProxyAdmin = adminProxy.CreateAdmin(adminToCreate);
+
+            //return aProxyAdmin;
         }
 
         //public ModelLayer.Admin LoginAdmin(Admin adminToLogin) {
