@@ -18,6 +18,13 @@ namespace DesktopClientToService.ServiceLayer
 
             return aProxyAuction;
         }
+
+        public void DeleteAuction(int auctionId) {
+            AuctionServiceClient auctionProxy = new AuctionServiceClient();
+            auctionProxy.DeleteAuction(auctionId);
+        }
+
+
         public ModelLayer.Auction GetAuctionById(int findAuctionId)
         {
             ModelLayer.Auction anAuction = null;
@@ -33,6 +40,7 @@ namespace DesktopClientToService.ServiceLayer
 
             return anAuction;
         }
+
 
     }
 }

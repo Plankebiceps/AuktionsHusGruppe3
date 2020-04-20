@@ -19,10 +19,11 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
             return ctrlAuction.CreateAuction(auctionToCreate);
         }
 
-        public Auction DeleteAuction(int auctionId)
+        public void DeleteAuction(int auctionId)
         {
-            //ControlAuction ctrlAuction = new ControlAuction();
-            throw new NotImplementedException();
+            ControlAuction ctrlAuction = new ControlAuction();
+            ctrlAuction.DeleteAuction(auctionId);
+
         }
 
         public Auction GetAuctionById(int findAuctionId)

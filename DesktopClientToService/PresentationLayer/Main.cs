@@ -18,6 +18,7 @@ namespace DesktopClientToService.PresentationLayer
 
         }
 
+        // CREATE AUCTION
         private void btnAuction_Click(object sender, EventArgs e)
         {
             //Lokal variabler
@@ -43,21 +44,42 @@ namespace DesktopClientToService.PresentationLayer
         }
 
 
-
+        // FIND AUCTION BY ID
         private void button1_Click(object sender, EventArgs e) {
 
             int findAuctionId;
-            int.TryParse(AuctionIdFinder.Text, out findAuctionId);
+            int.TryParse(txtboxAuctionId.Text, out findAuctionId);
 
             Auction foundAuction = auctionController.GetAuctionById(findAuctionId);
-            productName.Text = foundAuction.ProductName;
+            lblProductName.Text = foundAuction.ProductName;
         }
 
 
+        // DELETE AUCTION
+        private void btnDeleteAuction_Click(object sender, EventArgs e) {
+
+            int auctionIdToDelete;
+            int.TryParse(txtboxAuctionId.Text, out auctionIdToDelete);
+            bool allIsGood = !(auctionIdToDelete <= 0);
+
+            if (allIsGood) {
+                ControlAuction ctrlAuction = new ControlAuction();
+                ctrlAuction.DeleteAuction(auctionIdToDelete);
+
+                MessageBox.Show("Auction with ID: #" + auctionIdToDelete + " was removed from database!");
+            } else {
+                MessageBox.Show("The ID was not found - try again!");
+            }        
+        }
+
+
+        // RETURN TO LOGIN
         private void btnExit_Click(object sender, EventArgs e) {
             this.Hide();
             Login loginForm = new Login();
             loginForm.Show();
         }
+
+
     }
 }

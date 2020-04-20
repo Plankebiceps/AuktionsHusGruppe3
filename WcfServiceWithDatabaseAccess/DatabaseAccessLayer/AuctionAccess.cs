@@ -38,16 +38,28 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
             }
             madeAuction = aAuction;
             return madeAuction;
-            //}
-
         }
+
+
+        public void DeleteFromDb(int auctionId) {
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                con.Open();
+                using (SqlCommand cmdDeleteAuction = con.CreateCommand()) {
+                    cmdDeleteAuction.CommandText = "DELETE FROM Auction WHERE AuctionId=@auctionId";
+                    cmdDeleteAuction.Parameters.AddWithValue("auctionId", auctionId);
+                    cmdDeleteAuction.ExecuteNonQuery();
+                }
+            }
+        }
+
+
         public Auction GetAuctionById(int findAuctionId) {
             Auction foundAuction = new Auction();
 
             string queryString = "select auctionId, timeLeft, payment, result, paymentDate, productName, productDescription FROM Auction WHERE auctionId = @auctionId";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
-            using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
+                using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
 
 
                     SqlParameter idParam = new SqlParameter("@AuctionId", findAuctionId);
@@ -70,17 +82,6 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
             return foundAuction;
         }
 
-
-        public void DeleteAuction(int DeletedById) {
-
-            using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                using (SqlCommand cmdFindAuction = con.CreateCommand()) {
-
-                }
-            }
-
-
-        }
     }
 }
+    

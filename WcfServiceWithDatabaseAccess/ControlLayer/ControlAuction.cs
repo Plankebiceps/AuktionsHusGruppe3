@@ -19,6 +19,14 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
 
             return createdAuction;
         }
+
+        public void DeleteAuction(int auctionId) { 
+            AuctionAccess auctionDb = new AuctionAccess();
+            auctionDb.DeleteFromDb(auctionId);
+        }
+
+
+
         public Auction GetAuctionById(int findAuctionId)
         {
             Auction foundAuction;
