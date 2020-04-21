@@ -3,42 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DesktopClientToService.ServiceRefAuction;
+/* To be removed notice "using" of References. One for Client ModelLayer
+ * and one for the Service Reference --- No more using statements allowed in this class */
+using proxyRef = DesktopClientToService.ServiceRefAuction;
+using clientRef = DesktopClientToService.ModelLayer;
 using DesktopClientToService.Utilities;
-
 
 namespace DesktopClientToService.ServiceLayer
 {
     public class AuctionService
     {
-        public Auction CreateAuction(Auction auctionToCreate)
+        public bool AddAuction(clientRef.Auction auctionToCreate)
         {
-            AuctionServiceClient auctionProxy = new AuctionServiceClient();
-            Auction aProxyAuction = auctionProxy.CreateAuction(auctionToCreate);
-
-            return aProxyAuction;
+            bool allOk = false;
+            proxyRef.Auction auctionInServiceFormat = new ConvertDataAuction().ConvertToServiceAuction(auctionToCreate);
+            using (proxyRef.AuctionServiceClient auctionProxy = new proxyRef.AuctionServiceClient()) {
+                allOk = auctionProxy.AddAuction(auctionInServiceFormat);
+            }
+            return allOk;
         }
 
         public void DeleteAuction(int auctionId) {
-            AuctionServiceClient auctionProxy = new AuctionServiceClient();
+            proxyRef.AuctionServiceClient auctionProxy = new proxyRef.AuctionServiceClient();
             auctionProxy.DeleteAuction(auctionId);
         }
 
 
-        public ModelLayer.Auction GetAuctionById(int findAuctionId)
+        public clientRef.Auction GetAuctionById(int findAuctionId)
         {
-            ModelLayer.Auction anAuction = null;
-            ServiceRefAuction.Auction aProxyAuction = null;
-            using (AuctionServiceClient auctionProxy = new AuctionServiceClient())
+            clientRef.Auction clientAuction = null;
+            proxyRef.Auction aProxyAuction = null;
+            using (proxyRef.AuctionServiceClient auctionProxy = new proxyRef.AuctionServiceClient())
             {
                 aProxyAuction = auctionProxy.GetAuctionById(findAuctionId);
             }
             if (aProxyAuction != null)
             {
-                anAuction = new ConvertDataAuction().ConvertFromServiceAuction(aProxyAuction);
+                clientAuction = new ConvertDataAuction().ConvertFromServiceAuction(aProxyAuction);
             }
 
-            return anAuction;
+            return clientAuction;
         }
 
 

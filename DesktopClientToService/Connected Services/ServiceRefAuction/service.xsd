@@ -15,17 +15,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CreateAuction">
+  <xs:element name="AddAuction">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="auctionToCrate" nillable="true" type="q2:Auction" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="auctionToAdd" nillable="true" type="q2:Auction" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CreateAuctionResponse">
+  <xs:element name="AddAuctionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="CreateAuctionResult" nillable="true" type="q3:Auction" />
+        <xs:element minOccurs="0" name="AddAuctionResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -38,9 +38,7 @@
   </xs:element>
   <xs:element name="DeleteAuctionResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="DeleteAuctionResult" nillable="true" type="q4:Auction" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="ModifyAuction">
@@ -58,7 +56,7 @@
   <xs:element name="ModifyAuctionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="ModifyAuctionResult" nillable="true" type="q5:Auction" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="ModifyAuctionResult" nillable="true" type="q3:Auction" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

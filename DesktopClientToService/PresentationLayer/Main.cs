@@ -5,24 +5,21 @@ using System.Windows.Forms;
 
 namespace DesktopClientToService.PresentationLayer
 {
-    public partial class Main : Form
-    { 
+    public partial class Main : Form {
         ControlAuction auctionController = new ControlAuction();
-        public Main()
-        {
+        public Main() {
             InitializeComponent();
         }
 
-        private void TestWinForms_Load(object sender, EventArgs e)
-        {
+        private void TestWinForms_Load(object sender, EventArgs e) {
 
         }
 
-        // CREATE AUCTION
-        private void btnAuction_Click(object sender, EventArgs e)
-        {
+        //CREATE AUCTION
+        private void btnAuction_Click(object sender, EventArgs e) {
             //Lokal variabler
-            DateTime dateTime = dateTimePickerAuction.Value; 
+            DateTime dateTime = dateTimePickerAuction.Value;
+            //string dateTimeToString = dateTime.ToString("yyyy-MM-ddTHH:mm:ss.fffffff");
             string result = txtAuction_Result.Text;
             string productName = txtProdName.Text;
             string productDescription = txtProdDescription.Text;
@@ -30,18 +27,19 @@ namespace DesktopClientToService.PresentationLayer
             decimal timeLeft;
             decimal.TryParse(txtAuction_TimeLeft.Text, out timeLeft);
 
-            if(radioBtnAuction.Checked)
-            {
+            if (radioBtnAuction.Checked) {
                 payment = true;
+            } else if (rbutNotPayed.Checked) {
+                payment = false;
+            } else if (!radioBtnAuction.Checked && !rbutNotPayed.Checked) {
+                MessageBox.Show("Please chose wheter it is payed!");
             }
-            //----------
-
-
 
             //Funktion
             ControlAuction ctrlAuction = new ControlAuction();
-            ctrlAuction.CreateAuction(timeLeft, payment, result, dateTime, productName, productDescription);
+            ctrlAuction.AddAuction(timeLeft, payment, result, dateTime, productName, productDescription);
         }
+
 
 
         // FIND AUCTION BY ID

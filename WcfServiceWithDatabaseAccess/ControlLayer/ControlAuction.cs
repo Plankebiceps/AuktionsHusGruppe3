@@ -10,14 +10,14 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
 {
     public class ControlAuction
     {
-        public Auction CreateAuction(Auction auctionToCreate)
+        public bool InsertAuction(Auction auctionToInsert)
         {
-            Auction createdAuction;
+            bool wasInsertedCorrectly;
 
             AuctionAccess auctionDb = new AuctionAccess();
-            createdAuction = auctionDb.CreateToDb(auctionToCreate);
+            wasInsertedCorrectly = auctionDb.SaveAuction(auctionToInsert);
 
-            return createdAuction;
+            return wasInsertedCorrectly;
         }
 
         public void DeleteAuction(int auctionId) { 

@@ -16,29 +16,45 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
             connectionString = "data Source=.; database=3SemDB; integrated security=true";
         }
 
-        public Auction CreateToDb(Auction aAuction) {
+
+        public bool SaveAuction(Auction anAuction) {
+
             //using (TransactionScope scope = new TransactionScope())
             //{
-            Auction madeAuction;
+            bool wasInserted;
+            string insertString = "insert into Auction(timeLeft, payment, result, paymentDate, productName, productDescription) output " +
+                                  "INSERTED.auctionId VALUES (@timeLeft, @payment, @result, @paymentDate, @productName, @productDescription)";
+
             using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                using (SqlCommand cmdInsertAuc = con.CreateCommand()) {
-                    cmdInsertAuc.CommandText = "insert into Auction(timeLeft, payment, result, paymentDate, productName, productDescription) output INSERTED.auctionId VALUES (@timeLeft, @payment, @result, @paymentDate, @productName, @productDescription)";
-                    cmdInsertAuc.Parameters.AddWithValue("timeLeft", aAuction.TimeLeft);
-                    cmdInsertAuc.Parameters.AddWithValue("payment", aAuction.Payment);
-                    cmdInsertAuc.Parameters.AddWithValue("result", aAuction.Result);
-                    cmdInsertAuc.Parameters.AddWithValue("paymentDate", aAuction.PaymentDate);
-                    cmdInsertAuc.Parameters.AddWithValue("productName", aAuction.ProductName);
-                    cmdInsertAuc.Parameters.AddWithValue("productDescription", aAuction.ProductDescription);
-                    cmdInsertAuc.ExecuteScalar();
+                
+                using (SqlCommand CreateCommand = new SqlCommand(insertString, con)) {
+                    
+                    //Prepace SQL
+                    SqlParameter timeLeftParam = new SqlParameter("@timeLeft", anAuction.TimeLeft);
+                    CreateCommand.Parameters.Add(timeLeftParam);
+                    SqlParameter paymentParam = new SqlParameter("@payment", anAuction.Payment);
+                    CreateCommand.Parameters.Add(paymentParam);
+                    SqlParameter resultParam = new SqlParameter("@result", anAuction.Result);
+                    CreateCommand.Parameters.Add(resultParam);
+                    SqlParameter payDateParam = new SqlParameter("@paymentDate", anAuction.PaymentDate);
+                    CreateCommand.Parameters.Add(payDateParam);
+                    SqlParameter prodNameParam = new SqlParameter("@productName", anAuction.ProductName);
+                    CreateCommand.Parameters.Add(prodNameParam);
+                    SqlParameter prodDescriptParam = new SqlParameter("@productDescription", anAuction.ProductDescription);
+                    CreateCommand.Parameters.Add(prodDescriptParam);
 
+                    con.Open();
+                    // Execute save
+                    int rowsAffected = CreateCommand.ExecuteNonQuery();
+                    // Evaluate
+                    wasInserted = (rowsAffected == 6);
 
+                    return wasInserted;
 
                 }
             }
-            madeAuction = aAuction;
-            return madeAuction;
         }
+
 
 
         public void DeleteFromDb(int auctionId) {

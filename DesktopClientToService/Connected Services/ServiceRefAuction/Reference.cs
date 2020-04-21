@@ -164,17 +164,17 @@ namespace DesktopClientToService.ServiceRefAuction {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/GetAuctionById", ReplyAction="http://tempuri.org/IAuctionService/GetAuctionByIdResponse")]
         System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction> GetAuctionByIdAsync(int auctionId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/CreateAuction", ReplyAction="http://tempuri.org/IAuctionService/CreateAuctionResponse")]
-        DesktopClientToService.ServiceRefAuction.Auction CreateAuction(DesktopClientToService.ServiceRefAuction.Auction auctionToCrate);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/AddAuction", ReplyAction="http://tempuri.org/IAuctionService/AddAuctionResponse")]
+        bool AddAuction(DesktopClientToService.ServiceRefAuction.Auction auctionToAdd);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/CreateAuction", ReplyAction="http://tempuri.org/IAuctionService/CreateAuctionResponse")]
-        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction> CreateAuctionAsync(DesktopClientToService.ServiceRefAuction.Auction auctionToCrate);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/DeleteAuction", ReplyAction="http://tempuri.org/IAuctionService/DeleteAuctionResponse")]
-        DesktopClientToService.ServiceRefAuction.Auction DeleteAuction(int auctionId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/AddAuction", ReplyAction="http://tempuri.org/IAuctionService/AddAuctionResponse")]
+        System.Threading.Tasks.Task<bool> AddAuctionAsync(DesktopClientToService.ServiceRefAuction.Auction auctionToAdd);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/DeleteAuction", ReplyAction="http://tempuri.org/IAuctionService/DeleteAuctionResponse")]
-        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction> DeleteAuctionAsync(int auctionId);
+        void DeleteAuction(int auctionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/DeleteAuction", ReplyAction="http://tempuri.org/IAuctionService/DeleteAuctionResponse")]
+        System.Threading.Tasks.Task DeleteAuctionAsync(int auctionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/ModifyAuction", ReplyAction="http://tempuri.org/IAuctionService/ModifyAuctionResponse")]
         DesktopClientToService.ServiceRefAuction.Auction ModifyAuction(decimal timeLeft, bool payment, string result, System.DateTime paymentDate, string productName, string productDescription);
@@ -218,19 +218,19 @@ namespace DesktopClientToService.ServiceRefAuction {
             return base.Channel.GetAuctionByIdAsync(auctionId);
         }
         
-        public DesktopClientToService.ServiceRefAuction.Auction CreateAuction(DesktopClientToService.ServiceRefAuction.Auction auctionToCrate) {
-            return base.Channel.CreateAuction(auctionToCrate);
+        public bool AddAuction(DesktopClientToService.ServiceRefAuction.Auction auctionToAdd) {
+            return base.Channel.AddAuction(auctionToAdd);
         }
         
-        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction> CreateAuctionAsync(DesktopClientToService.ServiceRefAuction.Auction auctionToCrate) {
-            return base.Channel.CreateAuctionAsync(auctionToCrate);
+        public System.Threading.Tasks.Task<bool> AddAuctionAsync(DesktopClientToService.ServiceRefAuction.Auction auctionToAdd) {
+            return base.Channel.AddAuctionAsync(auctionToAdd);
         }
         
-        public DesktopClientToService.ServiceRefAuction.Auction DeleteAuction(int auctionId) {
-            return base.Channel.DeleteAuction(auctionId);
+        public void DeleteAuction(int auctionId) {
+            base.Channel.DeleteAuction(auctionId);
         }
         
-        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction> DeleteAuctionAsync(int auctionId) {
+        public System.Threading.Tasks.Task DeleteAuctionAsync(int auctionId) {
             return base.Channel.DeleteAuctionAsync(auctionId);
         }
         

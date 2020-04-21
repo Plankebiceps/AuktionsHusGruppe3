@@ -13,10 +13,10 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "AuctionService" in both code and config file together.
     public class AuctionService : IAuctionService
     {
-        public Auction CreateAuction(Auction auctionToCreate)
+        public bool AddAuction(Auction auctionToAdd)
         {
             ControlAuction ctrlAuction = new ControlAuction();
-            return ctrlAuction.CreateAuction(auctionToCreate);
+            return ctrlAuction.InsertAuction(auctionToAdd);
         }
 
         public void DeleteAuction(int auctionId)

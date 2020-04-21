@@ -3,30 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+/* To be removed! --- Controller's can only know and use ServiceLayer and ModelLayer */
 using DesktopClientToService.ServiceLayer;
-using DesktopClientToService.ServiceRefAuction;
+using DesktopClientToService.ModelLayer;
 
 namespace DesktopClientToService.ControlLayer
 {
     public class ControlAuction
     {
         //"as" kan ikke bruges istedet for auctionService
-        public Auction CreateAuction(decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription)
+
+        public bool AddAuction(decimal timeLeft, bool payment, string result, DateTime paymentDate, 
+                                string productName, string productDescription)
         {
-            Auction auction = new Auction
-            {
+            Auction auction = new Auction {
                 TimeLeft = timeLeft,
                 Payment = payment,
                 Result = result,
                 PaymentDate = paymentDate,
                 ProductName = productName,
                 ProductDescription = productDescription
-                
-
             };
 
             AuctionService auctionService = new AuctionService();
-            return auctionService.CreateAuction(auction);
+            return auctionService.AddAuction(auction);
         }
 
         public void DeleteAuction(int auctionId) {

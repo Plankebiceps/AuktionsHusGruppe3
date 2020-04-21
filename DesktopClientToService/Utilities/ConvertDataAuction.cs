@@ -24,6 +24,7 @@ namespace DesktopClientToService.Utilities
                         TimeLeft = serviceAuction.TimeLeft,
                         Payment = serviceAuction.Payment,
                         Result = serviceAuction.Result,
+                        PaymentDate = serviceAuction.PaymentDate,
                         ProductName = serviceAuction.ProductName,
                         ProductDescription = serviceAuction.ProductDescription,
                     };
@@ -42,6 +43,7 @@ namespace DesktopClientToService.Utilities
                         TimeLeft = desktopAuction.TimeLeft,
                         Payment = desktopAuction.Payment,
                         Result = desktopAuction.Result,
+                        PaymentDate = desktopAuction.PaymentDate,
                         ProductName = desktopAuction.ProductName,
                         ProductDescription = desktopAuction.ProductDescription,
                     };

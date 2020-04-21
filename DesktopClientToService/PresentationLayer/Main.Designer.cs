@@ -47,6 +47,7 @@
             this.lblFindById = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDeleteAuction = new System.Windows.Forms.Button();
+            this.rbutNotPayed = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // btnAuction
@@ -212,11 +213,23 @@
             this.btnDeleteAuction.UseVisualStyleBackColor = true;
             this.btnDeleteAuction.Click += new System.EventHandler(this.btnDeleteAuction_Click);
             // 
+            // rbutNotPayed
+            // 
+            this.rbutNotPayed.AutoSize = true;
+            this.rbutNotPayed.Location = new System.Drawing.Point(193, 64);
+            this.rbutNotPayed.Name = "rbutNotPayed";
+            this.rbutNotPayed.Size = new System.Drawing.Size(75, 17);
+            this.rbutNotPayed.TabIndex = 30;
+            this.rbutNotPayed.TabStop = true;
+            this.rbutNotPayed.Text = "Not Payed";
+            this.rbutNotPayed.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rbutNotPayed);
             this.Controls.Add(this.btnDeleteAuction);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lblFindById);
@@ -264,5 +277,6 @@
         private System.Windows.Forms.Label lblFindById;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnDeleteAuction;
+        private System.Windows.Forms.RadioButton rbutNotPayed;
     }
 }

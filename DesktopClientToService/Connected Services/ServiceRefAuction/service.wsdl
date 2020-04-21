@@ -13,11 +13,11 @@
   <wsdl:message name="IAuctionService_GetAuctionById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAuctionByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IAuctionService_CreateAuction_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateAuction" />
+  <wsdl:message name="IAuctionService_AddAuction_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAuction" />
   </wsdl:message>
-  <wsdl:message name="IAuctionService_CreateAuction_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateAuctionResponse" />
+  <wsdl:message name="IAuctionService_AddAuction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAuctionResponse" />
   </wsdl:message>
   <wsdl:message name="IAuctionService_DeleteAuction_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteAuction" />
@@ -36,9 +36,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAuctionService/GetAuctionById" message="tns:IAuctionService_GetAuctionById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAuctionService/GetAuctionByIdResponse" message="tns:IAuctionService_GetAuctionById_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CreateAuction">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuctionService/CreateAuction" message="tns:IAuctionService_CreateAuction_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuctionService/CreateAuctionResponse" message="tns:IAuctionService_CreateAuction_OutputMessage" />
+    <wsdl:operation name="AddAuction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuctionService/AddAuction" message="tns:IAuctionService_AddAuction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuctionService/AddAuctionResponse" message="tns:IAuctionService_AddAuction_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteAuction">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuctionService/DeleteAuction" message="tns:IAuctionService_DeleteAuction_InputMessage" />
@@ -60,8 +60,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CreateAuction">
-      <soap:operation soapAction="http://tempuri.org/IAuctionService/CreateAuction" style="document" />
+    <wsdl:operation name="AddAuction">
+      <soap:operation soapAction="http://tempuri.org/IAuctionService/AddAuction" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -16,7 +16,7 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
         Auction GetAuctionById(int auctionId);
 
         [OperationContract]
-        Auction CreateAuction(Auction auctionToCrate);
+        bool AddAuction(Auction auctionToAdd);
 
         [OperationContract]
         void DeleteAuction(int auctionId);
