@@ -20,7 +20,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             connectionString = "data Source=.; database=3SemDB; integrated security=true";
         }
 
-        public Admin CreateToDb(Admin aAdmin)
+        public Admin CreateToDb(Admin anAdmin)
         {
             Admin madeAdmin;
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -28,14 +28,12 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                 con.Open();
                 using (SqlCommand cmdInsertAdmin = con.CreateCommand())
                 {
-                    cmdInsertAdmin.CommandText = "INSERT INTO Person(firstName, lastName, email) VALUES (@firstName, @lastName, @email) INSERT INTO Admin(password) VALUES (@password)";
-                    cmdInsertAdmin.Parameters.AddWithValue("firstName", aAdmin.FirstName);
-                    cmdInsertAdmin.Parameters.AddWithValue("lastName", aAdmin.LastName);
-                    cmdInsertAdmin.Parameters.AddWithValue("email", aAdmin.Email);
-                    cmdInsertAdmin.Parameters.AddWithValue("password", aAdmin.Password);
+                    cmdInsertAdmin.CommandText = "INSERT INTO Admin(adminEmail, password) VALUES (@adminEmail, @password)";
+                    cmdInsertAdmin.Parameters.AddWithValue("adminEmail", anAdmin.Email);
+                    cmdInsertAdmin.Parameters.AddWithValue("password", anAdmin.Password);
                     cmdInsertAdmin.ExecuteNonQuery();
                 }
-                madeAdmin = aAdmin;
+                madeAdmin = anAdmin;
                 return madeAdmin;
             }
         }
