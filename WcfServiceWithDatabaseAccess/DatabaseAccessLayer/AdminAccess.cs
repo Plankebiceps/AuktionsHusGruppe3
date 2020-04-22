@@ -32,9 +32,11 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                     cmdInsertAdmin.CommandText = "INSERT INTO Admin(salt, hash, adminEmail) VALUES (@salt, @hash, @adminEmail)";
                     
                     Cryptography hashSaltToSave = Cryptography.GenerateSaltedHash(64, anAdmin.Password);
+                    anAdmin.Salt = hashSaltToSave.Salt;
+                    anAdmin.Hash = hashSaltToSave.Hash;
 
-                    cmdInsertAdmin.Parameters.AddWithValue("@salt", hashSaltToSave.Salt);
-                    cmdInsertAdmin.Parameters.AddWithValue("@hash", hashSaltToSave.Hash);
+                    cmdInsertAdmin.Parameters.AddWithValue("@salt", anAdmin.Salt);
+                    cmdInsertAdmin.Parameters.AddWithValue("@hash", anAdmin.Hash);
                     cmdInsertAdmin.Parameters.AddWithValue("@adminEmail", anAdmin.Email);
 
                     cmdInsertAdmin.ExecuteNonQuery();
@@ -59,6 +61,36 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                 return anAdmin;
 
             }
+        }
+
+        public Admin GetAdminByEmail(string emailToLookUp) {
+            Admin adminToGet = null;
+
+            string queryString = "select adminEmail, salt, hash from Admin where adminEmail = @adminEmail";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
+
+                // Prepare SQL
+                SqlParameter emailParam = new SqlParameter("@adminEmail", emailToLookUp);
+                readCommand.Parameters.Add(emailParam);
+
+                con.Open();
+
+                // Execute read
+                SqlDataReader userReader = readCommand.ExecuteReader();
+
+                if (userReader.HasRows) {
+                    string tempEmail, tempSalt, tempHash;
+                    while (userReader.Read()) {
+                        tempEmail = userReader.GetString(userReader.GetOrdinal("username"));
+                        tempSalt = userReader.GetString(userReader.GetOrdinal("hash"));
+                        tempHash = userReader.GetString(userReader.GetOrdinal("salt"));
+                        adminToGet = new Admin(tempEmail, tempSalt, tempHash);
+                    }
+                }
+            }
+            return adminToGet;
         }
     }
 }

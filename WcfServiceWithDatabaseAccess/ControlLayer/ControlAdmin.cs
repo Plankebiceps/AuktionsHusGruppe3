@@ -27,5 +27,14 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
 
             return loggedAdmin;
         }
+
+        public Admin GetAdminByEmail(string emailToLookUp) {
+            Admin foundAdmin;
+
+            AdminAccess adminDb = new AdminAccess();
+            foundAdmin = adminDb.GetAdminByEmail(emailToLookUp);
+
+            return foundAdmin;
+        }
     }
 }

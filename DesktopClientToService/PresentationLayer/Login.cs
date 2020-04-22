@@ -49,11 +49,6 @@ namespace DesktopClientToService.PresentationLayer
             if (rbutAdm.Checked == true) {
                 if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
-                    string tempEmail = txtEmail.Text;
-                    string tempPass = txtPassword.Text;
-
-                    ControlAdmin ctrlAdmin = new ControlAdmin();
-                    ctrlAdmin.LoginAdmin(tempEmail, tempPass);
 
                 }
 

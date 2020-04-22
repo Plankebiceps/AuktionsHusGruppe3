@@ -30,5 +30,10 @@ namespace DesktopClientToService.ControlLayer {
             return adminService.LoginAdmin(admin);
         }
 
+        public Admin GetAdminByEmail(string emailToLookUp) {
+            AdminService adminService = new AdminService();
+            return adminService.GetAdminByEmail(emailToLookUp);
+        }
+
     }
 }

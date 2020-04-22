@@ -11,10 +11,9 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
     public class Admin
     {
 
+
         [DataMember]
         public string Email { get; set; }
-        //[DataMember]
-        //public string Password { get; set; }
         [DataMember]
         public string Hash { get; set; }
         [DataMember]
@@ -24,6 +23,12 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
 
         public Admin() {
 
+        }
+
+        public Admin(string email, string hash, string salt) {
+            Email = email;
+            Hash = hash;
+            Salt = salt;
         }
     }   
 }
