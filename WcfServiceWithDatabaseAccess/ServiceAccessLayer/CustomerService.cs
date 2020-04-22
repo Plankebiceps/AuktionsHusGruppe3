@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfServiceWithDatabaseAccess.ModelLayer;
+using WcfServiceWithDatabaseAccess.ControlLayer;
 
 namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
 {
@@ -11,8 +13,10 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
     public class CustomerService : ICustomerService
     {
 
-        public void DoWork()
+        public bool AddCustomer(Customer customerToSave)
         {
+            ControlCustomer ctrlCustomer = new ControlCustomer();
+            return ctrlCustomer.InsertCustomer(customerToSave);
         }
     }
 }

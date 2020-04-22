@@ -76,8 +76,10 @@
   <ItemGroup>
     <Compile Include="ControlLayer\ControlAuction.cs" />
     <Compile Include="ControlLayer\ControlAdmin.cs" />
+    <Compile Include="ControlLayer\ControlCustomer.cs" />
     <Compile Include="DatabaseAccessLayer\AuctionAccess.cs" />
     <Compile Include="DatabaseAccessLayer\AdminAccess.cs" />
+    <Compile Include="DatabaseAccessLayer\CustomerAccess.cs" />
     <Compile Include="ModelLayer\Admin.cs" />
     <Compile Include="ModelLayer\Auction.cs" />
     <Compile Include="ModelLayer\Customer.cs" />

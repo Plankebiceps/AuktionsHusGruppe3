@@ -13,7 +13,7 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer {
     public interface ICustomerService {
 
         [OperationContract]
-        void DoWork();
+        bool AddCustomer(Customer customerToSave);
 
     }
 }
