@@ -50,19 +50,17 @@ namespace DesktopClientToService.PresentationLayer
                 if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
                     ControlAdmin ctrlAdmin = new ControlAdmin();
-                    Admin admin = new Admin();
+                    Admin admin = null;
 
                     admin.Email = txtEmail.Text;
                     admin.Password = txtPassword.Text;
 
                     ctrlAdmin.LoginAdmin(admin);
+
                 }
                 MessageBox.Show("You are signed in!");
                 // TO DO : Login tjeneste. Problemer med at genkende email og password. 
-  
-
-
-
+ 
 
             }
 
