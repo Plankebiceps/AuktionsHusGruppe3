@@ -7,6 +7,7 @@ using WcfServiceWithDatabaseAccess.ModelLayer;
 using System.Data.SqlClient;
 using System.Transactions;
 using System.Data;
+using WcfServiceWithDatabaseAccess.Utilities.Security;
 
 namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 {
@@ -28,9 +29,14 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                 con.Open();
                 using (SqlCommand cmdInsertAdmin = con.CreateCommand())
                 {
-                    cmdInsertAdmin.CommandText = "INSERT INTO Admin(adminEmail, password) VALUES (@adminEmail, @password)";
-                    cmdInsertAdmin.Parameters.AddWithValue("adminEmail", anAdmin.Email);
-                    cmdInsertAdmin.Parameters.AddWithValue("password", anAdmin.Password);
+                    cmdInsertAdmin.CommandText = "INSERT INTO Admin(salt, hash, adminEmail) VALUES (@salt, @hash, @adminEmail)";
+                    
+                    Cryptography hashSaltToSave = Cryptography.GenerateSaltedHash(64, anAdmin.Password);
+
+                    cmdInsertAdmin.Parameters.AddWithValue("@salt", hashSaltToSave.Salt);
+                    cmdInsertAdmin.Parameters.AddWithValue("@hash", hashSaltToSave.Hash);
+                    cmdInsertAdmin.Parameters.AddWithValue("@adminEmail", anAdmin.Email);
+
                     cmdInsertAdmin.ExecuteNonQuery();
                 }
                 madeAdmin = anAdmin;
@@ -49,7 +55,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                     cmdSelectAdmin.Parameters.AddWithValue("password", anAdmin.Password);
                     cmdSelectAdmin.ExecuteScalar();
                 }
-                //adminToLogin = anAdmin;
+
                 return anAdmin;
 
             }

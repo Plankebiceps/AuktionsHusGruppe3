@@ -49,16 +49,14 @@ namespace DesktopClientToService.PresentationLayer
             if (rbutAdm.Checked == true) {
                 if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
+                    string tempEmail = txtEmail.Text;
+                    string tempPass = txtPassword.Text;
+
                     ControlAdmin ctrlAdmin = new ControlAdmin();
-                    Admin admin = null;
-
-                    admin.Email = txtEmail.Text;
-                    admin.Password = txtPassword.Text;
-
-                    ctrlAdmin.LoginAdmin(admin);
+                    ctrlAdmin.LoginAdmin(tempEmail, tempPass);
 
                 }
-                MessageBox.Show("You are signed in!");
+
                 // TO DO : Login tjeneste. Problemer med at genkende email og password. 
  
 
