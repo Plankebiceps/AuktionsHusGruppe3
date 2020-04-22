@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using WcfServiceWithDatabaseAccess.ModelLayer;
 using System.Data.SqlClient;
 using System.Transactions;
-
+using System.Data;
 
 namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 {
@@ -38,28 +38,21 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             }
         }
 
-        public Admin LoginToDb(Admin aAdmin) {
-            Admin adminToLogin = new Admin();
+        public Admin LoginToDb(Admin anAdmin) {
 
-            string queryString = "SELECT email FROM Person WHERE email = @Email";
-
+            Admin adminToLogin;
             using (SqlConnection con = new SqlConnection(connectionString)) {
-            using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
-
-                    SqlParameter emailParam = new SqlParameter("@Email", aAdmin.Email);
-                    readCommand.Parameters.Add(emailParam);
-
-                    con.Open();
-
-                    SqlDataReader reader = readCommand.ExecuteReader();
-                    while (reader.Read()) {
-                        adminToLogin.Email = reader.GetString(reader.GetOrdinal("email"));
-                        adminToLogin.Password = reader.GetString(reader.GetOrdinal("password"));
-                    }
+                con.Open();
+                using (SqlCommand cmdSelectAdmin = con.CreateCommand()) {
+                    cmdSelectAdmin.CommandText = "Select * from Admin where adminEmail=@adminEmail and password=@password";
+                    cmdSelectAdmin.Parameters.AddWithValue("adminEmail", anAdmin.Email);
+                    cmdSelectAdmin.Parameters.AddWithValue("password", anAdmin.Password);
+                    cmdSelectAdmin.ExecuteScalar();
                 }
-            }
-            return adminToLogin;
+                adminToLogin = anAdmin;
+                return adminToLogin;
 
+            }
         }
     }
 }

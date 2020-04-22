@@ -9,14 +9,10 @@ using DesktopClientToService.ModelLayer;
 namespace DesktopClientToService.Utilities {
     public class ConvertDataAdmin {
 
-
-
         public ModelLayer.Admin ConvertFromServiceAdmin(ServiceRefAdmin.Admin serviceAdmin) {
             ModelLayer.Admin clientAdmin = null;
             if (serviceAdmin != null) {
                 clientAdmin = new ModelLayer.Admin {
-                    FirstName = serviceAdmin.FirstName,
-                    LastName = serviceAdmin.LastName,
                     Email = serviceAdmin.Email,
                     Password = serviceAdmin.Password,
 
@@ -25,14 +21,10 @@ namespace DesktopClientToService.Utilities {
             return clientAdmin;
         }
 
-
-
         public ServiceRefAdmin.Admin ConvertToServiceAdmin(ModelLayer.Admin desktopAdmin) {
             ServiceRefAdmin.Admin serviceAdmin = null;
             if (desktopAdmin != null) {
                 serviceAdmin = new ServiceRefAdmin.Admin {
-                    FirstName = desktopAdmin.FirstName,
-                    LastName = desktopAdmin.LastName,
                     Email = desktopAdmin.Email,
                     Password = desktopAdmin.Password,
                 };

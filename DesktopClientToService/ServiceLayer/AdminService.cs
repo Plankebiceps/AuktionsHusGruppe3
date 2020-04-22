@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+/* To be removed notice "using" of References. One for Client ModelLayer
+ * and one for the Service Reference --- No more using statements allowed in this class */
 using proxyRef = DesktopClientToService.ServiceRefAdmin;
 using clientRef = DesktopClientToService.ModelLayer;
 using DesktopClientToService.Utilities;
@@ -21,26 +23,17 @@ namespace DesktopClientToService.ServiceLayer {
             }
             return adminToCreate;
 
-
-            //proxyRef.AdminServiceClient adminProxy = new proxyRef.AdminServiceClient();
-            //clientRef.Admin aProxyAdmin = adminProxy.CreateAdmin(adminToCreate);
-
-            //return aProxyAdmin;
         }
 
-        //public ModelLayer.Admin LoginAdmin(Admin adminToLogin) {
+        public clientRef.Admin LoginAdmin(clientRef.Admin adminToLogin) {
 
-        //    ModelLayer.Admin convertedAdmin = null;
-        //    ServiceRefAdmin.Admin aProxyAdmin = null;
+            proxyRef.Admin adminInServiceFormat = new ConvertDataAdmin().ConvertToServiceAdmin(adminToLogin);
 
-        //    using (AdminServiceClient adminProxy = new AdminServiceClient()) {
-        //        aProxyAdmin = adminProxy.LoginAdmin(adminToLogin);
-        //    }
-        //    if (aProxyAdmin != null) {
-        //        convertedAdmin = new ConvertDataAdmin().ConvertFromServiceAdmin(aProxyAdmin);
-        //    }
-        //    return convertedAdmin;
-        //}
+            using (proxyRef.AdminServiceClient adminProxy = new proxyRef.AdminServiceClient()) {
+                adminProxy.LoginAdmin(adminInServiceFormat);
+            }
+            return adminToLogin;
+        }
 
     }
 }
