@@ -50,17 +50,14 @@ namespace DesktopClientToService.PresentationLayer
             if (rbutAdm.Checked == true) {
                 if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
-                    Admin loginAdmin = null;
-
                     ControlAdmin ctrlAdmin = new ControlAdmin();
-                    loginAdmin = ctrlAdmin.GetAdminByEmail(txtEmail.Text);
-
+                    Admin loginAdmin = ctrlAdmin.GetAdminByEmail(txtEmail.Text);
                     bool isPasswordMatched = Cryptography.VerifyPassword(txtPassword.Text, loginAdmin.Hash, loginAdmin.Salt);
 
                     if (isPasswordMatched == true) {
-                        MessageBox.Show("Login Succeeded!");
+                        MessageBox.Show("Login succeeded!");
                     } else {
-                        MessageBox.Show("Try Again!");
+                        MessageBox.Show("Try again ye cunt!");
                    
                     }
                 }
