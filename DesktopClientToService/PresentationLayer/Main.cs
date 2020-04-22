@@ -1,6 +1,7 @@
 ﻿using DesktopClientToService.ControlLayer;
 using DesktopClientToService.ModelLayer;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace DesktopClientToService.PresentationLayer
@@ -19,7 +20,7 @@ namespace DesktopClientToService.PresentationLayer
         private void btnAuction_Click(object sender, EventArgs e) {
             //Lokal variabler
             DateTime dateTime = dateTimePickerAuction.Value;
-            //string dateTimeToString = dateTime.ToString("yyyy-MM-ddTHH:mm:ss.fffffff");
+            string dateTimeString = dateTime.ToString();
             string result = txtAuction_Result.Text;
             string productName = txtProdName.Text;
             string productDescription = txtProdDescription.Text;
@@ -35,11 +36,23 @@ namespace DesktopClientToService.PresentationLayer
                 MessageBox.Show("Please chose wheter it is payed!");
             }
 
-            //Funktion
-            ControlAuction ctrlAuction = new ControlAuction();
-            ctrlAuction.AddAuction(timeLeft, payment, result, dateTime, productName, productDescription);
-        }
+            // SKAL RETTES TIL:
+            bool inputIsOk = !(timeLeft < 1 && string.IsNullOrEmpty(result)
+                                && string.IsNullOrEmpty(productName) && string.IsNullOrEmpty(productDescription));
 
+            if (inputIsOk) {
+                ControlAuction ctrlAuction = new ControlAuction();
+                bool wasOk = ctrlAuction.AddAuction(timeLeft, payment, result, dateTime, productName, productDescription);
+                if (wasOk) {
+                    MessageBox.Show("Auction created!");
+                } else {
+                    MessageBox.Show("Auction not created! Try again.");
+                }
+            } else {
+                MessageBox.Show("Values a invalid!");
+            }
+        }
+    
 
 
         // FIND AUCTION BY ID
@@ -78,6 +91,7 @@ namespace DesktopClientToService.PresentationLayer
             loginForm.Show();
         }
 
+        // UPDATE AN AUCTION
         private void btnUpdateAuction_Click(object sender, EventArgs e) {
             DateTime dateTime = dateTimePickerAuction.Value;
             string result = txtAuction_Result.Text;
@@ -98,10 +112,22 @@ namespace DesktopClientToService.PresentationLayer
                 MessageBox.Show("Please chose wheter it is payed!");
             }
 
-           
-
             ControlAuction ctrlAuction = new ControlAuction();
             ctrlAuction.UpdateAuction(findAuctionId, timeLeft, payment, result, dateTime, productName, productDescription);
+        }
+
+        // FIND ALL AUCTIONS
+        private void btnAllAuctions_Click(object sender, EventArgs e) {
+            ControlAuction ctrlAuction = new ControlAuction();
+            List<Auction> allAuctions = ctrlAuction.GetAllAuctions();
+
+            // CLEAR LIST
+            listBoxAuctions.Items.Clear();
+
+            // REFRESH LIST
+            foreach (Auction auction in allAuctions) {
+                listBoxAuctions.Items.Add(auction);
+            }
         }
     }
 }

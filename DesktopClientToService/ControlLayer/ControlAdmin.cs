@@ -20,16 +20,6 @@ namespace DesktopClientToService.ControlLayer {
             return adminService.CreateAdmin(admin);
         }
 
-        public ModelLayer.Admin LoginAdmin(string email, string password) {
-            Admin admin = new Admin {
-                Email = email,
-                Password = password
-            };
-
-            AdminService adminService = new AdminService();
-            return adminService.LoginAdmin(admin);
-        }
-
         public Admin GetAdminByEmail(string emailToLookUp) {
             AdminService adminService = new AdminService();
             return adminService.GetAdminByEmail(emailToLookUp);

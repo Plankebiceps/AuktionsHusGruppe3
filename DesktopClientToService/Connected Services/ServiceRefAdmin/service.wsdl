@@ -13,12 +13,6 @@
   <wsdl:message name="IAdminService_CreateAdmin_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateAdminResponse" />
   </wsdl:message>
-  <wsdl:message name="IAdminService_LoginAdmin_InputMessage">
-    <wsdl:part name="parameters" element="tns:LoginAdmin" />
-  </wsdl:message>
-  <wsdl:message name="IAdminService_LoginAdmin_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LoginAdminResponse" />
-  </wsdl:message>
   <wsdl:message name="IAdminService_GetAdminByEmail_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAdminByEmail" />
   </wsdl:message>
@@ -30,10 +24,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/CreateAdmin" message="tns:IAdminService_CreateAdmin_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/CreateAdminResponse" message="tns:IAdminService_CreateAdmin_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="LoginAdmin">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/LoginAdmin" message="tns:IAdminService_LoginAdmin_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/LoginAdminResponse" message="tns:IAdminService_LoginAdmin_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetAdminByEmail">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/GetAdminByEmail" message="tns:IAdminService_GetAdminByEmail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/GetAdminByEmailResponse" message="tns:IAdminService_GetAdminByEmail_OutputMessage" />
@@ -43,15 +33,6 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="CreateAdmin">
       <soap:operation soapAction="http://tempuri.org/IAdminService/CreateAdmin" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LoginAdmin">
-      <soap:operation soapAction="http://tempuri.org/IAdminService/LoginAdmin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

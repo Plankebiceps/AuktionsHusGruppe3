@@ -25,16 +25,6 @@ namespace DesktopClientToService.ServiceLayer {
 
         }
 
-        public clientRef.Admin LoginAdmin(clientRef.Admin adminToLogin) {
-
-            proxyRef.Admin adminInServiceFormat = new ConvertDataAdmin().ConvertToServiceAdmin(adminToLogin);
-
-            using (proxyRef.AdminServiceClient adminProxy = new proxyRef.AdminServiceClient()) {
-                adminProxy.LoginAdmin(adminInServiceFormat);
-            }
-            return adminToLogin;
-        }
-
         public clientRef.Admin GetAdminByEmail(string emailToLookUp) {
             clientRef.Admin clientAdmin = null;
             proxyRef.Admin aProxyAdmin = null;

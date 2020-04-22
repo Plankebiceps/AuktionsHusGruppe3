@@ -22,9 +22,5 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
             return ctrlAdmin.GetAdminByEmail(emailToLookUp);
         }
 
-        public Admin LoginAdmin(Admin adminToLogin) {
-            ControlAdmin ctrlAdmin = new ControlAdmin();
-            return ctrlAdmin.LoginAdmin(adminToLogin);
-        }
     }
 }

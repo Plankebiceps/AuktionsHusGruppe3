@@ -49,5 +49,9 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
         public Auction() {
 
         }
+
+        public override string ToString() {
+            return $"{AuctionId} | {ProductName} (Open) (Current bid: 49,- Dkr)";
+        }
     }
 }

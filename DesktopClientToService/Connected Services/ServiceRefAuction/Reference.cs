@@ -181,6 +181,12 @@ namespace DesktopClientToService.ServiceRefAuction {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/UpdateAuction", ReplyAction="http://tempuri.org/IAuctionService/UpdateAuctionResponse")]
         System.Threading.Tasks.Task UpdateAuctionAsync(DesktopClientToService.ServiceRefAuction.Auction auctionToUpdate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/GetAuctionAll", ReplyAction="http://tempuri.org/IAuctionService/GetAuctionAllResponse")]
+        DesktopClientToService.ServiceRefAuction.Auction[] GetAuctionAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/GetAuctionAll", ReplyAction="http://tempuri.org/IAuctionService/GetAuctionAllResponse")]
+        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction[]> GetAuctionAllAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -240,6 +246,14 @@ namespace DesktopClientToService.ServiceRefAuction {
         
         public System.Threading.Tasks.Task UpdateAuctionAsync(DesktopClientToService.ServiceRefAuction.Auction auctionToUpdate) {
             return base.Channel.UpdateAuctionAsync(auctionToUpdate);
+        }
+        
+        public DesktopClientToService.ServiceRefAuction.Auction[] GetAuctionAll() {
+            return base.Channel.GetAuctionAll();
+        }
+        
+        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction[]> GetAuctionAllAsync() {
+            return base.Channel.GetAuctionAllAsync();
         }
     }
 }

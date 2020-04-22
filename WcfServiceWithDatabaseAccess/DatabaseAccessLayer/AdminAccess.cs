@@ -9,15 +9,12 @@ using System.Transactions;
 using System.Data;
 using WcfServiceWithDatabaseAccess.Utilities.Security;
 
-namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
-{
-    public class AdminAccess
-    {
+namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
+    public class AdminAccess {
         readonly string connectionString;
 
 
-        public AdminAccess()
-        {
+        public AdminAccess() {
             connectionString = "data Source=.; database=3SemDB; integrated security=true";
         }
 
@@ -43,51 +40,41 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             }
         }
 
-        public Admin LoginToDb(Admin anAdmin) {
-
-            //Admin adminToLogin;
-            using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                using (SqlCommand cmdSelectAdmin = con.CreateCommand()) {
-                    cmdSelectAdmin.CommandText = "Select * from Admin where adminEmail=@adminEmail and password=@password";
-                    cmdSelectAdmin.Parameters.AddWithValue("adminEmail", anAdmin.Email);
-                    cmdSelectAdmin.Parameters.AddWithValue("password", anAdmin.Password);
-                    cmdSelectAdmin.ExecuteScalar();
-                }
-
-                return anAdmin;
-
-            }
-        }
 
         public Admin GetAdminByEmail(string emailToLookUp) {
-            Admin adminToGet = null;
+            using (TransactionScope scope = new TransactionScope()) {
+                Admin adminToGet = null;
 
-            string queryString = "select adminEmail, salt, hash from Admin where adminEmail = @adminEmail";
+                string queryString = "select adminEmail, salt, hash from Admin where adminEmail = @adminEmail";
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
 
-                // Prepare SQL
-                SqlParameter emailParam = new SqlParameter("@adminEmail", emailToLookUp);
-                readCommand.Parameters.Add(emailParam);
+                    // Prepare SQL
+                    SqlParameter emailParam = new SqlParameter("@adminEmail", emailToLookUp);
+                    readCommand.Parameters.Add(emailParam);
 
-                con.Open();
+                    con.Open();
 
-                // Execute read
-                SqlDataReader userReader = readCommand.ExecuteReader();
+                    // Execute read
+                    SqlDataReader userReader = readCommand.ExecuteReader();
 
-                if (userReader.HasRows) {
-                    string tempEmail, tempSalt, tempHash;
-                    while (userReader.Read()) {
-                        tempEmail = userReader.GetString(userReader.GetOrdinal("adminEmail"));
-                        tempSalt = userReader.GetString(userReader.GetOrdinal("hash"));
-                        tempHash = userReader.GetString(userReader.GetOrdinal("salt"));
-                        adminToGet = new Admin(tempEmail, tempSalt, tempHash);
+                    if (userReader.HasRows) {
+                        string tempEmail, tempSalt, tempHash;
+                        while (userReader.Read()) {
+                            tempEmail = userReader.GetString(userReader.GetOrdinal("adminEmail"));
+                            tempSalt = userReader.GetString(userReader.GetOrdinal("hash"));
+                            tempHash = userReader.GetString(userReader.GetOrdinal("salt"));
+                            adminToGet = new Admin(tempEmail, tempSalt, tempHash);
+                        }
                     }
                 }
+                return adminToGet;
             }
-            return adminToGet;
         }
+
+
+
     }
 }
+

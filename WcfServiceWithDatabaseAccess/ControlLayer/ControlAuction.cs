@@ -39,5 +39,14 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
             AuctionAccess auctionDb = new AuctionAccess();
             auctionDb.ModifySavedAuction(auctionToModify);
         }
+
+        public List<Auction> GetAllAuctions() {
+            List<Auction> foundAuctions;
+
+            AuctionAccess auctionDb = new AuctionAccess();
+            foundAuctions = auctionDb.GetAllAuctions();
+
+            return foundAuctions;
+        }
     }
 }

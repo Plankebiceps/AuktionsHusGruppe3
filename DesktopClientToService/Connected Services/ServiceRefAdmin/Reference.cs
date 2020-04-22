@@ -116,12 +116,6 @@ namespace DesktopClientToService.ServiceRefAdmin {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/CreateAdmin", ReplyAction="http://tempuri.org/IAdminService/CreateAdminResponse")]
         System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> CreateAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin adminToCreate);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/LoginAdmin", ReplyAction="http://tempuri.org/IAdminService/LoginAdminResponse")]
-        DesktopClientToService.ServiceRefAdmin.Admin LoginAdmin(DesktopClientToService.ServiceRefAdmin.Admin adminToLogin);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/LoginAdmin", ReplyAction="http://tempuri.org/IAdminService/LoginAdminResponse")]
-        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> LoginAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin adminToLogin);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/GetAdminByEmail", ReplyAction="http://tempuri.org/IAdminService/GetAdminByEmailResponse")]
         DesktopClientToService.ServiceRefAdmin.Admin GetAdminByEmail(string emailToLookUp);
         
@@ -162,14 +156,6 @@ namespace DesktopClientToService.ServiceRefAdmin {
         
         public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> CreateAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin adminToCreate) {
             return base.Channel.CreateAdminAsync(adminToCreate);
-        }
-        
-        public DesktopClientToService.ServiceRefAdmin.Admin LoginAdmin(DesktopClientToService.ServiceRefAdmin.Admin adminToLogin) {
-            return base.Channel.LoginAdmin(adminToLogin);
-        }
-        
-        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> LoginAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin adminToLogin) {
-            return base.Channel.LoginAdminAsync(adminToLogin);
         }
         
         public DesktopClientToService.ServiceRefAdmin.Admin GetAdminByEmail(string emailToLookUp) {

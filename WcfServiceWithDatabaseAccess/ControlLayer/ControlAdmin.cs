@@ -19,15 +19,6 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
             return createdAdmin;
         }
 
-        public Admin LoginAdmin(Admin adminToLogin) {
-            Admin loggedAdmin;
-
-            AdminAccess adminDb = new AdminAccess();
-            loggedAdmin = adminDb.LoginToDb(adminToLogin);
-
-            return loggedAdmin;
-        }
-
         public Admin GetAdminByEmail(string emailToLookUp) {
             Admin foundAdmin;
 

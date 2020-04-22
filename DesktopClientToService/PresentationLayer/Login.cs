@@ -12,12 +12,9 @@ using DesktopClientToService.ControlLayer;
 using DesktopClientToService.ModelLayer;
 using DesktopClientToService.Utilities.Security;
 
-namespace DesktopClientToService.PresentationLayer
-{
-    public partial class Login : Form
-    {
-        public Login()
-        {
+namespace DesktopClientToService.PresentationLayer {
+    public partial class Login : Form {
+        public Login() {
             InitializeComponent();
         }
 
@@ -52,19 +49,20 @@ namespace DesktopClientToService.PresentationLayer
 
                     ControlAdmin ctrlAdmin = new ControlAdmin();
                     Admin loginAdmin = ctrlAdmin.GetAdminByEmail(txtEmail.Text);
-                    bool isPasswordMatched = Cryptography.VerifyPassword(txtPassword.Text, loginAdmin.Hash, loginAdmin.Salt);
 
-                    if (isPasswordMatched == true) {
-                        MessageBox.Show("Login succeeded!");
-                    } else {
-                        MessageBox.Show("Try again ye cunt!");
-                   
-                    }
+                        bool isPasswordMatched = Cryptography.VerifyPassword(txtPassword.Text, loginAdmin.Hash, loginAdmin.Salt);
+
+                        if (isPasswordMatched == true) {
+                            MessageBox.Show("Login succeeded!");
+                            this.Hide();
+                            Main mainForm = new Main();
+                            mainForm.Show();
+                        } 
                 }
+
             }
         }
-
-
+                         
         private void btnCreateAcc_Click(object sender, EventArgs e) {
 
             // Opret admin såfremt radiobutton (rbutAdm) er valgt
@@ -85,5 +83,20 @@ namespace DesktopClientToService.PresentationLayer
             }
 
         }
+
+        private void btnSkipLogin_Click(object sender, EventArgs e) {
+            this.Hide();
+            Main mainForm = new Main();
+            mainForm.Show();
+        }
+
+        private void rbutCust_CheckedChanged(object sender, EventArgs e) {
+
+        }
+
+        private void rbutAdm_CheckedChanged(object sender, EventArgs e) {
+
+        }
     }
 }
+
