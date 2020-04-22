@@ -98,11 +98,10 @@ namespace DesktopClientToService.PresentationLayer
                 MessageBox.Show("Please chose wheter it is payed!");
             }
 
-            Auction foundAuction = auctionController.GetAuctionById(findAuctionId);
-            int aId = foundAuction.AuctionId;
+           
 
             ControlAuction ctrlAuction = new ControlAuction();
-            ctrlAuction.UpdateAuction(aId, timeLeft, payment, result, dateTime, productName, productDescription);
+            ctrlAuction.UpdateAuction(findAuctionId, timeLeft, payment, result, dateTime, productName, productDescription);
         }
     }
 }

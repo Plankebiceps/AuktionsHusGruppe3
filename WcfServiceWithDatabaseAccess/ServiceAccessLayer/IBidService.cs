@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfServiceWithDatabaseAccess.ModelLayer;
 
 namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
 {
@@ -13,5 +14,9 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
     {
         [OperationContract]
         void DoWork();
+
+        [OperationContract]
+        bool CreateBid(decimal priceBid, Customer bidder);
+
     }
 }

@@ -97,7 +97,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
         public void ModifySavedAuction(Auction anAuction) {
 
             string insertString = "UPDATE Auction SET timeLeft=@timeLeft, payment=@payment, result=@result, paymentDate=@paymentDate, " +
-                                  "productName=@productName, productDescription=@productDescription WHERE auctionId = @AuctionId)";
+                                  "productName=@productName, productDescription=@productDescription WHERE auctionId=@auctionId";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
 
@@ -127,7 +127,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                     con.Open();
                     // Execute save
                     /*int rowsAffected = */
-                    CreateCommand.ExecuteNonQuery();
+                    int modified = CreateCommand.ExecuteNonQuery();
                     // Evaluate
                     //wasInserted = (rowsAffected == 6);
 

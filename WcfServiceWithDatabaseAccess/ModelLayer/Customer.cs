@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace WcfServiceWithDatabaseAccess.ModelLayer
 {
     [DataContract]
-    class Customer : Person
+    public class Customer : Person
     {
         [DataMember]
         public string FirstName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
