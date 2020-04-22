@@ -47,7 +47,17 @@ namespace DesktopClientToService.PresentationLayer
         private void button1_Click(object sender, EventArgs e) {
 
             if (rbutAdm.Checked == true) {
+                if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
+                    Admin admin = new Admin();
+                    admin.Email = txtEmail.Text;
+                    admin.Password = txtPassword.Text;
+
+                    ControlAdmin ctrlAdmin = new ControlAdmin();
+                    ctrlAdmin.LoginAdmin(admin);
+
+                    MessageBox.Show("You are signed in!");
+                }
                 // TO DO : Login tjeneste. Problemer med at genkende email og password. 
                 //       
                 

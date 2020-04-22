@@ -9,8 +9,6 @@ using DesktopClientToService.ModelLayer;
 namespace DesktopClientToService.Utilities {
     public class ConvertDataAdmin {
 
-
-
         public ModelLayer.Admin ConvertFromServiceAdmin(ServiceRefAdmin.Admin serviceAdmin) {
             ModelLayer.Admin clientAdmin = null;
             if (serviceAdmin != null) {
@@ -24,8 +22,6 @@ namespace DesktopClientToService.Utilities {
             }
             return clientAdmin;
         }
-
-
 
         public ServiceRefAdmin.Admin ConvertToServiceAdmin(ModelLayer.Admin desktopAdmin) {
             ServiceRefAdmin.Admin serviceAdmin = null;
