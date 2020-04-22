@@ -40,7 +40,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 
         public Admin LoginToDb(Admin anAdmin) {
 
-            Admin adminToLogin;
+            //Admin adminToLogin;
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 con.Open();
                 using (SqlCommand cmdSelectAdmin = con.CreateCommand()) {
@@ -49,8 +49,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                     cmdSelectAdmin.Parameters.AddWithValue("password", anAdmin.Password);
                     cmdSelectAdmin.ExecuteScalar();
                 }
-                adminToLogin = anAdmin;
-                return adminToLogin;
+                //adminToLogin = anAdmin;
+                return anAdmin;
 
             }
         }
