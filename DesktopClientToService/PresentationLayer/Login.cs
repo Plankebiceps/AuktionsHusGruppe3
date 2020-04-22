@@ -49,20 +49,20 @@ namespace DesktopClientToService.PresentationLayer
             if (rbutAdm.Checked == true) {
                 if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
+                    ControlAdmin ctrlAdmin = new ControlAdmin();
                     Admin admin = new Admin();
+
                     admin.Email = txtEmail.Text;
                     admin.Password = txtPassword.Text;
 
-                    ControlAdmin ctrlAdmin = new ControlAdmin();
                     ctrlAdmin.LoginAdmin(admin);
-
-                    MessageBox.Show("You are signed in!");
                 }
+                MessageBox.Show("You are signed in!");
                 // TO DO : Login tjeneste. Problemer med at genkende email og password. 
-                //       
-                
-                
-                
+  
+
+
+
 
             }
 
@@ -74,13 +74,11 @@ namespace DesktopClientToService.PresentationLayer
             // Opret admin såfremt radiobutton (rbutAdm) er valgt
             if (rbutAdm.Checked == true) {
 
-                string tempFirstName = "test";
-                string tempLastName = "testersen";
                 string tempEmail = txtEmail.Text;
                 string tempPassword = txtPassword.Text;
             
                 ControlAdmin ctrlAdmin = new ControlAdmin();
-                ctrlAdmin.CreateAdmin(tempFirstName, tempLastName, tempEmail, tempPassword);
+                ctrlAdmin.CreateAdmin(tempEmail, tempPassword);
             
             }
             MessageBox.Show("Admin created succesfully!");

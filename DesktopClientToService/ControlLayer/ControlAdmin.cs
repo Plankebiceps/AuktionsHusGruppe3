@@ -10,10 +10,8 @@ using DesktopClientToService.ModelLayer;
 namespace DesktopClientToService.ControlLayer {
     public class ControlAdmin {
 
-        public Admin CreateAdmin(string firstName, string lastName, string email, string password) {
+        public Admin CreateAdmin(string email, string password) {
             Admin admin = new Admin {
-                FirstName = firstName,
-                LastName = lastName,
                 Email = email,
                 Password = password
             };

@@ -40,21 +40,17 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 
         public Admin LoginToDb(Admin anAdmin) {
 
-            Admin madeAdmin;
+            Admin adminToLogin;
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 con.Open();
                 using (SqlCommand cmdSelectAdmin = con.CreateCommand()) {
-                    cmdSelectAdmin.CommandText = "SELECT * FROM Admin(adminEmail, password) VALUES (@adminEmail, @password)";
+                    cmdSelectAdmin.CommandText = "Select * from Admin where adminEmail=@adminEmail and password=@password";
                     cmdSelectAdmin.Parameters.AddWithValue("adminEmail", anAdmin.Email);
                     cmdSelectAdmin.Parameters.AddWithValue("password", anAdmin.Password);
-                    con.Open();
-                    SqlDataAdapter adapt = new SqlDataAdapter(cmdSelectAdmin);
-                    DataSet ds = new DataSet();
-                    adapt.Fill(ds);
-                    con.Close();
+                    cmdSelectAdmin.ExecuteScalar();
                 }
-                madeAdmin = anAdmin;
-                return madeAdmin;
+                adminToLogin = anAdmin;
+                return adminToLogin;
 
             }
         }

@@ -30,7 +30,7 @@ namespace DesktopClientToService.ServiceLayer {
             proxyRef.Admin adminInServiceFormat = new ConvertDataAdmin().ConvertToServiceAdmin(adminToLogin);
 
             using (proxyRef.AdminServiceClient adminProxy = new proxyRef.AdminServiceClient()) {
-                adminProxy.CreateAdmin(adminInServiceFormat);
+                adminProxy.LoginAdmin(adminInServiceFormat);
             }
             return adminToLogin;
         }
