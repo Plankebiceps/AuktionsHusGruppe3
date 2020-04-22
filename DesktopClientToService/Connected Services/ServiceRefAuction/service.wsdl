@@ -25,11 +25,11 @@
   <wsdl:message name="IAuctionService_DeleteAuction_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteAuctionResponse" />
   </wsdl:message>
-  <wsdl:message name="IAuctionService_ModifyAuction_InputMessage">
-    <wsdl:part name="parameters" element="tns:ModifyAuction" />
+  <wsdl:message name="IAuctionService_UpdateAuction_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAuction" />
   </wsdl:message>
-  <wsdl:message name="IAuctionService_ModifyAuction_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ModifyAuctionResponse" />
+  <wsdl:message name="IAuctionService_UpdateAuction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAuctionResponse" />
   </wsdl:message>
   <wsdl:portType name="IAuctionService">
     <wsdl:operation name="GetAuctionById">
@@ -44,9 +44,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAuctionService/DeleteAuction" message="tns:IAuctionService_DeleteAuction_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAuctionService/DeleteAuctionResponse" message="tns:IAuctionService_DeleteAuction_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ModifyAuction">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuctionService/ModifyAuction" message="tns:IAuctionService_ModifyAuction_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuctionService/ModifyAuctionResponse" message="tns:IAuctionService_ModifyAuction_OutputMessage" />
+    <wsdl:operation name="UpdateAuction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuctionService/UpdateAuction" message="tns:IAuctionService_UpdateAuction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuctionService/UpdateAuctionResponse" message="tns:IAuctionService_UpdateAuction_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAuctionService" type="tns:IAuctionService">
@@ -78,8 +78,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ModifyAuction">
-      <soap:operation soapAction="http://tempuri.org/IAuctionService/ModifyAuction" style="document" />
+    <wsdl:operation name="UpdateAuction">
+      <soap:operation soapAction="http://tempuri.org/IAuctionService/UpdateAuction" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

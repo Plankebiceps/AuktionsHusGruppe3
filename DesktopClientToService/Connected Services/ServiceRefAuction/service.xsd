@@ -41,23 +41,16 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="ModifyAuction">
+  <xs:element name="UpdateAuction">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="timeLeft" type="xs:decimal" />
-        <xs:element minOccurs="0" name="payment" type="xs:boolean" />
-        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="paymentDate" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="productName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="productDescription" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="auctionToUpdate" nillable="true" type="q3:Auction" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ModifyAuctionResponse">
+  <xs:element name="UpdateAuctionResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="ModifyAuctionResult" nillable="true" type="q3:Auction" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

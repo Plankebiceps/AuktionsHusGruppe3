@@ -78,6 +78,31 @@ namespace DesktopClientToService.PresentationLayer
             loginForm.Show();
         }
 
+        private void btnUpdateAuction_Click(object sender, EventArgs e) {
+            DateTime dateTime = dateTimePickerAuction.Value;
+            string result = txtAuction_Result.Text;
+            string productName = txtProdName.Text;
+            string productDescription = txtProdDescription.Text;
+            bool payment = false;
+            decimal timeLeft;
+            decimal.TryParse(txtAuction_TimeLeft.Text, out timeLeft);
 
+            int findAuctionId;
+            int.TryParse(txtboxAuctionId.Text, out findAuctionId);
+
+            if (radioBtnAuction.Checked) {
+                payment = true;
+            } else if (rbutNotPayed.Checked) {
+                payment = false;
+            } else if (!radioBtnAuction.Checked && !rbutNotPayed.Checked) {
+                MessageBox.Show("Please chose wheter it is payed!");
+            }
+
+            Auction foundAuction = auctionController.GetAuctionById(findAuctionId);
+            int aId = foundAuction.AuctionId;
+
+            ControlAuction ctrlAuction = new ControlAuction();
+            ctrlAuction.UpdateAuction(aId, timeLeft, payment, result, dateTime, productName, productDescription);
+        }
     }
 }

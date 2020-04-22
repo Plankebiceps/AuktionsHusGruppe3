@@ -176,11 +176,11 @@ namespace DesktopClientToService.ServiceRefAuction {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/DeleteAuction", ReplyAction="http://tempuri.org/IAuctionService/DeleteAuctionResponse")]
         System.Threading.Tasks.Task DeleteAuctionAsync(int auctionId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/ModifyAuction", ReplyAction="http://tempuri.org/IAuctionService/ModifyAuctionResponse")]
-        DesktopClientToService.ServiceRefAuction.Auction ModifyAuction(decimal timeLeft, bool payment, string result, System.DateTime paymentDate, string productName, string productDescription);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/UpdateAuction", ReplyAction="http://tempuri.org/IAuctionService/UpdateAuctionResponse")]
+        void UpdateAuction(DesktopClientToService.ServiceRefAuction.Auction auctionToUpdate);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/ModifyAuction", ReplyAction="http://tempuri.org/IAuctionService/ModifyAuctionResponse")]
-        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction> ModifyAuctionAsync(decimal timeLeft, bool payment, string result, System.DateTime paymentDate, string productName, string productDescription);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuctionService/UpdateAuction", ReplyAction="http://tempuri.org/IAuctionService/UpdateAuctionResponse")]
+        System.Threading.Tasks.Task UpdateAuctionAsync(DesktopClientToService.ServiceRefAuction.Auction auctionToUpdate);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -234,12 +234,12 @@ namespace DesktopClientToService.ServiceRefAuction {
             return base.Channel.DeleteAuctionAsync(auctionId);
         }
         
-        public DesktopClientToService.ServiceRefAuction.Auction ModifyAuction(decimal timeLeft, bool payment, string result, System.DateTime paymentDate, string productName, string productDescription) {
-            return base.Channel.ModifyAuction(timeLeft, payment, result, paymentDate, productName, productDescription);
+        public void UpdateAuction(DesktopClientToService.ServiceRefAuction.Auction auctionToUpdate) {
+            base.Channel.UpdateAuction(auctionToUpdate);
         }
         
-        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAuction.Auction> ModifyAuctionAsync(decimal timeLeft, bool payment, string result, System.DateTime paymentDate, string productName, string productDescription) {
-            return base.Channel.ModifyAuctionAsync(timeLeft, payment, result, paymentDate, productName, productDescription);
+        public System.Threading.Tasks.Task UpdateAuctionAsync(DesktopClientToService.ServiceRefAuction.Auction auctionToUpdate) {
+            return base.Channel.UpdateAuctionAsync(auctionToUpdate);
         }
     }
 }

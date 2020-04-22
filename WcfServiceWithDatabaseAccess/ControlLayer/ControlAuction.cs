@@ -25,8 +25,6 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
             auctionDb.DeleteFromDb(auctionId);
         }
 
-
-
         public Auction GetAuctionById(int findAuctionId)
         {
             Auction foundAuction;
@@ -35,6 +33,11 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
             foundAuction = auctionDb.GetAuctionById(findAuctionId);
 
             return foundAuction;
+        }
+
+        public void ModifyAuction(Auction auctionToModify) {
+            AuctionAccess auctionDb = new AuctionAccess();
+            auctionDb.ModifySavedAuction(auctionToModify);
         }
     }
 }

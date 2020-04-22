@@ -13,10 +13,10 @@ namespace DesktopClientToService.ServiceLayer
 {
     public class AuctionService
     {
-        public bool AddAuction(clientRef.Auction auctionToCreate)
+        public bool AddAuction(clientRef.Auction auctionToAdd)
         {
             bool allOk = false;
-            proxyRef.Auction auctionInServiceFormat = new ConvertDataAuction().ConvertToServiceAuction(auctionToCreate);
+            proxyRef.Auction auctionInServiceFormat = new ConvertDataAuction().ConvertToServiceAuction(auctionToAdd);
             using (proxyRef.AuctionServiceClient auctionProxy = new proxyRef.AuctionServiceClient()) {
                 allOk = auctionProxy.AddAuction(auctionInServiceFormat);
             }
@@ -43,6 +43,13 @@ namespace DesktopClientToService.ServiceLayer
             }
 
             return clientAuction;
+        }
+
+        public void UpdateAuction(clientRef.Auction auctionToUpdate) {
+            proxyRef.Auction auctionInServiceFormat = new ConvertDataAuction().ConvertToServiceAuction(auctionToUpdate);
+            using (proxyRef.AuctionServiceClient auctionProxy = new proxyRef.AuctionServiceClient()) {
+                auctionProxy.UpdateAuction(auctionInServiceFormat);
+            }
         }
 
 

@@ -34,10 +34,27 @@ namespace DesktopClientToService.ControlLayer
             auctionService.DeleteAuction(auctionId);
         }
 
-        public ModelLayer.Auction GetAuctionById(int findAuctionId)
+        public Auction GetAuctionById(int findAuctionId)
         {
             AuctionService auctionService = new AuctionService();
             return auctionService.GetAuctionById(findAuctionId);
+        }
+
+        public void UpdateAuction(int auctionIdToUpdate, decimal timeLeft, bool payment, string result, DateTime paymentDate,
+                                  string productName, string productDescription) {
+
+            Auction auction = new Auction {
+                TimeLeft = timeLeft,
+                Payment = payment,
+                Result = result,
+                PaymentDate = paymentDate,
+                ProductName = productName,
+                ProductDescription = productDescription
+            };
+
+            AuctionService auctionService = new AuctionService();
+            auctionService.UpdateAuction(auction);
+
         }
     }
 }

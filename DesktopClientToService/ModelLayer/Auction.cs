@@ -27,6 +27,15 @@ namespace DesktopClientToService.ModelLayer
             ProductDescription = productDescription;
         }
 
+        public Auction(decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription) {
+            TimeLeft = timeLeft;
+            Payment = payment;
+            Result = result;
+            PaymentDate = paymentDate;
+            ProductName = productName;
+            ProductDescription = productDescription;
+        }
+
         public Auction() {
 
         }

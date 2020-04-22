@@ -32,9 +32,9 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
             return ctrlAuction.GetAuctionById(findAuctionId);
         }
 
-        public Auction ModifyAuction(decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription)
-        {
-            throw new NotImplementedException();
+        public void UpdateAuction(Auction auctionToUpdate) {
+            ControlAuction ctrlAuction = new ControlAuction();
+            ctrlAuction.ModifyAuction(auctionToUpdate);
         }
     }
 }

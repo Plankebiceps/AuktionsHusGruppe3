@@ -22,6 +22,6 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
         void DeleteAuction(int auctionId);
 
         [OperationContract]
-        Auction ModifyAuction(decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription);
+        void UpdateAuction(Auction auctionToUpdate);
     }
 }

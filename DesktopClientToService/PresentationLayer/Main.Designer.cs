@@ -48,13 +48,14 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDeleteAuction = new System.Windows.Forms.Button();
             this.rbutNotPayed = new System.Windows.Forms.RadioButton();
+            this.btnUpdateAuction = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAuction
             // 
-            this.btnAuction.Location = new System.Drawing.Point(132, 194);
+            this.btnAuction.Location = new System.Drawing.Point(130, 194);
             this.btnAuction.Name = "btnAuction";
-            this.btnAuction.Size = new System.Drawing.Size(102, 30);
+            this.btnAuction.Size = new System.Drawing.Size(131, 30);
             this.btnAuction.TabIndex = 1;
             this.btnAuction.Text = "Create";
             this.btnAuction.UseVisualStyleBackColor = true;
@@ -224,11 +225,22 @@
             this.rbutNotPayed.Text = "Not Payed";
             this.rbutNotPayed.UseVisualStyleBackColor = true;
             // 
+            // btnUpdateAuction
+            // 
+            this.btnUpdateAuction.Location = new System.Drawing.Point(265, 194);
+            this.btnUpdateAuction.Name = "btnUpdateAuction";
+            this.btnUpdateAuction.Size = new System.Drawing.Size(131, 30);
+            this.btnUpdateAuction.TabIndex = 31;
+            this.btnUpdateAuction.Text = "Update";
+            this.btnUpdateAuction.UseVisualStyleBackColor = true;
+            this.btnUpdateAuction.Click += new System.EventHandler(this.btnUpdateAuction_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnUpdateAuction);
             this.Controls.Add(this.rbutNotPayed);
             this.Controls.Add(this.btnDeleteAuction);
             this.Controls.Add(this.btnExit);
@@ -278,5 +290,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnDeleteAuction;
         private System.Windows.Forms.RadioButton rbutNotPayed;
+        private System.Windows.Forms.Button btnUpdateAuction;
     }
 }

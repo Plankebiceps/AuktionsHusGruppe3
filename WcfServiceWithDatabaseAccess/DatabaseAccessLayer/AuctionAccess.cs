@@ -11,11 +11,9 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
     public class AuctionAccess {
         readonly string connectionString;
 
-
         public AuctionAccess() {
             connectionString = "data Source=.; database=3SemDB; integrated security=true";
         }
-
 
         public bool SaveAuction(Auction anAuction) {
 
@@ -55,8 +53,6 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
             }
         }
 
-
-
         public void DeleteFromDb(int auctionId) {
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 con.Open();
@@ -68,11 +64,10 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
             }
         }
 
-
         public Auction GetAuctionById(int findAuctionId) {
             Auction foundAuction = new Auction();
 
-            string queryString = "select auctionId, timeLeft, payment, result, paymentDate, productName, productDescription FROM Auction WHERE auctionId = @auctionId";
+            string queryString = "SELECT auctionId, timeLeft, payment, result, paymentDate, productName, productDescription FROM Auction WHERE auctionId = @auctionId";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
@@ -92,12 +87,54 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                         foundAuction.PaymentDate = reader.GetDateTime(reader.GetOrdinal("paymentDate"));
                         foundAuction.ProductName = reader.GetString(reader.GetOrdinal("productName"));
                         foundAuction.ProductDescription = reader.GetString(reader.GetOrdinal("productDescription"));
+
                     }
                 }
             }
             return foundAuction;
         }
 
+        public void ModifySavedAuction(Auction anAuction) {
+
+            string insertString = "UPDATE Auction SET timeLeft=@timeLeft, payment=@payment, result=@result, paymentDate=@paymentDate, " +
+                                  "productName=@productName, productDescription=@productDescription WHERE auctionId = @AuctionId)";
+
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+
+                using (SqlCommand CreateCommand = new SqlCommand(insertString, con)) {
+
+
+
+                    //Prepace SQL
+                    // SqlParameter idParam = new SqlParameter("@AuctionId", anAuction.AuctionId);
+
+                    SqlParameter idParam = new SqlParameter("@auctionId", anAuction.AuctionId);
+                    CreateCommand.Parameters.Add(idParam);
+
+                    SqlParameter timeLeftParam = new SqlParameter("@timeLeft", anAuction.TimeLeft);
+                    CreateCommand.Parameters.Add(timeLeftParam);
+                    SqlParameter paymentParam = new SqlParameter("@payment", anAuction.Payment);
+                    CreateCommand.Parameters.Add(paymentParam);
+                    SqlParameter resultParam = new SqlParameter("@result", anAuction.Result);
+                    CreateCommand.Parameters.Add(resultParam);
+                    SqlParameter payDateParam = new SqlParameter("@paymentDate", anAuction.PaymentDate);
+                    CreateCommand.Parameters.Add(payDateParam);
+                    SqlParameter prodNameParam = new SqlParameter("@productName", anAuction.ProductName);
+                    CreateCommand.Parameters.Add(prodNameParam);
+                    SqlParameter prodDescriptParam = new SqlParameter("@productDescription", anAuction.ProductDescription);
+                    CreateCommand.Parameters.Add(prodDescriptParam);
+
+                    con.Open();
+                    // Execute save
+                    /*int rowsAffected = */
+                    CreateCommand.ExecuteNonQuery();
+                    // Evaluate
+                    //wasInserted = (rowsAffected == 6);
+
+                    //return wasInserted;
+                }
+            }
+        }
     }
 }
     
