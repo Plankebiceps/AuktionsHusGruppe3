@@ -80,8 +80,10 @@
     <Compile Include="DatabaseAccessLayer\AuctionAccess.cs" />
     <Compile Include="DatabaseAccessLayer\AdminAccess.cs" />
     <Compile Include="DatabaseAccessLayer\CustomerAccess.cs" />
+    <Compile Include="DatabaseAccessLayer\BidAccess.cs" />
     <Compile Include="ModelLayer\Admin.cs" />
     <Compile Include="ModelLayer\Auction.cs" />
+    <Compile Include="ModelLayer\Bid.cs" />
     <Compile Include="ModelLayer\Customer.cs" />
     <Compile Include="ModelLayer\Person.cs" />
     <Compile Include="ModelLayer\Receipt.cs" />

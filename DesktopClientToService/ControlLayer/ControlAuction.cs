@@ -44,6 +44,7 @@ namespace DesktopClientToService.ControlLayer
                                   string productName, string productDescription) {
 
             Auction auction = new Auction {
+                AuctionId = auctionIdToUpdate,
                 TimeLeft = timeLeft,
                 Payment = payment,
                 Result = result,
