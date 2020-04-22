@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DesktopClientToService.ControlLayer;
 using DesktopClientToService.ModelLayer;
+using DesktopClientToService.Utilities.Security;
 
 namespace DesktopClientToService.PresentationLayer
 {
@@ -49,14 +50,21 @@ namespace DesktopClientToService.PresentationLayer
             if (rbutAdm.Checked == true) {
                 if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
+                    Admin loginAdmin = null;
 
+                    ControlAdmin ctrlAdmin = new ControlAdmin();
+                    loginAdmin = ctrlAdmin.GetAdminByEmail(txtEmail.Text);
+
+                    bool isPasswordMatched = Cryptography.VerifyPassword(txtPassword.Text, loginAdmin.Hash, loginAdmin.Salt);
+
+                    if (isPasswordMatched == true) {
+                        MessageBox.Show("Login Succeeded!");
+                    } else {
+                        MessageBox.Show("Try Again!");
+                   
+                    }
                 }
-
-                // TO DO : Login tjeneste. Problemer med at genkende email og password. 
- 
-
             }
-
         }
 
 

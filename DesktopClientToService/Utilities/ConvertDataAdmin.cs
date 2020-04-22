@@ -13,6 +13,8 @@ namespace DesktopClientToService.Utilities {
             ModelLayer.Admin clientAdmin = null;
             if (serviceAdmin != null) {
                 clientAdmin = new ModelLayer.Admin {
+                    Salt = serviceAdmin.Salt,
+                    Hash = serviceAdmin.Hash,
                     Email = serviceAdmin.Email,
                     Password = serviceAdmin.Password,
 
@@ -25,6 +27,8 @@ namespace DesktopClientToService.Utilities {
             ServiceRefAdmin.Admin serviceAdmin = null;
             if (desktopAdmin != null) {
                 serviceAdmin = new ServiceRefAdmin.Admin {
+                    Salt = desktopAdmin.Salt,
+                    Hash = desktopAdmin.Hash,
                     Email = desktopAdmin.Email,
                     Password = desktopAdmin.Password,
                 };

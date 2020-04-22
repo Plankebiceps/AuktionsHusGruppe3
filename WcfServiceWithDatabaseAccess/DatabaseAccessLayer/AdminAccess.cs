@@ -21,16 +21,13 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             connectionString = "data Source=.; database=3SemDB; integrated security=true";
         }
 
-        public Admin CreateToDb(Admin anAdmin)
-        {
+        public Admin CreateToDb(Admin anAdmin) {
             Admin madeAdmin;
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
+            using (SqlConnection con = new SqlConnection(connectionString)) {
                 con.Open();
-                using (SqlCommand cmdInsertAdmin = con.CreateCommand())
-                {
+                using (SqlCommand cmdInsertAdmin = con.CreateCommand()) {
                     cmdInsertAdmin.CommandText = "INSERT INTO Admin(salt, hash, adminEmail) VALUES (@salt, @hash, @adminEmail)";
-                    
+
                     Cryptography hashSaltToSave = Cryptography.GenerateSaltedHash(64, anAdmin.Password);
                     anAdmin.Salt = hashSaltToSave.Salt;
                     anAdmin.Hash = hashSaltToSave.Hash;
@@ -83,7 +80,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                 if (userReader.HasRows) {
                     string tempEmail, tempSalt, tempHash;
                     while (userReader.Read()) {
-                        tempEmail = userReader.GetString(userReader.GetOrdinal("username"));
+                        tempEmail = userReader.GetString(userReader.GetOrdinal("adminEmail"));
                         tempSalt = userReader.GetString(userReader.GetOrdinal("hash"));
                         tempHash = userReader.GetString(userReader.GetOrdinal("salt"));
                         adminToGet = new Admin(tempEmail, tempSalt, tempHash);
