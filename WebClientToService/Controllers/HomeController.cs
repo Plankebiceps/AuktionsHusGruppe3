@@ -24,7 +24,7 @@ namespace WebClientToService.Controllers {
             return View();
         }
 
-        public ActionResult Auction() {
+        public ActionResult Auctions() {
             WebAuctionService was = new WebAuctionService();
             List<WebAuction> auctionsToDisplay = was.GetAllAuctions();
 

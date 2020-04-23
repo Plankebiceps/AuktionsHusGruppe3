@@ -1,6 +1,8 @@
 ﻿@model List<WebClientToService.Models.WebAuction>
 @{
-    Layout = null;
+    ViewBag.Title = "Auctions";
+    //Layout = null;
+
 }
 
 <!DOCTYPE html>
@@ -16,7 +18,6 @@
         <ul>
             @{
                 foreach (var item in Model) {
-                    @* Utilises ClientPerson ToString() *@
                     <li>@item</li>
                 }
             }
