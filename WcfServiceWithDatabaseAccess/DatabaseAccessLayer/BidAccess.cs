@@ -37,26 +37,26 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             }
         }
 
-        public bool SaveBid(Bid newBid, Customer aBidder)
-        {
-            bool wasInserted;
-            string insertString = "insert into Bid(price, customerId) VALUES (@price, @customerId)";
+        //public bool SaveBid(Bid newBid, Customer aBidder)
+        //{
+        //    bool wasInserted;
+        //    string insertString = "insert into Bid(price, customerId) VALUES (@price, @customerId)";
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                using (SqlCommand CreateCommand = new SqlCommand(insertString, con))
-                {
+        //    using (SqlConnection con = new SqlConnection(connectionString))
+        //    {
+        //        using (SqlCommand CreateCommand = new SqlCommand(insertString, con))
+        //        {
 
-                    //Prepare SQL
-                    SqlParameter bidPrice = new SqlParameter("@price", newBid.Price);
-                    CreateCommand.Parameters.Add(bidPrice);
-                    SqlParameter customerId = new SqlParameter("@customerId", );
+        //            //Prepare SQL
+        //            SqlParameter bidPrice = new SqlParameter("@price", newBid.Price);
+        //            CreateCommand.Parameters.Add(bidPrice);
+        //            SqlParameter customerId = new SqlParameter("@customerId", );
 
 
 
-                }
-            }
+        //        }
+        //    }
 
-        }
+        //}
     }
 }

@@ -1,0 +1,27 @@
+﻿@model List<WebClientToService.Models.WebAuction>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Auctions</title>
+</head>
+<body>
+    <h3>@Model.Count auctions</h3>
+    <div>
+        <ul>
+            @{
+                foreach (var item in Model) {
+                    @* Utilises ClientPerson ToString() *@
+                    <li>@item</li>
+                }
+            }
+        </ul>
+    
+    </div>
+</body>
+</html>
