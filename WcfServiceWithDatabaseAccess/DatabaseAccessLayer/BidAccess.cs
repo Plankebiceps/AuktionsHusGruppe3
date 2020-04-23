@@ -53,7 +53,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                     SqlParameter customerId = new SqlParameter("@customerId", );
 
 
-                    return wasInserted;
+
                 }
             }
 

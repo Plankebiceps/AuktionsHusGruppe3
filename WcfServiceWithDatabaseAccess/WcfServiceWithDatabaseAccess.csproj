@@ -98,7 +98,7 @@
     <Compile Include="ServiceAccessLayer\ICustomerService.cs" />
     <Compile Include="ServiceAccessLayer\IRecieptService.cs" />
     <Compile Include="ServiceAccessLayer\RecieptService.cs" />
-    <Compile Include="Utilities\Security\Cryptography.cs" />
+    <Compile Include="Utilities\Security\HashSalt.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

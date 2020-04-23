@@ -50,7 +50,7 @@ namespace DesktopClientToService.PresentationLayer {
                     ControlAdmin ctrlAdmin = new ControlAdmin();
                     Admin loginAdmin = ctrlAdmin.GetAdminByEmail(txtEmail.Text);
 
-                    bool isPasswordMatched = Cryptography.VerifyPassword(txtPassword.Text, loginAdmin.Hash, loginAdmin.Salt);
+                    bool isPasswordMatched = HashSalt.VerifyPassword(txtPassword.Text, loginAdmin.Hash, loginAdmin.Salt);
 
                     if (isPasswordMatched == true) {
                         MessageBox.Show("Login succeeded!");

@@ -97,7 +97,7 @@
     <Compile Include="Utilities\ConvertDataAdmin.cs" />
     <Compile Include="Utilities\IModelConvert.cs" />
     <Compile Include="Utilities\ConvertDataAuction.cs" />
-    <Compile Include="Utilities\Security\Cryptography.cs" />
+    <Compile Include="Utilities\Security\HashSalt.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

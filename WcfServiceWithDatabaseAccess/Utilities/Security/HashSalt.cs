@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace WcfServiceWithDatabaseAccess.Utilities.Security {
 
-    public class Cryptography {
+    public class HashSalt {
 
         public string Hash { get; set; }
         public string Salt { get; set; }
 
-        public static Cryptography GenerateSaltedHash(int size, string password) {
+        public static HashSalt GenerateSaltedHash(int size, string password) {
             var saltBytes = new byte[size];
             var provider = new RNGCryptoServiceProvider();
             provider.GetNonZeroBytes(saltBytes);
@@ -21,7 +21,7 @@ namespace WcfServiceWithDatabaseAccess.Utilities.Security {
             var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, saltBytes, 10000);
             var hashPassword = Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256));
 
-            Cryptography hashSalt = new Cryptography { Hash = hashPassword, Salt = salt };
+            HashSalt hashSalt = new HashSalt { Hash = hashPassword, Salt = salt };
             return hashSalt;
         }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DesktopClientToService.Utilities.Security {
 
-    public class Cryptography {
+    public class HashSalt {
 
         public static bool VerifyPassword(string enteredPassword, string storedHash, string storedSalt) {
             var saltBytes = Convert.FromBase64String(storedSalt);

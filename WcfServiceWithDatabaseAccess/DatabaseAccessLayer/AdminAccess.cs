@@ -25,7 +25,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                 using (SqlCommand cmdInsertAdmin = con.CreateCommand()) {
                     cmdInsertAdmin.CommandText = "INSERT INTO Admin(salt, hash, adminEmail) VALUES (@salt, @hash, @adminEmail)";
 
-                    Cryptography hashSaltToSave = Cryptography.GenerateSaltedHash(64, anAdmin.Password);
+                    HashSalt hashSaltToSave = HashSalt.GenerateSaltedHash(64, anAdmin.Password);
                     anAdmin.Salt = hashSaltToSave.Salt;
                     anAdmin.Hash = hashSaltToSave.Hash;
 
