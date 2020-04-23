@@ -49,11 +49,13 @@
             this.btnDeleteAuction = new System.Windows.Forms.Button();
             this.rbutNotPayed = new System.Windows.Forms.RadioButton();
             this.btnUpdateAuction = new System.Windows.Forms.Button();
+            this.listBoxAuctions = new System.Windows.Forms.ListBox();
+            this.btnAllAuctions = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAuction
             // 
-            this.btnAuction.Location = new System.Drawing.Point(130, 194);
+            this.btnAuction.Location = new System.Drawing.Point(96, 181);
             this.btnAuction.Name = "btnAuction";
             this.btnAuction.Size = new System.Drawing.Size(131, 30);
             this.btnAuction.TabIndex = 1;
@@ -63,14 +65,14 @@
             // 
             // txtAuction_TimeLeft
             // 
-            this.txtAuction_TimeLeft.Location = new System.Drawing.Point(132, 38);
+            this.txtAuction_TimeLeft.Location = new System.Drawing.Point(96, 28);
             this.txtAuction_TimeLeft.Name = "txtAuction_TimeLeft";
             this.txtAuction_TimeLeft.Size = new System.Drawing.Size(264, 20);
             this.txtAuction_TimeLeft.TabIndex = 3;
             // 
             // txtAuction_Result
             // 
-            this.txtAuction_Result.Location = new System.Drawing.Point(132, 90);
+            this.txtAuction_Result.Location = new System.Drawing.Point(96, 77);
             this.txtAuction_Result.Name = "txtAuction_Result";
             this.txtAuction_Result.Size = new System.Drawing.Size(264, 20);
             this.txtAuction_Result.TabIndex = 5;
@@ -78,7 +80,7 @@
             // radioBtnAuction
             // 
             this.radioBtnAuction.AutoSize = true;
-            this.radioBtnAuction.Location = new System.Drawing.Point(132, 64);
+            this.radioBtnAuction.Location = new System.Drawing.Point(96, 54);
             this.radioBtnAuction.Name = "radioBtnAuction";
             this.radioBtnAuction.Size = new System.Drawing.Size(55, 17);
             this.radioBtnAuction.TabIndex = 12;
@@ -88,30 +90,30 @@
             // 
             // dateTimePickerAuction
             // 
-            this.dateTimePickerAuction.Location = new System.Drawing.Point(132, 116);
+            this.dateTimePickerAuction.Location = new System.Drawing.Point(96, 103);
             this.dateTimePickerAuction.Name = "dateTimePickerAuction";
-            this.dateTimePickerAuction.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerAuction.Size = new System.Drawing.Size(264, 20);
             this.dateTimePickerAuction.TabIndex = 13;
             // 
             // txtProdName
             // 
-            this.txtProdName.Location = new System.Drawing.Point(132, 142);
+            this.txtProdName.Location = new System.Drawing.Point(96, 129);
             this.txtProdName.Name = "txtProdName";
             this.txtProdName.Size = new System.Drawing.Size(264, 20);
             this.txtProdName.TabIndex = 14;
             // 
             // txtProdDescription
             // 
-            this.txtProdDescription.Location = new System.Drawing.Point(132, 168);
+            this.txtProdDescription.Location = new System.Drawing.Point(96, 155);
             this.txtProdDescription.Name = "txtProdDescription";
             this.txtProdDescription.Size = new System.Drawing.Size(264, 20);
             this.txtProdDescription.TabIndex = 15;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(130, 325);
+            this.button1.Location = new System.Drawing.Point(96, 277);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(39, 30);
+            this.button1.Size = new System.Drawing.Size(42, 30);
             this.button1.TabIndex = 16;
             this.button1.Text = "Find";
             this.button1.UseVisualStyleBackColor = true;
@@ -119,7 +121,7 @@
             // 
             // txtboxAuctionId
             // 
-            this.txtboxAuctionId.Location = new System.Drawing.Point(132, 299);
+            this.txtboxAuctionId.Location = new System.Drawing.Point(96, 251);
             this.txtboxAuctionId.Name = "txtboxAuctionId";
             this.txtboxAuctionId.Size = new System.Drawing.Size(100, 20);
             this.txtboxAuctionId.TabIndex = 19;
@@ -134,7 +136,7 @@
             // 
             // lblProductName
             // 
-            this.lblProductName.Location = new System.Drawing.Point(129, 368);
+            this.lblProductName.Location = new System.Drawing.Point(93, 320);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(168, 60);
             this.lblProductName.TabIndex = 1;
@@ -143,7 +145,7 @@
             // lblTimeLeft
             // 
             this.lblTimeLeft.AutoSize = true;
-            this.lblTimeLeft.Location = new System.Drawing.Point(62, 41);
+            this.lblTimeLeft.Location = new System.Drawing.Point(26, 31);
             this.lblTimeLeft.Name = "lblTimeLeft";
             this.lblTimeLeft.Size = new System.Drawing.Size(30, 13);
             this.lblTimeLeft.TabIndex = 22;
@@ -152,7 +154,7 @@
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(62, 93);
+            this.lblResult.Location = new System.Drawing.Point(26, 80);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(37, 13);
             this.lblResult.TabIndex = 23;
@@ -161,7 +163,7 @@
             // lblAuctionDate
             // 
             this.lblAuctionDate.AutoSize = true;
-            this.lblAuctionDate.Location = new System.Drawing.Point(62, 118);
+            this.lblAuctionDate.Location = new System.Drawing.Point(26, 105);
             this.lblAuctionDate.Name = "lblAuctionDate";
             this.lblAuctionDate.Size = new System.Drawing.Size(30, 13);
             this.lblAuctionDate.TabIndex = 24;
@@ -170,7 +172,7 @@
             // lblProduct
             // 
             this.lblProduct.AutoSize = true;
-            this.lblProduct.Location = new System.Drawing.Point(62, 145);
+            this.lblProduct.Location = new System.Drawing.Point(26, 132);
             this.lblProduct.Name = "lblProduct";
             this.lblProduct.Size = new System.Drawing.Size(44, 13);
             this.lblProduct.TabIndex = 25;
@@ -179,7 +181,7 @@
             // lblProdDesc
             // 
             this.lblProdDesc.AutoSize = true;
-            this.lblProdDesc.Location = new System.Drawing.Point(62, 171);
+            this.lblProdDesc.Location = new System.Drawing.Point(26, 158);
             this.lblProdDesc.Name = "lblProdDesc";
             this.lblProdDesc.Size = new System.Drawing.Size(60, 13);
             this.lblProdDesc.TabIndex = 26;
@@ -188,7 +190,7 @@
             // lblFindById
             // 
             this.lblFindById.AutoSize = true;
-            this.lblFindById.Location = new System.Drawing.Point(62, 302);
+            this.lblFindById.Location = new System.Drawing.Point(26, 254);
             this.lblFindById.Name = "lblFindById";
             this.lblFindById.Size = new System.Drawing.Size(57, 13);
             this.lblFindById.TabIndex = 27;
@@ -196,17 +198,18 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(678, 408);
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(659, 311);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(110, 30);
+            this.btnExit.Size = new System.Drawing.Size(99, 30);
             this.btnExit.TabIndex = 28;
-            this.btnExit.Text = "Return to Login";
+            this.btnExit.Text = "Return To Login";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnDeleteAuction
             // 
-            this.btnDeleteAuction.Location = new System.Drawing.Point(175, 325);
+            this.btnDeleteAuction.Location = new System.Drawing.Point(139, 277);
             this.btnDeleteAuction.Name = "btnDeleteAuction";
             this.btnDeleteAuction.Size = new System.Drawing.Size(57, 30);
             this.btnDeleteAuction.TabIndex = 29;
@@ -217,7 +220,7 @@
             // rbutNotPayed
             // 
             this.rbutNotPayed.AutoSize = true;
-            this.rbutNotPayed.Location = new System.Drawing.Point(193, 64);
+            this.rbutNotPayed.Location = new System.Drawing.Point(157, 54);
             this.rbutNotPayed.Name = "rbutNotPayed";
             this.rbutNotPayed.Size = new System.Drawing.Size(75, 17);
             this.rbutNotPayed.TabIndex = 30;
@@ -227,7 +230,7 @@
             // 
             // btnUpdateAuction
             // 
-            this.btnUpdateAuction.Location = new System.Drawing.Point(265, 194);
+            this.btnUpdateAuction.Location = new System.Drawing.Point(229, 181);
             this.btnUpdateAuction.Name = "btnUpdateAuction";
             this.btnUpdateAuction.Size = new System.Drawing.Size(131, 30);
             this.btnUpdateAuction.TabIndex = 31;
@@ -235,11 +238,31 @@
             this.btnUpdateAuction.UseVisualStyleBackColor = true;
             this.btnUpdateAuction.Click += new System.EventHandler(this.btnUpdateAuction_Click);
             // 
+            // listBoxAuctions
+            // 
+            this.listBoxAuctions.FormattingEnabled = true;
+            this.listBoxAuctions.Location = new System.Drawing.Point(448, 25);
+            this.listBoxAuctions.Name = "listBoxAuctions";
+            this.listBoxAuctions.Size = new System.Drawing.Size(310, 186);
+            this.listBoxAuctions.TabIndex = 32;
+            // 
+            // btnAllAuctions
+            // 
+            this.btnAllAuctions.Location = new System.Drawing.Point(448, 217);
+            this.btnAllAuctions.Name = "btnAllAuctions";
+            this.btnAllAuctions.Size = new System.Drawing.Size(99, 30);
+            this.btnAllAuctions.TabIndex = 33;
+            this.btnAllAuctions.Text = "Find All Auctions";
+            this.btnAllAuctions.UseVisualStyleBackColor = true;
+            this.btnAllAuctions.Click += new System.EventHandler(this.btnAllAuctions_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 357);
+            this.Controls.Add(this.btnAllAuctions);
+            this.Controls.Add(this.listBoxAuctions);
             this.Controls.Add(this.btnUpdateAuction);
             this.Controls.Add(this.rbutNotPayed);
             this.Controls.Add(this.btnDeleteAuction);
@@ -291,5 +314,7 @@
         private System.Windows.Forms.Button btnDeleteAuction;
         private System.Windows.Forms.RadioButton rbutNotPayed;
         private System.Windows.Forms.Button btnUpdateAuction;
+        private System.Windows.Forms.ListBox listBoxAuctions;
+        private System.Windows.Forms.Button btnAllAuctions;
     }
 }

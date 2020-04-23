@@ -16,6 +16,6 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
         Admin CreateAdmin(Admin adminToCreate);
 
         [OperationContract]
-        Admin LoginAdmin(Admin adminToLogin);
+        Admin GetAdminByEmail(string emailToLookUp);
     }
 }

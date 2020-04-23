@@ -28,59 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnCreateAcc = new System.Windows.Forms.Button();
             this.rbutAdm = new System.Windows.Forms.RadioButton();
             this.rbutCust = new System.Windows.Forms.RadioButton();
+            this.btnSkipLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 76);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Email:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(35, 115);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 25);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Password:";
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(157, 76);
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(109, 59);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(290, 31);
+            this.txtEmail.Size = new System.Drawing.Size(290, 26);
             this.txtEmail.TabIndex = 2;
+            this.txtEmail.Text = "Email";
+            this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtPassword
             // 
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(157, 115);
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(109, 98);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(290, 31);
+            this.txtPassword.Size = new System.Drawing.Size(290, 26);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.Text = "Password";
+            this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
-            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(157, 201);
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(109, 164);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(102, 42);
+            this.btnLogin.Size = new System.Drawing.Size(102, 28);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -88,10 +71,10 @@
             // 
             // btnCreateAcc
             // 
-            this.btnCreateAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateAcc.Location = new System.Drawing.Point(265, 201);
+            this.btnCreateAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateAcc.Location = new System.Drawing.Point(217, 164);
             this.btnCreateAcc.Name = "btnCreateAcc";
-            this.btnCreateAcc.Size = new System.Drawing.Size(182, 42);
+            this.btnCreateAcc.Size = new System.Drawing.Size(182, 28);
             this.btnCreateAcc.TabIndex = 6;
             this.btnCreateAcc.Text = "Create Account";
             this.btnCreateAcc.UseVisualStyleBackColor = true;
@@ -100,38 +83,54 @@
             // rbutAdm
             // 
             this.rbutAdm.AutoSize = true;
-            this.rbutAdm.Location = new System.Drawing.Point(157, 168);
+            this.rbutAdm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbutAdm.Location = new System.Drawing.Point(109, 135);
             this.rbutAdm.Name = "rbutAdm";
-            this.rbutAdm.Size = new System.Drawing.Size(54, 17);
+            this.rbutAdm.Size = new System.Drawing.Size(64, 20);
             this.rbutAdm.TabIndex = 7;
             this.rbutAdm.TabStop = true;
             this.rbutAdm.Text = "Admin";
             this.rbutAdm.UseVisualStyleBackColor = true;
+            this.rbutAdm.CheckedChanged += new System.EventHandler(this.rbutAdm_CheckedChanged);
             // 
             // rbutCust
             // 
             this.rbutCust.AutoSize = true;
-            this.rbutCust.Location = new System.Drawing.Point(217, 168);
+            this.rbutCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbutCust.Location = new System.Drawing.Point(179, 135);
             this.rbutCust.Name = "rbutCust";
-            this.rbutCust.Size = new System.Drawing.Size(69, 17);
+            this.rbutCust.Size = new System.Drawing.Size(83, 20);
             this.rbutCust.TabIndex = 8;
             this.rbutCust.TabStop = true;
             this.rbutCust.Text = "Customer";
             this.rbutCust.UseVisualStyleBackColor = true;
+            this.rbutCust.CheckedChanged += new System.EventHandler(this.rbutCust_CheckedChanged);
+            // 
+            // btnSkipLogin
+            // 
+            this.btnSkipLogin.Font = new System.Drawing.Font("Comic Sans MS", 18F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSkipLogin.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.btnSkipLogin.Location = new System.Drawing.Point(195, 226);
+            this.btnSkipLogin.Name = "btnSkipLogin";
+            this.btnSkipLogin.Size = new System.Drawing.Size(290, 48);
+            this.btnSkipLogin.TabIndex = 9;
+            this.btnSkipLogin.Text = "sKiP lOgiN";
+            this.btnSkipLogin.UseVisualStyleBackColor = true;
+            this.btnSkipLogin.Click += new System.EventHandler(this.btnSkipLogin_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 310);
+            this.ClientSize = new System.Drawing.Size(497, 286);
+            this.Controls.Add(this.btnSkipLogin);
             this.Controls.Add(this.rbutCust);
             this.Controls.Add(this.rbutAdm);
             this.Controls.Add(this.btnCreateAcc);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);
@@ -140,14 +139,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnCreateAcc;
         private System.Windows.Forms.RadioButton rbutAdm;
         private System.Windows.Forms.RadioButton rbutCust;
+        private System.Windows.Forms.Button btnSkipLogin;
     }
 }

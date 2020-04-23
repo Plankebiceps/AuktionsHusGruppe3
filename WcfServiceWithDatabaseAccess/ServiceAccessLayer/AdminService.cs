@@ -17,13 +17,10 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
             return ctrlAdmin.CreateAdmin(adminToCreate);
         }
 
-        public void DoWork()
-        {
+        public Admin GetAdminByEmail(string emailToLookUp) {
+            ControlAdmin ctrlAdmin = new ControlAdmin();
+            return ctrlAdmin.GetAdminByEmail(emailToLookUp);
         }
 
-        public Admin LoginAdmin(Admin adminToLogin) {
-            ControlAdmin ctrlAdmin = new ControlAdmin();
-            return ctrlAdmin.LoginAdmin(adminToLogin);
-        }
     }
 }

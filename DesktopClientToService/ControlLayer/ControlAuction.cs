@@ -57,5 +57,10 @@ namespace DesktopClientToService.ControlLayer
             auctionService.UpdateAuction(auction);
 
         }
+
+        public List<Auction> GetAllAuctions() {
+            AuctionService auctionService = new AuctionService();
+            return auctionService.GetAuctionAll();
+        }
     }
 }

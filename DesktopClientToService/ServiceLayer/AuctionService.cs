@@ -9,6 +9,7 @@ using proxyRef = DesktopClientToService.ServiceRefAuction;
 using clientRef = DesktopClientToService.ModelLayer;
 using DesktopClientToService.Utilities;
 
+
 namespace DesktopClientToService.ServiceLayer
 {
     public class AuctionService
@@ -50,6 +51,29 @@ namespace DesktopClientToService.ServiceLayer
             using (proxyRef.AuctionServiceClient auctionProxy = new proxyRef.AuctionServiceClient()) {
                 auctionProxy.UpdateAuction(auctionInServiceFormat);
             }
+        }
+
+        public List<clientRef.Auction> GetAuctionAll() {
+
+            proxyRef.AuctionServiceClient asc = new proxyRef.AuctionServiceClient();
+            var auctions = asc.GetAuctionAll();
+
+            List<clientRef.Auction> foundAuctionsList = GetClientSideAuctions(auctions);
+
+            return foundAuctionsList;
+        }
+
+        public List<clientRef.Auction> GetClientSideAuctions(IEnumerable<proxyRef.Auction> auctions) {
+
+            List<clientRef.Auction> foundAuctionsList = new List<clientRef.Auction>();
+            clientRef.Auction tempAuction;
+
+            foreach (var auction in auctions) {
+                tempAuction = new clientRef.Auction(auction.AuctionId, auction.TimeLeft, auction.Payment, auction.Result, auction.PaymentDate,
+                                                    auction.ProductName, auction.ProductDescription);
+                foundAuctionsList.Add(tempAuction);
+            }
+            return foundAuctionsList;
         }
 
 

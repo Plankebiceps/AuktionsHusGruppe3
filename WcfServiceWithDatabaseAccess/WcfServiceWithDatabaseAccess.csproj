@@ -76,8 +76,10 @@
   <ItemGroup>
     <Compile Include="ControlLayer\ControlAuction.cs" />
     <Compile Include="ControlLayer\ControlAdmin.cs" />
+    <Compile Include="ControlLayer\ControlCustomer.cs" />
     <Compile Include="DatabaseAccessLayer\AuctionAccess.cs" />
     <Compile Include="DatabaseAccessLayer\AdminAccess.cs" />
+    <Compile Include="DatabaseAccessLayer\CustomerAccess.cs" />
     <Compile Include="DatabaseAccessLayer\BidAccess.cs" />
     <Compile Include="ModelLayer\Admin.cs" />
     <Compile Include="ModelLayer\Auction.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="ServiceAccessLayer\ICustomerService.cs" />
     <Compile Include="ServiceAccessLayer\IRecieptService.cs" />
     <Compile Include="ServiceAccessLayer\RecieptService.cs" />
+    <Compile Include="Utilities\Security\Cryptography.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

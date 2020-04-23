@@ -26,13 +26,13 @@ namespace DesktopClientToService.ServiceRefAdmin {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
+        private string HashField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SaltField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -58,27 +58,14 @@ namespace DesktopClientToService.ServiceRefAdmin {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
+        public string Hash {
             get {
-                return this.FirstNameField;
+                return this.HashField;
             }
             set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
+                if ((object.ReferenceEquals(this.HashField, value) != true)) {
+                    this.HashField = value;
+                    this.RaisePropertyChanged("Hash");
                 }
             }
         }
@@ -92,6 +79,19 @@ namespace DesktopClientToService.ServiceRefAdmin {
                 if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
                     this.PasswordField = value;
                     this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Salt {
+            get {
+                return this.SaltField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SaltField, value) != true)) {
+                    this.SaltField = value;
+                    this.RaisePropertyChanged("Salt");
                 }
             }
         }
@@ -116,11 +116,11 @@ namespace DesktopClientToService.ServiceRefAdmin {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/CreateAdmin", ReplyAction="http://tempuri.org/IAdminService/CreateAdminResponse")]
         System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> CreateAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin adminToCreate);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/LoginAdmin", ReplyAction="http://tempuri.org/IAdminService/LoginAdminResponse")]
-        DesktopClientToService.ServiceRefAdmin.Admin LoginAdmin(DesktopClientToService.ServiceRefAdmin.Admin adminToLogin);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/GetAdminByEmail", ReplyAction="http://tempuri.org/IAdminService/GetAdminByEmailResponse")]
+        DesktopClientToService.ServiceRefAdmin.Admin GetAdminByEmail(string emailToLookUp);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/LoginAdmin", ReplyAction="http://tempuri.org/IAdminService/LoginAdminResponse")]
-        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> LoginAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin adminToLogin);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/GetAdminByEmail", ReplyAction="http://tempuri.org/IAdminService/GetAdminByEmailResponse")]
+        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> GetAdminByEmailAsync(string emailToLookUp);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -158,12 +158,12 @@ namespace DesktopClientToService.ServiceRefAdmin {
             return base.Channel.CreateAdminAsync(adminToCreate);
         }
         
-        public DesktopClientToService.ServiceRefAdmin.Admin LoginAdmin(DesktopClientToService.ServiceRefAdmin.Admin adminToLogin) {
-            return base.Channel.LoginAdmin(adminToLogin);
+        public DesktopClientToService.ServiceRefAdmin.Admin GetAdminByEmail(string emailToLookUp) {
+            return base.Channel.GetAdminByEmail(emailToLookUp);
         }
         
-        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> LoginAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin adminToLogin) {
-            return base.Channel.LoginAdminAsync(adminToLogin);
+        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> GetAdminByEmailAsync(string emailToLookUp) {
+            return base.Channel.GetAdminByEmailAsync(emailToLookUp);
         }
     }
 }

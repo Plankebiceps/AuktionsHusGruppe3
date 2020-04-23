@@ -12,4 +12,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Auction" nillable="true" type="tns:Auction" />
+  <xs:complexType name="ArrayOfAuction">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Auction" nillable="true" type="tns:Auction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuction" nillable="true" type="tns:ArrayOfAuction" />
 </xs:schema>

@@ -11,8 +11,7 @@ namespace DesktopClientToService
    {
         static void Main() 
         {
-            //Application.Run(new PresentationLayer.Login());
-            Application.Run(new PresentationLayer.Main());
+            Application.Run(new PresentationLayer.Login());
         }
    }
 }

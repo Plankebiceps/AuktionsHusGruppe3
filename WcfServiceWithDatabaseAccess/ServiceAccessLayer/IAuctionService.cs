@@ -23,5 +23,8 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
 
         [OperationContract]
         void UpdateAuction(Auction auctionToUpdate);
+
+        [OperationContract]
+        List<Auction> GetAuctionAll();
     }
 }

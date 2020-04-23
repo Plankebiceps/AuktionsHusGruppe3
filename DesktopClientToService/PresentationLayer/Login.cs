@@ -10,13 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DesktopClientToService.ControlLayer;
 using DesktopClientToService.ModelLayer;
+using DesktopClientToService.Utilities.Security;
 
-namespace DesktopClientToService.PresentationLayer
-{
-    public partial class Login : Form
-    {
-        public Login()
-        {
+namespace DesktopClientToService.PresentationLayer {
+    public partial class Login : Form {
+        public Login() {
             InitializeComponent();
         }
 
@@ -50,25 +48,21 @@ namespace DesktopClientToService.PresentationLayer
                 if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
                     ControlAdmin ctrlAdmin = new ControlAdmin();
-                    Admin admin = new Admin();
+                    Admin loginAdmin = ctrlAdmin.GetAdminByEmail(txtEmail.Text);
 
-                    admin.Email = txtEmail.Text;
-                    admin.Password = txtPassword.Text;
+                        bool isPasswordMatched = Cryptography.VerifyPassword(txtPassword.Text, loginAdmin.Hash, loginAdmin.Salt);
 
-                    ctrlAdmin.LoginAdmin(admin);
+                        if (isPasswordMatched == true) {
+                            MessageBox.Show("Login succeeded!");
+                            this.Hide();
+                            Main mainForm = new Main();
+                            mainForm.Show();
+                        } 
                 }
-                MessageBox.Show("You are signed in!");
-                // TO DO : Login tjeneste. Problemer med at genkende email og password. 
-  
-
-
-
 
             }
-
         }
-
-
+                         
         private void btnCreateAcc_Click(object sender, EventArgs e) {
 
             // Opret admin såfremt radiobutton (rbutAdm) er valgt
@@ -89,5 +83,20 @@ namespace DesktopClientToService.PresentationLayer
             }
 
         }
+
+        private void btnSkipLogin_Click(object sender, EventArgs e) {
+            this.Hide();
+            Main mainForm = new Main();
+            mainForm.Show();
+        }
+
+        private void rbutCust_CheckedChanged(object sender, EventArgs e) {
+
+        }
+
+        private void rbutAdm_CheckedChanged(object sender, EventArgs e) {
+
+        }
     }
 }
+

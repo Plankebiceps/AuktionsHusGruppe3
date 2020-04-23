@@ -51,7 +51,12 @@ namespace DesktopClientToService.Utilities
                 return serviceAuction;
         }
 
-
-
+        public List<ModelLayer.Auction> ConvertFromServiceAuctions(List<ServiceRefAuction.Auction> serviceAuctions) {
+            List<ModelLayer.Auction> desktopAuctions = null;
+            if (serviceAuctions != null) {
+                desktopAuctions = new List<ModelLayer.Auction>();
+            }
+            return desktopAuctions;
+        }
     }
 }

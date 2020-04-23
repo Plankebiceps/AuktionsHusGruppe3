@@ -103,11 +103,6 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
 
                 using (SqlCommand CreateCommand = new SqlCommand(insertString, con)) {
 
-
-
-                    //Prepace SQL
-                    // SqlParameter idParam = new SqlParameter("@AuctionId", anAuction.AuctionId);
-
                     SqlParameter idParam = new SqlParameter("@auctionId", anAuction.AuctionId);
                     CreateCommand.Parameters.Add(idParam);
 
@@ -135,6 +130,57 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                 }
             }
         }
+
+        public List<Auction> GetAllAuctions() {
+
+            List<Auction> foundAuctions = null;
+            Auction readAuction = null;
+
+            string queryString = "select auctionId, timeLeft, payment, result, paymentDate, " +
+                                 "productName, productDescription from Auction";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
+                con.Open();
+                // Execute read
+                SqlDataReader auctionReader = readCommand.ExecuteReader();
+                // Collect data
+                if (auctionReader.HasRows) {
+                    foundAuctions = new List<Auction>();
+                    while (auctionReader.Read()) {
+                        readAuction = GetAuctionFromReader(auctionReader);
+                        foundAuctions.Add(readAuction);
+                    }
+                }
+            }
+            return foundAuctions;
+        }
+
+        public Auction GetAuctionFromReader(SqlDataReader auctionReader) {
+
+            Auction foundAuction;
+            int tempId;
+            decimal tempTimeLeft;
+            bool tempPayment;
+            string tempResult;
+            DateTime tempPayDate;
+            string tempProdNam;
+            string tempProdDes;
+
+            tempId = auctionReader.GetInt32(auctionReader.GetOrdinal("auctionId"));
+            tempTimeLeft = auctionReader.GetDecimal(auctionReader.GetOrdinal("timeLeft"));
+            tempPayment = auctionReader.GetBoolean(auctionReader.GetOrdinal("payment"));
+            tempResult = auctionReader.GetString(auctionReader.GetOrdinal("result"));
+            tempPayDate = auctionReader.GetDateTime(auctionReader.GetOrdinal("paymentDate"));
+            tempProdNam = auctionReader.GetString(auctionReader.GetOrdinal("productName"));
+            tempProdDes = auctionReader.GetString(auctionReader.GetOrdinal("productDescription"));
+            foundAuction = new Auction(tempId, tempTimeLeft, tempPayment, tempResult, tempPayDate, tempProdNam, tempProdDes);
+            return foundAuction;
+        }
+
+
+
+
     }
 }
     

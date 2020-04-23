@@ -15,17 +15,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="LoginAdmin">
+  <xs:element name="GetAdminByEmail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="adminToLogin" nillable="true" type="q3:Admin" />
+        <xs:element minOccurs="0" name="emailToLookUp" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="LoginAdminResponse">
+  <xs:element name="GetAdminByEmailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="LoginAdminResult" nillable="true" type="q4:Admin" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="GetAdminByEmailResult" nillable="true" type="q3:Admin" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
