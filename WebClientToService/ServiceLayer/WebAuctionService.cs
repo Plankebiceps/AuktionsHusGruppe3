@@ -9,7 +9,6 @@ using WebClientToService.Utilities;
 
 namespace WebClientToService.ServiceLayer {
     public class WebAuctionService {
-
         public List<WebAuction> GetAllAuctions() {
             List<WebAuction> foundAuctions = null;
             using (AuctionServiceClient auctionProxy = new AuctionServiceClient()) {
@@ -18,6 +17,5 @@ namespace WebClientToService.ServiceLayer {
             }
             return foundAuctions;
         }
-
     }
 }
