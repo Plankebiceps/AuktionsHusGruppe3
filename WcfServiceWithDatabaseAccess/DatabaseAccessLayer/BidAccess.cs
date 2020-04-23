@@ -17,25 +17,46 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             connectionString = "data Source=.; database=3SemDB; integrated security=true";
         }
 
-        public bool UpdateBid(Bid aBid)
+        public void UpdateBid(Bid aBid)
         {
-            bool wasInserted;
-            decimal bidMade;
-            string insertString = "insert into Bid(price, auctionId) VALUES (@price, @auctionId)";
+            string insertString = "UPDATE Bid SET price=@price WHERE bidId=@bidId";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
+                using (SqlCommand CreateCommand = new SqlCommand(insertString, con))
+                {
+                    SqlParameter idParam = new SqlParameter("@bidId", aBid.BidId);
+                    CreateCommand.Parameters.Add(idParam);
+                    SqlParameter bidPrice = new SqlParameter("@price", aBid.Price);
+                    CreateCommand.Parameters.Add(bidPrice);
 
+                    con.Open();
+
+                    CreateCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public bool SaveBid(Bid newBid, Customer aBidder)
+        {
+            bool wasInserted;
+            string insertString = "insert into Bid(price, customerId) VALUES (@price, @customerId)";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
                 using (SqlCommand CreateCommand = new SqlCommand(insertString, con))
                 {
 
-                    //Prepace SQL
-                    SqlParameter priceParam = new SqlParameter("@price", aBid.Price);
-                    CreateCommand.Parameters.Add(priceParam);
+                    //Prepare SQL
+                    SqlParameter bidPrice = new SqlParameter("@price", newBid.Price);
+                    CreateCommand.Parameters.Add(bidPrice);
+                    SqlParameter customerId = new SqlParameter("@customerId", );
+
 
                     return wasInserted;
                 }
             }
+
         }
     }
 }
