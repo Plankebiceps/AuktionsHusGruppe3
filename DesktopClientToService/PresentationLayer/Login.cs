@@ -50,19 +50,20 @@ namespace DesktopClientToService.PresentationLayer {
                     ControlAdmin ctrlAdmin = new ControlAdmin();
                     Admin loginAdmin = ctrlAdmin.GetAdminByEmail(txtEmail.Text);
 
-                        bool isPasswordMatched = Cryptography.VerifyPassword(txtPassword.Text, loginAdmin.Hash, loginAdmin.Salt);
+                    bool isPasswordMatched = Cryptography.VerifyPassword(txtPassword.Text, loginAdmin.Hash, loginAdmin.Salt);
 
-                        if (isPasswordMatched == true) {
-                            MessageBox.Show("Login succeeded!");
-                            this.Hide();
-                            Main mainForm = new Main();
-                            mainForm.Show();
-                        } 
+                    if (isPasswordMatched == true) {
+                        MessageBox.Show("Login succeeded!");
+                        this.Hide();
+                        Main mainForm = new Main();
+                        mainForm.Show();
+                    } else {
+                        MessageBox.Show("Login failed!");
+                    }
                 }
-
             }
         }
-                         
+                     
         private void btnCreateAcc_Click(object sender, EventArgs e) {
 
             // Opret admin såfremt radiobutton (rbutAdm) er valgt
@@ -81,7 +82,6 @@ namespace DesktopClientToService.PresentationLayer {
             if (rbutCust.Checked == true) {
 
             }
-
         }
 
         private void btnSkipLogin_Click(object sender, EventArgs e) {
