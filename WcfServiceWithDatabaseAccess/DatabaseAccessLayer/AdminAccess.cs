@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Transactions;
 using System.Data;
 using WcfServiceWithDatabaseAccess.Utilities.Security;
+using System.Diagnostics;
 
 namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
     public class AdminAccess {
@@ -41,11 +42,12 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
         }
 
 
-        public Admin GetAdminByEmail(string emailToLookUp) {
+        public Admin GetAdminByEmail(string emailToLookUp, string passwordToVerify) {
             using (TransactionScope scope = new TransactionScope()) {
                 Admin adminToGet = null;
+                bool isPasswordMatched;
 
-                string queryString = "select adminEmail, salt, hash from Admin where adminEmail = @adminEmail";
+                string queryString = "SELECT adminEmail, salt, hash FROM Admin WHERE adminEmail = @adminEmail";
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
@@ -68,13 +70,18 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                             adminToGet = new Admin(tempEmail, tempSalt, tempHash);
                         }
                     }
+
+                    /* ny metode - ikke færdig - se "Output" vindue for WriteLines */
+                    isPasswordMatched = HashSalt.VerifyPassword(passwordToVerify, adminToGet.Hash, adminToGet.Salt);
+                    if (isPasswordMatched == true) {
+                        Debug.WriteLine("password match");
+                    } else {
+                        Debug.WriteLine("ikke rigtigt");
+                    }
                 }
-                return adminToGet;
+                    return adminToGet;
             }
         }
-
-
-
     }
 }
 

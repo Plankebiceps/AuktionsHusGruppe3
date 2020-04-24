@@ -10,17 +10,15 @@ using WcfServiceWithDatabaseAccess.ControlLayer;
 namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
-    public class AdminService : IAdminService
-    {
+    public class AdminService : IAdminService {
         public Admin CreateAdmin(Admin adminToCreate) {
             ControlAdmin ctrlAdmin = new ControlAdmin();
             return ctrlAdmin.CreateAdmin(adminToCreate);
         }
 
-        public Admin GetAdminByEmail(string emailToLookUp) {
+        public Admin GetAdminByEmail(string emailToLookUp, string passwordToVerify) {
             ControlAdmin ctrlAdmin = new ControlAdmin();
-            return ctrlAdmin.GetAdminByEmail(emailToLookUp);
+            return ctrlAdmin.GetAdminByEmail(emailToLookUp, passwordToVerify);
         }
-
     }
 }

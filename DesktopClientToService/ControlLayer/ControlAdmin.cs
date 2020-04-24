@@ -20,10 +20,9 @@ namespace DesktopClientToService.ControlLayer {
             return adminService.CreateAdmin(admin);
         }
 
-        public Admin GetAdminByEmail(string emailToLookUp) {
+        public Admin GetAdminByEmail(string emailToLookUp, string passwordToVerify) {
             AdminService adminService = new AdminService();
-            return adminService.GetAdminByEmail(emailToLookUp);
+            return adminService.GetAdminByEmail(emailToLookUp, passwordToVerify);
         }
-
     }
 }

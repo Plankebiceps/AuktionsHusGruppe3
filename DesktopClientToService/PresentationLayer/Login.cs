@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DesktopClientToService.ControlLayer;
 using DesktopClientToService.ModelLayer;
-using DesktopClientToService.Utilities.Security;
 
 namespace DesktopClientToService.PresentationLayer {
     public partial class Login : Form {
@@ -48,18 +47,19 @@ namespace DesktopClientToService.PresentationLayer {
                 if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
                     ControlAdmin ctrlAdmin = new ControlAdmin();
-                    Admin loginAdmin = ctrlAdmin.GetAdminByEmail(txtEmail.Text);
+                    Admin loginAdmin = ctrlAdmin.GetAdminByEmail(txtEmail.Text, txtPassword.Text);
 
-                    bool isPasswordMatched = HashSalt.VerifyPassword(txtPassword.Text, loginAdmin.Hash, loginAdmin.Salt);
+                    //bool isPasswordMatched = HashSalt.VerifyPassword(txtPassword.Text, loginAdmin.Hash, loginAdmin.Salt);
 
-                    if (isPasswordMatched == true) {
+
+                    //if (isPasswordMatched == true) {
                         MessageBox.Show("Login succeeded!");
                         this.Hide();
                         Main mainForm = new Main();
                         mainForm.Show();
-                    } else {
-                        MessageBox.Show("Login failed!");
-                    }
+                    //} else {
+                    //    MessageBox.Show("Login failed!");
+                    //}
                 }
             }
         }
@@ -69,11 +69,11 @@ namespace DesktopClientToService.PresentationLayer {
             // Opret admin såfremt radiobutton (rbutAdm) er valgt
             if (rbutAdm.Checked == true) {
 
-                string tempEmail = txtEmail.Text;
-                string tempPassword = txtPassword.Text;
+                string chosenEmail = txtEmail.Text;
+                string chosenPassword = txtPassword.Text;
             
                 ControlAdmin ctrlAdmin = new ControlAdmin();
-                ctrlAdmin.CreateAdmin(tempEmail, tempPassword);
+                ctrlAdmin.CreateAdmin(chosenEmail, chosenPassword);
             
             }
             MessageBox.Show("Admin created succesfully!");

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WcfServiceWithDatabaseAccess.ModelLayer;
 using WcfServiceWithDatabaseAccess.DatabaseAccessLayer;
+using WcfServiceWithDatabaseAccess.Utilities.Security;
 
 namespace WcfServiceWithDatabaseAccess.ControlLayer
 {
@@ -19,11 +20,11 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
             return createdAdmin;
         }
 
-        public Admin GetAdminByEmail(string emailToLookUp) {
+        public Admin GetAdminByEmail(string emailToLookUp, string passwordToVerify) {
             Admin foundAdmin;
 
             AdminAccess adminDb = new AdminAccess();
-            foundAdmin = adminDb.GetAdminByEmail(emailToLookUp);
+            foundAdmin = adminDb.GetAdminByEmail(emailToLookUp, passwordToVerify);
 
             return foundAdmin;
         }
