@@ -116,11 +116,11 @@ namespace DesktopClientToService.ServiceRefAdmin {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/CreateAdmin", ReplyAction="http://tempuri.org/IAdminService/CreateAdminResponse")]
         System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> CreateAdminAsync(DesktopClientToService.ServiceRefAdmin.Admin adminToCreate);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/GetAdminByEmail", ReplyAction="http://tempuri.org/IAdminService/GetAdminByEmailResponse")]
-        DesktopClientToService.ServiceRefAdmin.Admin GetAdminByEmail(string emailToLookUp, string passwordToVerify);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/LoginAdmin", ReplyAction="http://tempuri.org/IAdminService/LoginAdminResponse")]
+        bool LoginAdmin(string emailToLookUp, string passwordToVerify);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/GetAdminByEmail", ReplyAction="http://tempuri.org/IAdminService/GetAdminByEmailResponse")]
-        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> GetAdminByEmailAsync(string emailToLookUp, string passwordToVerify);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/LoginAdmin", ReplyAction="http://tempuri.org/IAdminService/LoginAdminResponse")]
+        System.Threading.Tasks.Task<bool> LoginAdminAsync(string emailToLookUp, string passwordToVerify);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -158,12 +158,12 @@ namespace DesktopClientToService.ServiceRefAdmin {
             return base.Channel.CreateAdminAsync(adminToCreate);
         }
         
-        public DesktopClientToService.ServiceRefAdmin.Admin GetAdminByEmail(string emailToLookUp, string passwordToVerify) {
-            return base.Channel.GetAdminByEmail(emailToLookUp, passwordToVerify);
+        public bool LoginAdmin(string emailToLookUp, string passwordToVerify) {
+            return base.Channel.LoginAdmin(emailToLookUp, passwordToVerify);
         }
         
-        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefAdmin.Admin> GetAdminByEmailAsync(string emailToLookUp, string passwordToVerify) {
-            return base.Channel.GetAdminByEmailAsync(emailToLookUp, passwordToVerify);
+        public System.Threading.Tasks.Task<bool> LoginAdminAsync(string emailToLookUp, string passwordToVerify) {
+            return base.Channel.LoginAdminAsync(emailToLookUp, passwordToVerify);
         }
     }
 }

@@ -25,17 +25,12 @@ namespace DesktopClientToService.ServiceLayer {
 
         }
 
-        public clientRef.Admin GetAdminByEmail(string emailToLookUp, string passwordToVerify) {
-            clientRef.Admin clientAdmin = null;
-            proxyRef.Admin aProxyAdmin = null;
-            using (proxyRef.AdminServiceClient auctionProxy = new proxyRef.AdminServiceClient()) {
-                aProxyAdmin = auctionProxy.GetAdminByEmail(emailToLookUp, passwordToVerify);
+        public bool LoginAdmin(string emailToLookUp, string passwordToVerify) {
+            bool allOk = false;
+            using (proxyRef.AdminServiceClient adminProxy = new proxyRef.AdminServiceClient()) {
+                allOk = adminProxy.LoginAdmin(emailToLookUp, passwordToVerify);
             }
-            if (aProxyAdmin != null) {
-                clientAdmin = new ConvertDataAdmin().ConvertFromServiceAdmin(aProxyAdmin);
-            }
-
-            return clientAdmin;
+            return allOk;
         }
     }
 }

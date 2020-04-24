@@ -16,9 +16,9 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
             return ctrlAdmin.CreateAdmin(adminToCreate);
         }
 
-        public Admin GetAdminByEmail(string emailToLookUp, string passwordToVerify) {
+        public bool LoginAdmin(string emailToLookUp, string passwordToVerify) {
             ControlAdmin ctrlAdmin = new ControlAdmin();
-            return ctrlAdmin.GetAdminByEmail(emailToLookUp, passwordToVerify);
+            return ctrlAdmin.LoginAdmin(emailToLookUp, passwordToVerify);
         }
     }
 }

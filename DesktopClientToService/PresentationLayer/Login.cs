@@ -47,19 +47,17 @@ namespace DesktopClientToService.PresentationLayer {
                 if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
                     ControlAdmin ctrlAdmin = new ControlAdmin();
-                    Admin loginAdmin = ctrlAdmin.GetAdminByEmail(txtEmail.Text, txtPassword.Text);
+                    bool isMatched = ctrlAdmin.LoginAdmin(txtEmail.Text, txtPassword.Text);
 
-                    //bool isPasswordMatched = HashSalt.VerifyPassword(txtPassword.Text, loginAdmin.Hash, loginAdmin.Salt);
-
-
-                    //if (isPasswordMatched == true) {
+                    if (isMatched == true) {
                         MessageBox.Show("Login succeeded!");
                         this.Hide();
                         Main mainForm = new Main();
                         mainForm.Show();
-                    //} else {
-                    //    MessageBox.Show("Login failed!");
-                    //}
+
+                    } else {
+                        MessageBox.Show("Login failed!");
+                    }
                 }
             }
         }

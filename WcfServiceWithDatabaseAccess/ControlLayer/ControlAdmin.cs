@@ -20,13 +20,13 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
             return createdAdmin;
         }
 
-        public Admin GetAdminByEmail(string emailToLookUp, string passwordToVerify) {
-            Admin foundAdmin;
+        public bool LoginAdmin(string emailToLookUp, string passwordToVerify) {
+            bool wasIdentified;
 
             AdminAccess adminDb = new AdminAccess();
-            foundAdmin = adminDb.GetAdminByEmail(emailToLookUp, passwordToVerify);
+            wasIdentified = adminDb.LoginAdmin(emailToLookUp, passwordToVerify);
 
-            return foundAdmin;
+            return wasIdentified;
         }
     }
 }

@@ -42,9 +42,10 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
         }
 
 
-        public Admin GetAdminByEmail(string emailToLookUp, string passwordToVerify) {
-            using (TransactionScope scope = new TransactionScope()) {
-                Admin adminToGet = null;
+        public bool LoginAdmin(string emailToLookUp, string passwordToVerify) {
+            using (TransactionScope scope = new TransactionScope()) {   /* TransactionScope mangler funktionalitet */
+
+                Admin adminToLogin = null;
                 bool isPasswordMatched;
 
                 string queryString = "SELECT adminEmail, salt, hash FROM Admin WHERE adminEmail = @adminEmail";
@@ -62,24 +63,16 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                     SqlDataReader userReader = readCommand.ExecuteReader();
 
                     if (userReader.HasRows) {
-                        string tempEmail, tempSalt, tempHash;
+                        string readEmail, readSalt, readHash;
                         while (userReader.Read()) {
-                            tempEmail = userReader.GetString(userReader.GetOrdinal("adminEmail"));
-                            tempSalt = userReader.GetString(userReader.GetOrdinal("hash"));
-                            tempHash = userReader.GetString(userReader.GetOrdinal("salt"));
-                            adminToGet = new Admin(tempEmail, tempSalt, tempHash);
+                            readEmail = userReader.GetString(userReader.GetOrdinal("adminEmail"));
+                            readSalt = userReader.GetString(userReader.GetOrdinal("hash"));
+                            readHash = userReader.GetString(userReader.GetOrdinal("salt"));
+                            adminToLogin = new Admin(readEmail, readSalt, readHash);
                         }
                     }
-
-                    /* ny metode - ikke færdig - se "Output" vindue for WriteLines */
-                    isPasswordMatched = HashSalt.VerifyPassword(passwordToVerify, adminToGet.Hash, adminToGet.Salt);
-                    if (isPasswordMatched == true) {
-                        Debug.WriteLine("password match");
-                    } else {
-                        Debug.WriteLine("ikke rigtigt");
-                    }
+                    return isPasswordMatched = HashSalt.VerifyPassword(passwordToVerify, adminToLogin.Hash, adminToLogin.Salt);
                 }
-                    return adminToGet;
             }
         }
     }

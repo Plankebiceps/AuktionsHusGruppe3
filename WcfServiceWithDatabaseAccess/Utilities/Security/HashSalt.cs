@@ -25,7 +25,6 @@ namespace WcfServiceWithDatabaseAccess.Utilities.Security {
             return hashSalt;
         }
 
-
         public static bool VerifyPassword(string enteredPassword, string storedHash, string storedSalt) {
             var saltBytes = Convert.FromBase64String(storedSalt);
             var rfc2898DeriveBytes = new Rfc2898DeriveBytes(enteredPassword, saltBytes, 10000);

@@ -15,7 +15,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAdminByEmail">
+  <xs:element name="LoginAdmin">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="emailToLookUp" nillable="true" type="xs:string" />
@@ -23,10 +23,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAdminByEmailResponse">
+  <xs:element name="LoginAdminResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceWithDatabaseAccess.ModelLayer" minOccurs="0" name="GetAdminByEmailResult" nillable="true" type="q3:Admin" />
+        <xs:element minOccurs="0" name="LoginAdminResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
