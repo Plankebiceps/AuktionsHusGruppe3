@@ -9,6 +9,7 @@ using System.Transactions;
 using System.Data;
 using WcfServiceWithDatabaseAccess.Utilities.Security;
 using System.Diagnostics;
+using System.Configuration;
 
 namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
     public class AdminAccess {
@@ -70,6 +71,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                             readHash = userReader.GetString(userReader.GetOrdinal("salt"));
                             adminToLogin = new Admin(readEmail, readSalt, readHash);
                         }
+                    } else {  //såfremt userReader ikke finder en email, der matcher password i DB - skal rettes til (exception??)
+                        throw new Exception();
                     }
                     return isPasswordMatched = HashSalt.VerifyPassword(passwordToVerify, adminToLogin.Hash, adminToLogin.Salt);
                 }
