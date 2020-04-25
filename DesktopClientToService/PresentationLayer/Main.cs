@@ -3,6 +3,7 @@ using DesktopClientToService.ModelLayer;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DesktopClientToService.PresentationLayer;
 
 namespace DesktopClientToService.PresentationLayer
 {
@@ -134,19 +135,19 @@ namespace DesktopClientToService.PresentationLayer
             }
         }
 
-        private void btnPlaceBid_Click(object sender, EventArgs e) {
+        //private void btnPlaceBid_Click(object sender, EventArgs e) {
 
-            ControlAuction ctrlAuction = new ControlAuction();
-            // ControlCustomer TO DO
-            ControlBid ctrlBid = new ControlBid();
+        //    ControlAuction ctrlAuction = new ControlAuction();
+        //    // ControlCustomer TO DO
+        //    ControlBid ctrlBid = new ControlBid();
 
-            decimal tempAmountToBid = 100;
-            int tempAuctionId = 1;
-            int tempCustId = 1;
+        //    decimal tempAmountToBid = 100;
+        //    int tempAuctionId = 1;
+        //    int tempCustId = 1;
 
 
-            ctrlBid.PlaceBid(tempAmountToBid, tempAuctionId, tempCustId);
-        }
+        //    ctrlBid.PlaceBid(tempAmountToBid, tempAuctionId, tempCustId);
+        //}
 
         private void listBoxAuctions_SelectedIndexChanged(object sender, EventArgs e) {
             auctionToBidOn = listBoxAuctions.SelectedItem as Auction;
@@ -155,11 +156,17 @@ namespace DesktopClientToService.PresentationLayer
 
         private void btnPlaceBid_Click_1(object sender, EventArgs e) {
 
+            ControlCustomer ctrlCustomer = new ControlCustomer();
             ControlBid ctrlBid = new ControlBid();
+            Login login = new Login();
+
+            Customer currentCustomer = ctrlCustomer.GetCustomerByEmail(login.EmailToPassOn);
+
+            int customerId = currentCustomer.Id;
             decimal amountToBid;
             decimal.TryParse(txtBidAmount.Text, out amountToBid);
 
-            ctrlBid.PlaceBid(amountToBid, auctionToBidOn.AuctionId, 1);
+            ctrlBid.PlaceBid(amountToBid, auctionToBidOn.AuctionId, customerId);
         }
     }
 }

@@ -29,5 +29,14 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
 
             return wasIdentified;
         }
+
+        public Customer GetCustomerByEmail(string emailToFind) {
+            Customer foundCustomer;
+
+            CustomerAccess customerDb = new CustomerAccess();
+            foundCustomer = customerDb.GetCustomerByEmail(emailToFind);
+
+            return foundCustomer;
+        }
     }
 }

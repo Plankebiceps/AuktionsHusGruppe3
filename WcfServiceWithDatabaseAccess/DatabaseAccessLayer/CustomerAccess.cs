@@ -95,5 +95,33 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                 }
             }
         }
+
+        public Customer GetCustomerByEmail(string emailToFind) {
+            Customer foundCustomer = new Customer();
+
+            string queryString = "SELECT id, address, firstName, lastName, customerEmail FROM Customer WHERE customerEmail = @customerEmail";
+
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
+
+
+                    SqlParameter idParam = new SqlParameter("@customerEmail", emailToFind);
+                    readCommand.Parameters.Add(idParam);
+
+                    con.Open();
+
+                    SqlDataReader reader = readCommand.ExecuteReader();
+                    while (reader.Read()) {
+                        foundCustomer.Id = reader.GetInt32(reader.GetOrdinal("id"));
+                        foundCustomer.Address = reader.GetString(reader.GetOrdinal("address"));
+                        foundCustomer.FirstName = reader.GetString(reader.GetOrdinal("firstName"));
+                        foundCustomer.LastName = reader.GetString(reader.GetOrdinal("lastName"));
+                        foundCustomer.Email = reader.GetString(reader.GetOrdinal("customerEmail"));
+
+                    }
+                }
+            }
+            return foundCustomer;
+        }
     }
 }

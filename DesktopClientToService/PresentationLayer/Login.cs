@@ -13,10 +13,12 @@ using DesktopClientToService.ModelLayer;
 
 namespace DesktopClientToService.PresentationLayer {
     public partial class Login : Form {
+
+        public string EmailToPassOn { get; set; }
+
         public Login() {
             InitializeComponent();
         }
-
 
         //private void button1_Click(object sender, EventArgs e)
         //{
@@ -67,6 +69,7 @@ namespace DesktopClientToService.PresentationLayer {
                     bool isMatched = ctrlCustomer.LoginCustomer(txtEmail.Text, txtPassword.Text);
 
                     if (isMatched == true) {
+                        EmailToPassOn = txtEmail.Text;
                         MessageBox.Show("Login succeeded!");
                         this.Hide();
                         Main mainForm = new Main();

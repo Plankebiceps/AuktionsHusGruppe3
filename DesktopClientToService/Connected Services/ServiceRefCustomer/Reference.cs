@@ -185,6 +185,12 @@ namespace DesktopClientToService.ServiceRefCustomer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/LoginCustomer", ReplyAction="http://tempuri.org/ICustomerService/LoginCustomerResponse")]
         System.Threading.Tasks.Task<bool> LoginCustomerAsync(string emailToLookUp, string passwordToVerify);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomerByEmail", ReplyAction="http://tempuri.org/ICustomerService/GetCustomerByEmailResponse")]
+        DesktopClientToService.ServiceRefCustomer.Customer GetCustomerByEmail(string emailToFind);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomerByEmail", ReplyAction="http://tempuri.org/ICustomerService/GetCustomerByEmailResponse")]
+        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefCustomer.Customer> GetCustomerByEmailAsync(string emailToFind);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -228,6 +234,14 @@ namespace DesktopClientToService.ServiceRefCustomer {
         
         public System.Threading.Tasks.Task<bool> LoginCustomerAsync(string emailToLookUp, string passwordToVerify) {
             return base.Channel.LoginCustomerAsync(emailToLookUp, passwordToVerify);
+        }
+        
+        public DesktopClientToService.ServiceRefCustomer.Customer GetCustomerByEmail(string emailToFind) {
+            return base.Channel.GetCustomerByEmail(emailToFind);
+        }
+        
+        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefCustomer.Customer> GetCustomerByEmailAsync(string emailToFind) {
+            return base.Channel.GetCustomerByEmailAsync(emailToFind);
         }
     }
 }

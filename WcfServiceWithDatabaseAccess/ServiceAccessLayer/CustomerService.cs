@@ -23,5 +23,10 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
             ControlCustomer ctrlCustomer = new ControlCustomer();
             return ctrlCustomer.LoginCustomer(emailToLookUp, passwordToVerify);
         }
+
+        public Customer GetCustomerByEmail(string emailToFind) {
+            ControlCustomer ctrlCustomer = new ControlCustomer();
+            return ctrlCustomer.GetCustomerByEmail(emailToFind);
+        }
     }
 }

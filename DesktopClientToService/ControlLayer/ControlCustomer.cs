@@ -27,5 +27,10 @@ namespace DesktopClientToService.ControlLayer {
             CustomerService customerService = new CustomerService();
             return customerService.LoginCustomer(emailToLookUp, passwordToVerify);
         }
+
+        public Customer GetCustomerByEmail(string emailToFind) {
+            CustomerService customerService = new CustomerService();
+            return customerService.GetCustomerByEmail(emailToFind);
+        }
     }
 }

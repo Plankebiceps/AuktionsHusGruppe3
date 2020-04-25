@@ -19,6 +19,12 @@
   <wsdl:message name="ICustomerService_LoginCustomer_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginCustomerResponse" />
   </wsdl:message>
+  <wsdl:message name="ICustomerService_GetCustomerByEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerByEmail" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_GetCustomerByEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerByEmailResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICustomerService">
     <wsdl:operation name="AddCustomer">
       <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/AddCustomer" message="tns:ICustomerService_AddCustomer_InputMessage" />
@@ -27,6 +33,10 @@
     <wsdl:operation name="LoginCustomer">
       <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/LoginCustomer" message="tns:ICustomerService_LoginCustomer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/LoginCustomerResponse" message="tns:ICustomerService_LoginCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerByEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/GetCustomerByEmail" message="tns:ICustomerService_GetCustomerByEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/GetCustomerByEmailResponse" message="tns:ICustomerService_GetCustomerByEmail_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICustomerService" type="tns:ICustomerService">
@@ -42,6 +52,15 @@
     </wsdl:operation>
     <wsdl:operation name="LoginCustomer">
       <soap:operation soapAction="http://tempuri.org/ICustomerService/LoginCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerByEmail">
+      <soap:operation soapAction="http://tempuri.org/ICustomerService/GetCustomerByEmail" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

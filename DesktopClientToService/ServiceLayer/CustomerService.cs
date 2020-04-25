@@ -28,5 +28,17 @@ namespace DesktopClientToService.ServiceLayer {
             }
             return allOk;
         }
+
+        public clientRef.Customer GetCustomerByEmail(string emailToFind) {
+            clientRef.Customer clientCustomer = null;
+            proxyRef.Customer aProxyCustomer = null;
+            using (proxyRef.CustomerServiceClient customerProxy = new proxyRef.CustomerServiceClient()) {
+                aProxyCustomer = customerProxy.GetCustomerByEmail(emailToFind);
+            }
+            if (aProxyCustomer != null) {
+                clientCustomer = new ConvertDataCustomer().ConvertFromServiceCustomer(aProxyCustomer);
+            }
+            return clientCustomer;
+        }
     }
 }

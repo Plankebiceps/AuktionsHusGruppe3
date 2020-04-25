@@ -18,5 +18,8 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer {
         [OperationContract]
         bool LoginCustomer(string emailToLookUp, string passwordToVerify);
 
-    }
+        [OperationContract]
+        Customer GetCustomerByEmail(string emailToFind);
+
+        }
 }

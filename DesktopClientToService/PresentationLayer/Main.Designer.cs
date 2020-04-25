@@ -74,9 +74,11 @@
             // txtAuction_Result
             // 
             this.txtAuction_Result.Location = new System.Drawing.Point(96, 77);
+            this.txtAuction_Result.MaxLength = 6;
             this.txtAuction_Result.Name = "txtAuction_Result";
             this.txtAuction_Result.Size = new System.Drawing.Size(264, 20);
             this.txtAuction_Result.TabIndex = 5;
+            this.txtAuction_Result.Text = "Open/Closed";
             // 
             // radioBtnAuction
             // 
@@ -99,6 +101,7 @@
             // txtProdName
             // 
             this.txtProdName.Location = new System.Drawing.Point(96, 129);
+            this.txtProdName.MaxLength = 50;
             this.txtProdName.Name = "txtProdName";
             this.txtProdName.Size = new System.Drawing.Size(264, 20);
             this.txtProdName.TabIndex = 14;
@@ -106,6 +109,7 @@
             // txtProdDescription
             // 
             this.txtProdDescription.Location = new System.Drawing.Point(96, 155);
+            this.txtProdDescription.MaxLength = 100;
             this.txtProdDescription.Name = "txtProdDescription";
             this.txtProdDescription.Size = new System.Drawing.Size(264, 20);
             this.txtProdDescription.TabIndex = 15;
@@ -141,7 +145,7 @@
             // 
             this.lblProductName.Location = new System.Drawing.Point(93, 320);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(168, 60);
+            this.lblProductName.Size = new System.Drawing.Size(168, 28);
             this.lblProductName.TabIndex = 1;
             this.lblProductName.Text = "product will show up here";
             // 
@@ -150,9 +154,9 @@
             this.lblTimeLeft.AutoSize = true;
             this.lblTimeLeft.Location = new System.Drawing.Point(26, 31);
             this.lblTimeLeft.Name = "lblTimeLeft";
-            this.lblTimeLeft.Size = new System.Drawing.Size(30, 13);
+            this.lblTimeLeft.Size = new System.Drawing.Size(57, 13);
             this.lblTimeLeft.TabIndex = 22;
-            this.lblTimeLeft.Text = "Time";
+            this.lblTimeLeft.Text = "Total Time";
             // 
             // lblResult
             // 
@@ -168,9 +172,9 @@
             this.lblAuctionDate.AutoSize = true;
             this.lblAuctionDate.Location = new System.Drawing.Point(26, 105);
             this.lblAuctionDate.Name = "lblAuctionDate";
-            this.lblAuctionDate.Size = new System.Drawing.Size(30, 13);
+            this.lblAuctionDate.Size = new System.Drawing.Size(55, 13);
             this.lblAuctionDate.TabIndex = 24;
-            this.lblAuctionDate.Text = "Date";
+            this.lblAuctionDate.Text = "Start Date";
             // 
             // lblProduct
             // 
@@ -266,6 +270,7 @@
             // txtBidAmount
             // 
             this.txtBidAmount.Location = new System.Drawing.Point(628, 223);
+            this.txtBidAmount.MaxLength = 18;
             this.txtBidAmount.Name = "txtBidAmount";
             this.txtBidAmount.Size = new System.Drawing.Size(130, 20);
             this.txtBidAmount.TabIndex = 36;
