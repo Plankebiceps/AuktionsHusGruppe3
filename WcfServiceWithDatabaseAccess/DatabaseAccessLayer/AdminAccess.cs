@@ -21,7 +21,6 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
         }
 
         public Admin CreateToDb(Admin anAdmin) {
-            Admin madeAdmin;
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 con.Open();
                 using (SqlCommand cmdInsertAdmin = con.CreateCommand()) {
@@ -37,8 +36,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
 
                     cmdInsertAdmin.ExecuteNonQuery();
                 }
-                madeAdmin = anAdmin;
-                return madeAdmin;
+                return anAdmin;
             }
         }
 
