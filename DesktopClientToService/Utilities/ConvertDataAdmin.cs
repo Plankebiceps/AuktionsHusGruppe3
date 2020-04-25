@@ -16,7 +16,7 @@ namespace DesktopClientToService.Utilities {
                     Salt = serviceAdmin.Salt,
                     Hash = serviceAdmin.Hash,
                     Email = serviceAdmin.Email,
-                    Password = serviceAdmin.Password,
+                    Password = serviceAdmin.Password
 
                 };
             }
@@ -30,7 +30,7 @@ namespace DesktopClientToService.Utilities {
                     Salt = desktopAdmin.Salt,
                     Hash = desktopAdmin.Hash,
                     Email = desktopAdmin.Email,
-                    Password = desktopAdmin.Password,
+                    Password = desktopAdmin.Password
                 };
             }
             return serviceAdmin;

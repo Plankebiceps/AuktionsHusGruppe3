@@ -15,5 +15,8 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer {
         [OperationContract]
         bool AddCustomer(Customer customerToSave);
 
+        [OperationContract]
+        bool LoginCustomer(string emailToLookUp, string passwordToVerify);
+
     }
 }

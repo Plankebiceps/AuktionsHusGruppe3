@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using WcfServiceWithDatabaseAccess.ModelLayer;
 using System.Data.SqlClient;
+using WcfServiceWithDatabaseAccess.Utilities.Security;
+using System.Transactions;
 
 namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 {
@@ -20,22 +22,32 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
         public bool SaveCustomer(Customer aCustomer)
         {
             bool wasInserted;
+            //Customer tempCust = aCustomer;
 
-            string insertString = "insert into Customer(firstname, lastname, email, address) values(@FirstName, @LastName, @Email, @Address)";
+            HashSalt hashSaltToSave = HashSalt.GenerateSaltedHash(64, aCustomer.Password);
+            aCustomer.Salt = hashSaltToSave.Salt;
+            aCustomer.Hash = hashSaltToSave.Hash;
+
+            string insertString = "insert into Customer(address, firstName, lastName, customerEmail, hash, salt)" +
+                                  "values(@Address, @FirstName, @LastName, @CustomerEmail, @Hash, @Salt)";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
 
                 using (SqlCommand CreateCommand = new SqlCommand(insertString, con))
                 {
+                    SqlParameter addressParam = new SqlParameter("@Address", aCustomer.Address);
+                    CreateCommand.Parameters.Add(addressParam);
                     SqlParameter fNameParam = new SqlParameter("@Firstname", aCustomer.FirstName);
                     CreateCommand.Parameters.Add(fNameParam);
                     SqlParameter lNameParam = new SqlParameter("@LastName", aCustomer.LastName);
                     CreateCommand.Parameters.Add(lNameParam);
-                    SqlParameter eMailParam = new SqlParameter("@Email", aCustomer.Email);
+                    SqlParameter eMailParam = new SqlParameter("@CustomerEmail", aCustomer.Email);
                     CreateCommand.Parameters.Add(eMailParam);
-                    SqlParameter addressParam = new SqlParameter("@Address", aCustomer.Address);
-                    CreateCommand.Parameters.Add(addressParam);
-                    
+                    SqlParameter hashParam = new SqlParameter("@Hash", aCustomer.Hash);
+                    CreateCommand.Parameters.Add(hashParam);
+                    SqlParameter saltParam = new SqlParameter("@Salt", aCustomer.Salt);
+                    CreateCommand.Parameters.Add(saltParam);
+
                     con.Open();
                     // Execute save
                     int rowsAffected = CreateCommand.ExecuteNonQuery();
@@ -45,6 +57,42 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                     return wasInserted;
                 }
 
+            }
+        }
+
+        public bool LoginCustomer(string emailToLookUp, string passwordToVerify) {
+            using (TransactionScope scope = new TransactionScope()) {   /* TransactionScope mangler funktionalitet */
+
+                Customer customerToLogin = null;
+                bool isPasswordMatched;
+
+                string queryString = "SELECT customerEmail, salt, hash FROM Customer WHERE customerEmail = @customerEmail";
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
+
+                    // Prepare SQL
+                    SqlParameter emailParam = new SqlParameter("@customerEmail", emailToLookUp);
+                    readCommand.Parameters.Add(emailParam);
+
+                    con.Open();
+
+                    // Execute read
+                    SqlDataReader userReader = readCommand.ExecuteReader();
+
+                    if (userReader.HasRows) {
+                        string readEmail, readSalt, readHash;
+                        while (userReader.Read()) {
+                            readEmail = userReader.GetString(userReader.GetOrdinal("customerEmail"));
+                            readSalt = userReader.GetString(userReader.GetOrdinal("hash"));
+                            readHash = userReader.GetString(userReader.GetOrdinal("salt"));
+                            customerToLogin = new Customer(readEmail, readSalt, readHash);
+                        }
+                    } else {  //såfremt userReader ikke finder en email, der matcher password i DB - skal rettes til (exception??)
+                        throw new Exception();
+                    }
+                    return isPasswordMatched = HashSalt.VerifyPassword(passwordToVerify, customerToLogin.Hash, customerToLogin.Salt);
+                }
             }
         }
     }

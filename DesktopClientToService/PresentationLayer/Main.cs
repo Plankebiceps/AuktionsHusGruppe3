@@ -129,5 +129,19 @@ namespace DesktopClientToService.PresentationLayer
                 listBoxAuctions.Items.Add(auction);
             }
         }
+
+        private void btnPlaceBid_Click(object sender, EventArgs e) {
+
+            ControlAuction ctrlAuction = new ControlAuction();
+            // ControlCustomer TO DO
+            ControlBid ctrlBid = new ControlBid();
+
+            decimal tempAmountToBid = 100;
+            int tempAuctionId = 10;
+            int tempCustId = 1;
+
+
+            ctrlBid.PlaceBid(tempAmountToBid, tempAuctionId, tempCustId);
+        }
     }
 }

@@ -12,11 +12,13 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
     [ServiceContract]
     public interface IBidService
     {
-        [OperationContract]
-        void DoWork();
+
+        //[OperationContract]
+        //bool CreateBid(decimal priceBid, Customer bidder);
 
         [OperationContract]
-        bool CreateBid(decimal priceBid, Customer bidder);
+        bool PlaceBid(Bid bidToPlace);
+
 
     }
 }

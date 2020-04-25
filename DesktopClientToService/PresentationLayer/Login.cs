@@ -60,27 +60,52 @@ namespace DesktopClientToService.PresentationLayer {
                     }
                 }
             }
+            if (rbutCust.Checked == true) {
+                if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
+
+                    ControlCustomer ctrlCustomer = new ControlCustomer();
+                    bool isMatched = ctrlCustomer.LoginCustomer(txtEmail.Text, txtPassword.Text);
+
+                    if (isMatched == true) {
+                        MessageBox.Show("Login succeeded!");
+                        this.Hide();
+                        Main mainForm = new Main();
+                        mainForm.Show();
+
+                    } else {
+                        MessageBox.Show("Login failed!");
+                    }
+                }
+            }
         }
-                     
+
         private void btnCreateAcc_Click(object sender, EventArgs e) {
 
             // Opret admin såfremt radiobutton (rbutAdm) er valgt
             if (rbutAdm.Checked == true) {
 
-                string chosenEmail = txtEmail.Text;
-                string chosenPassword = txtPassword.Text;
+                string chosenAdminEmail = txtEmail.Text;
+                string chosenAdminPassword = txtPassword.Text;
             
                 ControlAdmin ctrlAdmin = new ControlAdmin();
-                ctrlAdmin.CreateAdmin(chosenEmail, chosenPassword);
-            
+                ctrlAdmin.CreateAdmin(chosenAdminEmail, chosenAdminPassword);
+
+                MessageBox.Show("Admin created succesfully!");
             }
-            MessageBox.Show("Admin created succesfully!");
 
             // Opret customer såfremt radiobutton (rbutCust) er valgt
             if (rbutCust.Checked == true) {
 
+                string chosenCustEmail = txtEmail.Text;
+                string chosenCustPassword = txtPassword.Text;
+
+                ControlCustomer ctrlCustomer = new ControlCustomer();
+                ctrlCustomer.AddCustomer("testmand", "testersen", "testvej 1, 6666 testby", chosenCustEmail, chosenCustPassword);
+
+                MessageBox.Show("Customer created succesfully!");
             }
         }
+        
 
         private void btnSkipLogin_Click(object sender, EventArgs e) {
             this.Hide();

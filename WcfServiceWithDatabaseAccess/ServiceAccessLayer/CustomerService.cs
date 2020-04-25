@@ -18,5 +18,10 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
             ControlCustomer ctrlCustomer = new ControlCustomer();
             return ctrlCustomer.InsertCustomer(customerToSave);
         }
+
+        public bool LoginCustomer(string emailToLookUp, string passwordToVerify) {
+            ControlCustomer ctrlCustomer = new ControlCustomer();
+            return ctrlCustomer.LoginCustomer(emailToLookUp, passwordToVerify);
+        }
     }
 }

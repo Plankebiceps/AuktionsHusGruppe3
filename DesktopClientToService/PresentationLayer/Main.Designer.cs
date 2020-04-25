@@ -51,6 +51,7 @@
             this.btnUpdateAuction = new System.Windows.Forms.Button();
             this.listBoxAuctions = new System.Windows.Forms.ListBox();
             this.btnAllAuctions = new System.Windows.Forms.Button();
+            this.btnPlaceBid = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAuction
@@ -256,11 +257,22 @@
             this.btnAllAuctions.UseVisualStyleBackColor = true;
             this.btnAllAuctions.Click += new System.EventHandler(this.btnAllAuctions_Click);
             // 
+            // btnPlaceBid
+            // 
+            this.btnPlaceBid.Location = new System.Drawing.Point(284, 254);
+            this.btnPlaceBid.Name = "btnPlaceBid";
+            this.btnPlaceBid.Size = new System.Drawing.Size(137, 73);
+            this.btnPlaceBid.TabIndex = 34;
+            this.btnPlaceBid.Text = "Place Bid (TEST)";
+            this.btnPlaceBid.UseVisualStyleBackColor = true;
+            this.btnPlaceBid.Click += new System.EventHandler(this.btnPlaceBid_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 357);
+            this.Controls.Add(this.btnPlaceBid);
             this.Controls.Add(this.btnAllAuctions);
             this.Controls.Add(this.listBoxAuctions);
             this.Controls.Add(this.btnUpdateAuction);
@@ -316,5 +328,6 @@
         private System.Windows.Forms.Button btnUpdateAuction;
         private System.Windows.Forms.ListBox listBoxAuctions;
         private System.Windows.Forms.Button btnAllAuctions;
+        private System.Windows.Forms.Button btnPlaceBid;
     }
 }

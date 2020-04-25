@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using WcfServiceWithDatabaseAccess.ModelLayer;
 using WcfServiceWithDatabaseAccess.DatabaseAccessLayer;
+using WcfServiceWithDatabaseAccess.Utilities.Security;
 
 namespace WcfServiceWithDatabaseAccess.ControlLayer
 {
-    class ControlCustomer
+    public class ControlCustomer
     {
         public bool InsertCustomer(Customer customerToSave)
         {
@@ -18,6 +19,15 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer
             wasInsertedCorrectly = customerDB.SaveCustomer(customerToSave);
 
             return wasInsertedCorrectly;
+        }
+
+        public bool LoginCustomer(string emailToLookUp, string passwordToVerify) {
+            bool wasIdentified;
+
+            CustomerAccess customberDb = new CustomerAccess();
+            wasIdentified = customberDb.LoginCustomer(emailToLookUp, passwordToVerify);
+
+            return wasIdentified;
         }
     }
 }

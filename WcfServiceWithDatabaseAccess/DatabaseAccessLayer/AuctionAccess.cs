@@ -21,7 +21,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
             //{
             bool wasInserted;
             string insertString = "insert into Auction(timeLeft, payment, result, paymentDate, productName, productDescription) output " +
-                                  "INSERTED.auctionId VALUES (@timeLeft, @payment, @result, @paymentDate, @productName, @productDescription)";
+                                  "INSERTED.Id VALUES (@timeLeft, @payment, @result, @paymentDate, @productName, @productDescription)";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 
@@ -57,8 +57,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 con.Open();
                 using (SqlCommand cmdDeleteAuction = con.CreateCommand()) {
-                    cmdDeleteAuction.CommandText = "DELETE FROM Auction WHERE AuctionId=@auctionId";
-                    cmdDeleteAuction.Parameters.AddWithValue("auctionId", auctionId);
+                    cmdDeleteAuction.CommandText = "DELETE FROM Auction WHERE id=@id";
+                    cmdDeleteAuction.Parameters.AddWithValue("id", auctionId);
                     cmdDeleteAuction.ExecuteNonQuery();
                 }
             }
@@ -67,20 +67,20 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
         public Auction GetAuctionById(int findAuctionId) {
             Auction foundAuction = new Auction();
 
-            string queryString = "SELECT auctionId, timeLeft, payment, result, paymentDate, productName, productDescription FROM Auction WHERE auctionId = @auctionId";
+            string queryString = "SELECT id, timeLeft, payment, result, paymentDate, productName, productDescription FROM Auction WHERE id = @id";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
 
 
-                    SqlParameter idParam = new SqlParameter("@AuctionId", findAuctionId);
+                    SqlParameter idParam = new SqlParameter("@id", findAuctionId);
                     readCommand.Parameters.Add(idParam);
 
                     con.Open();
 
                     SqlDataReader reader = readCommand.ExecuteReader();
                     while (reader.Read()) {
-                        foundAuction.AuctionId = reader.GetInt32(reader.GetOrdinal("auctionId"));
+                        foundAuction.AuctionId = reader.GetInt32(reader.GetOrdinal("id"));
                         foundAuction.TimeLeft = reader.GetDecimal(reader.GetOrdinal("timeLeft"));
                         foundAuction.Payment = reader.GetBoolean(reader.GetOrdinal("payment"));
                         foundAuction.Result = reader.GetString(reader.GetOrdinal("result"));
@@ -97,13 +97,13 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
         public void ModifySavedAuction(Auction anAuction) {
 
             string insertString = "UPDATE Auction SET timeLeft=@timeLeft, payment=@payment, result=@result, paymentDate=@paymentDate, " +
-                                  "productName=@productName, productDescription=@productDescription WHERE auctionId=@auctionId";
+                                  "productName=@productName, productDescription=@productDescription WHERE id=@id";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
 
                 using (SqlCommand CreateCommand = new SqlCommand(insertString, con)) {
 
-                    SqlParameter idParam = new SqlParameter("@auctionId", anAuction.AuctionId);
+                    SqlParameter idParam = new SqlParameter("@id", anAuction.AuctionId);
                     CreateCommand.Parameters.Add(idParam);
 
                     SqlParameter timeLeftParam = new SqlParameter("@timeLeft", anAuction.TimeLeft);
@@ -136,7 +136,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
             List<Auction> foundAuctions = null;
             Auction readAuction = null;
 
-            string queryString = "select auctionId, timeLeft, payment, result, paymentDate, " +
+            string queryString = "select id, timeLeft, payment, result, paymentDate, " +
                                  "productName, productDescription from Auction";
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -167,7 +167,9 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
             string tempProdNam;
             string tempProdDes;
 
-            tempId = auctionReader.GetInt32(auctionReader.GetOrdinal("auctionId"));
+
+            /* Kan ikke håndtere NULLS */
+            tempId = auctionReader.GetInt32(auctionReader.GetOrdinal("id"));
             tempTimeLeft = auctionReader.GetDecimal(auctionReader.GetOrdinal("timeLeft"));
             tempPayment = auctionReader.GetBoolean(auctionReader.GetOrdinal("payment"));
             tempResult = auctionReader.GetString(auctionReader.GetOrdinal("result"));
