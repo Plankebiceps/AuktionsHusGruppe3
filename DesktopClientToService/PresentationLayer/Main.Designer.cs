@@ -44,7 +44,6 @@
             this.lblAuctionDate = new System.Windows.Forms.Label();
             this.lblProduct = new System.Windows.Forms.Label();
             this.lblProdDesc = new System.Windows.Forms.Label();
-            this.lblFindById = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDeleteAuction = new System.Windows.Forms.Button();
             this.rbutNotPayed = new System.Windows.Forms.RadioButton();
@@ -52,6 +51,7 @@
             this.listBoxAuctions = new System.Windows.Forms.ListBox();
             this.btnAllAuctions = new System.Windows.Forms.Button();
             this.btnPlaceBid = new System.Windows.Forms.Button();
+            this.txtBidAmount = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnAuction
@@ -126,6 +126,8 @@
             this.txtboxAuctionId.Name = "txtboxAuctionId";
             this.txtboxAuctionId.Size = new System.Drawing.Size(100, 20);
             this.txtboxAuctionId.TabIndex = 19;
+            this.txtboxAuctionId.Text = "Auction ID";
+            this.txtboxAuctionId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -188,24 +190,17 @@
             this.lblProdDesc.TabIndex = 26;
             this.lblProdDesc.Text = "Description";
             // 
-            // lblFindById
-            // 
-            this.lblFindById.AutoSize = true;
-            this.lblFindById.Location = new System.Drawing.Point(26, 254);
-            this.lblFindById.Name = "lblFindById";
-            this.lblFindById.Size = new System.Drawing.Size(57, 13);
-            this.lblFindById.TabIndex = 27;
-            this.lblFindById.Text = "Auction ID";
-            // 
             // btnExit
             // 
+            this.btnExit.BackColor = System.Drawing.SystemColors.Control;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnExit.Location = new System.Drawing.Point(659, 311);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(99, 30);
             this.btnExit.TabIndex = 28;
             this.btnExit.Text = "Return To Login";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnDeleteAuction
@@ -246,12 +241,13 @@
             this.listBoxAuctions.Name = "listBoxAuctions";
             this.listBoxAuctions.Size = new System.Drawing.Size(310, 186);
             this.listBoxAuctions.TabIndex = 32;
+            this.listBoxAuctions.SelectedIndexChanged += new System.EventHandler(this.listBoxAuctions_SelectedIndexChanged);
             // 
             // btnAllAuctions
             // 
             this.btnAllAuctions.Location = new System.Drawing.Point(448, 217);
             this.btnAllAuctions.Name = "btnAllAuctions";
-            this.btnAllAuctions.Size = new System.Drawing.Size(99, 30);
+            this.btnAllAuctions.Size = new System.Drawing.Size(110, 30);
             this.btnAllAuctions.TabIndex = 33;
             this.btnAllAuctions.Text = "Find All Auctions";
             this.btnAllAuctions.UseVisualStyleBackColor = true;
@@ -259,19 +255,29 @@
             // 
             // btnPlaceBid
             // 
-            this.btnPlaceBid.Location = new System.Drawing.Point(284, 254);
+            this.btnPlaceBid.Location = new System.Drawing.Point(628, 251);
             this.btnPlaceBid.Name = "btnPlaceBid";
-            this.btnPlaceBid.Size = new System.Drawing.Size(137, 73);
-            this.btnPlaceBid.TabIndex = 34;
-            this.btnPlaceBid.Text = "Place Bid (TEST)";
+            this.btnPlaceBid.Size = new System.Drawing.Size(130, 30);
+            this.btnPlaceBid.TabIndex = 35;
+            this.btnPlaceBid.Text = "Place Bid";
             this.btnPlaceBid.UseVisualStyleBackColor = true;
-            this.btnPlaceBid.Click += new System.EventHandler(this.btnPlaceBid_Click);
+            this.btnPlaceBid.Click += new System.EventHandler(this.btnPlaceBid_Click_1);
+            // 
+            // txtBidAmount
+            // 
+            this.txtBidAmount.Location = new System.Drawing.Point(628, 223);
+            this.txtBidAmount.Name = "txtBidAmount";
+            this.txtBidAmount.Size = new System.Drawing.Size(130, 20);
+            this.txtBidAmount.TabIndex = 36;
+            this.txtBidAmount.Text = "Amount";
+            this.txtBidAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 357);
+            this.Controls.Add(this.txtBidAmount);
             this.Controls.Add(this.btnPlaceBid);
             this.Controls.Add(this.btnAllAuctions);
             this.Controls.Add(this.listBoxAuctions);
@@ -279,7 +285,6 @@
             this.Controls.Add(this.rbutNotPayed);
             this.Controls.Add(this.btnDeleteAuction);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.lblFindById);
             this.Controls.Add(this.lblProdDesc);
             this.Controls.Add(this.lblProduct);
             this.Controls.Add(this.lblAuctionDate);
@@ -321,7 +326,6 @@
         private System.Windows.Forms.Label lblAuctionDate;
         private System.Windows.Forms.Label lblProduct;
         private System.Windows.Forms.Label lblProdDesc;
-        private System.Windows.Forms.Label lblFindById;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnDeleteAuction;
         private System.Windows.Forms.RadioButton rbutNotPayed;
@@ -329,5 +333,6 @@
         private System.Windows.Forms.ListBox listBoxAuctions;
         private System.Windows.Forms.Button btnAllAuctions;
         private System.Windows.Forms.Button btnPlaceBid;
+        private System.Windows.Forms.TextBox txtBidAmount;
     }
 }

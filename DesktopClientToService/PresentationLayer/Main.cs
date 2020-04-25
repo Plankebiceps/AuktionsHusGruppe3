@@ -7,7 +7,11 @@ using System.Windows.Forms;
 namespace DesktopClientToService.PresentationLayer
 {
     public partial class Main : Form {
+
         ControlAuction auctionController = new ControlAuction();
+        private Auction auctionToBidOn;
+        private int auctionToBidOnIndex;
+
         public Main() {
             InitializeComponent();
         }
@@ -142,6 +146,20 @@ namespace DesktopClientToService.PresentationLayer
 
 
             ctrlBid.PlaceBid(tempAmountToBid, tempAuctionId, tempCustId);
+        }
+
+        private void listBoxAuctions_SelectedIndexChanged(object sender, EventArgs e) {
+            auctionToBidOn = listBoxAuctions.SelectedItem as Auction;
+            auctionToBidOnIndex = listBoxAuctions.SelectedIndex;
+        }
+
+        private void btnPlaceBid_Click_1(object sender, EventArgs e) {
+
+            ControlBid ctrlBid = new ControlBid();
+            decimal amountToBid;
+            decimal.TryParse(txtBidAmount.Text, out amountToBid);
+
+            ctrlBid.PlaceBid(amountToBid, auctionToBidOn.AuctionId, 1);
         }
     }
 }
