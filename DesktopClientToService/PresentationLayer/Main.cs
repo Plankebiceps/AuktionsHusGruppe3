@@ -137,7 +137,7 @@ namespace DesktopClientToService.PresentationLayer
             ControlBid ctrlBid = new ControlBid();
 
             decimal tempAmountToBid = 100;
-            int tempAuctionId = 10;
+            int tempAuctionId = 1;
             int tempCustId = 1;
 
 
