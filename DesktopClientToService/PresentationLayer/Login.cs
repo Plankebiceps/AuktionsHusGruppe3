@@ -101,11 +101,15 @@ namespace DesktopClientToService.PresentationLayer {
             // Opret customer såfremt radiobutton (rbutCust) er valgt
             if (rbutCust.Checked == true) {
 
+                string chosenFirstName = CustomerCredentials.CcFirstName;
+                string chosenLastName = CustomerCredentials.CcLastName;
+                string chosenAddress = CustomerCredentials.CcAddress;
+
                 string chosenCustEmail = txtEmail.Text;
                 string chosenCustPassword = txtPassword.Text;
 
                 ControlCustomer ctrlCustomer = new ControlCustomer();
-                ctrlCustomer.AddCustomer("testmand", "testersen", "testvej 1, 6666 testby", chosenCustEmail, chosenCustPassword);
+                ctrlCustomer.AddCustomer(chosenAddress, chosenFirstName, chosenLastName, chosenCustEmail, chosenCustPassword);
 
                 MessageBox.Show("Customer created succesfully!");
             }
@@ -119,11 +123,8 @@ namespace DesktopClientToService.PresentationLayer {
         }
 
         private void rbutCust_CheckedChanged(object sender, EventArgs e) {
-
-        }
-
-        private void rbutAdm_CheckedChanged(object sender, EventArgs e) {
-
+            CustomerCredentials cc = new CustomerCredentials();
+            cc.Show();
         }
     }
 }

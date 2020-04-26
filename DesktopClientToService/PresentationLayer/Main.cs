@@ -143,12 +143,18 @@ namespace DesktopClientToService.PresentationLayer
         private void btnPlaceBid_Click_1(object sender, EventArgs e) { // TO DO
 
             ControlBid ctrlBid = new ControlBid();
-            
+
             int customerId = Login.CustomerActive.Id;
             decimal amountToBid;
             decimal.TryParse(txtBidAmount.Text, out amountToBid);
+            bool inputIsOk = !(customerId <= 0 && selectedAuction.AuctionId <= 0 && amountToBid <= 0);
 
-            ctrlBid.PlaceBid(amountToBid, selectedAuction.AuctionId, customerId);
+            if (inputIsOk) {
+                ctrlBid.PlaceBid(amountToBid, selectedAuction.AuctionId, customerId);
+                MessageBox.Show("Bid placed on " + selectedAuction.ProductName);
+            } else {
+                MessageBox.Show("Something went wrong. Try again!");
+            }
         }
     }
 }

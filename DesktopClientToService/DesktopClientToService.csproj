@@ -92,6 +92,12 @@
     <Compile Include="ModelLayer\Auction.cs" />
     <Compile Include="ModelLayer\Bid.cs" />
     <Compile Include="ModelLayer\Customer.cs" />
+    <Compile Include="PresentationLayer\CustomerCredentials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\CustomerCredentials.Designer.cs">
+      <DependentUpon>CustomerCredentials.cs</DependentUpon>
+    </Compile>
     <Compile Include="PresentationLayer\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="PresentationLayer\CustomerCredentials.resx">
+      <DependentUpon>CustomerCredentials.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PresentationLayer\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

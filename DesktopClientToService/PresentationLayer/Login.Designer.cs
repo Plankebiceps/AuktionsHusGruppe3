@@ -91,7 +91,6 @@
             this.rbutAdm.TabStop = true;
             this.rbutAdm.Text = "Admin";
             this.rbutAdm.UseVisualStyleBackColor = true;
-            this.rbutAdm.CheckedChanged += new System.EventHandler(this.rbutAdm_CheckedChanged);
             // 
             // rbutCust
             // 
