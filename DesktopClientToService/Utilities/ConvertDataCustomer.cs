@@ -13,6 +13,7 @@ namespace DesktopClientToService.Utilities {
             ModelLayer.Customer clientCustomer = null;
             if (serviceCustomer != null) {
                 clientCustomer = new ModelLayer.Customer {
+                    Id = serviceCustomer.Id,
                     Address = serviceCustomer.Address,
                     FirstName = serviceCustomer.FirstName,
                     LastName = serviceCustomer.LastName,
@@ -29,6 +30,7 @@ namespace DesktopClientToService.Utilities {
             ServiceRefCustomer.Customer serviceCustomer = null;
             if (desktopCustomer != null) {
                 serviceCustomer = new ServiceRefCustomer.Customer {
+                    Id = desktopCustomer.Id,
                     Address = desktopCustomer.Address,
                     FirstName = desktopCustomer.FirstName,
                     LastName = desktopCustomer.LastName,

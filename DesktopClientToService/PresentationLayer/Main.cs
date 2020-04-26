@@ -135,34 +135,18 @@ namespace DesktopClientToService.PresentationLayer
             }
         }
 
-        //private void btnPlaceBid_Click(object sender, EventArgs e) {
-
-        //    ControlAuction ctrlAuction = new ControlAuction();
-        //    // ControlCustomer TO DO
-        //    ControlBid ctrlBid = new ControlBid();
-
-        //    decimal tempAmountToBid = 100;
-        //    int tempAuctionId = 1;
-        //    int tempCustId = 1;
-
-
-        //    ctrlBid.PlaceBid(tempAmountToBid, tempAuctionId, tempCustId);
-        //}
-
         private void listBoxAuctions_SelectedIndexChanged(object sender, EventArgs e) {
             auctionToBidOn = listBoxAuctions.SelectedItem as Auction;
             auctionToBidOnIndex = listBoxAuctions.SelectedIndex;
         }
 
-        private void btnPlaceBid_Click_1(object sender, EventArgs e) {
+        private void btnPlaceBid_Click_1(object sender, EventArgs e) { // TO DO
 
-            ControlCustomer ctrlCustomer = new ControlCustomer();
             ControlBid ctrlBid = new ControlBid();
-            Login login = new Login();
 
-            Customer currentCustomer = ctrlCustomer.GetCustomerByEmail(login.EmailToPassOn);
-
-            int customerId = currentCustomer.Id;
+            //Customer currentCustomer = ctrlCustomer.GetCustomerByEmail(Login.EmailToPassOn);
+            
+            int customerId = Login.CustomerActive.Id;
             decimal amountToBid;
             decimal.TryParse(txtBidAmount.Text, out amountToBid);
 

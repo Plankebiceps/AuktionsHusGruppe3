@@ -66,7 +66,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                 Customer customerToLogin = null;
                 bool isPasswordMatched;
 
-                string queryString = "SELECT customerEmail, salt, hash FROM Customer WHERE customerEmail = @customerEmail";
+                string queryString = "SELECT id, address, firstName, lastName, customerEmail, salt, hash FROM Customer WHERE customerEmail = @customerEmail";
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
@@ -80,13 +80,18 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                     // Execute read
                     SqlDataReader userReader = readCommand.ExecuteReader();
 
-                    if (userReader.HasRows) {
-                        string readEmail, readSalt, readHash;
+                    if (userReader.HasRows) {         /* muligvis opdeling af metoder. Objekt-return FindCustomer og bool-return VerifyCustomer */
+                        int readId;
+                        string readAddress, readFirstName, readLastName, readEmail, readSalt, readHash;
                         while (userReader.Read()) {
+                            readId = userReader.GetInt32(userReader.GetOrdinal("id"));
+                            readAddress = userReader.GetString(userReader.GetOrdinal("address"));
+                            readFirstName = userReader.GetString(userReader.GetOrdinal("firstName"));
+                            readLastName = userReader.GetString(userReader.GetOrdinal("lastName"));
                             readEmail = userReader.GetString(userReader.GetOrdinal("customerEmail"));
                             readSalt = userReader.GetString(userReader.GetOrdinal("hash"));
                             readHash = userReader.GetString(userReader.GetOrdinal("salt"));
-                            customerToLogin = new Customer(readEmail, readSalt, readHash);
+                            customerToLogin = new Customer(readId, readAddress, readFirstName, readLastName, readEmail, readSalt, readHash);
                         }
                     } else {  //såfremt userReader ikke finder en email, der matcher password i DB - skal rettes til (exception??)
                         throw new Exception();

@@ -132,7 +132,7 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtEmail);
             this.Name = "Login";
-            this.Text = "Login";
+            this.Text = "Sign In - Auctioneer";
             this.ResumeLayout(false);
             this.PerformLayout();
 

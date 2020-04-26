@@ -40,6 +40,15 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
         {
 
         }
-    
+
+        public Customer(int id, string firstName, string lastName, string address, string email, string hash, string salt) {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Address = address;
+            Email = email;
+            Hash = hash;
+            Salt = salt;
+        }
     }
 }
