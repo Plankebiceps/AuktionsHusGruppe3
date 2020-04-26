@@ -20,29 +20,7 @@ namespace DesktopClientToService.PresentationLayer {
             InitializeComponent();
         }
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-
-
-        //    SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS; Integrated Security = True"); //Laver en forbindelse.
-        //    SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM login WHERE username='" + txtEmail.Text + "' AND password='" + txtPassword.Text + "'", con);
-
-        //    //De øvre linjer i programmet vælger hele dataen fra tabellen og de sammenhørende med bruger navn og bruger kode som er lavet af brugeren.
-
-        //    DataTable dt = new DataTable(); //Dette laver en virtual tabel.
-        //    sda.Fill(dt);
-        //    if (dt.Rows[0][0].ToString() == "1") {
-        //        // Hvis koden er rigtig, burde login vinduet forsvinde, og et nyt vindue som hedder "TestWinForms" burde komme.
-        //        this.Hide();
-        //        Main loggedIn = new Main();
-        //        loggedIn.Show();
-        //    } else {
-        //        MessageBox.Show("Invalid username and / or password");
-        //    }
-
-        //}
-
-
+        // LOGIN - ADMIN & CUSTOMER
         private void button1_Click(object sender, EventArgs e) {
 
             if (rbutAdm.Checked == true) {
@@ -84,6 +62,7 @@ namespace DesktopClientToService.PresentationLayer {
             }
         }
 
+        // CREATE ACCOUNT - ADMIN & CUSTOMER
         private void btnCreateAcc_Click(object sender, EventArgs e) {
 
             // Opret admin såfremt radiobutton (rbutAdm) er valgt
@@ -115,13 +94,14 @@ namespace DesktopClientToService.PresentationLayer {
             }
         }
         
-
+        // SKIP LOGIN BUTTON
         private void btnSkipLogin_Click(object sender, EventArgs e) {
             this.Hide();
             Main mainForm = new Main();
             mainForm.Show();
         }
 
+        // TO DO : SKAL IKKE AKTIVERES VED KLIK PÅ ADMIN
         private void rbutCust_CheckedChanged(object sender, EventArgs e) {
             CustomerCredentials cc = new CustomerCredentials();
             cc.Show();

@@ -57,8 +57,6 @@ namespace DesktopClientToService.PresentationLayer
                 MessageBox.Show("Values a invalid!");
             }
         }
-    
-
 
         // FIND AUCTION BY ID
         private void button1_Click(object sender, EventArgs e) {
@@ -69,7 +67,6 @@ namespace DesktopClientToService.PresentationLayer
             Auction foundAuction = auctionController.GetAuctionById(findAuctionId);
             lblProductName.Text = foundAuction.ProductName;
         }
-
 
         // DELETE AUCTION
         private void btnDeleteAuction_Click(object sender, EventArgs e) {
@@ -87,7 +84,6 @@ namespace DesktopClientToService.PresentationLayer
                 MessageBox.Show("The ID was not found - try again!");
             }        
         }
-
 
         // RETURN TO LOGIN
         private void btnExit_Click(object sender, EventArgs e) {
@@ -135,19 +131,21 @@ namespace DesktopClientToService.PresentationLayer
             }
         }
 
+        // LISTBOX FUNKTIONALITET
         private void listBoxAuctions_SelectedIndexChanged(object sender, EventArgs e) {
             selectedAuction = listBoxAuctions.SelectedItem as Auction;
             selectedAuctionIndex = listBoxAuctions.SelectedIndex;
         }
 
-        private void btnPlaceBid_Click_1(object sender, EventArgs e) { // TO DO
+        // PLACE BID (CUSTOMER)
+        private void btnPlaceBid_Click_1(object sender, EventArgs e) { 
 
             ControlBid ctrlBid = new ControlBid();
 
             int customerId = Login.CustomerActive.Id;
             decimal amountToBid;
             decimal.TryParse(txtBidAmount.Text, out amountToBid);
-            bool inputIsOk = !(customerId <= 0 && selectedAuction.AuctionId <= 0 && amountToBid <= 0);
+            bool inputIsOk = !(customerId <= 0 && selectedAuction.AuctionId <= 0 && amountToBid <= 0);  // Mangler ordentlig funktionalitet
 
             if (inputIsOk) {
                 ctrlBid.PlaceBid(amountToBid, selectedAuction.AuctionId, customerId);

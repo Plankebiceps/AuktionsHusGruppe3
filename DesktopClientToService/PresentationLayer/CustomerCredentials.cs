@@ -19,7 +19,9 @@ namespace DesktopClientToService.PresentationLayer {
             InitializeComponent();
         }
 
+        // ASSIGNER INDTASTEDE CREDENTIALS TIL FIELD
         private void btnCcOk_Click(object sender, EventArgs e) {
+
             CcFirstName = txtCcFirstName.Text;
             CcLastName = txtCcLastName.Text;
             CcAddress = txtCcAddress.Text;
