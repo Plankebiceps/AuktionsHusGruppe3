@@ -41,22 +41,19 @@ namespace DesktopClientToService.PresentationLayer
                 MessageBox.Show("Please chose wheter it is payed!");
             }
 
-            // SKAL RETTES TIL:
-            bool inputIsOk = !(timeLeft < 1 && string.IsNullOrEmpty(result)
-                                && string.IsNullOrEmpty(productName) && string.IsNullOrEmpty(productDescription));
+            bool inputIsOk = (timeLeft > 1 && !string.IsNullOrEmpty(result)
+                                && !string.IsNullOrEmpty(productName) && !string.IsNullOrEmpty(productDescription));
 
             if (inputIsOk) {
                 ControlAuction ctrlAuction = new ControlAuction();
-                bool wasOk = ctrlAuction.AddAuction(timeLeft, payment, result, dateTime, productName, productDescription);
-                if (wasOk) {
-                    MessageBox.Show("Auction created!");
-                } else {
-                    MessageBox.Show("Auction not created! Try again.");
-                }
+                ctrlAuction.AddAuction(timeLeft, payment, result, dateTime, productName, productDescription);
+                MessageBox.Show("Auction created!");
             } else {
-                MessageBox.Show("Values a invalid!");
+              MessageBox.Show("Auction not created! Try again.");
             }
         }
+
+        
 
         // FIND AUCTION BY ID
         private void button1_Click(object sender, EventArgs e) {
