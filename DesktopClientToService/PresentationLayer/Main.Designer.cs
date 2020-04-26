@@ -52,6 +52,7 @@
             this.btnAllAuctions = new System.Windows.Forms.Button();
             this.btnPlaceBid = new System.Windows.Forms.Button();
             this.txtBidAmount = new System.Windows.Forms.TextBox();
+            this.lblPayment = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAuction
@@ -152,7 +153,7 @@
             // lblTimeLeft
             // 
             this.lblTimeLeft.AutoSize = true;
-            this.lblTimeLeft.Location = new System.Drawing.Point(26, 52);
+            this.lblTimeLeft.Location = new System.Drawing.Point(24, 52);
             this.lblTimeLeft.Name = "lblTimeLeft";
             this.lblTimeLeft.Size = new System.Drawing.Size(57, 13);
             this.lblTimeLeft.TabIndex = 22;
@@ -161,7 +162,7 @@
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(26, 80);
+            this.lblResult.Location = new System.Drawing.Point(24, 101);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(37, 13);
             this.lblResult.TabIndex = 23;
@@ -170,7 +171,7 @@
             // lblAuctionDate
             // 
             this.lblAuctionDate.AutoSize = true;
-            this.lblAuctionDate.Location = new System.Drawing.Point(26, 105);
+            this.lblAuctionDate.Location = new System.Drawing.Point(24, 125);
             this.lblAuctionDate.Name = "lblAuctionDate";
             this.lblAuctionDate.Size = new System.Drawing.Size(55, 13);
             this.lblAuctionDate.TabIndex = 24;
@@ -179,7 +180,7 @@
             // lblProduct
             // 
             this.lblProduct.AutoSize = true;
-            this.lblProduct.Location = new System.Drawing.Point(26, 132);
+            this.lblProduct.Location = new System.Drawing.Point(24, 151);
             this.lblProduct.Name = "lblProduct";
             this.lblProduct.Size = new System.Drawing.Size(44, 13);
             this.lblProduct.TabIndex = 25;
@@ -188,7 +189,7 @@
             // lblProdDesc
             // 
             this.lblProdDesc.AutoSize = true;
-            this.lblProdDesc.Location = new System.Drawing.Point(26, 158);
+            this.lblProdDesc.Location = new System.Drawing.Point(24, 179);
             this.lblProdDesc.Name = "lblProdDesc";
             this.lblProdDesc.Size = new System.Drawing.Size(60, 13);
             this.lblProdDesc.TabIndex = 26;
@@ -277,11 +278,21 @@
             this.txtBidAmount.Text = "Amount";
             this.txtBidAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // lblPayment
+            // 
+            this.lblPayment.AutoSize = true;
+            this.lblPayment.Location = new System.Drawing.Point(24, 77);
+            this.lblPayment.Name = "lblPayment";
+            this.lblPayment.Size = new System.Drawing.Size(48, 13);
+            this.lblPayment.TabIndex = 37;
+            this.lblPayment.Text = "Payment";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(790, 357);
+            this.Controls.Add(this.lblPayment);
             this.Controls.Add(this.txtBidAmount);
             this.Controls.Add(this.btnPlaceBid);
             this.Controls.Add(this.btnAllAuctions);
@@ -339,5 +350,6 @@
         private System.Windows.Forms.Button btnAllAuctions;
         private System.Windows.Forms.Button btnPlaceBid;
         private System.Windows.Forms.TextBox txtBidAmount;
+        private System.Windows.Forms.Label lblPayment;
     }
 }
