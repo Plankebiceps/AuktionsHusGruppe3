@@ -14,7 +14,6 @@ using DesktopClientToService.ModelLayer;
 namespace DesktopClientToService.PresentationLayer {
     public partial class Login : Form {
 
-        //public static string EmailToPassOn { get; set; }
         public static Customer CustomerActive { get; set; }
 
         public Login() {
@@ -67,11 +66,12 @@ namespace DesktopClientToService.PresentationLayer {
                 if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
                     ControlCustomer ctrlCustomer = new ControlCustomer();
-                    bool isMatched = ctrlCustomer.LoginCustomer(txtEmail.Text, txtPassword.Text);
+                    bool isMatched = ctrlCustomer.LoginCustomer(txtEmail.Text, txtPassword.Text);  // Verificerer indtastede login-credentials gennem service.
 
                     if (isMatched == true) {
-                        CustomerActive = ctrlCustomer.GetCustomerByEmail(txtEmail.Text);
-                        //EmailToPassOn = txtEmail.Text;
+
+                        CustomerActive = ctrlCustomer.GetCustomerByEmail(txtEmail.Text); // Se fields. Customer-objekt til brug i Main.cs.
+
                         MessageBox.Show("Login succeeded!");
                         this.Hide();
                         Main mainForm = new Main();

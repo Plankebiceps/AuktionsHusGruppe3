@@ -10,8 +10,8 @@ namespace DesktopClientToService.PresentationLayer
     public partial class Main : Form {
 
         ControlAuction auctionController = new ControlAuction();
-        private Auction auctionToBidOn;
-        private int auctionToBidOnIndex;
+        private Auction selectedAuction;
+        private int selectedAuctionIndex;
 
         public Main() {
             InitializeComponent();
@@ -136,21 +136,19 @@ namespace DesktopClientToService.PresentationLayer
         }
 
         private void listBoxAuctions_SelectedIndexChanged(object sender, EventArgs e) {
-            auctionToBidOn = listBoxAuctions.SelectedItem as Auction;
-            auctionToBidOnIndex = listBoxAuctions.SelectedIndex;
+            selectedAuction = listBoxAuctions.SelectedItem as Auction;
+            selectedAuctionIndex = listBoxAuctions.SelectedIndex;
         }
 
         private void btnPlaceBid_Click_1(object sender, EventArgs e) { // TO DO
 
             ControlBid ctrlBid = new ControlBid();
-
-            //Customer currentCustomer = ctrlCustomer.GetCustomerByEmail(Login.EmailToPassOn);
             
             int customerId = Login.CustomerActive.Id;
             decimal amountToBid;
             decimal.TryParse(txtBidAmount.Text, out amountToBid);
 
-            ctrlBid.PlaceBid(amountToBid, auctionToBidOn.AuctionId, customerId);
+            ctrlBid.PlaceBid(amountToBid, selectedAuction.AuctionId, customerId);
         }
     }
 }
