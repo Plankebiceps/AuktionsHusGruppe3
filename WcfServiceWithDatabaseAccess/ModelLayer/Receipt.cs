@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace WcfServiceWithDatabaseAccess.ModelLayer
 {
     [DataContract]
-    class Receipt
+    public class Receipt
     {
         [DataMember]
         public string ReceiptDescription { get; set; }
@@ -16,6 +16,10 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
         public Receipt(string receiptDescription)
         {
             ReceiptDescription = receiptDescription;
+        }
+        public Receipt()
+        {
+
         }
     }
 }

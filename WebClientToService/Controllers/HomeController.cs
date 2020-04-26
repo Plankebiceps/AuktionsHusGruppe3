@@ -30,5 +30,12 @@ namespace WebClientToService.Controllers {
 
             return View(auctionsToDisplay);
         }
+
+        public ActionResult CustomerLogin()
+        {
+            //Opsætning af et login system for brugere
+
+            return View();
+        }
     }
 }
