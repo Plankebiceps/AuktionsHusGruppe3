@@ -13,16 +13,35 @@
   <wsdl:message name="IBidService_PlaceBid_OutputMessage">
     <wsdl:part name="parameters" element="tns:PlaceBidResponse" />
   </wsdl:message>
+  <wsdl:message name="IBidService_GetBidAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBidAll" />
+  </wsdl:message>
+  <wsdl:message name="IBidService_GetBidAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBidAllResponse" />
+  </wsdl:message>
   <wsdl:portType name="IBidService">
     <wsdl:operation name="PlaceBid">
       <wsdl:input wsaw:Action="http://tempuri.org/IBidService/PlaceBid" message="tns:IBidService_PlaceBid_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBidService/PlaceBidResponse" message="tns:IBidService_PlaceBid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBidAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBidService/GetBidAll" message="tns:IBidService_GetBidAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBidService/GetBidAllResponse" message="tns:IBidService_GetBidAll_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IBidService" type="tns:IBidService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="PlaceBid">
       <soap:operation soapAction="http://tempuri.org/IBidService/PlaceBid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBidAll">
+      <soap:operation soapAction="http://tempuri.org/IBidService/GetBidAll" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

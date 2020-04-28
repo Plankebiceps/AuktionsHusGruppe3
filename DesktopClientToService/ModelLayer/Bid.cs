@@ -16,5 +16,14 @@ namespace DesktopClientToService.ModelLayer {
 
         }
 
+        public Bid(decimal bidAmount, int customerId, int auctionId) {
+            BidAmount = bidAmount;
+            CustomerId = customerId;
+            AuctionId = auctionId;
+        }
+
+        public override string ToString() {
+            return $"Dkr. {BidAmount},- | Customer: {CustomerId}";
+        }
     }
 }
