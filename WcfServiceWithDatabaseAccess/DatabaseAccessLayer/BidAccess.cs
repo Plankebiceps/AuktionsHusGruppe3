@@ -91,9 +91,9 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 
             /* Kan ikke håndtere NULLS */
             tempAuctionId = bidReader.GetInt32(bidReader.GetOrdinal("auctionId"));
-            tempBidAmount = bidReader.GetDecimal(bidReader.GetOrdinal("bidAmount"));
             tempCustId = bidReader.GetInt32(bidReader.GetOrdinal("customerId"));
-            foundBid = new Bid(tempBidAmount, tempAuctionId, tempCustId);
+            tempBidAmount = bidReader.GetDecimal(bidReader.GetOrdinal("bidAmount"));
+            foundBid = new Bid(tempBidAmount, tempCustId, tempAuctionId);
             return foundBid;
         }
     }
