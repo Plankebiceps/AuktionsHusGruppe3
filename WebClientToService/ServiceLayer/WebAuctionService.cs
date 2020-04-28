@@ -17,5 +17,16 @@ namespace WebClientToService.ServiceLayer {
             }
             return foundAuctions;
         }
+    
+        public bool CreateAuction(Auction auctionToAdd)
+        {
+            bool allOk = false;
+            using (AuctionServiceClient auctionProxy = new AuctionServiceClient())
+            {
+                allOk = auctionProxy.AddAuction(auctionToAdd);
+            }
+                return allOk;
+        }
+    
     }
 }

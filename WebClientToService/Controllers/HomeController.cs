@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebClientToService.Models;
 using WebClientToService.ServiceLayer;
+using WebClientToService.ServiceRefAuction;
 
 namespace WebClientToService.Controllers {
     public class HomeController : Controller {
@@ -31,11 +32,26 @@ namespace WebClientToService.Controllers {
             return View(auctionsToDisplay);
         }
 
+
         public ActionResult CustomerLogin()
         {
             //Opsætning af et login system for brugere
 
             return View();
         }
+
+        public ActionResult CreateAuction()
+        {
+            return View();
+        }
+        
+      //  public ActionResult CreateAuction(Auction auc)
+      //  {
+      //      WebAuctionService was = new WebAuctionService();
+      //      was.CreateAuction(auc);
+
+      //      return RedirectToAction("Index");
+      //  }
+
     }
 }
