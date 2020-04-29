@@ -19,6 +19,7 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
         [OperationContract]
         bool PlaceBid(Bid bidToPlace);
 
-
+        [OperationContract]
+        List<Bid> GetBidAll(int auctionId);
     }
 }

@@ -153,6 +153,9 @@
     <None Include="Connected Services\ServiceRefAuction\WcfServiceWithDatabaseAccess.ModelLayer.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceRefBid\DesktopClientToService.ServiceRefBid.Bid.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceRefBid\service.wsdl" />
     <None Include="Connected Services\ServiceRefBid\service.xsd">
       <SubType>Designer</SubType>

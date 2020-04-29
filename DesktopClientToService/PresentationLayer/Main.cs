@@ -151,5 +151,21 @@ namespace DesktopClientToService.PresentationLayer
                 MessageBox.Show("Something went wrong. Try again!");
             }
         }
+
+        private void btnShowBids_Click_1(object sender, EventArgs e) {
+
+            ControlBid ctrlBid = new ControlBid();
+            List<Bid> allBids = ctrlBid.GetAllBids(selectedAuction.AuctionId);
+
+            // CLEAR LIST
+            listBoxBids.Items.Clear();
+
+            // REFRESH LIST
+            foreach (Bid bid in allBids) {
+                listBoxBids.Items.Add(bid);
+            }
+
+        }
+
     }
 }

@@ -21,5 +21,16 @@ namespace WebClientToService.Controllers {
 
         //    return View(foundBids);
         //}
+
+        //public ActionResult Details(int? id) {
+        //    //If input seems reasonable create detailed student output - otherwise create list
+        //    if (id != null && id > -1) {
+        //        WebBidService wbs = new WebBidService();
+        //        Bid detailBid = wbs.((int)id);
+        //        return View(detailPerson);
+        //    } else {
+        //        return RedirectToAction("List");
+        //    }
+        //}
     }
 }
