@@ -96,16 +96,16 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
         //        }
         //    }
 
-<<<<<<< HEAD
+
         //}
-=======
+
             /* Kan ikke håndtere NULLS */
-            tempAuctionId = bidReader.GetInt32(bidReader.GetOrdinal("auctionId"));
-            tempBidAmount = bidReader.GetDecimal(bidReader.GetOrdinal("bidAmount"));
-            tempCustId = bidReader.GetInt32(bidReader.GetOrdinal("customerId"));
-            foundBid = new Bid(tempBidAmount, tempAuctionId, tempCustId);
-            return foundBid;
-        }
->>>>>>> parent of 31c6cd6... Fejl i BidAccess rettet
+        //    tempAuctionId = bidReader.GetInt32(bidReader.GetOrdinal("auctionId"));
+        //    tempBidAmount = bidReader.GetDecimal(bidReader.GetOrdinal("bidAmount"));
+        //    tempCustId = bidReader.GetInt32(bidReader.GetOrdinal("customerId"));
+        //    foundBid = new Bid(tempBidAmount, tempAuctionId, tempCustId);
+        //    return foundBid;
+        //}
+
     }
 }

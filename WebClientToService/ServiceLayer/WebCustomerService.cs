@@ -14,7 +14,7 @@ namespace WebClientToService.ServiceLayer
         public bool CreateCustomerAccount(clientRef.WebCustomer webCustomerToAdd)
         {
             bool webAllOk = false;
-            proxyRefCus.Customer customerInServiceFormat = new Account().WebConvertToServiceCustomer(webCustomerToAdd);
+            proxyRefCus.Customer customerInServiceFormat = new TransformAccount().WebConvertToServiceCustomer(webCustomerToAdd);
             using (proxyRefCus.CustomerServiceClient customerProxy = new proxyRefCus.CustomerServiceClient())
             {
                 webAllOk = customerProxy.AddCustomer(customerInServiceFormat);
