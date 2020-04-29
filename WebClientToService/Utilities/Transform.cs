@@ -7,7 +7,6 @@ using proxyRef = WebClientToService.ServiceRefAuction;
 
 namespace WebClientToService.Utilities {
     public class Transform {
-
         public static List<webClientRef.WebAuction> ConvertToWebClient(proxyRef.Auction[] serviceAuctions) {
             List<webClientRef.WebAuction> foundWebClientAuctions = null;
             if (serviceAuctions != null && serviceAuctions.Length > 0) {
@@ -22,5 +21,7 @@ namespace WebClientToService.Utilities {
             }
             return foundWebClientAuctions;
         }
+
+        
     }
 }

@@ -142,6 +142,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -151,6 +152,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLayer\WebAuctionService.cs" />
     <Compile Include="ServiceLayer\WebCustomerService.cs" />
+    <Compile Include="ServiceRefCustomer\WebCustomer.cs" />
+    <Compile Include="Utilities\Account.cs" />
     <Compile Include="Utilities\Transform.cs" />
   </ItemGroup>
   <ItemGroup>
