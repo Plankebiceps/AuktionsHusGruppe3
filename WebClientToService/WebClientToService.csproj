@@ -137,21 +137,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\ServiceRefBid\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceRefCustomer\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\BidController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\WebBid.cs" />
     <Compile Include="Models\WebAuction.cs" />
     <Compile Include="Models\WebCustomer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLayer\WebAuctionService.cs" />
+    <Compile Include="ServiceLayer\WebBidService.cs" />
     <Compile Include="ServiceLayer\WebCustomerService.cs" />
-    <Compile Include="Utilities\Transform.cs" />
+    <Compile Include="Utilities\TransformAuction.cs" />
+    <Compile Include="Utilities\TransformBid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceRefAuction\configuration91.svcinfo" />
@@ -160,9 +169,28 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\ServiceRefBid\service.wsdl" />
+    <None Include="Connected Services\ServiceRefBid\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceRefBid\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceRefBid\WcfServiceWithDatabaseAccess.ModelLayer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\ServiceRefBid\WebClientToService.ServiceRefBid.Bid.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServiceRefCustomer\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceRefCustomer\configuration.svcinfo" />
     <None Include="Connected Services\ServiceRefCustomer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\ServiceRefBid\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceRefBid\configuration.svcinfo" />
+    <None Include="Connected Services\ServiceRefBid\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -227,12 +255,14 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Auctions.cshtml" />
+    <Content Include="Views\Home\List.cshtml" />
     <Content Include="Views\Home\CustomerLogin.cshtml" />
-    <Content Include="Views\Home\CreateAuction.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Bid\ListBids.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\WebBid\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -252,6 +282,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceRefAuction\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceRefBid\" />
     <WCFMetadataStorage Include="Connected Services\ServiceRefCustomer\" />
   </ItemGroup>
   <PropertyGroup>

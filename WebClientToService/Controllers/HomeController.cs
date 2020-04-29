@@ -25,13 +25,12 @@ namespace WebClientToService.Controllers {
             return View();
         }
 
-        public ActionResult Auctions() {
+        public ActionResult List() {
             WebAuctionService was = new WebAuctionService();
             List<WebAuction> auctionsToDisplay = was.GetAllAuctions();
 
             return View(auctionsToDisplay);
         }
-
 
         public ActionResult CustomerLogin()
         {
@@ -40,7 +39,7 @@ namespace WebClientToService.Controllers {
             return View();
         }
 
-        public ActionResult CreateAuction()
+        public ActionResult Create()
         {
             return View();
         }
@@ -49,9 +48,15 @@ namespace WebClientToService.Controllers {
         public ActionResult Create(WebAuction auc)
         {
             WebAuctionService was = new WebAuctionService();
+
+            auc.Result = "Open";
+            DateTime dt = new DateTime(2012, 12, 31, 16, 45, 0);
+            auc.PaymentDate = dt;
+            auc.Payment = false;
+
             was.CreateAuction(auc);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
     }

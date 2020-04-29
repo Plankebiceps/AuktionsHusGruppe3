@@ -13,18 +13,21 @@ using proxyRef = WebClientToService.ServiceRefAuction;
 namespace WebClientToService.ServiceLayer {
     public class WebAuctionService {
         public List<WebAuction> GetAllAuctions() {
-            List<WebAuction> foundAuctions = null;
-            using (AuctionServiceClient auctionProxy = new AuctionServiceClient()) {
-                Auction[] foundServiceAuctions = auctionProxy.GetAuctionAll();
-                foundAuctions = Transform.ConvertToWebClient(foundServiceAuctions);
+            List<WebAuction> auctions = null;
+            proxyRef.Auction[] proxyAuctions = null;
+            using (proxyRef.AuctionServiceClient auctionProxy = new proxyRef.AuctionServiceClient()) {
+                proxyAuctions = auctionProxy.GetAuctionAll();
             }
-            return foundAuctions;
+            if (proxyAuctions != null && proxyAuctions.Length > 0) {
+                auctions = new TransformAuction().ConvertFromServiceAuctions(proxyAuctions);
+            }
+            return auctions;
         }
         
         public bool CreateAuction(WebAuction auctionToAdd)
         {
             bool allOk = false;
-            proxyRef.Auction auctionServiceFormat = new Transform().ConvertToServiceAuction(auctionToAdd);
+            proxyRef.Auction auctionServiceFormat = new TransformAuction().ConvertToServiceAuction(auctionToAdd);
             using (AuctionServiceClient auctionProxy = new AuctionServiceClient())
             {
                 allOk = auctionProxy.AddAuction(auctionServiceFormat);
