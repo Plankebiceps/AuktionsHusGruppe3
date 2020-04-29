@@ -149,6 +149,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuctionController.cs" />
+    <Compile Include="Controllers\BidController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -262,6 +263,7 @@
     <Content Include="Views\Auction\List.cshtml" />
     <Content Include="Views\Auction\Create.cshtml" />
     <Content Include="Views\Auction\Index.cshtml" />
+    <Content Include="Views\Bid\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

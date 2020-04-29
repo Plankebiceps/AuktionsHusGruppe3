@@ -9,7 +9,7 @@ using WebClientToService.Models;
 namespace WebClientToService.Utilities {
 
     public class TransformBid {
-        // CONVERT SERVICE BID LIST TO DESKTOP LIST
+        // CONVERT SERVICE BID LIST TO WEB LIST
         public List<WebBid> ConvertFromServiceBids(proxyRef.Bid[] sBids) {
             List<WebBid> foundClientBids = new List<WebBid>();
             WebBid tempBid = null;
@@ -21,15 +21,22 @@ namespace WebClientToService.Utilities {
         }
 
 
+        // CONVERT WEB-MODEL BID TO SERVICE BID
+        public proxyRef.Bid ConvertToServiceBid(WebBid webBid) {
+
+            proxyRef.Bid proxyWebBid = null;
+            if (webBid != null) {
+                proxyWebBid = new proxyRef.Bid {
+                    AuctionId = webBid.AuctionId,
+                    BidAmount = webBid.BidAmount,
+                    CustomerId = webBid.CustomerId
+                };
+            }
+            return proxyWebBid;
+        }
 
 
-        // TO DO: CONVERT DESKTOP AUCTION TO SERVICE AUCTION
-
-
-
-
-
-        // CONVERT DESKTOP AUCTION TO SERVICE AUCTION
+        // CONVERT WEB MODEL BID TO SERVICE BID
         public WebBid ConvertFromServiceBid(proxyRef.Bid sBid) {
             WebBid foundClientBid = null;
             if (sBid != null) {

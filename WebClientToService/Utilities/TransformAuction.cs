@@ -10,7 +10,7 @@ namespace WebClientToService.Utilities {
     public class TransformAuction {
 
 
-        // CONVERT SERVICE AUCTION LIST TO DESKTOP LIST
+        // CONVERT SERVICE AUCTION LIST TO WEB LIST
         public List<WebAuction> ConvertFromServiceAuctions(proxyRef.Auction[] sAuctions) {
             List<WebAuction> foundClientAuctions = new List<WebAuction>();
             WebAuction tempAuction = null;
@@ -22,21 +22,21 @@ namespace WebClientToService.Utilities {
         }
 
 
-        // CONVERT DESKTOP AUCTION TO SERVICE AUCTION
-        public proxyRef.Auction ConvertToServiceAuction(WebAuction webauction)
+        // CONVERT WEB MODEL AUCTION TO SERVICE AUCTION
+        public proxyRef.Auction ConvertToServiceAuction(WebAuction webAuction)
         {
 
             proxyRef.Auction proxyWebAuction = null;
-            if (webauction != null) {
+            if (webAuction != null) {
                 proxyWebAuction = new proxyRef.Auction
                 {
-                    AuctionId = webauction.AuctionId,
-                    TimeLeft = webauction.TimeLeft,
-                    Payment = webauction.Payment,
-                    Result = webauction.Result,
-                    PaymentDate = webauction.PaymentDate,
-                    ProductName = webauction.ProductName,
-                    ProductDescription = webauction.ProductDescription,
+                    AuctionId = webAuction.AuctionId,
+                    TimeLeft = webAuction.TimeLeft,
+                    Payment = webAuction.Payment,
+                    Result = webAuction.Result,
+                    PaymentDate = webAuction.PaymentDate,
+                    ProductName = webAuction.ProductName,
+                    ProductDescription = webAuction.ProductDescription,
                 };
 
             }
@@ -44,7 +44,7 @@ namespace WebClientToService.Utilities {
             return proxyWebAuction;
         }
 
-        // CONVERT DESKTOP AUCTION TO SERVICE AUCTION
+        // CONVERT WEB AUCTION TO SERVICE AUCTION
         public WebAuction ConvertFromServiceAuction(proxyRef.Auction sAuction) {
             WebAuction foundClientAuction = null;
             if (sAuction != null) {

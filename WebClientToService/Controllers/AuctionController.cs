@@ -12,10 +12,6 @@ namespace WebClientToService.Controllers
     public class AuctionController : Controller
     {
         // GET: Auction
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         public ActionResult Create() {
             return View();
