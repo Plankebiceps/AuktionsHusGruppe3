@@ -232,6 +232,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Auctions.cshtml" />
     <Content Include="Views\Home\CustomerLogin.cshtml" />
+    <Content Include="Views\Home\CreateAuction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Configuration;
 using System.Web;
 using System.Web.Configuration;
 using WebClientToService.Models;
 using WebClientToService.ServiceRefAuction;
 using WebClientToService.Utilities;
+using webClientRef = WebClientToService.Models;
+using proxyRef = WebClientToService.ServiceRefAuction;
 
 namespace WebClientToService.ServiceLayer {
     public class WebAuctionService {
@@ -17,5 +20,17 @@ namespace WebClientToService.ServiceLayer {
             }
             return foundAuctions;
         }
+        
+        public bool CreateAuction(WebAuction auctionToAdd)
+        {
+            bool allOk = false;
+            proxyRef.Auction auctionServiceFormat = new Transform().ConvertToServiceAuction(auctionToAdd);
+            using (AuctionServiceClient auctionProxy = new AuctionServiceClient())
+            {
+                allOk = auctionProxy.AddAuction(auctionServiceFormat);
+            }
+                return allOk;
+        }
+    
     }
 }
