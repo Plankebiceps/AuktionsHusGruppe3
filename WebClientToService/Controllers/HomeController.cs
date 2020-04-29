@@ -45,13 +45,14 @@ namespace WebClientToService.Controllers {
             return View();
         }
         
-      //  public ActionResult CreateAuction(Auction auc)
-      //  {
-      //      WebAuctionService was = new WebAuctionService();
-      //      was.CreateAuction(auc);
+        [HttpPost]
+        public ActionResult Create(WebAuction auc)
+        {
+            WebAuctionService was = new WebAuctionService();
+            was.CreateAuction(auc);
 
-      //      return RedirectToAction("Index");
-      //  }
+            return RedirectToAction("Index");
+        }
 
     }
 }
