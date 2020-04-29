@@ -33,13 +33,5 @@ namespace DesktopClientToService.Utilities {
             }
             return serviceBid;
         }
-
-        public List<ModelLayer.Bid> ConvertFromServiceBids(List<ServiceRefBid.Bid> serviceBids) {
-            List<ModelLayer.Bid> desktopBids = null;
-            if (serviceBids != null) {
-                desktopBids = new List<ModelLayer.Bid>();
-            }
-            return desktopBids;
-        }
     }
 }

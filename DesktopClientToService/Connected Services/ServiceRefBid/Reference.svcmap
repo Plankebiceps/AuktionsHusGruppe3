@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2de283dc-d2a9-4488-99c9-2bdc3997ce73" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fa9f1213-580d-4469-8587-e757b725e1fb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/WcfServiceWithDatabaseAccess.ServiceAccessLayer/BidService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="691b148c-cd40-4fe1-8227-75e8fabf6441" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfServiceWithDatabaseAccess.ServiceAccessLayer/BidService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="27f6b77f-a0a0-45e0-b880-e085743319d8" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfServiceWithDatabaseAccess.ServiceAccessLayer/BidService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="d6a8a35a-a78c-4d85-b219-c7e13f20c70a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfServiceWithDatabaseAccess.ServiceAccessLayer/BidService/mex" />
-    <MetadataFile FileName="WcfServiceWithDatabaseAccess.ModelLayer.xsd" MetadataType="Schema" ID="8a25dbab-446f-458f-878a-c7797f7a1285" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfServiceWithDatabaseAccess.ServiceAccessLayer/BidService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="5032fb86-e0a0-46c8-ba0c-0f5fea65ef8f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfServiceWithDatabaseAccess.ServiceAccessLayer/BidService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="bf4b5d07-7dc6-455d-abef-d71afa23672e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfServiceWithDatabaseAccess.ServiceAccessLayer/BidService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="5132f09d-36e8-4f51-b082-e4ac5d558dc2" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfServiceWithDatabaseAccess.ServiceAccessLayer/BidService/mex" />
+    <MetadataFile FileName="WcfServiceWithDatabaseAccess.ModelLayer.xsd" MetadataType="Schema" ID="4527a7e7-fc2e-47a9-8112-b35947d0af14" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfServiceWithDatabaseAccess.ServiceAccessLayer/BidService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -17,14 +17,5 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer {
 
             return wasInsertedCorrectly;
         }
-
-        public List<Bid> GetAllBids(int auctionId) {
-            List<Bid> foundBids;
-
-            BidAccess bidDb = new BidAccess();
-            foundBids = bidDb.GetAllBids(auctionId);
-
-            return foundBids;
-        }
     }
 }

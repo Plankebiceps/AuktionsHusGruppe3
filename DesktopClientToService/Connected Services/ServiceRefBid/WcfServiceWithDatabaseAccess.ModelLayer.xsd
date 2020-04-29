@@ -9,10 +9,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Bid" nillable="true" type="tns:Bid" />
-  <xs:complexType name="ArrayOfBid">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bid" nillable="true" type="tns:Bid" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfBid" nillable="true" type="tns:ArrayOfBid" />
 </xs:schema>
