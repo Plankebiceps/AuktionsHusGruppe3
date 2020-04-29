@@ -53,8 +53,6 @@
             this.btnPlaceBid = new System.Windows.Forms.Button();
             this.txtBidAmount = new System.Windows.Forms.TextBox();
             this.lblPayment = new System.Windows.Forms.Label();
-            this.btnShowBids = new System.Windows.Forms.Button();
-            this.listBoxBids = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btnAuction
@@ -119,7 +117,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(96, 283);
+            this.button1.Location = new System.Drawing.Point(96, 277);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(42, 21);
             this.button1.TabIndex = 16;
@@ -129,7 +127,7 @@
             // 
             // txtboxAuctionId
             // 
-            this.txtboxAuctionId.Location = new System.Drawing.Point(96, 257);
+            this.txtboxAuctionId.Location = new System.Drawing.Point(96, 251);
             this.txtboxAuctionId.Name = "txtboxAuctionId";
             this.txtboxAuctionId.Size = new System.Drawing.Size(100, 20);
             this.txtboxAuctionId.TabIndex = 19;
@@ -146,7 +144,7 @@
             // 
             // lblProductName
             // 
-            this.lblProductName.Location = new System.Drawing.Point(93, 316);
+            this.lblProductName.Location = new System.Drawing.Point(93, 310);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(267, 33);
             this.lblProductName.TabIndex = 1;
@@ -202,7 +200,7 @@
             this.btnExit.BackColor = System.Drawing.SystemColors.Control;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.btnExit.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnExit.Location = new System.Drawing.Point(1015, 344);
+            this.btnExit.Location = new System.Drawing.Point(724, 5);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(61, 21);
             this.btnExit.TabIndex = 28;
@@ -212,7 +210,7 @@
             // 
             // btnDeleteAuction
             // 
-            this.btnDeleteAuction.Location = new System.Drawing.Point(139, 283);
+            this.btnDeleteAuction.Location = new System.Drawing.Point(139, 277);
             this.btnDeleteAuction.Name = "btnDeleteAuction";
             this.btnDeleteAuction.Size = new System.Drawing.Size(57, 21);
             this.btnDeleteAuction.TabIndex = 29;
@@ -244,7 +242,7 @@
             // listBoxAuctions
             // 
             this.listBoxAuctions.FormattingEnabled = true;
-            this.listBoxAuctions.Location = new System.Drawing.Point(450, 49);
+            this.listBoxAuctions.Location = new System.Drawing.Point(437, 49);
             this.listBoxAuctions.Name = "listBoxAuctions";
             this.listBoxAuctions.Size = new System.Drawing.Size(310, 186);
             this.listBoxAuctions.TabIndex = 32;
@@ -252,7 +250,7 @@
             // 
             // btnAllAuctions
             // 
-            this.btnAllAuctions.Location = new System.Drawing.Point(450, 241);
+            this.btnAllAuctions.Location = new System.Drawing.Point(437, 241);
             this.btnAllAuctions.Name = "btnAllAuctions";
             this.btnAllAuctions.Size = new System.Drawing.Size(174, 23);
             this.btnAllAuctions.TabIndex = 33;
@@ -262,9 +260,9 @@
             // 
             // btnPlaceBid
             // 
-            this.btnPlaceBid.Location = new System.Drawing.Point(450, 296);
+            this.btnPlaceBid.Location = new System.Drawing.Point(617, 269);
             this.btnPlaceBid.Name = "btnPlaceBid";
-            this.btnPlaceBid.Size = new System.Drawing.Size(174, 23);
+            this.btnPlaceBid.Size = new System.Drawing.Size(130, 23);
             this.btnPlaceBid.TabIndex = 35;
             this.btnPlaceBid.Text = "Place Bid";
             this.btnPlaceBid.UseVisualStyleBackColor = true;
@@ -272,10 +270,10 @@
             // 
             // txtBidAmount
             // 
-            this.txtBidAmount.Location = new System.Drawing.Point(450, 270);
+            this.txtBidAmount.Location = new System.Drawing.Point(617, 243);
             this.txtBidAmount.MaxLength = 18;
             this.txtBidAmount.Name = "txtBidAmount";
-            this.txtBidAmount.Size = new System.Drawing.Size(174, 20);
+            this.txtBidAmount.Size = new System.Drawing.Size(130, 20);
             this.txtBidAmount.TabIndex = 36;
             this.txtBidAmount.Text = "Amount";
             this.txtBidAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -289,31 +287,11 @@
             this.lblPayment.TabIndex = 37;
             this.lblPayment.Text = "Payment";
             // 
-            // btnShowBids
-            // 
-            this.btnShowBids.Location = new System.Drawing.Point(766, 241);
-            this.btnShowBids.Name = "btnShowBids";
-            this.btnShowBids.Size = new System.Drawing.Size(174, 23);
-            this.btnShowBids.TabIndex = 38;
-            this.btnShowBids.Text = "Show Bids";
-            this.btnShowBids.UseVisualStyleBackColor = true;
-            this.btnShowBids.Click += new System.EventHandler(this.btnShowBids_Click);
-            // 
-            // listBoxBids
-            // 
-            this.listBoxBids.FormattingEnabled = true;
-            this.listBoxBids.Location = new System.Drawing.Point(766, 49);
-            this.listBoxBids.Name = "listBoxBids";
-            this.listBoxBids.Size = new System.Drawing.Size(310, 186);
-            this.listBoxBids.TabIndex = 39;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1107, 377);
-            this.Controls.Add(this.listBoxBids);
-            this.Controls.Add(this.btnShowBids);
+            this.ClientSize = new System.Drawing.Size(790, 357);
             this.Controls.Add(this.lblPayment);
             this.Controls.Add(this.txtBidAmount);
             this.Controls.Add(this.btnPlaceBid);
@@ -373,7 +351,5 @@
         private System.Windows.Forms.Button btnPlaceBid;
         private System.Windows.Forms.TextBox txtBidAmount;
         private System.Windows.Forms.Label lblPayment;
-        private System.Windows.Forms.Button btnShowBids;
-        private System.Windows.Forms.ListBox listBoxBids;
     }
 }

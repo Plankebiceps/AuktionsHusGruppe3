@@ -2,6 +2,31 @@
     ViewBag.Title = "Login";
 }
 
-<h2>@ViewBag.Title</h2>
-<h3>@ViewBag.Message</h3>
 
+
+<h2>@ViewBag.CustomerLogin</h2>
+
+
+
+<div class="row">
+    @Model
+    <div class="col-md-4">
+        <h2>Login</h2>
+        <p>
+            <div>If you've already created an account, login here.</div>
+            @Html.Label("Email")<div>@Html.TextBox("Email", null, new { @class = "AccountController" })</div>
+            @Html.Label("Password")<div>@Html.Password("Password", null, new { @class = "AccountController" })</div>
+            @Html.ActionLink("Login", "CustomerLogin", "AccountController")
+        </p>
+        <p><a></a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Create Account</h2>
+        <p>
+            <div>If you're a new user, and want to make an account, then create your account here.</div>
+            @Html.Label("Email")<div>@Html.TextBox("Email", null, new { @class = "AccountController" })</div>
+            @Html.Label("Password")<div>@Html.Password("Password", null, new { @class = "AccountController" })</div>
+            @Html.ActionLink("Create Account", "CreateAccount", "AccountController")
+        </p>
+    </div>
+</div>

@@ -10,7 +10,10 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
     [DataContract]
     public class Bid
     {
-
+        //[DataMember]
+        //public decimal Price { get; set; }
+        //[DataMember]
+        //public int BidId { get; set; }
 
         [DataMember]
         public int Id { get; set; }
@@ -25,16 +28,6 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
         public Bid()
         {
 
-        }
-
-        public Bid(decimal bidAmount, int customerId, int auctionId) {
-            BidAmount = bidAmount;
-            CustomerId = customerId;
-            AuctionId = auctionId;
-        }
-
-        public override string ToString() {
-            return $"Dkr. {BidAmount},- | Customer: {CustomerId}";
         }
     }
 

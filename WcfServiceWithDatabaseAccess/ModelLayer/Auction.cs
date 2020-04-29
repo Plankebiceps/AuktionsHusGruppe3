@@ -8,7 +8,8 @@ using System.Runtime.Serialization;
 namespace WcfServiceWithDatabaseAccess.ModelLayer
 {
     [DataContract]
-    public class Auction {
+    public class Auction
+    {
         [DataMember]
         public int AuctionId { get; set; }
         [DataMember]
@@ -25,7 +26,8 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
         public string ProductDescription { get; set; }
 
 
-        public Auction(int auctionId, decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription) {
+        public Auction(int auctionId, decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription)
+        {
             AuctionId = auctionId;
             TimeLeft = timeLeft;
             Payment = payment;
@@ -49,7 +51,7 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
         }
 
         public override string ToString() {
-            return $"{AuctionId} | {ProductName} | Auction is {Result}";
+            return $"{AuctionId} | {ProductName} (Open) (Current bid: 49,- Dkr)";
         }
     }
 }

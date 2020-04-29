@@ -153,9 +153,6 @@
     <None Include="Connected Services\ServiceRefAuction\WcfServiceWithDatabaseAccess.ModelLayer.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceRefBid\DesktopClientToService.ServiceRefBid.Bid.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\ServiceRefBid\service.wsdl" />
     <None Include="Connected Services\ServiceRefBid\service.xsd">
       <SubType>Designer</SubType>
@@ -234,18 +231,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceRefCustomer\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceRefCustomer\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceRefCustomer\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\ServiceRefBid\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -253,6 +238,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceRefBid\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceRefCustomer\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceRefCustomer\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceRefCustomer\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

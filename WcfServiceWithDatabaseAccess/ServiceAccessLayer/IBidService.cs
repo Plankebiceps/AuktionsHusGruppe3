@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using WcfServiceWithDatabaseAccess.ControlLayer;
 using WcfServiceWithDatabaseAccess.ModelLayer;
 
 namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
@@ -20,7 +19,6 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
         [OperationContract]
         bool PlaceBid(Bid bidToPlace);
 
-        [OperationContract]
-        List<Bid> GetBidAll(int auctionId);
+
     }
 }

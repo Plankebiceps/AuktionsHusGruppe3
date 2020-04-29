@@ -21,27 +21,5 @@ namespace DesktopClientToService.ServiceLayer {
             }
             return allOk;
         }
-
-        public List<clientRef.Bid> GetBidAll(int auctionId) {
-
-            proxyRef.BidServiceClient bsc = new proxyRef.BidServiceClient();
-            var bids = bsc.GetBidAll(auctionId);
-
-            List<clientRef.Bid> foundBidsList = GetClientSideBids(bids);
-
-            return foundBidsList;
-        }
-
-        public List<clientRef.Bid> GetClientSideBids(IEnumerable<proxyRef.Bid> bids) {
-
-            List<clientRef.Bid> foundBidsList = new List<clientRef.Bid>();
-            clientRef.Bid tempBid;
-
-            foreach (var bid in bids) {
-                tempBid = new clientRef.Bid(bid.BidAmount, bid.CustomerId, bid.AuctionId);
-                foundBidsList.Add(tempBid);
-            }
-            return foundBidsList;
-        }
     }
 }
