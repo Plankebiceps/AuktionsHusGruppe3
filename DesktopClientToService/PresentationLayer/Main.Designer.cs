@@ -53,6 +53,8 @@
             this.btnPlaceBid = new System.Windows.Forms.Button();
             this.txtBidAmount = new System.Windows.Forms.TextBox();
             this.lblPayment = new System.Windows.Forms.Label();
+            this.listBoxBids = new System.Windows.Forms.ListBox();
+            this.btnShowBids = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAuction
@@ -200,7 +202,7 @@
             this.btnExit.BackColor = System.Drawing.SystemColors.Control;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.btnExit.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnExit.Location = new System.Drawing.Point(724, 5);
+            this.btnExit.Location = new System.Drawing.Point(1002, 322);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(61, 21);
             this.btnExit.TabIndex = 28;
@@ -287,11 +289,31 @@
             this.lblPayment.TabIndex = 37;
             this.lblPayment.Text = "Payment";
             // 
+            // listBoxBids
+            // 
+            this.listBoxBids.FormattingEnabled = true;
+            this.listBoxBids.Location = new System.Drawing.Point(753, 49);
+            this.listBoxBids.Name = "listBoxBids";
+            this.listBoxBids.Size = new System.Drawing.Size(310, 186);
+            this.listBoxBids.TabIndex = 38;
+            // 
+            // btnShowBids
+            // 
+            this.btnShowBids.Location = new System.Drawing.Point(933, 240);
+            this.btnShowBids.Name = "btnShowBids";
+            this.btnShowBids.Size = new System.Drawing.Size(130, 23);
+            this.btnShowBids.TabIndex = 39;
+            this.btnShowBids.Text = "Show Bids";
+            this.btnShowBids.UseVisualStyleBackColor = true;
+            this.btnShowBids.Click += new System.EventHandler(this.btnShowBids_Click_1);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 357);
+            this.ClientSize = new System.Drawing.Size(1088, 358);
+            this.Controls.Add(this.btnShowBids);
+            this.Controls.Add(this.listBoxBids);
             this.Controls.Add(this.lblPayment);
             this.Controls.Add(this.txtBidAmount);
             this.Controls.Add(this.btnPlaceBid);
@@ -351,5 +373,7 @@
         private System.Windows.Forms.Button btnPlaceBid;
         private System.Windows.Forms.TextBox txtBidAmount;
         private System.Windows.Forms.Label lblPayment;
+        private System.Windows.Forms.ListBox listBoxBids;
+        private System.Windows.Forms.Button btnShowBids;
     }
 }

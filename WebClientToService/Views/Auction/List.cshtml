@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebClientToService.Models.WebAuction>
+
+@{
+    ViewBag.Title = "Auctions";
+}
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeLeft)
+            </th>
+            <th></th>
+        </tr>
+
+        @if (Model != null) {
+            foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TimeLeft)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Bid", "List", new { id = item.AuctionId }) |
+                    </td>
+                    @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PersonId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.PersonId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PersonId })
+                    </td>*@
+                </tr>
+            }
+        } else {
+            <tr>
+                <td colspan="5">No data retrieved!</td>
+            </tr>
+        }
+
+    </table>
+
+
+
+
+
+
+
+
+@*<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Auctions</title>
+    </head>
+    <body>
+        <h3>@Model.Count auctions</h3>
+        <div>
+            <ul>
+                @{
+                    foreach (var item in Model) {
+                        <li>@item</li>
+                    }
+                }
+            </ul>
+
+        </div>
+    </body>
+    </html>*@

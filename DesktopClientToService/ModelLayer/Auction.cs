@@ -41,7 +41,7 @@ namespace DesktopClientToService.ModelLayer
         }
 
         public override string ToString() {
-            return $"{AuctionId} | {ProductName} (Open) (Current bid: 49,- Dkr)";
+            return $"{AuctionId} | {ProductName} | Auction is {Result}";
         }
     }
 }

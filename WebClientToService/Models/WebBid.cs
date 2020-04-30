@@ -1,34 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
+using System.Web;
 
-namespace WcfServiceWithDatabaseAccess.ModelLayer
-{
-    [DataContract]
-    public class Bid
-    {
-        //[DataMember]
-        //public decimal Price { get; set; }
-        //[DataMember]
-        //public int BidId { get; set; }
-
-        [DataMember]
+namespace WebClientToService.Models {
+    public class WebBid {
         public int Id { get; set; }
-        [DataMember]
         public decimal BidAmount { get; set; }
-        [DataMember]
         public int CustomerId { get; set; }
-        [DataMember]
         public int AuctionId { get; set; }
 
-        public Bid() {
 
+        public WebBid() {
         }
 
-        public Bid(decimal bidAmount, int customerId, int auctionId) {
+        public WebBid(decimal bidAmount, int customerId, int auctionId) {
             BidAmount = bidAmount;
             CustomerId = customerId;
             AuctionId = auctionId;
@@ -38,5 +24,4 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
             return $"Dkr. {BidAmount},- | Customer: {CustomerId}";
         }
     }
-
 }

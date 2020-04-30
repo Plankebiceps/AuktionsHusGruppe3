@@ -7,7 +7,7 @@ using WebClientToService.ServiceRefCustomer;
 
 namespace WebClientToService.Utilities
 {
-    public class Account
+    public class TransformAccount
     {
         public ServiceRefCustomer.Customer WebConvertToServiceCustomer(Models.WebCustomer webCustomerToAdd)
         {
