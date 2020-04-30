@@ -10,16 +10,21 @@ namespace WebClientToService {
         public static void RegisterRoutes(RouteCollection routes) {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+                name: "CustomerCreateAccount",
+                url: "CustomerCreateAccount/{action}/{id}",
+                defaults: new { controller = "Account" }
+            );
 
-                routes.MapRoute(
+            routes.MapRoute(
                 name: "Bid",
-                url: "{controller}/{action}/{id}",
+                url: "Bid/{action}/{id}",
                 defaults: new { controller = "Bid" }
             );
 
                 routes.MapRoute(
                 name: "Auction",
-                url: "{controller}/{action}/{id}",
+                url: "Auction/{action}/{id}",
                 defaults: new { controller = "Auction" }
             );
 

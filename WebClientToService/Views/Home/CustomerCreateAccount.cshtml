@@ -1,6 +1,6 @@
 ﻿@model WebClientToService.Models.WebCustomer
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "CustomerCreateAccount";
 }
 
     <body oncontextmenu="return false">
@@ -23,17 +23,16 @@
                 }
             }
         </script>
-        @using (Html.BeginForm("CustomerLogin", "Account", FormMethod.Post))
+        <h2>Create Account</h2>
+        @using (Html.BeginForm("CustomerCreateAccount", "Account", FormMethod.Post))
         {
             <div class="row">
                 @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="col-lg-6">
-                    <h2>Login</h2>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger"})
+                <div class="col-md-2">
+                    <h2>Create Account</h2>
                     <hr />
-                    <div>
-                        If you've already created an account, login here.
-                    </div>
+                    <div>If you're a new user, and want to make an account, then create your account here.</div>
                     <div>
                         <div class="form-group">
                             <label>Email</label><input class="form-control text-box single-line" id="CustomerEmail" name="CustomerEmail" type="text" value="" />
@@ -41,10 +40,9 @@
                             @Html.ValidationMessageFor(model => model.CustomerEmail, "", new { @class = "text-danger" })
                             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                         </div>
-                        <button type="submit">Login</button>
-                        <input type="button" value="Create Account" onclick="@("window.location.href='" + @Url.Action("CustomerCreateAccount", "Home") + "'");" />
+                        <button type="submit">Create Account</button>
                     </div>
                 </div>
             </div>
         }
-    </body>
+</body >

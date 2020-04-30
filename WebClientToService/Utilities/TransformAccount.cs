@@ -14,7 +14,7 @@ namespace WebClientToService.Utilities
             ServiceRefCustomer.Customer webServiceCustomer = null;
             if (webCustomerToAdd != null)
             {
-               webServiceCustomer  = new ServiceRefCustomer.WebCustomer
+               webServiceCustomer  = new ServiceRefCustomer.Customer
                 {
                     Id = webCustomerToAdd.Id,
                     FirstName = webCustomerToAdd.FirstName,
