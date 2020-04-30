@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using DesktopClientToService.PresentationLayer;
 
+
 namespace DesktopClientToService.PresentationLayer
 {
     public partial class Main : Form {
@@ -12,6 +13,7 @@ namespace DesktopClientToService.PresentationLayer
         ControlAuction auctionController = new ControlAuction();
         private Auction selectedAuction;
         private int selectedAuctionIndex;
+
 
         public Main() {
             InitializeComponent();
@@ -26,7 +28,7 @@ namespace DesktopClientToService.PresentationLayer
             //Lokal variabler
             DateTime dateTime = dateTimePickerAuction.Value;
             string dateTimeString = dateTime.ToString();
-            string result = txtAuction_Result.Text;
+            string result = cbResult.Text;
             string productName = txtProdName.Text;
             string productDescription = txtProdDescription.Text;
             bool payment = false;
@@ -92,7 +94,7 @@ namespace DesktopClientToService.PresentationLayer
         // UPDATE AN AUCTION
         private void btnUpdateAuction_Click(object sender, EventArgs e) {
             DateTime dateTime = dateTimePickerAuction.Value;
-            string result = txtAuction_Result.Text;
+            string result = cbResult.Text;
             string productName = txtProdName.Text;
             string productDescription = txtProdDescription.Text;
             bool payment = false;
@@ -114,8 +116,13 @@ namespace DesktopClientToService.PresentationLayer
             ctrlAuction.UpdateAuction(findAuctionId, timeLeft, payment, result, dateTime, productName, productDescription);
         }
 
-        // FIND ALL AUCTIONS
+        // LIST ALL AUCTIONS BUTTON
         private void btnAllAuctions_Click(object sender, EventArgs e) {
+            listAllAuctions();
+        }
+
+        // LIST ALL AUCTIONS METHOD
+        private void listAllAuctions() {
             ControlAuction ctrlAuction = new ControlAuction();
             List<Auction> allAuctions = ctrlAuction.GetAllAuctions();
 
@@ -135,23 +142,25 @@ namespace DesktopClientToService.PresentationLayer
         }
 
         // PLACE BID (CUSTOMER)
-        private void btnPlaceBid_Click_1(object sender, EventArgs e) { 
+        //private void btnPlaceBid_Click_1(object sender, EventArgs e) { 
 
-            ControlBid ctrlBid = new ControlBid();
+        //    ControlBid ctrlBid = new ControlBid();
 
-            int customerId = Login.CustomerActive.Id;
-            decimal amountToBid;
-            decimal.TryParse(txtBidAmount.Text, out amountToBid);
-            bool inputIsOk = !(customerId <= 0 && selectedAuction.AuctionId <= 0 && amountToBid <= 0);  // Mangler ordentlig funktionalitet
+        //    int customerId = Login.CustomerActive.Id;
+        //    decimal amountToBid;
+        //    decimal.TryParse(txtBidAmount.Text, out amountToBid);
+        //    bool inputIsOk = !(customerId <= 0 && selectedAuction.AuctionId <= 0 && amountToBid <= 0);  // Mangler ordentlig funktionalitet
 
-            if (inputIsOk) {
-                ctrlBid.PlaceBid(amountToBid, selectedAuction.AuctionId, customerId);
-                MessageBox.Show("Bid placed on " + selectedAuction.ProductName);
-            } else {
-                MessageBox.Show("Something went wrong. Try again!");
-            }
-        }
+        //    if (inputIsOk) {
+        //        ctrlBid.PlaceBid(amountToBid, selectedAuction.AuctionId, customerId);
+        //        MessageBox.Show("Bid placed on " + selectedAuction.ProductName);
+        //    } else {
+        //        MessageBox.Show("Something went wrong. Try again!");
+        //    }
+        //}
 
+
+        // SHOW BIDS IN LISTBOX
         private void btnShowBids_Click_1(object sender, EventArgs e) {
 
             ControlBid ctrlBid = new ControlBid();

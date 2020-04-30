@@ -31,6 +31,7 @@ namespace WebClientToService.Models
             Salt = salt;
         }
 
+        
         public WebCustomer()
         {
 

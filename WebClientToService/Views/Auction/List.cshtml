@@ -3,51 +3,74 @@
 @{
     ViewBag.Title = "Auctions";
 }
+    <body oncontextmenu="return false">
+        <script>
+            document.onkeydown = function (e) {
+                if (event.keyCode == 123) {
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                    return false;
+                }
+                if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                    return false;
+                }
+            }
+        </script>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TimeLeft)
+                </th>
+                <th></th>
+            </tr>
 
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TimeLeft)
-            </th>
-            <th></th>
-        </tr>
-
-        @if (Model != null) {
-            foreach (var item in Model) {
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TimeLeft)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Bid", "List", new { id = item.AuctionId }) |
+                        </td>
+                        @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.PersonId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.PersonId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.PersonId })
+                        </td>*@
+                    </tr>
+                }
+            }
+            else
+            {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProductName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProductDescription)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TimeLeft)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Bid", "List", new { id = item.AuctionId }) |
-                    </td>
-                    @*<td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.PersonId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.PersonId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.PersonId })
-                    </td>*@
+                    <td colspan="5">No data retrieved!</td>
                 </tr>
             }
-        } else {
-            <tr>
-                <td colspan="5">No data retrieved!</td>
-            </tr>
-        }
 
-    </table>
+        </table>
+    </body>
 
 
 

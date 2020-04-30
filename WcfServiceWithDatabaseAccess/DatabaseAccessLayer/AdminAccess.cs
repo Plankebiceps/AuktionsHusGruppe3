@@ -65,14 +65,14 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                         string readEmail, readSalt, readHash;
                         while (userReader.Read()) {
                             readEmail = userReader.GetString(userReader.GetOrdinal("adminEmail"));
-                            readSalt = userReader.GetString(userReader.GetOrdinal("hash"));
-                            readHash = userReader.GetString(userReader.GetOrdinal("salt"));
+                            readSalt = userReader.GetString(userReader.GetOrdinal("salt"));
+                            readHash = userReader.GetString(userReader.GetOrdinal("hash"));
                             adminToLogin = new Admin(readEmail, readSalt, readHash);
                         }
                     } else {  //såfremt userReader ikke finder en email, der matcher password i DB - skal rettes til (exception??)
                         throw new Exception();
                     }
-                    return isPasswordMatched = HashSalt.VerifyPassword(passwordToVerify, adminToLogin.Hash, adminToLogin.Salt);
+                    return isPasswordMatched = HashSalt.VerifyPassword(passwordToVerify, adminToLogin.Salt, adminToLogin.Hash);
                 }
             }
         }

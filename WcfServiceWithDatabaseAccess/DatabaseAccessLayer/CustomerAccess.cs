@@ -22,14 +22,13 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
         public bool SaveCustomer(Customer aCustomer)
         {
             bool wasInserted;
-            //Customer tempCust = aCustomer;
-
             HashSalt hashSaltToSave = HashSalt.GenerateSaltedHash(64, aCustomer.Password);
-            aCustomer.Salt = hashSaltToSave.Salt;
             aCustomer.Hash = hashSaltToSave.Hash;
+            aCustomer.Salt = hashSaltToSave.Salt;
 
-            string insertString = "insert into Customer(address, firstName, lastName, customerEmail, hash, salt)" +
-                                  "values(@Address, @FirstName, @LastName, @CustomerEmail, @Hash, @Salt)";
+            string insertString = "INSERT INTO Customer(address, firstName, lastName, customerEmail, hash, salt)" +
+                                  "VALUES(@Address, @FirstName, @LastName, @CustomerEmail, @Hash, @Salt)";
+
             using (SqlConnection con = new SqlConnection(connectionString))
             {
 
@@ -66,7 +65,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                 Customer customerToLogin = null;
                 bool isPasswordMatched;
 
-                string queryString = "SELECT id, address, firstName, lastName, customerEmail, salt, hash FROM Customer WHERE customerEmail = @customerEmail";
+                string queryString = "SELECT id, address, firstName, lastName, customerEmail, hash, salt FROM Customer WHERE customerEmail = @customerEmail";
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 using (SqlCommand readCommand = new SqlCommand(queryString, con)) {
@@ -82,16 +81,16 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 
                     if (userReader.HasRows) {         /* muligvis opdeling af metoder. Objekt-return FindCustomer og bool-return VerifyCustomer */
                         int readId;
-                        string readAddress, readFirstName, readLastName, readEmail, readSalt, readHash;
+                        string readAddress, readFirstName, readLastName, readEmail, readHash, readSalt;
                         while (userReader.Read()) {
                             readId = userReader.GetInt32(userReader.GetOrdinal("id"));
                             readAddress = userReader.GetString(userReader.GetOrdinal("address"));
                             readFirstName = userReader.GetString(userReader.GetOrdinal("firstName"));
                             readLastName = userReader.GetString(userReader.GetOrdinal("lastName"));
                             readEmail = userReader.GetString(userReader.GetOrdinal("customerEmail"));
-                            readSalt = userReader.GetString(userReader.GetOrdinal("hash"));
-                            readHash = userReader.GetString(userReader.GetOrdinal("salt"));
-                            customerToLogin = new Customer(readId, readAddress, readFirstName, readLastName, readEmail, readSalt, readHash);
+                            readHash = userReader.GetString(userReader.GetOrdinal("hash"));
+                            readSalt = userReader.GetString(userReader.GetOrdinal("salt"));
+                            customerToLogin = new Customer(readId, readAddress, readFirstName, readLastName, readEmail, readHash, readSalt);
                         }
                     } else {  //såfremt userReader ikke finder en email, der matcher password i DB - skal rettes til (exception??)
                         throw new Exception();

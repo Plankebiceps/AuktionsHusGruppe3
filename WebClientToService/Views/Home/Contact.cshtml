@@ -4,19 +4,35 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<address>
-    Victor Madsen<br />
-    <abbr title="Phone">Phone:</abbr> 40 75 55 39<br />
-    Email: <a href="mailto:email@viggo10001@hotmail.com ">Viggo10001@hotmail.com</a><br />
-</address>
+<body oncontextmenu="return false">
+    <script>
+        document.onkeydown = function (e) {
+            if (event.keyCode == 123) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        }
+    </script>
+    <address>
+        One Microsoft Way<br />
+        Redmond, WA 98052-6399<br />
+        <abbr title="Phone">P:</abbr>
+        425.555.0100
+    </address>
 
-<address>
-    Simon Schmith<br />
-    <abbr title="Phone">Phone:</abbr> 22 75 55 39<br />
-    Email: <a href="mailto:email@SimonSchmith@hotmail.com ">SimonSchmith@hotmail.com</a><br />
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <address>
+        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>
+</body>

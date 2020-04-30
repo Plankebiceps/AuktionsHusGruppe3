@@ -11,22 +11,22 @@ namespace WebClientToService.Controllers
     public class AccountController : Controller
     {
         /* EXPERIMENTAL COMPLETE REFORMAT MOST LIKELY RECOMMENDED */
-        /*
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateCustomer(string firstName, string lastName, string address, string email, string password)
+        public bool CreateCustomer(string firstName, string lastName, string address, string email, string password)
         {
-            WebCustomer webCustomer = new WebCustomer
-            {
-                FirstName = firstName,
-                LastName = lastName,
-                Address = address,
-                CustomerEmail = email,
-                Password = password,
-            };
-            WebCustomerService webCustomerService = new WebCustomerService();
-            webCustomerService.CreateCustomerAccount(webCustomer);
-        }*/
+                WebCustomer webCustomer = new WebCustomer
+                {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Address = address,
+                    CustomerEmail = email,
+                    Password = password,
+                };
+                WebCustomerService webCustomerService = new WebCustomerService();
+                return webCustomerService.CreateCustomerAccount(webCustomer);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -41,6 +41,7 @@ namespace WebClientToService.Controllers
             }
             else
             {
+                ModelState.AddModelError("", "Wrong email and/or password");
                 return RedirectToAction("CustomerLogin", "Home");
             }
         }

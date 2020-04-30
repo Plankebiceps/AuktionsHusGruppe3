@@ -23,7 +23,7 @@ namespace DesktopClientToService.PresentationLayer {
         // LOGIN - ADMIN & CUSTOMER
         private void button1_Click(object sender, EventArgs e) {
 
-            if (rbutAdm.Checked == true) {
+            //if (rbutAdm.Checked == true) {
                 if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
                     ControlAdmin ctrlAdmin = new ControlAdmin();
@@ -40,33 +40,33 @@ namespace DesktopClientToService.PresentationLayer {
                     }
                 }
             }
-            if (rbutCust.Checked == true) {
-                if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
+            //if (rbutCust.Checked == true) {
+            //    if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Text)) {
 
-                    ControlCustomer ctrlCustomer = new ControlCustomer();
-                    bool isMatched = ctrlCustomer.LoginCustomer(txtEmail.Text, txtPassword.Text);  // Verificerer indtastede login-credentials gennem service.
+            //        ControlCustomer ctrlCustomer = new ControlCustomer();
+            //        bool isMatched = ctrlCustomer.LoginCustomer(txtEmail.Text, txtPassword.Text);  // Verificerer indtastede login-credentials gennem service.
 
-                    if (isMatched == true) {
+            //        if (isMatched == true) {
 
-                        CustomerActive = ctrlCustomer.GetCustomerByEmail(txtEmail.Text); // Se fields. Customer-objekt til brug i Main.cs.
+            //            CustomerActive = ctrlCustomer.GetCustomerByEmail(txtEmail.Text); // Se fields. Customer-objekt til brug i Main.cs.
 
-                        MessageBox.Show("Login succeeded!");
-                        this.Hide();
-                        Main mainForm = new Main();
-                        mainForm.Show();
+            //            MessageBox.Show("Login succeeded!");
+            //            this.Hide();
+            //            Main mainForm = new Main();
+            //            mainForm.Show();
 
-                    } else {
-                        MessageBox.Show("Login failed!");
-                    }
-                }
-            }
-        }
+            //        } else {
+            //            MessageBox.Show("Login failed!");
+            //        }
+            //    }
+            //}
+        //}
+
+
 
         // CREATE ACCOUNT - ADMIN & CUSTOMER
         private void btnCreateAcc_Click(object sender, EventArgs e) {
 
-            // Opret admin såfremt radiobutton (rbutAdm) er valgt
-            if (rbutAdm.Checked == true) {
 
                 string chosenAdminEmail = txtEmail.Text;
                 string chosenAdminPassword = txtPassword.Text;
@@ -75,25 +75,27 @@ namespace DesktopClientToService.PresentationLayer {
                 ctrlAdmin.CreateAdmin(chosenAdminEmail, chosenAdminPassword);
 
                 MessageBox.Show("Admin created succesfully!");
-            }
+        }
 
             // Opret customer såfremt radiobutton (rbutCust) er valgt
-            if (rbutCust.Checked == true) {
+            //if (rbutCust.Checked == true) {
 
-                string chosenFirstName = CustomerCredentials.CcFirstName;
-                string chosenLastName = CustomerCredentials.CcLastName;
-                string chosenAddress = CustomerCredentials.CcAddress;
+            //    string chosenFirstName = CustomerCredentials.CcFirstName;
+            //    string chosenLastName = CustomerCredentials.CcLastName;
+            //    string chosenAddress = CustomerCredentials.CcAddress;
 
-                string chosenCustEmail = txtEmail.Text;
-                string chosenCustPassword = txtPassword.Text;
+            //    string chosenCustEmail = txtEmail.Text;
+            //    string chosenCustPassword = txtPassword.Text;
 
-                ControlCustomer ctrlCustomer = new ControlCustomer();
-                ctrlCustomer.AddCustomer(chosenAddress, chosenFirstName, chosenLastName, chosenCustEmail, chosenCustPassword);
+            //    ControlCustomer ctrlCustomer = new ControlCustomer();
+            //    ctrlCustomer.AddCustomer(chosenAddress, chosenFirstName, chosenLastName, chosenCustEmail, chosenCustPassword);
 
-                MessageBox.Show("Customer created succesfully!");
-            }
-        }
+            //    MessageBox.Show("Customer created succesfully!");
+            //}
+        //}
         
+
+
         // SKIP LOGIN BUTTON
         private void btnSkipLogin_Click(object sender, EventArgs e) {
             this.Hide();
@@ -101,11 +103,14 @@ namespace DesktopClientToService.PresentationLayer {
             mainForm.Show();
         }
 
-        // TO DO : SKAL IKKE AKTIVERES VED KLIK PÅ ADMIN
-        private void rbutCust_CheckedChanged(object sender, EventArgs e) {
-            CustomerCredentials cc = new CustomerCredentials();
-            cc.Show();
-        }
+
+
+        // CUSTOMER CREDENTIALS - OUTCOMMENTED
+        //private void rbutCust_CheckedChanged(object sender, EventArgs e) {
+        //    CustomerCredentials cc = new CustomerCredentials();
+        //    cc.Show();
+        //}
+
     }
 }
 
