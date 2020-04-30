@@ -32,15 +32,13 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnCreateAcc = new System.Windows.Forms.Button();
-            this.rbutAdm = new System.Windows.Forms.RadioButton();
-            this.rbutCust = new System.Windows.Forms.RadioButton();
             this.btnSkipLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(109, 59);
+            this.txtEmail.Location = new System.Drawing.Point(109, 76);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(290, 26);
             this.txtEmail.TabIndex = 2;
@@ -50,7 +48,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(109, 98);
+            this.txtPassword.Location = new System.Drawing.Point(109, 115);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(290, 26);
             this.txtPassword.TabIndex = 3;
@@ -61,7 +59,7 @@
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(109, 164);
+            this.btnLogin.Location = new System.Drawing.Point(109, 157);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(102, 28);
             this.btnLogin.TabIndex = 4;
@@ -72,38 +70,13 @@
             // btnCreateAcc
             // 
             this.btnCreateAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateAcc.Location = new System.Drawing.Point(217, 164);
+            this.btnCreateAcc.Location = new System.Drawing.Point(217, 157);
             this.btnCreateAcc.Name = "btnCreateAcc";
             this.btnCreateAcc.Size = new System.Drawing.Size(182, 28);
             this.btnCreateAcc.TabIndex = 6;
             this.btnCreateAcc.Text = "Create Account";
             this.btnCreateAcc.UseVisualStyleBackColor = true;
             this.btnCreateAcc.Click += new System.EventHandler(this.btnCreateAcc_Click);
-            // 
-            // rbutAdm
-            // 
-            this.rbutAdm.AutoSize = true;
-            this.rbutAdm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbutAdm.Location = new System.Drawing.Point(109, 135);
-            this.rbutAdm.Name = "rbutAdm";
-            this.rbutAdm.Size = new System.Drawing.Size(64, 20);
-            this.rbutAdm.TabIndex = 7;
-            this.rbutAdm.TabStop = true;
-            this.rbutAdm.Text = "Admin";
-            this.rbutAdm.UseVisualStyleBackColor = true;
-            // 
-            // rbutCust
-            // 
-            this.rbutCust.AutoSize = true;
-            this.rbutCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbutCust.Location = new System.Drawing.Point(179, 135);
-            this.rbutCust.Name = "rbutCust";
-            this.rbutCust.Size = new System.Drawing.Size(83, 20);
-            this.rbutCust.TabIndex = 8;
-            this.rbutCust.TabStop = true;
-            this.rbutCust.Text = "Customer";
-            this.rbutCust.UseVisualStyleBackColor = true;
-            this.rbutCust.CheckedChanged += new System.EventHandler(this.rbutCust_CheckedChanged);
             // 
             // btnSkipLogin
             // 
@@ -124,8 +97,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(497, 286);
             this.Controls.Add(this.btnSkipLogin);
-            this.Controls.Add(this.rbutCust);
-            this.Controls.Add(this.rbutAdm);
             this.Controls.Add(this.btnCreateAcc);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
@@ -142,8 +113,6 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnCreateAcc;
-        private System.Windows.Forms.RadioButton rbutAdm;
-        private System.Windows.Forms.RadioButton rbutCust;
         private System.Windows.Forms.Button btnSkipLogin;
     }
 }
