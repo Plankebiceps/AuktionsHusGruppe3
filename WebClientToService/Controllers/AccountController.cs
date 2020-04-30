@@ -21,7 +21,7 @@ namespace WebClientToService.Controllers
                 FirstName = firstName,
                 LastName = lastName,
                 Address = address,
-                Email = email,
+                CustomerEmail = email,
                 Password = password,
             };
             WebCustomerService webCustomerService = new WebCustomerService();
