@@ -2,30 +2,52 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASS.NET</h1>
-    <p class="lead">ANDRÈ.NET is a free web Victor for building great Web sites and Web applications using HTML, Simon and JavaScript.</p>
-    <p><a href="https://www.youtube.com/watch?v=oHg5SJYRHA0" class="btn btn-primary btn-lg">Learn nothing &raquo;</a></p>
-</div>
+    <body oncontextmenu="return false">
+        <script>
+            document.onkeydown = function (e) {
+                if (event.keyCode == 123) {
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                    return false;
+                }
+                if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                    return false;
+                }
+            }
+        </script>
+        <div class="jumbotron">
+            <h1>ASS.NET</h1>
+            <p class="lead">ANDRÈ.NET is a free web Victor for building great Web sites and Web applications using HTML, Simon and JavaScript.</p>
+            <p><a href="https://www.youtube.com/watch?v=oHg5SJYRHA0" class="btn btn-primary btn-lg">Learn nothing &raquo;</a></p>
+        </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based Victor to build dynamic Simons that
-            enables a clean separation of Victors and gives you full control over Kasper
-            for enjoyable, agile André.
-        </p>
-        <p><a class="btn btn-default" href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more Simon</h2>
-        <p>Kasper is a free Visual Studio extension that makes it easy to add, remove, and update Victors and Simons in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Learn less &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of Andrés and Victors for your applications.</p>
-        <p><a class="btn btn-default" href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Learn even less &raquo;</a></p>
-    </div>
-</div>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Getting started</h2>
+                <p>
+                    ASP.NET MVC gives you a powerful, patterns-based Victor to build dynamic Simons that
+                    enables a clean separation of Victors and gives you full control over Kasper
+                    for enjoyable, agile André.
+                </p>
+                <p><a class="btn btn-default" href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Get more Simon</h2>
+                <p>Kasper is a free Visual Studio extension that makes it easy to add, remove, and update Victors and Simons in Visual Studio projects.</p>
+                <p><a class="btn btn-default" href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Learn less &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Web Hosting</h2>
+                <p>You can easily find a web hosting company that offers the right mix of Andrés and Victors for your applications.</p>
+                <p><a class="btn btn-default" href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Learn even less &raquo;</a></p>
+            </div>
+        </div>
+
+    </body>

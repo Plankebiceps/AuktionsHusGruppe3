@@ -4,7 +4,28 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>This is a functional Auctionhouse made by five guys from UCN in Aalborg.</p>
-<p>The Auctionhouse has been made from scratch in Visual Studio with the language C#</p>
-<p>The guys have taken all sorts of considerations to make sure the site is secure, and no user information can be leaked.</p>
-<p title="Takes you to the Contact Page"> If you want to contact these guys simply click here: <button>Contact</button></p>
+<body oncontextmenu="return false">
+    <script>
+        document.onkeydown = function (e) {
+            if (event.keyCode == 123) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        }
+    </script>
+    <p>This is a functional Auctionhouse made by five guys from UCN in Aalborg.</p>
+    <p>The Auctionhouse has been made from scratch in Visual Studio with the language C#</p>
+    <p>The guys have taken all sorts of considerations to make sure the site is secure, and no user information can be leaked.</p>
+    <p title="Takes you to the Contact Page"> If you want to contact these guys simply click here: <button>Contact</button></p>
+</body>

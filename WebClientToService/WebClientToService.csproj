@@ -161,7 +161,6 @@
     <Compile Include="ServiceLayer\WebAuctionService.cs" />
     <Compile Include="ServiceLayer\WebBidService.cs" />
     <Compile Include="ServiceLayer\WebCustomerService.cs" />
-    <Compile Include="ServiceRefCustomer\WebCustomer.cs" />
     <Compile Include="Utilities\TransformAccount.cs" />
     <Compile Include="Utilities\TransformAuction.cs" />
     <Compile Include="Utilities\TransformBid.cs" />
@@ -235,6 +234,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\InspectPreventer.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -264,6 +264,7 @@
     <Content Include="Views\Auction\Create.cshtml" />
     <Content Include="Views\Auction\Index.cshtml" />
     <Content Include="Views\Bid\List.cshtml" />
+    <Content Include="Views\Home\CustomerCreateAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
