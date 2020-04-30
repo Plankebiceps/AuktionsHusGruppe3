@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DesktopClientToService.ServiceRefBid {
+namespace WebClientToService.ServiceRefBid {
     using System.Runtime.Serialization;
     using System;
     
@@ -111,25 +111,25 @@ namespace DesktopClientToService.ServiceRefBid {
     public interface IBidService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/PlaceBid", ReplyAction="http://tempuri.org/IBidService/PlaceBidResponse")]
-        bool PlaceBid(DesktopClientToService.ServiceRefBid.Bid bidToPlace);
+        bool PlaceBid(WebClientToService.ServiceRefBid.Bid bidToPlace);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/PlaceBid", ReplyAction="http://tempuri.org/IBidService/PlaceBidResponse")]
-        System.Threading.Tasks.Task<bool> PlaceBidAsync(DesktopClientToService.ServiceRefBid.Bid bidToPlace);
+        System.Threading.Tasks.Task<bool> PlaceBidAsync(WebClientToService.ServiceRefBid.Bid bidToPlace);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/GetBidAll", ReplyAction="http://tempuri.org/IBidService/GetBidAllResponse")]
-        DesktopClientToService.ServiceRefBid.Bid[] GetBidAll(int auctionId);
+        WebClientToService.ServiceRefBid.Bid[] GetBidAll(int auctionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/GetBidAll", ReplyAction="http://tempuri.org/IBidService/GetBidAllResponse")]
-        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefBid.Bid[]> GetBidAllAsync(int auctionId);
+        System.Threading.Tasks.Task<WebClientToService.ServiceRefBid.Bid[]> GetBidAllAsync(int auctionId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IBidServiceChannel : DesktopClientToService.ServiceRefBid.IBidService, System.ServiceModel.IClientChannel {
+    public interface IBidServiceChannel : WebClientToService.ServiceRefBid.IBidService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class BidServiceClient : System.ServiceModel.ClientBase<DesktopClientToService.ServiceRefBid.IBidService>, DesktopClientToService.ServiceRefBid.IBidService {
+    public partial class BidServiceClient : System.ServiceModel.ClientBase<WebClientToService.ServiceRefBid.IBidService>, WebClientToService.ServiceRefBid.IBidService {
         
         public BidServiceClient() {
         }
@@ -150,19 +150,19 @@ namespace DesktopClientToService.ServiceRefBid {
                 base(binding, remoteAddress) {
         }
         
-        public bool PlaceBid(DesktopClientToService.ServiceRefBid.Bid bidToPlace) {
+        public bool PlaceBid(WebClientToService.ServiceRefBid.Bid bidToPlace) {
             return base.Channel.PlaceBid(bidToPlace);
         }
         
-        public System.Threading.Tasks.Task<bool> PlaceBidAsync(DesktopClientToService.ServiceRefBid.Bid bidToPlace) {
+        public System.Threading.Tasks.Task<bool> PlaceBidAsync(WebClientToService.ServiceRefBid.Bid bidToPlace) {
             return base.Channel.PlaceBidAsync(bidToPlace);
         }
         
-        public DesktopClientToService.ServiceRefBid.Bid[] GetBidAll(int auctionId) {
+        public WebClientToService.ServiceRefBid.Bid[] GetBidAll(int auctionId) {
             return base.Channel.GetBidAll(auctionId);
         }
         
-        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefBid.Bid[]> GetBidAllAsync(int auctionId) {
+        public System.Threading.Tasks.Task<WebClientToService.ServiceRefBid.Bid[]> GetBidAllAsync(int auctionId) {
             return base.Channel.GetBidAllAsync(auctionId);
         }
     }

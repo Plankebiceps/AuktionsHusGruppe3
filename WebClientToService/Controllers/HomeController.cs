@@ -25,14 +25,6 @@ namespace WebClientToService.Controllers {
             return View();
         }
 
-        public ActionResult Auctions() {
-            WebAuctionService was = new WebAuctionService();
-            List<WebAuction> auctionsToDisplay = was.GetAllAuctions();
-
-            return View(auctionsToDisplay);
-        }
-
-
         public ActionResult CustomerLogin()
         {
             //Opsætning af et login system for brugere
@@ -40,19 +32,7 @@ namespace WebClientToService.Controllers {
             return View();
         }
 
-        public ActionResult CreateAuction()
-        {
-            return View();
-        }
-        
-        [HttpPost]
-        public ActionResult Create(WebAuction auc)
-        {
-            WebAuctionService was = new WebAuctionService();
-            was.CreateAuction(auc);
 
-            return RedirectToAction("Index");
-        }
 
     }
 }

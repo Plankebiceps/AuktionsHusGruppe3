@@ -1,32 +1,42 @@
-﻿@{
+﻿@model WebClientToService.Models.WebCustomer
+@{
     ViewBag.Title = "Login";
 }
 
-
-
-<h2>@ViewBag.CustomerLogin</h2>
-
-
-
+@using (Html.BeginForm("CustomerLogin", "Account", FormMethod.Post))
+{
 <div class="row">
-    @Model
-    <div class="col-md-4">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="col-md-6">
         <h2>Login</h2>
-        <p>
-            <div>If you've already created an account, login here.</div>
-            @Html.Label("Email")<div>@Html.TextBox("Email", null, new { @class = "AccountController" })</div>
-            @Html.Label("Password")<div>@Html.Password("Password", null, new { @class = "AccountController" })</div>
-            @Html.ActionLink("Login", "CustomerLogin", "AccountController")
-        </p>
-        <p><a></a></p>
+        <hr />
+            <div>
+                If you've already created an account, login here.
+            </div>
+            <div>
+                <div class="form-group">
+                    <label>Email</label><input class="form-control text-box single-line" id="CustomerEmail" name="CustomerEmail" type="text" value="" />
+                    <label>Password</label><input class="form-control text-box single-line" id="Password" name="Password" type="password" value="" />
+                    @Html.ValidationMessageFor(model => model.CustomerEmail, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+                <button type="submit">Login</button>
+            </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
         <h2>Create Account</h2>
-        <p>
+        <hr />
             <div>If you're a new user, and want to make an account, then create your account here.</div>
-            @Html.Label("Email")<div>@Html.TextBox("Email", null, new { @class = "AccountController" })</div>
-            @Html.Label("Password")<div>@Html.Password("Password", null, new { @class = "AccountController" })</div>
-            @Html.ActionLink("Create Account", "CreateAccount", "AccountController")
-        </p>
-    </div>
+            <div>
+                <div class="form-group">
+                    <label>Email</label><input class="form-control text-box single-line" id="CustomerEmail" name="CustomerEmail" type="text" value="" />
+                    <label>Password</label><input class="form-control text-box single-line" id="Password" name="Password" type="password" value="" />
+                    @Html.ValidationMessageFor(model => model.CustomerEmail, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+                    <button type="submit">Create Account</button>
+                </div>
+            </div>
 </div>
+}

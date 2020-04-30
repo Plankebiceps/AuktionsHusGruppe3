@@ -30,13 +30,19 @@ namespace WebClientToService.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CustomerLogin(string emailToLookUp, string passwordToVerify)
+        public ActionResult CustomerLogin(string CustomerEmail, string Password)
         {
+            bool whatevs = false;
             WebCustomerService webCustomerService = new WebCustomerService();
-            webCustomerService.LoginCustomer(emailToLookUp, passwordToVerify);
-
-
-            return View();
+            whatevs = webCustomerService.LoginCustomer(CustomerEmail, Password);
+            if (whatevs)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return RedirectToAction("CustomerLogin", "Home");
+            }
         }
     }
 }
