@@ -23,6 +23,29 @@ namespace WebClientToService.ServiceLayer {
             return bids;
         }
 
+        public WebBid GetBidById(int bidId)
+        {
+            WebBid aWebBid = null;
+            proxyRef.Bid aProxyBid = null;
+            using (proxyRef.BidServiceClient bidProxy = new proxyRef.BidServiceClient())
+            {
+                aProxyBid = bidProxy.GetBidById(bidId);
+            }
+            if (aProxyBid != null)
+            {
+                aWebBid = new TransformBid().ConvertFromServiceBid(aProxyBid);
+            }
+            else
+            {
+                aWebBid = new WebBid()
+                {
+                    
+                };
+            }
+
+            return aWebBid;
+        }
+
         public bool CreateBid(WebBid bidToPlace) {
             bool allOk = false;
             proxyRef.Bid bidServiceFormat = new TransformBid().ConvertToServiceBid(bidToPlace);

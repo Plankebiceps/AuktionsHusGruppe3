@@ -17,21 +17,58 @@ namespace WebClientToService.Controllers
             return View();
         }
 
-        public ActionResult Create(WebBid bid) {
+        public ActionResult Create(WebBid bid)
+        {
             WebBidService wbs = new WebBidService();
 
             wbs.CreateBid(bid);
 
-            return RedirectToAction("List");
+            return RedirectToAction("BidList");
         }
 
         // auctionId ?????
-        public ActionResult List(int auctionId) {
-            WebBidService wbs = new WebBidService();
+        public ActionResult BidList(int id)
+        {
 
-            List<WebBid> bidsToDisplay = wbs.GetAllBids(auctionId);
+            WebBidService wbs = new WebBidService();
+            List<WebBid> bidsToDisplay = wbs.GetAllBids(id);
+
 
             return View(bidsToDisplay);
         }
+
+        //public ActionResult BidList(int? auctionId)
+        //{
+        //if (auctionId != null && auctionId > -1)
+        //{
+        //    WebBidService wbs = new WebBidService();
+        //    List<WebBid> bidsToDisplay = wbs.GetAllBids((int)auctionId);
+        //    return View(bidsToDisplay);
+        //}
+        //else
+        //{
+        //    return RedirectToAction("ABid");
+        //}
+        //}
+
+        //public ActionResult ABid()
+        //{
+        //    return View();
+        //}
+
+        public ActionResult ABid()
+        {
+
+            WebBid WebBid;
+            WebBidService WebBS = new WebBidService();
+            WebBid = WebBS.GetBidById(1);
+
+
+            return View(WebBid);
+        }
+
+        //}
     }
 }
+        
+ 

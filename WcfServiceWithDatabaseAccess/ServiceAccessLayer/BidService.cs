@@ -20,5 +20,12 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
             ControlBid ctrlBid = new ControlBid();
             return ctrlBid.GetAllBids(auctionId);
         }
+        
+        public Bid GetBidById(int bidId)
+        {
+            ControlBid ctrlBid = new ControlBid();
+            return ctrlBid.GetBidById(bidId);
+        }
+    
     }
 }

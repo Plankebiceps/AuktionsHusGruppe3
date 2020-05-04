@@ -10,7 +10,7 @@ using System.Transactions;
 
 namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 {
-    class CustomerAccess
+    public class CustomerAccess
     {
         readonly string connectionString;
 
@@ -29,38 +29,42 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             string insertString = "INSERT INTO Customer(address, firstName, lastName, customerEmail, hash, salt)" +
                                   "VALUES(@Address, @FirstName, @LastName, @CustomerEmail, @Hash, @Salt)";
 
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (TransactionScope scope = new TransactionScope())
             {
-
-                using (SqlCommand CreateCommand = new SqlCommand(insertString, con))
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlParameter addressParam = new SqlParameter("@Address", aCustomer.Address);
-                    CreateCommand.Parameters.Add(addressParam);
-                    SqlParameter fNameParam = new SqlParameter("@Firstname", aCustomer.FirstName);
-                    CreateCommand.Parameters.Add(fNameParam);
-                    SqlParameter lNameParam = new SqlParameter("@LastName", aCustomer.LastName);
-                    CreateCommand.Parameters.Add(lNameParam);
-                    SqlParameter eMailParam = new SqlParameter("@CustomerEmail", aCustomer.Email);
-                    CreateCommand.Parameters.Add(eMailParam);
-                    SqlParameter hashParam = new SqlParameter("@Hash", aCustomer.Hash);
-                    CreateCommand.Parameters.Add(hashParam);
-                    SqlParameter saltParam = new SqlParameter("@Salt", aCustomer.Salt);
-                    CreateCommand.Parameters.Add(saltParam);
 
-                    con.Open();
-                    // Execute save
-                    int rowsAffected = CreateCommand.ExecuteNonQuery();
-                    // Evaluate
-                    wasInserted = (rowsAffected == 1);
+                    using (SqlCommand CreateCommand = new SqlCommand(insertString, con))
+                    {
+                        SqlParameter addressParam = new SqlParameter("@Address", aCustomer.Address);
+                        CreateCommand.Parameters.Add(addressParam);
+                        SqlParameter fNameParam = new SqlParameter("@Firstname", aCustomer.FirstName);
+                        CreateCommand.Parameters.Add(fNameParam);
+                        SqlParameter lNameParam = new SqlParameter("@LastName", aCustomer.LastName);
+                        CreateCommand.Parameters.Add(lNameParam);
+                        SqlParameter eMailParam = new SqlParameter("@CustomerEmail", aCustomer.Email);
+                        CreateCommand.Parameters.Add(eMailParam);
+                        SqlParameter hashParam = new SqlParameter("@Hash", aCustomer.Hash);
+                        CreateCommand.Parameters.Add(hashParam);
+                        SqlParameter saltParam = new SqlParameter("@Salt", aCustomer.Salt);
+                        CreateCommand.Parameters.Add(saltParam);
 
-                    return wasInserted;
+                        con.Open();
+                        // Execute save
+                        int rowsAffected = CreateCommand.ExecuteNonQuery();
+                        // Evaluate
+                        wasInserted = (rowsAffected == 1);
+
+                        scope.Complete();
+                        return wasInserted;
+                    }
+
                 }
-
             }
         }
+    
 
         public bool LoginCustomer(string emailToLookUp, string passwordToVerify) {
-            using (TransactionScope scope = new TransactionScope()) {   /* TransactionScope mangler funktionalitet */
 
                 Customer customerToLogin = null;
                 bool isPasswordMatched;
@@ -97,8 +101,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                     }
                     return isPasswordMatched = HashSalt.VerifyPassword(passwordToVerify, customerToLogin.Hash, customerToLogin.Salt);
                 }
-            }
         }
+        
 
         public Customer GetCustomerByEmail(string emailToFind) {
             Customer foundCustomer = new Customer();

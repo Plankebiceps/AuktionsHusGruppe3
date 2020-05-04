@@ -21,5 +21,8 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
 
         [OperationContract]
         List<Bid> GetBidAll(int auctionId);
+
+        [OperationContract]
+        Bid GetBidById(int bidId);
     }
 }

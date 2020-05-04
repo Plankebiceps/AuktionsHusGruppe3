@@ -23,32 +23,34 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
             string insertString = "insert into Auction(timeLeft, payment, result, paymentDate, productName, productDescription) output " +
                                   "INSERTED.Id VALUES (@timeLeft, @payment, @result, @paymentDate, @productName, @productDescription)";
 
-            using (SqlConnection con = new SqlConnection(connectionString)) {
-                
-                using (SqlCommand CreateCommand = new SqlCommand(insertString, con)) {
-                    
-                    //Prepace SQL
-                    SqlParameter timeLeftParam = new SqlParameter("@timeLeft", anAuction.TimeLeft);
-                    CreateCommand.Parameters.Add(timeLeftParam);
-                    SqlParameter paymentParam = new SqlParameter("@payment", anAuction.Payment);
-                    CreateCommand.Parameters.Add(paymentParam);
-                    SqlParameter resultParam = new SqlParameter("@result", anAuction.Result);
-                    CreateCommand.Parameters.Add(resultParam);
-                    SqlParameter payDateParam = new SqlParameter("@paymentDate", anAuction.PaymentDate);
-                    CreateCommand.Parameters.Add(payDateParam);
-                    SqlParameter prodNameParam = new SqlParameter("@productName", anAuction.ProductName);
-                    CreateCommand.Parameters.Add(prodNameParam);
-                    SqlParameter prodDescriptParam = new SqlParameter("@productDescription", anAuction.ProductDescription);
-                    CreateCommand.Parameters.Add(prodDescriptParam);
+            using (TransactionScope scope = new TransactionScope()) {
+                using (SqlConnection con = new SqlConnection(connectionString)) {
 
-                    con.Open();
-                    // Execute save
-                    int rowsAffected = CreateCommand.ExecuteNonQuery();
-                    // Evaluate
-                    wasInserted = (rowsAffected == 6);
+                    using (SqlCommand CreateCommand = new SqlCommand(insertString, con)) {
 
-                    return wasInserted;
+                        //Prepace SQL
+                        SqlParameter timeLeftParam = new SqlParameter("@timeLeft", anAuction.TimeLeft);
+                        CreateCommand.Parameters.Add(timeLeftParam);
+                        SqlParameter paymentParam = new SqlParameter("@payment", anAuction.Payment);
+                        CreateCommand.Parameters.Add(paymentParam);
+                        SqlParameter resultParam = new SqlParameter("@result", anAuction.Result);
+                        CreateCommand.Parameters.Add(resultParam);
+                        SqlParameter payDateParam = new SqlParameter("@paymentDate", anAuction.PaymentDate);
+                        CreateCommand.Parameters.Add(payDateParam);
+                        SqlParameter prodNameParam = new SqlParameter("@productName", anAuction.ProductName);
+                        CreateCommand.Parameters.Add(prodNameParam);
+                        SqlParameter prodDescriptParam = new SqlParameter("@productDescription", anAuction.ProductDescription);
+                        CreateCommand.Parameters.Add(prodDescriptParam);
 
+                        con.Open();
+                        // Execute save
+                        int rowsAffected = CreateCommand.ExecuteNonQuery();
+                        // Evaluate
+                        wasInserted = (rowsAffected == 6);
+
+                        return wasInserted;
+
+                    }
                 }
             }
         }
@@ -99,9 +101,10 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
             string insertString = "UPDATE Auction SET timeLeft=@timeLeft, payment=@payment, result=@result, paymentDate=@paymentDate, " +
                                   "productName=@productName, productDescription=@productDescription WHERE id=@id";
 
-            using (SqlConnection con = new SqlConnection(connectionString)) {
+            using (TransactionScope scope = new TransactionScope()) {
+                using (SqlConnection con = new SqlConnection(connectionString)) {
 
-                using (SqlCommand CreateCommand = new SqlCommand(insertString, con)) {
+                    using (SqlCommand CreateCommand = new SqlCommand(insertString, con)) {
 
                     SqlParameter idParam = new SqlParameter("@id", anAuction.AuctionId);
                     CreateCommand.Parameters.Add(idParam);
@@ -119,14 +122,15 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                     SqlParameter prodDescriptParam = new SqlParameter("@productDescription", anAuction.ProductDescription);
                     CreateCommand.Parameters.Add(prodDescriptParam);
 
-                    con.Open();
-                    // Execute save
-                    /*int rowsAffected = */
-                    int modified = CreateCommand.ExecuteNonQuery();
-                    // Evaluate
-                    //wasInserted = (rowsAffected == 6);
+                        con.Open();
+                        // Execute save
+                        /*int rowsAffected = */
+                        int modified = CreateCommand.ExecuteNonQuery();
+                        // Evaluate
+                        //wasInserted = (rowsAffected == 6);
 
-                    //return wasInserted;
+                        //return wasInserted;
+                    }
                 }
             }
         }

@@ -265,6 +265,8 @@
     <Content Include="Views\Auction\Index.cshtml" />
     <Content Include="Views\Bid\List.cshtml" />
     <Content Include="Views\Home\CustomerCreateAccount.cshtml" />
+    <Content Include="Views\Home\UserDashBoard.cshtml" />
+    <Content Include="Views\Bid\BidList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
