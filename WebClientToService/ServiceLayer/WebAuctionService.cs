@@ -23,7 +23,9 @@ namespace WebClientToService.ServiceLayer {
             }
             return auctions;
         }
+
         
+
         public bool CreateAuction(WebAuction auctionToAdd)
         {
             bool allOk = false;

@@ -58,6 +58,36 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             }
         }
 
+        public Bid GetBidById(int bidId)
+        {
+            Bid foundBid = new Bid();
+
+            string queryString = "SELECT bidAmount, customerId, auctionId FROM Bid WHERE auctionId = @auctionId";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand readCommand = new SqlCommand(queryString, con))
+                {
+
+
+                    SqlParameter idParam = new SqlParameter("@auctionId", bidId);
+                    readCommand.Parameters.Add(idParam);
+
+                    con.Open();
+
+                    SqlDataReader reader = readCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        foundBid.BidAmount = reader.GetDecimal(reader.GetOrdinal("bidAmount"));
+                        foundBid.CustomerId = reader.GetInt32(reader.GetOrdinal("customerId"));
+                        foundBid.AuctionId = reader.GetInt32(reader.GetOrdinal("auctionId"));
+
+                    }
+                }
+            }
+            return foundBid;
+        }
+
         public List<Bid> GetAllBids(int auctionId) {
 
             List<Bid> foundBids = null;

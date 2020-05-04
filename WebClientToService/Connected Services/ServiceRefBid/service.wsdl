@@ -19,6 +19,12 @@
   <wsdl:message name="IBidService_GetBidAll_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBidAllResponse" />
   </wsdl:message>
+  <wsdl:message name="IBidService_GetBidById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBidById" />
+  </wsdl:message>
+  <wsdl:message name="IBidService_GetBidById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBidByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IBidService">
     <wsdl:operation name="PlaceBid">
       <wsdl:input wsaw:Action="http://tempuri.org/IBidService/PlaceBid" message="tns:IBidService_PlaceBid_InputMessage" />
@@ -27,6 +33,10 @@
     <wsdl:operation name="GetBidAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IBidService/GetBidAll" message="tns:IBidService_GetBidAll_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBidService/GetBidAllResponse" message="tns:IBidService_GetBidAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBidById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBidService/GetBidById" message="tns:IBidService_GetBidById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBidService/GetBidByIdResponse" message="tns:IBidService_GetBidById_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IBidService" type="tns:IBidService">
@@ -42,6 +52,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetBidAll">
       <soap:operation soapAction="http://tempuri.org/IBidService/GetBidAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBidById">
+      <soap:operation soapAction="http://tempuri.org/IBidService/GetBidById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -20,6 +20,14 @@ namespace WebClientToService.Models {
             AuctionId = auctionId;
         }
 
+        public WebBid(int id, decimal bidAmount, int customerId, int auctionId)
+        {
+            Id = id;
+            BidAmount = bidAmount;
+            CustomerId = customerId;
+            AuctionId = auctionId;
+        }
+
         public override string ToString() {
             return $"Dkr. {BidAmount},- | Customer: {CustomerId}";
         }

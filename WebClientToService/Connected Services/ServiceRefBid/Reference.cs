@@ -121,6 +121,12 @@ namespace WebClientToService.ServiceRefBid {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/GetBidAll", ReplyAction="http://tempuri.org/IBidService/GetBidAllResponse")]
         System.Threading.Tasks.Task<WebClientToService.ServiceRefBid.Bid[]> GetBidAllAsync(int auctionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/GetBidById", ReplyAction="http://tempuri.org/IBidService/GetBidByIdResponse")]
+        WebClientToService.ServiceRefBid.Bid GetBidById(int bidId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/GetBidById", ReplyAction="http://tempuri.org/IBidService/GetBidByIdResponse")]
+        System.Threading.Tasks.Task<WebClientToService.ServiceRefBid.Bid> GetBidByIdAsync(int bidId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -164,6 +170,14 @@ namespace WebClientToService.ServiceRefBid {
         
         public System.Threading.Tasks.Task<WebClientToService.ServiceRefBid.Bid[]> GetBidAllAsync(int auctionId) {
             return base.Channel.GetBidAllAsync(auctionId);
+        }
+        
+        public WebClientToService.ServiceRefBid.Bid GetBidById(int bidId) {
+            return base.Channel.GetBidById(bidId);
+        }
+        
+        public System.Threading.Tasks.Task<WebClientToService.ServiceRefBid.Bid> GetBidByIdAsync(int bidId) {
+            return base.Channel.GetBidByIdAsync(bidId);
         }
     }
 }
