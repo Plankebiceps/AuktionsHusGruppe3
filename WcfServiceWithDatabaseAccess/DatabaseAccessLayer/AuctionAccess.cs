@@ -17,8 +17,6 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
 
         public bool SaveAuction(Auction anAuction) {
 
-            //using (TransactionScope scope = new TransactionScope())
-            //{
             bool wasInserted;
             string insertString = "insert into Auction(timeLeft, payment, result, paymentDate, productName, productDescription) output " +
                                   "INSERTED.Id VALUES (@timeLeft, @payment, @result, @paymentDate, @productName, @productDescription)";
@@ -47,6 +45,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                         int rowsAffected = CreateCommand.ExecuteNonQuery();
                         // Evaluate
                         wasInserted = (rowsAffected == 6);
+
+                        scope.Complete();
 
                         return wasInserted;
 
@@ -126,6 +126,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                         // Execute save
                         /*int rowsAffected = */
                         int modified = CreateCommand.ExecuteNonQuery();
+
+                        scope.Complete();
                         // Evaluate
                         //wasInserted = (rowsAffected == 6);
 

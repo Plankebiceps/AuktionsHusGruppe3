@@ -36,6 +36,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                         cmdInsertAdmin.Parameters.AddWithValue("@adminEmail", anAdmin.Email);
 
                         cmdInsertAdmin.ExecuteNonQuery();
+
+                        scope.Complete();
                     }
                     return anAdmin;
                 }
@@ -44,7 +46,6 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
 
 
         public bool LoginAdmin(string emailToLookUp, string passwordToVerify) {
-            using (TransactionScope scope = new TransactionScope()) {   /* TransactionScope mangler funktionalitet */
 
                 Admin adminToLogin = null;
                 bool isPasswordMatched;
@@ -75,7 +76,6 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                         throw new Exception();
                     }
                     return isPasswordMatched = HashSalt.VerifyPassword(passwordToVerify, adminToLogin.Salt, adminToLogin.Hash);
-                }
             }
         }
     }

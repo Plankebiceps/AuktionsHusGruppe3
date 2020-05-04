@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using WebClientToService.Models;
@@ -35,17 +36,20 @@ namespace WebClientToService.Controllers
             WebAuctionService was = new WebAuctionService();
             List<WebAuction> auctionsToDisplay = was.GetAllAuctions();
 
-            
 
-            
-            DateTime currentTime = DateTime.Now;
 
-            foreach(WebAuction auctionOnWeb in auctionsToDisplay)
+            foreach (WebAuction auctionOnWeb in auctionsToDisplay) {
+
+                DateTime currentTime = DateTime.Now;
+                TimeSpan span = auctionOnWeb.TimeLeft - currentTime;
+                DateTime timeRemaining = new DateTime();
+                timeRemaining.Add(span);
                 
-            {
-                auctionOnWeb.TimeLeft = auctionOnWeb.TimeLeft - currentTime;
-
-            }
+                timeRemaining = auctionOnWeb.TimeLeft;
+            } // NOTE: Overvej hvad der skal vises. View kan umiddelbart kun tilgå og vise DateTime (TimeLeft-variabel), altså dato+tidsformat og ikke kun eks. 24 timer eller 47 minutter. 
+              // DateTime AuctionEndDate (not NULL) + int TimeLeft (NULL allowed)  -  AuctionToEnd kan da subtraheres med DateTime.Now og efterfølgende kan dette TimeSpan konverteres til en int, 
+              // gemmes i int TimeLeft og vises i View. 
+              // Muligvis kan timeRemaining modificeres til kun at vise timer/minutter ??
 
             return View(auctionsToDisplay);
         }

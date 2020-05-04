@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.btnAuction = new System.Windows.Forms.Button();
-            this.txtAuction_TimeLeft = new System.Windows.Forms.TextBox();
             this.radioBtnAuction = new System.Windows.Forms.RadioButton();
-            this.dateTimePickerAuction = new System.Windows.Forms.DateTimePicker();
             this.txtProdName = new System.Windows.Forms.TextBox();
             this.txtProdDescription = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -40,7 +38,7 @@
             this.lblProductName = new System.Windows.Forms.Label();
             this.lblTimeLeft = new System.Windows.Forms.Label();
             this.lblResult = new System.Windows.Forms.Label();
-            this.lblAuctionDate = new System.Windows.Forms.Label();
+            this.lblPaymentDate = new System.Windows.Forms.Label();
             this.lblProduct = new System.Windows.Forms.Label();
             this.lblProdDesc = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
@@ -56,6 +54,10 @@
             this.cbResult = new System.Windows.Forms.ComboBox();
             this.btnFindAllAucAsync = new System.Windows.Forms.Button();
             this.lblAync2 = new System.Windows.Forms.Label();
+            this.dtpDateTl = new System.Windows.Forms.DateTimePicker();
+            this.dtpClockTl = new System.Windows.Forms.DateTimePicker();
+            this.dtpClockPayD = new System.Windows.Forms.DateTimePicker();
+            this.dtpDatePayD = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // btnAuction
@@ -68,13 +70,6 @@
             this.btnAuction.UseVisualStyleBackColor = true;
             this.btnAuction.Click += new System.EventHandler(this.btnAuction_Click);
             // 
-            // txtAuction_TimeLeft
-            // 
-            this.txtAuction_TimeLeft.Location = new System.Drawing.Point(96, 49);
-            this.txtAuction_TimeLeft.Name = "txtAuction_TimeLeft";
-            this.txtAuction_TimeLeft.Size = new System.Drawing.Size(264, 20);
-            this.txtAuction_TimeLeft.TabIndex = 3;
-            // 
             // radioBtnAuction
             // 
             this.radioBtnAuction.AutoSize = true;
@@ -85,13 +80,6 @@
             this.radioBtnAuction.TabStop = true;
             this.radioBtnAuction.Text = "Payed";
             this.radioBtnAuction.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePickerAuction
-            // 
-            this.dateTimePickerAuction.Location = new System.Drawing.Point(96, 124);
-            this.dateTimePickerAuction.Name = "dateTimePickerAuction";
-            this.dateTimePickerAuction.Size = new System.Drawing.Size(264, 20);
-            this.dateTimePickerAuction.TabIndex = 13;
             // 
             // txtProdName
             // 
@@ -163,14 +151,14 @@
             this.lblResult.TabIndex = 23;
             this.lblResult.Text = "Result";
             // 
-            // lblAuctionDate
+            // lblPaymentDate
             // 
-            this.lblAuctionDate.AutoSize = true;
-            this.lblAuctionDate.Location = new System.Drawing.Point(24, 125);
-            this.lblAuctionDate.Name = "lblAuctionDate";
-            this.lblAuctionDate.Size = new System.Drawing.Size(55, 13);
-            this.lblAuctionDate.TabIndex = 24;
-            this.lblAuctionDate.Text = "Start Date";
+            this.lblPaymentDate.AutoSize = true;
+            this.lblPaymentDate.Location = new System.Drawing.Point(24, 125);
+            this.lblPaymentDate.Name = "lblPaymentDate";
+            this.lblPaymentDate.Size = new System.Drawing.Size(71, 13);
+            this.lblPaymentDate.TabIndex = 24;
+            this.lblPaymentDate.Text = "PaymentDate";
             // 
             // lblProduct
             // 
@@ -317,11 +305,45 @@
             this.lblAync2.Size = new System.Drawing.Size(264, 23);
             this.lblAync2.TabIndex = 44;
             // 
+            // dtpDateTl
+            // 
+            this.dtpDateTl.Location = new System.Drawing.Point(95, 50);
+            this.dtpDateTl.Name = "dtpDateTl";
+            this.dtpDateTl.Size = new System.Drawing.Size(128, 20);
+            this.dtpDateTl.TabIndex = 45;
+            // 
+            // dtpClockTl
+            // 
+            this.dtpClockTl.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpClockTl.Location = new System.Drawing.Point(233, 50);
+            this.dtpClockTl.Name = "dtpClockTl";
+            this.dtpClockTl.Size = new System.Drawing.Size(128, 20);
+            this.dtpClockTl.TabIndex = 46;
+            // 
+            // dtpClockPayD
+            // 
+            this.dtpClockPayD.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpClockPayD.Location = new System.Drawing.Point(233, 125);
+            this.dtpClockPayD.Name = "dtpClockPayD";
+            this.dtpClockPayD.Size = new System.Drawing.Size(128, 20);
+            this.dtpClockPayD.TabIndex = 48;
+            // 
+            // dtpDatePayD
+            // 
+            this.dtpDatePayD.Location = new System.Drawing.Point(95, 125);
+            this.dtpDatePayD.Name = "dtpDatePayD";
+            this.dtpDatePayD.Size = new System.Drawing.Size(128, 20);
+            this.dtpDatePayD.TabIndex = 47;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 313);
+            this.Controls.Add(this.dtpClockPayD);
+            this.Controls.Add(this.dtpDatePayD);
+            this.Controls.Add(this.dtpClockTl);
+            this.Controls.Add(this.dtpDateTl);
             this.Controls.Add(this.lblAync2);
             this.Controls.Add(this.btnFindAllAucAsync);
             this.Controls.Add(this.cbResult);
@@ -337,7 +359,7 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lblProdDesc);
             this.Controls.Add(this.lblProduct);
-            this.Controls.Add(this.lblAuctionDate);
+            this.Controls.Add(this.lblPaymentDate);
             this.Controls.Add(this.lblResult);
             this.Controls.Add(this.lblTimeLeft);
             this.Controls.Add(this.lblProductName);
@@ -346,9 +368,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtProdDescription);
             this.Controls.Add(this.txtProdName);
-            this.Controls.Add(this.dateTimePickerAuction);
             this.Controls.Add(this.radioBtnAuction);
-            this.Controls.Add(this.txtAuction_TimeLeft);
             this.Controls.Add(this.btnAuction);
             this.Name = "Main";
             this.Text = "Auctioneer";
@@ -360,9 +380,7 @@
 
         #endregion
         private System.Windows.Forms.Button btnAuction;
-        private System.Windows.Forms.TextBox txtAuction_TimeLeft;
         private System.Windows.Forms.RadioButton radioBtnAuction;
-        private System.Windows.Forms.DateTimePicker dateTimePickerAuction;
         private System.Windows.Forms.TextBox txtProdName;
         private System.Windows.Forms.TextBox txtProdDescription;
         private System.Windows.Forms.Button button1;
@@ -371,7 +389,7 @@
         private System.Windows.Forms.Label lblProductName;
         private System.Windows.Forms.Label lblTimeLeft;
         private System.Windows.Forms.Label lblResult;
-        private System.Windows.Forms.Label lblAuctionDate;
+        private System.Windows.Forms.Label lblPaymentDate;
         private System.Windows.Forms.Label lblProduct;
         private System.Windows.Forms.Label lblProdDesc;
         private System.Windows.Forms.Button btnExit;
@@ -387,5 +405,9 @@
         private System.Windows.Forms.ComboBox cbResult;
         private System.Windows.Forms.Button btnFindAllAucAsync;
         private System.Windows.Forms.Label lblAync2;
+        private System.Windows.Forms.DateTimePicker dtpDateTl;
+        private System.Windows.Forms.DateTimePicker dtpClockTl;
+        private System.Windows.Forms.DateTimePicker dtpClockPayD;
+        private System.Windows.Forms.DateTimePicker dtpDatePayD;
     }
 }

@@ -27,15 +27,14 @@ namespace DesktopClientToService.PresentationLayer
 
         //CREATE AUCTION
         private void btnAuction_Click(object sender, EventArgs e) {
-            //Lokal variabler
-            DateTime dateTime = dateTimePickerAuction.Value;
-            string dateTimeString = dateTime.ToString();
+
             string result = cbResult.Text;
             string productName = txtProdName.Text;
             string productDescription = txtProdDescription.Text;
             bool payment = false;
-            decimal timeLeft;
-            decimal.TryParse(txtAuction_TimeLeft.Text, out timeLeft);
+            DateTime timeLeftDateAndTime = dtpDateTl.Value.Date.Add(dtpClockTl.Value.TimeOfDay);
+            DateTime paymentDateAndTime = dtpDatePayD.Value.Date.Add(dtpClockPayD.Value.TimeOfDay);
+
 
             if (radioBtnAuction.Checked) {
                 payment = true;
@@ -45,12 +44,12 @@ namespace DesktopClientToService.PresentationLayer
                 MessageBox.Show("Please chose wheter it is payed!");
             }
 
-            bool inputIsOk = (timeLeft > 1 && !string.IsNullOrEmpty(result)
+            bool inputIsOk = (!string.IsNullOrEmpty(result)
                                 && !string.IsNullOrEmpty(productName) && !string.IsNullOrEmpty(productDescription));
 
             if (inputIsOk) {
                 ControlAuction ctrlAuction = new ControlAuction();
-                ctrlAuction.AddAuction(timeLeft, payment, result, dateTime, productName, productDescription);
+                ctrlAuction.AddAuction(timeLeftDateAndTime, payment, result, paymentDateAndTime, productName, productDescription);
                 MessageBox.Show("Auction created!");
             } else {
               MessageBox.Show("Auction not created! Try again.");
@@ -95,13 +94,13 @@ namespace DesktopClientToService.PresentationLayer
 
         // UPDATE AN AUCTION
         private void btnUpdateAuction_Click(object sender, EventArgs e) {
-            DateTime dateTime = dateTimePickerAuction.Value;
             string result = cbResult.Text;
             string productName = txtProdName.Text;
             string productDescription = txtProdDescription.Text;
             bool payment = false;
-            decimal timeLeft;
-            decimal.TryParse(txtAuction_TimeLeft.Text, out timeLeft);
+            DateTime timeLeftDateAndTime = dtpDateTl.Value.Date.Add(dtpClockTl.Value.TimeOfDay);
+            DateTime paymentDateAndTime = dtpDatePayD.Value.Date.Add(dtpClockPayD.Value.TimeOfDay);
+
 
             int findAuctionId;
             int.TryParse(txtboxAuctionId.Text, out findAuctionId);
@@ -115,7 +114,7 @@ namespace DesktopClientToService.PresentationLayer
             }
 
             ControlAuction ctrlAuction = new ControlAuction();
-            ctrlAuction.UpdateAuction(findAuctionId, timeLeft, payment, result, dateTime, productName, productDescription);
+            ctrlAuction.UpdateAuction(findAuctionId, timeLeftDateAndTime, payment, result, paymentDateAndTime, productName, productDescription);
         }
 
         // LIST ALL AUCTIONS BUTTON

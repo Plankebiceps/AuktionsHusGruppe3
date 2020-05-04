@@ -29,8 +29,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             string insertString = "INSERT INTO Customer(address, firstName, lastName, customerEmail, hash, salt)" +
                                   "VALUES(@Address, @FirstName, @LastName, @CustomerEmail, @Hash, @Salt)";
 
-            using (TransactionScope scope = new TransactionScope())
-            {
+            using (TransactionScope scope = new TransactionScope()) {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
 

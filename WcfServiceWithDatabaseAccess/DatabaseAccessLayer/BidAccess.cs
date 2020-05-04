@@ -52,6 +52,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                         // Evaluate
                         wasInserted = (rowsAffected == 6);
 
+                        scope.Complete();
+
                         return wasInserted;
                     }
                 }
