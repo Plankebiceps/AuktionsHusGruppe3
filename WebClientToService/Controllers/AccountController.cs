@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebClientToService.ServiceLayer;
 using WebClientToService.Models;
-using System.Web.SessionState;
+using System.Web.Security;
 
 namespace WebClientToService.Controllers
 {
@@ -30,7 +30,7 @@ namespace WebClientToService.Controllers
                 createdAccount = webCustomerService.CreateCustomerAccount(webCustomer);
             if (createdAccount == true)
             {
-                return RedirectToAction("UserDashBoard", "Home");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -46,15 +46,23 @@ namespace WebClientToService.Controllers
             bool whatevs = false;
             WebCustomerService webCustomerService = new WebCustomerService();
             whatevs = webCustomerService.LoginCustomer(Email, Password);
+            WebCustomer webCustomer = new WebCustomer();
             if (whatevs == true)
             {
-                return RedirectToAction("UserDashBoard", "Home");
+                FormsAuthentication.SetAuthCookie(webCustomer.FirstName, false);
+                return RedirectToAction("Index", "Home");
             }
             else
             {
                 ModelState.AddModelError("", "Wrong email and/or password");
                 return RedirectToAction("CustomerLogin", "Home");
             }
+        }
+
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -28,7 +28,6 @@ namespace WebClientToService.Controllers {
             return View();
         }
 
-        [Authorize]
         public ActionResult CustomerLogin()
         {
             //Opsætning af et login system for brugere
@@ -36,7 +35,6 @@ namespace WebClientToService.Controllers {
             return View();
         }
 
-        [Authorize]
         public ActionResult CustomerCreateAccount()
         {
             return View();
