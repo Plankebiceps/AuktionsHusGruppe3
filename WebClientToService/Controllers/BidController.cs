@@ -23,7 +23,7 @@ namespace WebClientToService.Controllers
 
             wbs.CreateBid(bid);
 
-            return RedirectToAction("");
+            return RedirectToAction("BidList");
         }
 
         // auctionId ?????
