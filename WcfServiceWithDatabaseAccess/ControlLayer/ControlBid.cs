@@ -26,5 +26,16 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer {
 
             return foundBids;
         }
+    
+        public Bid GetBidById(int bidId)
+        {
+            Bid foundBid;
+            
+            BidAccess bidDb = new BidAccess();
+            foundBid = bidDb.GetBidById(bidId);
+            
+            return foundBid;
+        }
+    
     }
 }

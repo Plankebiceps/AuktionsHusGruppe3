@@ -32,7 +32,10 @@ namespace WebClientToService.Controllers {
             return View();
         }
 
-
+        public ActionResult CBid()
+        {
+            return View();
+        }
 
     }
 }
