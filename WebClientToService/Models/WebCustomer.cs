@@ -9,14 +9,14 @@ namespace WebClientToService.Models
     public class WebCustomer
     {
         public int Id { get; set; }
-
+        [Required, StringLength(50)]
         public string Address { get; set; }
-
+        [Required, StringLength(30)]
         public string FirstName { get; set; }
-
+        [Required, StringLength(30)]
         public string LastName { get; set; }
-        [Required]
-        public string CustomerEmail { get; set; }
+        [Required, StringLength(50)]
+        public string Email { get; set; }
         [Required]
         public string Password { get; set; }
 
@@ -26,7 +26,7 @@ namespace WebClientToService.Models
 
         public WebCustomer(string email, string hash, string salt)
         {
-            CustomerEmail = email;
+            Email = email;
             Hash = hash;
             Salt = salt;
         }
@@ -43,7 +43,7 @@ namespace WebClientToService.Models
             FirstName = firstName;
             LastName = lastName;
             Address = address;
-            CustomerEmail = email;
+            Email = email;
             Hash = hash;
             Salt = salt;
         }
