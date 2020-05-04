@@ -54,6 +54,8 @@
             this.btnShowBids = new System.Windows.Forms.Button();
             this.lblAuctionId = new System.Windows.Forms.Label();
             this.cbResult = new System.Windows.Forms.ComboBox();
+            this.btnFindAllAucAsync = new System.Windows.Forms.Button();
+            this.lblAync2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAuction
@@ -137,11 +139,11 @@
             // 
             // lblProductName
             // 
-            this.lblProductName.Location = new System.Drawing.Point(96, 246);
+            this.lblProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductName.Location = new System.Drawing.Point(95, 236);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(264, 33);
             this.lblProductName.TabIndex = 1;
-            this.lblProductName.Text = "product will show up here";
             // 
             // lblTimeLeft
             // 
@@ -298,11 +300,30 @@
             this.cbResult.Size = new System.Drawing.Size(264, 21);
             this.cbResult.TabIndex = 41;
             // 
+            // btnFindAllAucAsync
+            // 
+            this.btnFindAllAucAsync.Location = new System.Drawing.Point(410, 231);
+            this.btnFindAllAucAsync.Name = "btnFindAllAucAsync";
+            this.btnFindAllAucAsync.Size = new System.Drawing.Size(174, 23);
+            this.btnFindAllAucAsync.TabIndex = 42;
+            this.btnFindAllAucAsync.Text = "Find All Auctions (Async)";
+            this.btnFindAllAucAsync.UseVisualStyleBackColor = true;
+            this.btnFindAllAucAsync.Click += new System.EventHandler(this.btnFindAllAucAsync_Click);
+            // 
+            // lblAync2
+            // 
+            this.lblAync2.Location = new System.Drawing.Point(410, 261);
+            this.lblAync2.Name = "lblAync2";
+            this.lblAync2.Size = new System.Drawing.Size(264, 23);
+            this.lblAync2.TabIndex = 44;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 313);
+            this.Controls.Add(this.lblAync2);
+            this.Controls.Add(this.btnFindAllAucAsync);
             this.Controls.Add(this.cbResult);
             this.Controls.Add(this.lblAuctionId);
             this.Controls.Add(this.btnShowBids);
@@ -364,5 +385,7 @@
         private System.Windows.Forms.Button btnShowBids;
         private System.Windows.Forms.Label lblAuctionId;
         private System.Windows.Forms.ComboBox cbResult;
+        private System.Windows.Forms.Button btnFindAllAucAsync;
+        private System.Windows.Forms.Label lblAync2;
     }
 }

@@ -21,22 +21,24 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
         }
 
         public Admin CreateToDb(Admin anAdmin) {
-            using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                using (SqlCommand cmdInsertAdmin = con.CreateCommand()) {
-                    cmdInsertAdmin.CommandText = "INSERT INTO Admin(salt, hash, adminEmail) VALUES (@salt, @hash, @adminEmail)";
+            using (TransactionScope scope = new TransactionScope()) {
+                using (SqlConnection con = new SqlConnection(connectionString)) {
+                    con.Open();
+                    using (SqlCommand cmdInsertAdmin = con.CreateCommand()) {
+                        cmdInsertAdmin.CommandText = "INSERT INTO Admin(salt, hash, adminEmail) VALUES (@salt, @hash, @adminEmail)";
 
-                    HashSalt hashSaltToSave = HashSalt.GenerateSaltedHash(64, anAdmin.Password);
-                    anAdmin.Salt = hashSaltToSave.Salt;
-                    anAdmin.Hash = hashSaltToSave.Hash;
+                        HashSalt hashSaltToSave = HashSalt.GenerateSaltedHash(64, anAdmin.Password);
+                        anAdmin.Salt = hashSaltToSave.Salt;
+                        anAdmin.Hash = hashSaltToSave.Hash;
 
-                    cmdInsertAdmin.Parameters.AddWithValue("@salt", anAdmin.Salt);
-                    cmdInsertAdmin.Parameters.AddWithValue("@hash", anAdmin.Hash);
-                    cmdInsertAdmin.Parameters.AddWithValue("@adminEmail", anAdmin.Email);
+                        cmdInsertAdmin.Parameters.AddWithValue("@salt", anAdmin.Salt);
+                        cmdInsertAdmin.Parameters.AddWithValue("@hash", anAdmin.Hash);
+                        cmdInsertAdmin.Parameters.AddWithValue("@adminEmail", anAdmin.Email);
 
-                    cmdInsertAdmin.ExecuteNonQuery();
+                        cmdInsertAdmin.ExecuteNonQuery();
+                    }
+                    return anAdmin;
                 }
-                return anAdmin;
             }
         }
 

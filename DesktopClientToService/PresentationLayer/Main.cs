@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DesktopClientToService.PresentationLayer;
-
+using System.Threading.Tasks;
+using System.Threading;
+using System.Drawing;
 
 namespace DesktopClientToService.PresentationLayer
 {
@@ -13,7 +15,7 @@ namespace DesktopClientToService.PresentationLayer
         ControlAuction auctionController = new ControlAuction();
         private Auction selectedAuction;
         private int selectedAuctionIndex;
-
+        readonly int sleepMs = 4000;
 
         public Main() {
             InitializeComponent();
@@ -176,5 +178,44 @@ namespace DesktopClientToService.PresentationLayer
 
         }
 
+        // BUTTON - ASYNCHRONOUS FIND ALL AUCTIONS 
+        private async void btnFindAllAucAsync_Click(object sender, EventArgs e) {
+            // Display immediately
+            this.lblAync2.Text = "Job processing!";
+            // Do some work
+            var resTask = DoWorkAsync();
+            
+            ListAllAuctionsAsync();
+
+            var res = await resTask;
+            this.lblAync2.Text = res;
+        }
+
+        // METHOD - ASYNCHRONOUS FIND ALL AUCTIONS   (OBS. INVOKERS)
+        private async Task ListAllAuctionsAsync() {
+            await Task.Run(() => {
+
+                ControlAuction ctrlAuction = new ControlAuction();
+                List<Auction> allAuctions = ctrlAuction.GetAllAuctions();
+
+                //Clear list
+                this.Invoke((MethodInvoker)(() => listBoxAuctions.Items.Clear()));
+
+                // Update list
+                foreach (Auction auction in allAuctions) {
+                    this.Invoke((MethodInvoker)(() => listBoxAuctions.Items.Add(auction)));
+                }          
+            });
+        }
+
+        // TASK
+        private async Task<string> DoWorkAsync() {
+
+            return await Task.Run(() => {
+                Thread.Sleep(sleepMs);
+                return "Job done!";
+            });
+
+        }
     }
 }

@@ -12,12 +12,6 @@ namespace WebClientToService {
 
             routes.MapRoute(
                 name: "CreateAccount",
-                url: "UserDashBoard/{action}/{id}",
-                defaults: new { controller = "Account", action = "CreateCustomer", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "CreateAccount",
                 url: "Account/{action}/{id}",
                 defaults: new { controller = "Account", action = "CreateCustomer", id = UrlParameter.Optional }
             );

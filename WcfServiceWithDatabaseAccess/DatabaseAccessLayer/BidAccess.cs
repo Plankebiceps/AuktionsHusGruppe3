@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WcfServiceWithDatabaseAccess.ModelLayer;
 using System.Data.SqlClient;
+using System.Transactions;
 
 namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 {
@@ -33,25 +34,27 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             string insertString = "INSERT INTO Bid(bidAmount, customerId, auctionId) " +
                                   "VALUES (@bidAmount, @customerId, @auctionId)";
 
-            using (SqlConnection con = new SqlConnection(connectionString)) {
+            using (TransactionScope scope = new TransactionScope()) {
+                using (SqlConnection con = new SqlConnection(connectionString)) {
 
-                using (SqlCommand CreateCommand = new SqlCommand(insertString, con)) {
+                    using (SqlCommand CreateCommand = new SqlCommand(insertString, con)) {
 
-                    SqlParameter bidAmountParam = new SqlParameter("@bidAmount", bidAmount);
-                    CreateCommand.Parameters.Add(bidAmountParam);
-                    SqlParameter customerIdParam = new SqlParameter("@customerId", tempCustomer.Id);
-                    CreateCommand.Parameters.Add(customerIdParam);
-                    SqlParameter auctionIdParam = new SqlParameter("@auctionId", tempAuction.AuctionId);
-                    CreateCommand.Parameters.Add(auctionIdParam);
+                        SqlParameter bidAmountParam = new SqlParameter("@bidAmount", bidAmount);
+                        CreateCommand.Parameters.Add(bidAmountParam);
+                        SqlParameter customerIdParam = new SqlParameter("@customerId", tempCustomer.Id);
+                        CreateCommand.Parameters.Add(customerIdParam);
+                        SqlParameter auctionIdParam = new SqlParameter("@auctionId", tempAuction.AuctionId);
+                        CreateCommand.Parameters.Add(auctionIdParam);
 
-                    con.Open();
-                    // Execute save
-                    int rowsAffected = CreateCommand.ExecuteNonQuery();
-                    // Evaluate
-                    wasInserted = (rowsAffected == 6);
+                        con.Open();
+                        // Execute save
+                        int rowsAffected = CreateCommand.ExecuteNonQuery();
+                        // Evaluate
+                        wasInserted = (rowsAffected == 6);
 
-                    return wasInserted;
-                }    
+                        return wasInserted;
+                    }
+                }
             }
         }
 

@@ -10,7 +10,7 @@ using System.Transactions;
 
 namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 {
-    class CustomerAccess
+    public class CustomerAccess
     {
         readonly string connectionString;
 
@@ -65,7 +65,6 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
     
 
         public bool LoginCustomer(string emailToLookUp, string passwordToVerify) {
-            using (TransactionScope scope = new TransactionScope()) {   /* TransactionScope mangler funktionalitet */
 
                 Customer customerToLogin = null;
                 bool isPasswordMatched;
@@ -102,8 +101,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                     }
                     return isPasswordMatched = HashSalt.VerifyPassword(passwordToVerify, customerToLogin.Hash, customerToLogin.Salt);
                 }
-            }
         }
+        
 
         public Customer GetCustomerByEmail(string emailToFind) {
             Customer foundCustomer = new Customer();
