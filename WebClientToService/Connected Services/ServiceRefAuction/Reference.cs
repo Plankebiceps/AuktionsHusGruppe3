@@ -41,7 +41,7 @@ namespace WebClientToService.ServiceRefAuction {
         private string ResultField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal TimeLeftField;
+        private System.DateTime TimeLeftField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -132,7 +132,7 @@ namespace WebClientToService.ServiceRefAuction {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal TimeLeft {
+        public System.DateTime TimeLeft {
             get {
                 return this.TimeLeftField;
             }

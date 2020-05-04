@@ -13,7 +13,7 @@ namespace DesktopClientToService.ControlLayer
     {
         //"as" kan ikke bruges istedet for auctionService
 
-        public bool AddAuction(decimal timeLeft, bool payment, string result, DateTime paymentDate, 
+        public bool AddAuction(DateTime timeLeft, bool payment, string result, DateTime paymentDate, 
                                 string productName, string productDescription)
         {
             Auction auction = new Auction {
@@ -40,7 +40,7 @@ namespace DesktopClientToService.ControlLayer
             return auctionService.GetAuctionById(findAuctionId);
         }
 
-        public void UpdateAuction(int auctionIdToUpdate, decimal timeLeft, bool payment, string result, DateTime paymentDate,
+        public void UpdateAuction(int auctionIdToUpdate, DateTime timeLeft, bool payment, string result, DateTime paymentDate,
                                   string productName, string productDescription) {
 
             Auction auction = new Auction {

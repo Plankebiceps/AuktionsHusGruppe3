@@ -13,7 +13,7 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
         [DataMember]
         public int AuctionId { get; set; }
         [DataMember]
-        public decimal TimeLeft { get; set; }
+        public DateTime TimeLeft { get; set; }
         [DataMember]
         public bool Payment { get; set; }
         [DataMember]
@@ -26,7 +26,7 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
         public string ProductDescription { get; set; }
 
 
-        public Auction(int auctionId, decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription) {
+        public Auction(int auctionId, DateTime timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription) {
             AuctionId = auctionId;
             TimeLeft = timeLeft;
             Payment = payment;
@@ -36,7 +36,7 @@ namespace WcfServiceWithDatabaseAccess.ModelLayer
             ProductDescription = productDescription;
         }
 
-        public Auction(decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription) {
+        public Auction(DateTime timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription) {
             TimeLeft = timeLeft;
             Payment = payment;
             Result = result;

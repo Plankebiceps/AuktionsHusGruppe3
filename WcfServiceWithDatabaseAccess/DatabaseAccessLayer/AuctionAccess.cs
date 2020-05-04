@@ -81,7 +81,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
                     SqlDataReader reader = readCommand.ExecuteReader();
                     while (reader.Read()) {
                         foundAuction.AuctionId = reader.GetInt32(reader.GetOrdinal("id"));
-                        foundAuction.TimeLeft = reader.GetDecimal(reader.GetOrdinal("timeLeft"));
+                        foundAuction.TimeLeft = reader.GetDateTime(reader.GetOrdinal("timeLeft"));
                         foundAuction.Payment = reader.GetBoolean(reader.GetOrdinal("payment"));
                         foundAuction.Result = reader.GetString(reader.GetOrdinal("result"));
                         foundAuction.PaymentDate = reader.GetDateTime(reader.GetOrdinal("paymentDate"));
@@ -105,7 +105,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
 
                     SqlParameter idParam = new SqlParameter("@id", anAuction.AuctionId);
                     CreateCommand.Parameters.Add(idParam);
-
+                    
                     SqlParameter timeLeftParam = new SqlParameter("@timeLeft", anAuction.TimeLeft);
                     CreateCommand.Parameters.Add(timeLeftParam);
                     SqlParameter paymentParam = new SqlParameter("@payment", anAuction.Payment);
@@ -160,7 +160,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
 
             Auction foundAuction;
             int tempId;
-            decimal tempTimeLeft;
+            DateTime tempTimeLeft;
             bool tempPayment;
             string tempResult;
             DateTime tempPayDate;
@@ -170,7 +170,7 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer {
 
             /* Kan ikke håndtere NULLS */
             tempId = auctionReader.GetInt32(auctionReader.GetOrdinal("id"));
-            tempTimeLeft = auctionReader.GetDecimal(auctionReader.GetOrdinal("timeLeft"));
+            tempTimeLeft = auctionReader.GetDateTime(auctionReader.GetOrdinal("timeLeft"));
             tempPayment = auctionReader.GetBoolean(auctionReader.GetOrdinal("payment"));
             tempResult = auctionReader.GetString(auctionReader.GetOrdinal("result"));
             tempPayDate = auctionReader.GetDateTime(auctionReader.GetOrdinal("paymentDate"));

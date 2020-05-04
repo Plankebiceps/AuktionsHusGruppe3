@@ -8,7 +8,7 @@
       <xs:element minOccurs="0" name="ProductDescription" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Result" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TimeLeft" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TimeLeft" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Auction" nillable="true" type="tns:Auction" />

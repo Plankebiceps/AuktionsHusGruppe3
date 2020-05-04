@@ -35,6 +35,18 @@ namespace WebClientToService.Controllers
             WebAuctionService was = new WebAuctionService();
             List<WebAuction> auctionsToDisplay = was.GetAllAuctions();
 
+            
+
+            
+            DateTime currentTime = DateTime.Now;
+
+            foreach(WebAuction auctionOnWeb in auctionsToDisplay)
+                
+            {
+                auctionOnWeb.TimeLeft = auctionOnWeb.TimeLeft - currentTime;
+
+            }
+
             return View(auctionsToDisplay);
         }
     }

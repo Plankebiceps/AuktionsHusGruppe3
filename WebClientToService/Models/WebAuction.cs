@@ -6,14 +6,14 @@ using System.Web;
 namespace WebClientToService.Models {
     public class WebAuction {
         public int AuctionId { get; set; }
-        public decimal TimeLeft { get; set; }
+        public DateTime TimeLeft { get; set; }
         public bool Payment { get; set; }
         public string Result { get; set; }
         public DateTime PaymentDate { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
 
-        public WebAuction(int auctionId, decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription) {
+        public WebAuction(int auctionId, DateTime timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription) {
             AuctionId = auctionId;
             TimeLeft = timeLeft;
             Payment = payment;
@@ -23,7 +23,7 @@ namespace WebClientToService.Models {
             ProductDescription = productDescription;
         }
 
-        public WebAuction(decimal timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription) {
+        public WebAuction(DateTime timeLeft, bool payment, string result, DateTime paymentDate, string productName, string productDescription) {
             TimeLeft = timeLeft;
             Payment = payment;
             Result = result;
