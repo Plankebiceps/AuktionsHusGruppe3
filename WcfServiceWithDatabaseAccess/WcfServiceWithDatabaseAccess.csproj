@@ -82,6 +82,7 @@
     <Compile Include="DatabaseAccessLayer\AdminAccess.cs" />
     <Compile Include="DatabaseAccessLayer\CustomerAccess.cs" />
     <Compile Include="DatabaseAccessLayer\BidAccess.cs" />
+    <Compile Include="DatabaseAccessLayer\TestAfTimeRemaining.cs" />
     <Compile Include="ModelLayer\Admin.cs" />
     <Compile Include="ModelLayer\Auction.cs" />
     <Compile Include="ModelLayer\Bid.cs" />
