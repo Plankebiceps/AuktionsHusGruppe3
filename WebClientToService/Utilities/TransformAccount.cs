@@ -20,7 +20,8 @@ namespace WebClientToService.Utilities
                     FirstName = webCustomerToAdd.FirstName,
                     LastName = webCustomerToAdd.LastName,
                     Address = webCustomerToAdd.Address,
-                    Email = webCustomerToAdd.CustomerEmail,
+                    Email = webCustomerToAdd.Email,
+                    Password = webCustomerToAdd.Password,
                     Salt = webCustomerToAdd.Salt,
                     Hash = webCustomerToAdd.Hash
                 };
