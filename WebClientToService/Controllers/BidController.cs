@@ -23,11 +23,11 @@ namespace WebClientToService.Controllers
 
             wbs.CreateBid(bid);
 
-            return RedirectToAction("BidList");
+            return RedirectToAction("List");
         }
 
         // auctionId ?????
-        public ActionResult BidList(int id)
+        public ActionResult List(int id)
         {
 
             WebBidService wbs = new WebBidService();

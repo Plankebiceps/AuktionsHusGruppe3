@@ -18,8 +18,8 @@ namespace WebClientToService {
 
             routes.MapRoute(
                 name: "Bid",
-                url: "Auction/BidList/{action}/{id}",
-                defaults: new { controller = "Bid", action = "BidList", id = UrlParameter.Optional }
+                url: "Bid/{action}/{id}",
+                defaults: new { controller = "Bid", action = "List", id = UrlParameter.Optional }
             );
 
            
