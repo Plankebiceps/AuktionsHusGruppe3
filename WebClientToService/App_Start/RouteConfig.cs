@@ -16,13 +16,19 @@ namespace WebClientToService {
                 defaults: new { controller = "Account", action = "CreateCustomer", id = UrlParameter.Optional }
             );
 
+            //routes.MapRoute(
+            //    name: "Bid",
+            //    url: "Bid/{action}/{id}",
+            //    defaults: new { controller = "Bid", action = "List", id = UrlParameter.Optional }
+            //);
+
             routes.MapRoute(
                 name: "Bid",
                 url: "Bid/{action}/{id}",
-                defaults: new { controller = "Bid", action = "List", id = UrlParameter.Optional }
+                defaults: new { controller = "Bid" }
             );
 
-           
+
             routes.MapRoute(
                 name: "Auction",
                 url: "Auction/{action}/{id}",
@@ -33,7 +39,8 @@ namespace WebClientToService {
             routes.MapRoute(
                 name: "Login",
                 url: "Account/{action}/{id}",
-                defaults: new { controller = "Account", action = "CustomerLogin", id = UrlParameter.Optional });
+                defaults: new { controller = "Account", action = "CustomerLogin", id = UrlParameter.Optional }
+            );
             
 
             routes.MapRoute(

@@ -11,7 +11,6 @@ namespace WebClientToService.Controllers
 {
     public class BidController : Controller
     {
-        // GET: Bid
         public ActionResult Index()
         {
             return View();
@@ -21,12 +20,11 @@ namespace WebClientToService.Controllers
         {
             WebBidService wbs = new WebBidService();
 
-            wbs.CreateBid(bid);
+            wbs.CreateBid(bid);         
 
             return RedirectToAction("List");
         }
 
-        // auctionId ?????
         public ActionResult List(int id)
         {
 
