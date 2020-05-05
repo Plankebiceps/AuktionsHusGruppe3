@@ -19,8 +19,8 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44346</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -263,11 +263,9 @@
     <Content Include="Views\Auction\List.cshtml" />
     <Content Include="Views\Auction\Create.cshtml" />
     <Content Include="Views\Auction\Index.cshtml" />
-	<Content Include="Views\Bid\List.cshtml" />
-	<Content Include="Views\Home\CustomerCreateAccount.cshtml" />
-	<Content Include="Views\Home\UserDashBoard.cshtml" />
-    <Content Include="Views\Bid\BidList.cshtml" />
-	<Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\CustomerCreateAccount.cshtml" />
+    <Content Include="Views\Home\UserDashBoard.cshtml" />
+    <Content Include="Views\Bid\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
