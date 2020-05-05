@@ -49,16 +49,42 @@ namespace WebClientToService.Controllers
             WebCustomer webCustomer = new WebCustomer();
             if (whatevs == true)
             {
-                FormsAuthentication.SetAuthCookie(webCustomer.FirstName, false);
+                string authId = Guid.NewGuid().ToString();
+                Session["AuthId"] = authId;
+                var cookie = new HttpCookie("AuthId");
+                cookie.Value = authId;
+                Response.Cookies.Add(cookie);
+                //FormsAuthentication.SetAuthCookie(webCustomer.Email, true);
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 ModelState.AddModelError("", "Wrong email and/or password");
-                return RedirectToAction("CustomerLogin", "Home");
+                return RedirectToAction("Private");
             }
         }
 
+        [Authorize]
+        public ActionResult Private()
+        {
+            try
+            {
+                if(Request.Cookies["AuthId"].Value == Session["AuthId"].ToString())
+                {
+                    return View();
+                }
+                else
+                {
+                    return PartialView("_LoginPartial.cshtml");
+                }
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
