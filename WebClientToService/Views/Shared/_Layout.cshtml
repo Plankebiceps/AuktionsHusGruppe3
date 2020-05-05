@@ -25,19 +25,8 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Auctions", "List", "Auction")</li>
                     <li>@Html.ActionLink("Create Auction", "Create", "Auction")</li>
-                    <li>@if (Request.IsAuthenticated)
-                         {
-                            <div class="enter">
-                            @Html.Encode("You're logged in as: " + @User.Identity.Name)
-                            @Html.ActionLink("Log out", "LogOff", "Home")
-                            </div>
-                         }
-                         else
-                         {
-                             @Html.ActionLink("Login", "CustomerLogin", "Home");
-                         }
-                    </li>
                 </ul>
+                    @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
