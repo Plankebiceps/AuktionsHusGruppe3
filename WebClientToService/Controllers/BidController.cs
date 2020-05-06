@@ -17,17 +17,18 @@ namespace WebClientToService.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Create(WebBid bid)
         {
             WebBidService wbs = new WebBidService();
 
             wbs.CreateBid(bid);
-
-            return RedirectToAction("BidList");
+            
+            return RedirectToAction("List", new { id = bid.AuctionId });
         }
 
         // auctionId ?????
-        public ActionResult BidList(int id)
+        public ActionResult List(int id)
         {
 
             WebBidService wbs = new WebBidService();
