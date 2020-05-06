@@ -18,7 +18,8 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             connectionString = "data Source=.; database=3SemDB; integrated security=true";
         }
 
-        public bool SaveBid(Bid aBid) {
+        public bool SaveBid(Bid aBid)
+        {
 
             Bid tempBid = new Bid();
 
@@ -34,10 +35,13 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             string insertString = "INSERT INTO Bid(bidAmount, customerId, auctionId) " +
                                   "VALUES (@bidAmount, @customerId, @auctionId)";
 
-            using (TransactionScope scope = new TransactionScope()) {
-                using (SqlConnection con = new SqlConnection(connectionString)) {
+            using (TransactionScope scope = new TransactionScope())
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
 
-                    using (SqlCommand CreateCommand = new SqlCommand(insertString, con)) {
+                    using (SqlCommand CreateCommand = new SqlCommand(insertString, con))
+                    {
 
                         SqlParameter bidAmountParam = new SqlParameter("@bidAmount", bidAmount);
                         CreateCommand.Parameters.Add(bidAmountParam);
@@ -53,6 +57,83 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                         wasInserted = (rowsAffected == 6);
 
                         scope.Complete();
+
+                        return wasInserted;
+                    }
+                }
+            }
+        }
+
+
+        public bool UpdateBid(Bid aBid)
+        {
+
+            //Bid tempBid = new Bid();
+            //Customer tempCustomer = new Customer();
+            //Auction tempAuction = new Auction();
+            //tempCustomer.Id = aBid.CustomerId;
+            //tempAuction.AuctionId = aBid.AuctionId;
+
+
+            //"VALUES (@bidAmount, @customerId, @auctionId)"
+
+            bool wasInserted;
+            aBid.Id = 1;
+
+            string selectString = "SELECT rowId FROM Bid WHERE id=@id";
+
+            string updateString = "UPDATE Bid SET bidAmount=@bidAmount, customerId=@customerId, auctionId=@auctionId " +
+                                  "WHERE id=@id AND rowId=@rowId AND bidAmount > @bidAmount";
+
+
+            using (TransactionScope scope = new TransactionScope())
+            {
+                byte[] rowId = null;
+                
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand Command = new SqlCommand(updateString, con))
+                    {
+                        con.Open();
+                        Command.CommandText = selectString;
+
+                        SqlParameter bidIdParam = new SqlParameter("@id", aBid.Id);
+                        Command.Parameters.Add(bidIdParam);
+                        SqlDataReader reader = Command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            rowId = (byte[])reader["rowId"]; ;
+                        }
+                        reader.Close();
+                        
+
+                        SqlParameter bidAmountParam = new SqlParameter("@bidAmount", aBid.BidAmount);
+                        Command.Parameters.Add(bidAmountParam);
+                        SqlParameter customerIdParam = new SqlParameter("@customerId", aBid.CustomerId);
+                        Command.Parameters.Add(customerIdParam);
+                        SqlParameter auctionIdParam = new SqlParameter("@auctionId", aBid.AuctionId);
+                        Command.Parameters.Add(auctionIdParam);
+                        SqlParameter versionParam = new SqlParameter("rowId", rowId);
+                        Command.Parameters.Add(versionParam);
+
+
+                        // Execute save
+                        int rowsAffected = Command.ExecuteNonQuery();
+                        // Evaluate
+
+                        wasInserted = (rowsAffected == 1);
+
+                        if (!wasInserted)
+                        {
+                            throw new Exception();
+                        }
+                        else
+                        {
+                            scope.Complete();
+                        }
+
 
                         return wasInserted;
                     }

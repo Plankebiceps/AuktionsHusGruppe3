@@ -22,6 +22,18 @@ namespace DesktopClientToService.ServiceLayer {
             return allOk;
         }
 
+        public bool UpdateBid(clientRef.Bid aBidToUpdate)
+        {
+            bool allOk = false;
+            proxyRef.Bid bidInServiceFormat = new ConvertDataBid().ConvertToServiceBid(aBidToUpdate);
+            using (proxyRef.BidServiceClient bidProxy = new proxyRef.BidServiceClient())
+            {
+                allOk = bidProxy.UpdateBid(bidInServiceFormat);
+            }
+            return allOk;
+
+        }
+
         public List<clientRef.Bid> GetBidAll(int auctionId) {
 
             proxyRef.BidServiceClient bsc = new proxyRef.BidServiceClient();

@@ -54,5 +54,17 @@ namespace WebClientToService.ServiceLayer {
             }
             return allOk;
         }
+
+        public bool UpdateBid(WebBid aBidToUpdate)
+        {
+            bool allOk = false;
+            proxyRef.Bid bidServiceFormat = new TransformBid().ConvertToServiceBid(aBidToUpdate);
+            using (BidServiceClient bidProxy = new BidServiceClient())
+            {
+                allOk = bidProxy.UpdateBid(bidServiceFormat);
+            }
+            return allOk;
+        }
+
     }
 }
