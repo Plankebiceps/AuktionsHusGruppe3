@@ -41,7 +41,7 @@ namespace WebClientToService.Controllers
             foreach (WebAuction auctionOnWeb in auctionsToDisplay) {
 
                 DateTime currentTime = DateTime.Now;
-                TimeSpan span = auctionOnWeb.TimeLeft - currentTime;
+                TimeSpan span = currentTime - auctionOnWeb.TimeLeft;
                 DateTime timeRemaining = new DateTime();
                 timeRemaining.Add(span);
                 
