@@ -78,12 +78,11 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
             //"VALUES (@bidAmount, @customerId, @auctionId)"
 
             bool wasInserted;
-            aBid.Id = 1;
 
             string selectString = "SELECT rowId FROM Bid WHERE id=@id";
 
             string updateString = "UPDATE Bid SET bidAmount=@bidAmount, customerId=@customerId, auctionId=@auctionId " +
-                                  "WHERE id=@id AND rowId=@rowId AND bidAmount > @bidAmount";
+                                  "WHERE id=@id AND rowId=@rowId AND bidAmount < @bidAmount";
 
 
             using (TransactionScope scope = new TransactionScope())
@@ -93,10 +92,9 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    using (SqlCommand Command = new SqlCommand(updateString, con))
+                    using (SqlCommand Command = new SqlCommand(selectString, con))
                     {
                         con.Open();
-                        Command.CommandText = selectString;
 
                         SqlParameter bidIdParam = new SqlParameter("@id", aBid.Id);
                         Command.Parameters.Add(bidIdParam);
@@ -107,7 +105,10 @@ namespace WcfServiceWithDatabaseAccess.DatabaseAccessLayer
                             rowId = (byte[])reader["rowId"]; ;
                         }
                         reader.Close();
-                        
+
+
+                        //sæt sql string til updateString
+                        Command.CommandText = updateString;
 
                         SqlParameter bidAmountParam = new SqlParameter("@bidAmount", aBid.BidAmount);
                         Command.Parameters.Add(bidAmountParam);

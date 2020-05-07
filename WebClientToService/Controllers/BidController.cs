@@ -32,6 +32,7 @@ namespace WebClientToService.Controllers
         {
             WebBidService wbs = new WebBidService();
 
+            bid.Id = 1;
             wbs.UpdateBid(bid);
 
             return RedirectToAction("List", new { id = bid.AuctionId });
