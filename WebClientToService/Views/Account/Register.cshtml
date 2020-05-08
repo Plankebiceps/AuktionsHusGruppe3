@@ -1,6 +1,6 @@
 ﻿@model WebClientToService.Models.WebCustomer
 @{
-    ViewBag.Title = "Create Account";
+    ViewBag.Title = "Register";
 }
 
     <body oncontextmenu="return false">
@@ -23,7 +23,6 @@
                 }
             }
         </script>
-        <h2>Create Account</h2>
         @using (Html.BeginForm("CreateCustomer", "Account", FormMethod.Post))
         {
             <div class="row">

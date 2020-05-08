@@ -1,29 +1,28 @@
-﻿@{
+﻿@model WebClientToService.Models.WebCustomer
+@{
     ViewBag.Title = "Login";
 }
-@if(User.Identity.IsAuthenticated)
 {
-    using(Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-        @Html.AntiForgeryToken()
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-            @Html.Display("Hello " + User.Identity.Name + ".")
-            </li>
-            <li>
-                @Html.ActionLink("Logout", "LogOff", "Account")
-            </li>
-        </ul>
-    }
-}
-else
+@if (Request.IsAuthenticated)
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Register", "CreateCustomer", "Home")
+            Hello @*@User.Identity.Name*@ @Session["FirstName"]
         </li>
         <li>
-            @Html.ActionLink("Login", "CustomerLogin", "Home")
+            @Html.ActionLink("Logout", "LogOff", "Account")
         </li>
     </ul>
+}
+else
+{ 
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Register", "CreateCustomer", "Account")
+        </li>
+        <li>
+            @Html.ActionLink("Login", "CustomerLogin", "Account")
+        </li>
+    </ul>
+}
 }

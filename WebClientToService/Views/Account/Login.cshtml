@@ -42,7 +42,7 @@
                             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                         </div>
                         <button type="submit">Login</button>
-                        <input type="button" value="Create Account" onclick="@("window.location.href='" + @Url.Action("CustomerCreateAccount", "Home") + "'");" />
+                        <input type="button" value="Create Account" onclick="@("window.location.href='" + @Url.Action("CreateCustomer", "Home") + "'");" />
                     </div>
                 </div>
             </div>

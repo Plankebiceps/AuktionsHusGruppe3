@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using WebClientToService.ServiceLayer;
 using WebClientToService.Models;
 using System.Web.Security;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OpenIdConnect;
 
 namespace WebClientToService.Controllers
 {
@@ -30,6 +32,7 @@ namespace WebClientToService.Controllers
                 createdAccount = webCustomerService.CreateCustomerAccount(webCustomer);
             if (createdAccount == true)
             {
+                //return View();
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -43,44 +46,52 @@ namespace WebClientToService.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CustomerLogin(string Email, string Password)
         {
+            if(!Request.IsAuthenticated)
+            {
             bool whatevs = false;
             WebCustomerService webCustomerService = new WebCustomerService();
             whatevs = webCustomerService.LoginCustomer(Email, Password);
             WebCustomer webCustomer = new WebCustomer();
-            if (whatevs == true)
-            {
-                string authId = Guid.NewGuid().ToString();
-                Session["AuthId"] = authId;
-                var cookie = new HttpCookie("AuthId");
-                cookie.Value = authId;
-                Response.Cookies.Add(cookie);
+            Session["FirstName"] = webCustomer.FirstName;
+                if (whatevs == true)
+                {
+                    /*HttpContext.GetOwinContext().Authentication.Challenge(
+                    new AuthenticationProperties { RedirectUri = "/" },
+                        OpenIdConnectAuthenticationDefaults.AuthenticationType
+                    );*/
+                    string FirstName = Guid.NewGuid().ToString();
+                    Session["FirstName"] = FirstName;
+                    var cookie = new HttpCookie("FirstName");
+                    cookie.Value = FirstName;
+                    Response.Cookies.Add(cookie);
                 //FormsAuthentication.SetAuthCookie(webCustomer.Email, true);
                 return RedirectToAction("Index", "Home");
+                }
+                return Private();
             }
             else
             {
                 ModelState.AddModelError("", "Wrong email and/or password");
-                return RedirectToAction("Private");
+                return RedirectToAction("CustomerLogin");
             }
         }
 
-        [Authorize]
         public ActionResult Private()
         {
             try
             {
-                if(Request.Cookies["AuthId"].Value == Session["AuthId"].ToString())
+                if(Request.IsAuthenticated)
                 {
-                    return View();
+                    return PartialView("_LoginPartial");
                 }
                 else
                 {
-                    return PartialView("_LoginPartial.cshtml");
+                    return View();
                 }
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
         }
 
