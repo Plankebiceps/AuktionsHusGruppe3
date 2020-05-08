@@ -116,11 +116,23 @@ namespace DesktopClientToService.ServiceRefBid {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/PlaceBid", ReplyAction="http://tempuri.org/IBidService/PlaceBidResponse")]
         System.Threading.Tasks.Task<bool> PlaceBidAsync(DesktopClientToService.ServiceRefBid.Bid bidToPlace);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/UpdateBid", ReplyAction="http://tempuri.org/IBidService/UpdateBidResponse")]
+        bool UpdateBid(DesktopClientToService.ServiceRefBid.Bid aBidToUpdate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/UpdateBid", ReplyAction="http://tempuri.org/IBidService/UpdateBidResponse")]
+        System.Threading.Tasks.Task<bool> UpdateBidAsync(DesktopClientToService.ServiceRefBid.Bid aBidToUpdate);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/GetBidAll", ReplyAction="http://tempuri.org/IBidService/GetBidAllResponse")]
         DesktopClientToService.ServiceRefBid.Bid[] GetBidAll(int auctionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/GetBidAll", ReplyAction="http://tempuri.org/IBidService/GetBidAllResponse")]
         System.Threading.Tasks.Task<DesktopClientToService.ServiceRefBid.Bid[]> GetBidAllAsync(int auctionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/GetBidById", ReplyAction="http://tempuri.org/IBidService/GetBidByIdResponse")]
+        DesktopClientToService.ServiceRefBid.Bid GetBidById(int bidId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/GetBidById", ReplyAction="http://tempuri.org/IBidService/GetBidByIdResponse")]
+        System.Threading.Tasks.Task<DesktopClientToService.ServiceRefBid.Bid> GetBidByIdAsync(int bidId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -158,12 +170,28 @@ namespace DesktopClientToService.ServiceRefBid {
             return base.Channel.PlaceBidAsync(bidToPlace);
         }
         
+        public bool UpdateBid(DesktopClientToService.ServiceRefBid.Bid aBidToUpdate) {
+            return base.Channel.UpdateBid(aBidToUpdate);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateBidAsync(DesktopClientToService.ServiceRefBid.Bid aBidToUpdate) {
+            return base.Channel.UpdateBidAsync(aBidToUpdate);
+        }
+        
         public DesktopClientToService.ServiceRefBid.Bid[] GetBidAll(int auctionId) {
             return base.Channel.GetBidAll(auctionId);
         }
         
         public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefBid.Bid[]> GetBidAllAsync(int auctionId) {
             return base.Channel.GetBidAllAsync(auctionId);
+        }
+        
+        public DesktopClientToService.ServiceRefBid.Bid GetBidById(int bidId) {
+            return base.Channel.GetBidById(bidId);
+        }
+        
+        public System.Threading.Tasks.Task<DesktopClientToService.ServiceRefBid.Bid> GetBidByIdAsync(int bidId) {
+            return base.Channel.GetBidByIdAsync(bidId);
         }
     }
 }

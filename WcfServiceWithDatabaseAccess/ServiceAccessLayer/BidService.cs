@@ -16,6 +16,13 @@ namespace WcfServiceWithDatabaseAccess.ServiceAccessLayer
             ControlBid ctrlBid = new ControlBid();
             return ctrlBid.InsertBid(bidToPlace);
         }
+
+        public bool UpdateBid(Bid aBidToUpdate)
+        {
+            ControlBid ctrlBid = new ControlBid();
+            return ctrlBid.UpdateBid(aBidToUpdate);
+        }
+
         public List<Bid> GetBidAll(int auctionId) {
             ControlBid ctrlBid = new ControlBid();
             return ctrlBid.GetAllBids(auctionId);

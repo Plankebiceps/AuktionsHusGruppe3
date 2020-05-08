@@ -27,6 +27,7 @@ namespace WebClientToService.Utilities {
             proxyRef.Bid proxyWebBid = null;
             if (webBid != null) {
                 proxyWebBid = new proxyRef.Bid {
+                    Id = webBid.Id,
                     AuctionId = webBid.AuctionId,
                     BidAmount = webBid.BidAmount,
                     CustomerId = webBid.CustomerId
@@ -41,6 +42,7 @@ namespace WebClientToService.Utilities {
             WebBid foundClientBid = null;
             if (sBid != null) {
                 foundClientBid = new WebBid {
+                    Id = sBid.Id,
                     AuctionId = sBid.AuctionId,
                     BidAmount = sBid.BidAmount,
                     CustomerId = sBid.CustomerId

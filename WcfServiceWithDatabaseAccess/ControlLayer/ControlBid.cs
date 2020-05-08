@@ -18,6 +18,16 @@ namespace WcfServiceWithDatabaseAccess.ControlLayer {
             return wasInsertedCorrectly;
         }
 
+
+        public bool UpdateBid(Bid aBidToUpdate)
+        {
+            bool wasUpdatedCorrectly;
+
+            BidAccess bidDb = new BidAccess();
+            wasUpdatedCorrectly = bidDb.UpdateBid(aBidToUpdate);
+            return wasUpdatedCorrectly;
+        }
+
         public List<Bid> GetAllBids(int auctionId) {
             List<Bid> foundBids;
 

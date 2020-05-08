@@ -22,6 +22,20 @@ namespace DesktopClientToService.ControlLayer {
             return bidService.PlaceBid(bid);
         }
 
+        public bool UpdateBid(decimal amountToBid, int auctionId, int customerId)
+        {
+
+            Bid bid = new Bid
+            {
+                BidAmount = amountToBid,
+                AuctionId = auctionId,
+                CustomerId = customerId
+            };
+
+            BidService bidService = new BidService();
+            return bidService.UpdateBid(bid);
+        }
+
         public List<Bid> GetAllBids(int auctionId) {
             BidService bidService = new BidService();
             return bidService.GetBidAll(auctionId);

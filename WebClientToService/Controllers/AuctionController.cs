@@ -37,21 +37,6 @@ namespace WebClientToService.Controllers
             List<WebAuction> auctionsToDisplay = was.GetAllAuctions();
 
 
-
-            //foreach (WebAuction auctionOnWeb in auctionsToDisplay) {
-
-            //    //DateTime currentTime = DateTime.Now;
-            //    //TimeSpan span = auctionOnWeb.TimeLeft - currentTime;
-            //    //DateTime timeRemaining = new DateTime();
-            //    //timeRemaining.Add(span);
-            //}
-                
-                //timeRemaining = auctionOnWeb.TimeLeft;
-              // NOTE: Overvej hvad der skal vises. View kan umiddelbart kun tilgå og vise DateTime (TimeLeft-variabel), altså dato+tidsformat og ikke kun eks. 24 timer eller 47 minutter. 
-              // DateTime AuctionEndDate (not NULL) + int TimeLeft (NULL allowed)  -  AuctionToEnd kan da subtraheres med DateTime.Now og efterfølgende kan dette TimeSpan konverteres til en int, 
-              // gemmes i int TimeLeft og vises i View. 
-              // Muligvis kan timeRemaining modificeres til kun at vise timer/minutter ??
-
             return View(auctionsToDisplay);
         }
     }

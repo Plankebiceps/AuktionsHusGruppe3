@@ -116,6 +116,12 @@ namespace WebClientToService.ServiceRefBid {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/PlaceBid", ReplyAction="http://tempuri.org/IBidService/PlaceBidResponse")]
         System.Threading.Tasks.Task<bool> PlaceBidAsync(WebClientToService.ServiceRefBid.Bid bidToPlace);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/UpdateBid", ReplyAction="http://tempuri.org/IBidService/UpdateBidResponse")]
+        bool UpdateBid(WebClientToService.ServiceRefBid.Bid aBidToUpdate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/UpdateBid", ReplyAction="http://tempuri.org/IBidService/UpdateBidResponse")]
+        System.Threading.Tasks.Task<bool> UpdateBidAsync(WebClientToService.ServiceRefBid.Bid aBidToUpdate);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBidService/GetBidAll", ReplyAction="http://tempuri.org/IBidService/GetBidAllResponse")]
         WebClientToService.ServiceRefBid.Bid[] GetBidAll(int auctionId);
         
@@ -162,6 +168,14 @@ namespace WebClientToService.ServiceRefBid {
         
         public System.Threading.Tasks.Task<bool> PlaceBidAsync(WebClientToService.ServiceRefBid.Bid bidToPlace) {
             return base.Channel.PlaceBidAsync(bidToPlace);
+        }
+        
+        public bool UpdateBid(WebClientToService.ServiceRefBid.Bid aBidToUpdate) {
+            return base.Channel.UpdateBid(aBidToUpdate);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateBidAsync(WebClientToService.ServiceRefBid.Bid aBidToUpdate) {
+            return base.Channel.UpdateBidAsync(aBidToUpdate);
         }
         
         public WebClientToService.ServiceRefBid.Bid[] GetBidAll(int auctionId) {
